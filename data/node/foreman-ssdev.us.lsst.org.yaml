@@ -1,4 +1,4 @@
 ---
-classes:
+# classes:
   # - profile::base_linux
-  - profile::puppet_master
+  # - profile::puppet_master
