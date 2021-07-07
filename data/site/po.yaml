@@ -34,7 +34,7 @@ accounts::user_list:
       - 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAictUaJdM0LsjA4Lx8zWtZOHM82VNrwBaK507GRFW6FcDcs2ggaLQkqAIAmA2kCemkDeM31ylR9QJ4gkM17pq57NITER4MkODR8BmLYLcNPhcJ33Eje5qHuc6wapuE9mg5OJcSeBt/PimdKxqNl+bmYFXe6UkCPiAGFPv6hEobWA7O2p8Tp92SkDhxE0wST8Sxs/FpQN5LWQ8BjOU3mdbOZairdIXHzdl308VY0aMYvD/uhi22l6CndCTCRe8WJ0UjOaY5CmKHQZWVb1auxFj0LEz1qVB/ZZd9Kn0NPJ2f3zzll8mJCZSUJtcLZCgGiX9Dyf4J071aHUTUdXe+5UnPQ== rsa-key-20190116'
     password: ''
     ignore_password_if_empty: true
-  # root:
-  #   groups:
-  #     - 'wheel'
-  #   password: "%{lookup('root_pwd')}"
+  test:
+    groups:
+      - 'wheel'
+    password: "ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAJ630Q7U3wL35aykxLgPmB6b6HhjGo4+e+UP8xjIF6qvvoLPJddSZMBW5rMKNOGYyuHCcDFfny8mvNzeanmNF38B0W0khFnp6BsypUnyLg5UdGrUMG0GPos4OYe5cGUwjV/CNw9mJomJzDostyxfhPWQCjvvJVJmqKHImB6IQV/MR3QgM/M/jonK1TboOjtq+jAqfDL9If50Xjgw/3qES+o0VuecajpMuiYDL5k7KAdAjj6T0y34B+8/lKf3u02KPRJGrdBpFz6rYDhynNvp5Je8cf5UFjbsSq3UDBUMW3Otmquxe2e9Op+YxnqUcposP7lQi6+sLtEWbq1AVOiO/CjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDNDqmE4+EykL4x6SxLSqyZgBCwlYyidFA8EcLOt7Sr1IW0]"
