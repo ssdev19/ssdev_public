@@ -13,8 +13,8 @@ hierarchy:
       - "role/%{role}.yaml"
       - "common.yaml"
     options:
-      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/key/private_key.pkcs7.pem
-      pkcs7_public_key: /etc/puppetlabs/puppet/eyaml/key/public_key.pkcs7.pem
+      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
   - name: "private hiera"
     lookup_key: eyaml_lookup_key
     datadir: "/etc/puppetlabs/code/data/private/%{environment}"
@@ -25,5 +25,5 @@ hierarchy:
       - "role/%{role}.yaml"
       - "common.yaml"
     options:
-      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/key/private_key.pkcs7.pem
-      pkcs7_public_key: /etc/puppetlabs/puppet/eyaml/key/public_key.pkcs7.pem
+      pkcs7_private_key: /etc/puppetlabs/puppet/eyaml/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppet/eyaml/keys/public_key.pkcs7.pem
