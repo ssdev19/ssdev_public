@@ -43,10 +43,10 @@ r10k::sources:
     #   - "master"
     #   - "ncsa_production"
     #   - "disable"
-  ssdev_private:
-    remote: "git@github.com:/AnonSS/ssdev_private.git"
-    basedir: "/etc/puppetlabs/code/hieradata/private"
-    invalid_branches: "correct"
+  # ssdev_private:
+  #   remote: "git@github.com:/AnonSS/ssdev_private.git"
+  #   basedir: "/etc/puppetlabs/code/hieradata/private"
+  #   invalid_branches: "correct"
   #   ignore_branch_prefixes: *ignore_branch
 #r10k::postrun: ['/bin/hammer', 'proxy', 'import-classes', '--id=1']
 r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
