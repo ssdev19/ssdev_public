@@ -1,4 +1,7 @@
 # for all drupal
 class profile::drupal {
-  include drush::drush
+  # include drush::drush
+  drush::drush { 'drush8':
+  version => '8',
+}
 }
