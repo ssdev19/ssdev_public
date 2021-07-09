@@ -39,7 +39,7 @@ r10k::sources:
     remote: "git@github.com:/AnonSS/ssdev_private.git"
     basedir: "/etc/puppetlabs/code/data/private"
     invalid_branches: "correct"
-    private_key: "/etc/puppetlabs/r10k/ssh/id_rsa-private-repo-deploy-key"
+    private_key: "/root/.ssh/id_rsa-private-repo-deploy-key"
   #   ignore_branch_prefixes: *ignore_branch
   ssdev_publicp:
     remote: "git@github.com:/AnonSS/ssdev_publicp.git"
