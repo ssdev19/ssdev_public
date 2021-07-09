@@ -53,6 +53,8 @@ mod 'puppetlabs-hocon', '1.1.0'  # dependency
 mod 'example42-network', '3.6.0'
 mod 'puppetlabs-mysql', '11.1.0'
 mod 'previousnext-drush', '0.1.2'
+mod 'willdurand-composer', '1.2.10'
+mod 'puppetlabs-cron_core', '1.0.5'
 # Encryption
 mod 'puppetlabs-puppet_authorization', '0.5.1'
 mod 'binford2k-node_encrypt', '0.4.1'
