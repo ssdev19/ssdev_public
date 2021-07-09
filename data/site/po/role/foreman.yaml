@@ -35,20 +35,18 @@
 r10k::mcollective: false
 r10k::cachedir: "/var/cache/r10k"
 r10k::sources:
-  ssdev_publicp:
-    remote: "git@github.com:/AnonSS/ssdev_publicp.git"
-    basedir: "/etc/puppetlabs/code/environments"
-    invalid_branches: "correct"
-    # ignore_branch_prefixes: &ignore_branch
-    #   - "master"
-    #   - "ncsa_production"
-    #   - "disable"
   ssdev_private:
     remote: "git@github.com:/AnonSS/ssdev_private.git"
     basedir: "/etc/puppetlabs/code/data/private"
     invalid_branches: "correct"
-    private_key: '/root/.ssh/priv_id_dsa'
+    private_key: "/etc/puppetlabs/r10k/ssh/id_rsa-private-repo-deploy-key"
   #   ignore_branch_prefixes: *ignore_branch
+  ssdev_publicp:
+    remote: "git@github.com:/AnonSS/ssdev_publicp.git"
+    basedir: "/etc/puppetlabs/code/environments"
+    invalid_branches: "correct"
+    private_key: "/root/.ssh/id_rsa"
+    # ignore_branch_prefixes: &ignore_branch
 #r10k::postrun: ['/bin/hammer', 'proxy', 'import-classes', '--id=1']
 r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
 # r10k::webhook::config::use_mcollective: false
