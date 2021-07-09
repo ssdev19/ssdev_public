@@ -42,10 +42,10 @@ r10k::sources:
   #   private_key: "/root/.ssh/id_dsa"
   #   ignore_branch_prefixes: *ignore_branch
   ssdev_publicp:
-    remote: "git@github.com:/AnonSS/ssdev_publicp.git"
+    remote: "git@github.com:/AnonSS/ssdev_public.git"
     basedir: "/etc/puppetlabs/code/environments"
     invalid_branches: "correct"
-    private_key: "/root/.ssh/id_rsa"
+    # private_key: "/root/.ssh/id_rsa"
     # ignore_branch_prefixes: &ignore_branch
 #r10k::postrun: ['/bin/hammer', 'proxy', 'import-classes', '--id=1']
 r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
