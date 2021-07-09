@@ -1,7 +1,7 @@
 # Webserver node
 ---
 classes:
-  - profile::base_linux
+  # - profile::base_linux
   - profile::drupal
   - profile::webserver
 network::interfaces_hash:
