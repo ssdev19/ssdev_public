@@ -2,7 +2,7 @@
 ---
 classes:
   - profile::base_linux
-  # - profile::
+  - profile::webserver
 network::interfaces_hash:
   eth0:
     type: Ethernet
