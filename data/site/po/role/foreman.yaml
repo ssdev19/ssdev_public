@@ -35,11 +35,11 @@
 r10k::mcollective: false
 r10k::cachedir: "/var/cache/r10k"
 r10k::sources:
-  ssdev_private:
-    remote: "git@github.com:/AnonSS/ssdev_private.git"
-    basedir: "/etc/puppetlabs/code/data/private"
-    invalid_branches: "correct"
-    private_key: "/root/.ssh/id_dsa"
+  # ssdev_private:
+  #   remote: "git@github.com:/AnonSS/ssdev_private.git"
+  #   basedir: "/etc/puppetlabs/code/data/private"
+  #   invalid_branches: "correct"
+  #   private_key: "/root/.ssh/id_dsa"
   #   ignore_branch_prefixes: *ignore_branch
   ssdev_publicp:
     remote: "git@github.com:/AnonSS/ssdev_publicp.git"
