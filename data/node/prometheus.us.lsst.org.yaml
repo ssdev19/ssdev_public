@@ -1,0 +1,7 @@
+# Prometheus node
+---
+classes:
+  - profile::base_linux
+#   - profile::prometheus
+# profile::prometheus::slackuser_hide: it_alerts
+# profile::prometheus::slackapi_hide: "%{lookup('slacapi')}"
