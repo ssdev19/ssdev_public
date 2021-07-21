@@ -2,7 +2,7 @@
 ---
 classes:
   # - profile::base_linux
-  - profile::drupal
+  # - profile::drupal
   - profile::webserver
 network::interfaces_hash:
   eth0:
