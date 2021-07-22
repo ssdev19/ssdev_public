@@ -2,8 +2,6 @@
 class profile::prometheus (Sensitive[String]
 $slackapi_hide,
 $slackuser_hide,
-$cluster_hide,
-$advertise_ip,
 ) {
 # Firewall rules are in private repo
   include prometheus
