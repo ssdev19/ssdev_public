@@ -44,7 +44,18 @@ rsyslog::config::global_config:
     value: "/var/lib/rsyslog"
   maxMessageSize:
     value: "64k"
-# graylog
+rsyslog::config::modules:
+  imuxsock: {}
+  imjournal:
+    config:
+      StateFile: "imjournal.state"
+      IgnorePreviousMessages: "off"
+      Ratelimit.Interval: 600
+      Ratelimit.Burst: 20000
+  imklog: {}
+  immark: {}
+  imfile: {}
+    # graylog
 rsyslog::config::actions:
   graylogAWS:
     type: "omfwd"
