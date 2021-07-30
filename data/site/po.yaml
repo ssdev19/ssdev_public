@@ -38,7 +38,12 @@ accounts::user_list:
     groups:
       - 'wheel'
     password: "%{lookup('root_pwd')}"
-
+# rsyslog config
+rsyslog::config::global_config:
+  workDirectory:
+    value: "/var/lib/rsyslog"
+  maxMessageSize:
+    value: "64k"
 # graylog
 rsyslog::config::actions:
   graylogAWS:
