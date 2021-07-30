@@ -46,15 +46,12 @@ rsyslog::config::global_config:
     value: "64k"
 rsyslog::config::modules:
   imuxsock: {}
-  imjournal:
-    config:
-      StateFile: "imjournal.state"
-      IgnorePreviousMessages: "off"
-      Ratelimit.Interval: 600
-      Ratelimit.Burst: 20000
-  imklog: {}
-  immark: {}
-  imfile: {}
+  # imjournal:
+  #   config:
+  #     StateFile: "imjournal.state"
+  #     IgnorePreviousMessages: "off"
+  #     Ratelimit.Interval: 600
+  #     Ratelimit.Burst: 20000
     # graylog
 rsyslog::config::actions:
   graylogAWS:
