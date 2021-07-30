@@ -38,4 +38,13 @@ accounts::user_list:
     groups:
       - 'wheel'
     password: "%{lookup('root_pwd')}"
-    
+
+# graylog
+rsyslog::config::actions:
+  graylogAWS:
+    type: "omfwd"
+    facility: "*.*"
+    config:
+      Target: "graylog-tuc.lsst.org"
+      Port: 5514
+      Protocol: "udp"
