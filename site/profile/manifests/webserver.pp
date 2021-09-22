@@ -3,6 +3,8 @@ class profile::webserver {
 
 include mysql::server
 # PHP version
+class { 'apache':
+}
 include ::php
 # class { '::php::globals':
 #   php_version => '8.0.10',

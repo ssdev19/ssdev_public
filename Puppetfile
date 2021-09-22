@@ -60,5 +60,7 @@ mod 'puppetlabs-cron_core', '1.0.5'
 # Encryption
 mod 'puppetlabs-puppet_authorization', '0.5.1'
 mod 'binford2k-node_encrypt', '0.4.1'
+# web server
+mod 'puppetlabs-apache', '6.5.1'
 mod 'puppet-zypprepo', '4.0.1' # dependency for PHP
 mod 'puppet-php', '8.0.2'
