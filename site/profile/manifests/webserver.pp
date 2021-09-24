@@ -9,7 +9,7 @@ class { 'apache':
   ensure => installed,
   }
   exec { 'yum-config-manager':
-    command => 'yum-config-manager --enable remi-php73',
+    command => 'sudo yum-config-manager --enable remi-php73',
     # path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
   }
 # include '::php'
