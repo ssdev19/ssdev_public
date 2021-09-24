@@ -63,4 +63,5 @@ mod 'binford2k-node_encrypt', '0.4.1'
 # web server
 mod 'puppetlabs-apache', '6.5.1'
 mod 'puppet-zypprepo', '4.0.1' # dependency for PHP
-mod 'puppet-php', '8.0.2'
+mod 'puppet-php', '7.1.0'
+# mod 'thias-php', '1.2.4'
