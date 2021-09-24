@@ -5,7 +5,10 @@ include mysql::server
 # PHP version
 class { 'apache':
 }
-include '::php'
+  Package { [ 'epel-release', 'yum-utils' ]:
+  ensure => installed,
+  }
+# include '::php'
 # class { '::php::globals':
 #   php_version => '7.2.34',
 #   config_root => '/etc/php/7.0',
