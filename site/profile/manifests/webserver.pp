@@ -10,7 +10,7 @@ class { 'apache':
   }
   exec { 'yum-config-manager':
     command => 'sudo yum-config-manager --enable remi-php73',
-    # path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
+    path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
   }
 # include '::php'
 # class { '::php::globals':
