@@ -5,8 +5,7 @@ include mysql::server
 # PHP version
 class { 'apache':
 }
-# include '::php'
-include '::php::cli'
+include '::php'
 # class { '::php::globals':
 #   php_version => '7.2.34',
 #   config_root => '/etc/php/7.0',
@@ -15,4 +14,3 @@ include '::php::cli'
 #   manage_repos => true
 # }
 }
-
