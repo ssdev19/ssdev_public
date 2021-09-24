@@ -12,7 +12,7 @@ class { 'apache':
     command => 'yum-config-manager --enable remi-php73',
     # path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
   }
-include '::php'
+# include '::php'
 # class { '::php::globals':
 #   php_version => '7.2.34',
 #   config_root => '/etc/php/7.0',
