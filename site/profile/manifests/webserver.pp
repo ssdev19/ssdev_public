@@ -14,7 +14,7 @@ class { 'apache':
   # }
 # include '::php'
 class { '::php::globals':
-  php_version => '7.1.0',
+  php_version => '8.0.11',
   config_root => '/etc/php/7.0',
 }
 class { '::php':
