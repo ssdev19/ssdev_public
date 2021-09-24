@@ -8,7 +8,7 @@ class { 'apache':
   Package { [ 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
   ensure => installed,
   }
-# include '::php'
+include '::php'
 # class { '::php::globals':
 #   php_version => '7.2.34',
 #   config_root => '/etc/php/7.0',
