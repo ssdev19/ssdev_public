@@ -5,7 +5,7 @@ include mysql::server
   mysql::db { 'mydb':
     user     => 'mydbuser',
     password => 'changeme',
-    # host     => 'localhost',
+    host     => 'localhost',
     grant    => ['SELECT', 'UPDATE'],
   }
 # PHP version
