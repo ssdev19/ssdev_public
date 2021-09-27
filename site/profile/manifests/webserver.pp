@@ -3,7 +3,7 @@ class profile::webserver {
 
 # include mysql::server
 class { 'mysql::server':
-  root_password           => 'strongpassword2',
+  root_password           => 'strongpassword',
   remove_default_accounts => true,
   restart                 => true,
   # override_options        => $override_options,
