@@ -1,7 +1,7 @@
 # webserver
 class profile::webserver {
 
-# include mysql::server
+include mysql::server
 # PHP version
   class { 'apache':
   }
