@@ -1,7 +1,7 @@
 # webserver
 class profile::webserver {
 
-include mysql::server
+# include mysql::server
   mysql::db { 'mydb':
     user     => 'root',
     password => 'mypass',
