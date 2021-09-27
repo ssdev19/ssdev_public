@@ -23,7 +23,7 @@ yumrepo:
 #     'log-error': '/var/log/mysqld.log'  # required for proper MySQL installation
 
 # create database + account with access, passwords are not encrypted
-mysql::server::db:
+mariadb::server::db:
   "dev":
     user: "dev"
     password: "devpass"
