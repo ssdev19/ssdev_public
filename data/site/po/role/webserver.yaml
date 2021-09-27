@@ -23,7 +23,7 @@ mysql::server::root_password: "changeme"
 #     'log-error': '/var/log/mysqld.log'  # required for proper MySQL installation
 
 # create database + account with access, passwords are not encrypted
-mariadb::server::db:
+mysql::server::db:
   "dev":
     user: "dev"
     password: "devpass"
