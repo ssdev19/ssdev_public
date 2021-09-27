@@ -3,17 +3,17 @@ class profile::webserver {
 
 # include mysql::server
 class { 'mysql::server':
-  root_password           => 'strongpassword',
+  root_password           => 'strongpassword2',
   remove_default_accounts => true,
   restart                 => true,
   # override_options        => $override_options,
 }
-  mysql::db { 'mydb':
-    user     => 'mydbuser',
-    password => 'changeme',
-    host     => 'localhost',
-    grant    => ['SELECT', 'UPDATE'],
-  }
+  # mysql::db { 'mydb':
+  #   user     => 'mydbuser',
+  #   password => 'changeme',
+  #   host     => 'localhost',
+  #   grant    => ['SELECT', 'UPDATE'],
+  # }
 # PHP version
   class { 'apache':
   }
