@@ -10,7 +10,7 @@ include mysql::server
   # }
   mysql::db { 'mydb':
     user     => 'root',
-    # password => 'changeme',
+    password => 'changeme',
     # host     => 'localhost',
     grant    => ['SELECT', 'UPDATE'],
   }
