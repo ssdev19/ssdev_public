@@ -23,11 +23,11 @@ mysql::server::manage_config_file: true
 #     'log-error': '/var/log/mysqld.log'  # required for proper MySQL installation
 
 # create database + account with access, passwords are not encrypted
-mysql::server::db:
-  "dev2":
-    user: "dev2"
-    password: "devpass"
-    host: "127.0.0.1"
-    grant:
-      - "ALL"
+# mysql::server::db:
+#   "dev2":
+#     user: "dev2"
+#     password: "devpass"
+#     host: "127.0.0.1"
+#     grant:
+#       - "ALL"
       
