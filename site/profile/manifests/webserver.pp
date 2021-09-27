@@ -5,13 +5,13 @@ include mysql::server
 # PHP version
 class { 'apache':
 }
-  # Package { [ 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]: #, 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
-  # ensure => installed,
-  # }
-  # exec { 'yum-config-manager':
-  #   command => 'yum-config-manager --enable remi-php74',
-  #   path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
-  # }
+  Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]: #, 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
+  ensure => installed,
+  }
+  exec { 'yum-config-manager':
+    command => 'yum-config-manager --enable remi-php74',
+    path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
+  }
 # include '::php'
 class { '::php::globals':
   php_version => '7.4.24',
