@@ -1,6 +1,6 @@
 # SQL DB
 class profile::mysql {
-  class { 'mysql::server': 
+  class { 'mysql::server':
     root_password           => 'rootpwd',
     remove_default_accounts => true,
     restart                 => true,
