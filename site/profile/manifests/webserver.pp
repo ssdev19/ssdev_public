@@ -8,12 +8,12 @@ include mysql::server
   # restart                 => true,
   # # override_options        => $override_options,
   # }
-  mysql::db { 'mydb':
-    user     => 'root',
-    password => 'changeme',
-    host     => 'localhost',
-    grant    => ['SELECT', 'UPDATE'],
-  }
+  # mysql::db { 'mydb':
+  #   user     => 'root',
+  #   password => 'changeme',
+  #   host     => 'localhost',
+  #   grant    => ['SELECT', 'UPDATE'],
+  # }
 # PHP version
   class { 'apache':
   }
