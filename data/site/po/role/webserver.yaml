@@ -14,7 +14,7 @@ yumrepo:
 # mysql::server::package_ensure: 'installed' # do not specify version here, unfortunately yum fails with error that package is already installed
 mysql::server::root_password: "changeme"
 mysql::server::manage_config_file: true
-# mysql::server::service_name: 'mysqld' # required for puppet module
+mysql::server::service_name: 'mysqld' # required for puppet module
 # mysql::server::override_options:
 #   'mysqld':
 #     'bind-address': '127.0.0.1'
