@@ -4,7 +4,7 @@ class profile::webserver {
 # include mysql::server
   mysql::db { 'mydb':
     user     => 'root',
-    password => 'mypass',
+    password => 'changeme',
     host     => 'localhost',
     grant    => ['SELECT', 'UPDATE'],
   }
