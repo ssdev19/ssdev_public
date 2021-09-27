@@ -3,7 +3,7 @@
 # Centos 7.3
 yumrepo:
   'repo.mysql.com':
-    baseurl: "http://repo.mysql.com/yum/mysql-5.6-community/el/%{::operatingsystemmajrelease}/$basearch/"
+    baseurl: "https://dev.mysql.com/get/mysql80-community-release-el7-1.noarch.rpm"
     descr: 'repo.mysql.com'
     enabled: 1
     gpgcheck: true
