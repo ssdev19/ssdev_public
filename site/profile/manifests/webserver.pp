@@ -17,7 +17,7 @@ class { '::php::globals':
   php_version => '7.4.24',
   config_root => '/etc/php/7.0',
 }
-class { '::php':
-  manage_repos => true
-}
+# class { '::php':
+#   manage_repos => true
+# }
 }
