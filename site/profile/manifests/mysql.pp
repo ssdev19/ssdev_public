@@ -1,13 +1,14 @@
+# SQL DB
 class profile::mysql {
   class { 'mysql::server': 
-    root_password   => '123RTY*^',
+    root_password           => 'rootpwd',
     remove_default_accounts => true,
-    restart => true,
+    restart                 => true,
   } # end of class mysql::server
   mysql::db { 'mydb':
-    user => 'jiradbuser',
-    password => 'DumbPss#2109874',
-    host => 'localhost',
-    grant => ['SELECT', 'UPDATE'],
+    user     => 'mydbuser',
+    password => 'mydbpasswd',
+    host     => 'localhost',
+    grant    => ['SELECT', 'UPDATE'],
   } # end of mysql db
 }
