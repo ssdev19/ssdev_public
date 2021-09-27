@@ -1,13 +1,7 @@
 # webserver
 class profile::webserver {
 
-# include mysql::server
-  class { 'mysql::server':
-  root_password           => 'changeme',
-  remove_default_accounts => true,
-  restart                 => true,
-  # override_options        => $override_options,
-  }
+include mysql::server
   # mysql::db { 'mydb':
   #   user     => 'mydbuser',
   #   password => 'changeme',
