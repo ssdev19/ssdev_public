@@ -9,7 +9,7 @@ include mysql::server
   # # override_options        => $override_options,
   # }
   mysql::db { 'mydb':
-    user     => 'root',
+    user     => 'mydbuser',
     password => 'changeme',
     # host     => 'localhost',
     grant    => ['SELECT', 'UPDATE'],
