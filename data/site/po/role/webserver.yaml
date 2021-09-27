@@ -24,10 +24,10 @@ mysql::server::manage_config_file: true
 
 # create database + account with access, passwords are not encrypted
 mysql::server::db:
-  "dev2":
-    user: "dev2"
-    password: "devpass"
-    host: "127.0.0.1"
-    grant:
-      - "ALL"
+  - "dev2":
+      user: "dev2"
+      password: "devpass"
+      host: "127.0.0.1"
+      grant:
+        - "ALL"
       
