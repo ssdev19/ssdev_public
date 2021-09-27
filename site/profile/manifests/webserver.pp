@@ -5,7 +5,7 @@ include mysql::server
 # PHP version
 class { 'apache':
 }
-  Package { [ 'epel-release', 'yum-utils' ]:
+  Package { [ 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-8.rpm' ]: #, 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
   ensure => installed,
   }
   exec { 'yum-config-manager':
