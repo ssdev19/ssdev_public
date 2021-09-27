@@ -2,12 +2,12 @@
 class profile::webserver {
 
 include mysql::server
-  # mysql::db { 'mydb':
-  #   user     => 'mydbuser',
-  #   password => 'changeme',
-  #   # host     => 'localhost',
-  #   grant    => ['SELECT', 'UPDATE'],
-  # }
+  mysql::db { 'mydb':
+    user     => 'mydbuser',
+    password => 'changeme',
+    # host     => 'localhost',
+    grant    => ['SELECT', 'UPDATE'],
+  }
 # PHP version
   class { 'apache':
   }
