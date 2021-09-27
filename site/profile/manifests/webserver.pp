@@ -1,19 +1,19 @@
 # webserver
 class profile::webserver {
 
-# include mysql::server
-  class { 'mysql::server':
-  root_password           => 'changeme',
-  remove_default_accounts => true,
-  restart                 => true,
-  # override_options        => $override_options,
-  }
-  # mysql::db { 'mydb':
-  #   user     => 'root',
-  #   password => 'changeme',
-  #   host     => 'localhost',
-  #   grant    => ['SELECT', 'UPDATE'],
+include mysql::server
+  # class { 'mysql::server':
+  # root_password           => 'changeme',
+  # remove_default_accounts => true,
+  # restart                 => true,
+  # # override_options        => $override_options,
   # }
+  mysql::db { 'mydb':
+    user     => 'root',
+    password => 'changeme',
+    host     => 'localhost',
+    grant    => ['SELECT', 'UPDATE'],
+  }
 # PHP version
   class { 'apache':
   }
