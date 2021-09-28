@@ -11,4 +11,10 @@ class profile::mysql {
     host     => 'localhost',
     grant    => ['SELECT', 'UPDATE'],
   } # end of mysql db
+  mysql::db { 'mydb2':
+    user     => 'mydbuser2',
+    password => 'mydbpasswd',
+    host     => 'localhost',
+    grant    => ['SELECT', 'UPDATE'],
+  } # end of mysql db
 }
