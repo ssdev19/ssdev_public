@@ -10,12 +10,9 @@ class profile::webserver {
   #   grant    => ['SELECT', 'UPDATE'],
   # }
   apache::vhost { 'test1.us.lsst.org':
-    port     => '443',
-    docroot  => '/var/www/cert',
-    ssl      => true,
-    ssl_cert => '/etc/ssl/test1.us.lsst.org.cert',
-    ssl_key  => '/etc/ssl/test1.us.lsst.org.key',
-  }
+  port    => '80',
+  docroot => '/var/www/vhost',
+}
 # Below this line they only need to run once.  They can be commented out after first run.
   # Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]: #, 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
   # ensure => installed,
