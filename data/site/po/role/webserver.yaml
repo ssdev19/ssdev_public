@@ -1,13 +1,13 @@
 ---
 
 # Centos 7.3
-yumrepo:
-  'repo.mysql.com':
-    baseurl: "http://http://repo.mysql.com/yum/mysql-5.6-community/"
-    descr: 'repo.mysql.com'
-    enabled: 1
-    gpgcheck: true
-    gpgkey: 'http://repo.mysql.com/RPM-GPG-KEY-mysql'
+# yumrepo:
+#   'repo.mysql.com':
+#     baseurl: "http://http://repo.mysql.com/yum/mysql-5.6-community/"
+#     descr: 'repo.mysql.com'
+#     enabled: 1
+#     gpgcheck: true
+#     gpgkey: 'http://repo.mysql.com/RPM-GPG-KEY-mysql'
 
 # mysql::client::package_name: "mysql-community-client" # required for proper MySQL installation
 # mysql::server::package_name: "mysql-community-server" # required for proper MySQL installation
