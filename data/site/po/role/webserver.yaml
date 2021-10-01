@@ -1,4 +1,7 @@
 ---
+nginx::nginx_servers:
+  'test1.us.lsst.org':
+    www_root: '/var/www/test1.us.lsst.org'
 
 # Centos 7.3
 # yumrepo:
