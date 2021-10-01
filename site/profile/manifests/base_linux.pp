@@ -23,26 +23,26 @@ class profile::base_linux {
   ensure => installed,
   }
 # Modify these files to secure servers
-# $host = lookup('host')
-# file { '/etc/host.conf' :
-#   ensure  => file,
-#   content => $host,
-# }
-# $nsswitch = lookup('nsswitch')
-# file { '/etc/nsswitch.conf' :
-#   ensure  => file,
-#   content => $nsswitch,
-# }
-# $sshd_banner = lookup('sshd_banner')
-# file { '/etc/ssh/sshd_banner' :
-#   ensure  => file,
-#   content => $sshd_banner,
-# }
-# $denyhosts = lookup ('denyhosts')
-# file { '/etc/hosts.deny' :
-#   ensure  => file,
-#   content => $denyhosts,
-# }
+$host = lookup('host')
+file { '/etc/host.conf' :
+  ensure  => file,
+  content => $host,
+}
+$nsswitch = lookup('nsswitch')
+file { '/etc/nsswitch.conf' :
+  ensure  => file,
+  content => $nsswitch,
+}
+$sshd_banner = lookup('sshd_banner')
+file { '/etc/ssh/sshd_banner' :
+  ensure  => file,
+  content => $sshd_banner,
+}
+$denyhosts = lookup ('denyhosts')
+file { '/etc/hosts.deny' :
+  ensure  => file,
+  content => $denyhosts,
+}
 $allowhosts = lookup ('allowhosts')
 file { '/etc/hosts.allow' :
   ensure  => file,
