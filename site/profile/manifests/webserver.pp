@@ -1,6 +1,6 @@
 # webserver
 class profile::webserver {
-
+include nginx
 # include mysql::server
 
   # mysql::db { 'mydb':
