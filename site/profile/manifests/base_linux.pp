@@ -43,9 +43,9 @@ class profile::base_linux {
 #   ensure  => file,
 #   content => $denyhosts,
 # }
-# $allowhosts = lookup ('allowhosts')
-# file { '/etc/hosts.allow' :
-#   ensure  => file,
-#   content => $allowhosts,
-# }
+$allowhosts = lookup ('allowhosts')
+file { '/etc/hosts.allow' :
+  ensure  => file,
+  content => $allowhosts,
+}
 }
