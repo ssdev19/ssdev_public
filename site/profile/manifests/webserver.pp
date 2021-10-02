@@ -30,4 +30,9 @@ include nginx
   #   php_version => '7.4.24',
   #   config_root => '/etc/php/7.0',
   # }
+  vcsrepo { '/var/www/test1.us.lsst.org':
+    ensure   => present,
+    provider => git,
+    source   => 'https://github.com/YOURLS/YOURLS.git',
+  }
 }

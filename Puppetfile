@@ -48,7 +48,7 @@ mod 'puppetlabs-concat', '7.1.1'
 mod 'puppetlabs-inifile', '5.2.0'
 mod 'puppetlabs/java', '6.2.0'
 mod 'puppetlabs-stdlib', '8.0.0'
-mod 'puppetlabs/vcsrepo', '3.0.0'
+mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
 mod 'example42-network', '3.6.0'
