@@ -47,4 +47,8 @@ include nginx
     provider => git,
     source   => 'https://github.com/AnonSS/YOURLS.git',
   }
+  exec { 'chown /etc/nginx/YOURLS':
+    command => 'chown -R nginx: /etc/nginx/YOURLS',
+    path    => [ '/usr/local/bin/', '/bin/' ],
+  }
 }
