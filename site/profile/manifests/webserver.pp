@@ -25,7 +25,7 @@ include nginx
   #   path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
   # }
 # PHP version
-# include '::php'
+include '::php'
   # class { '::php::globals':
   #   php_version => '7.4.24',
   #   config_root => '/etc/php/7.0',
