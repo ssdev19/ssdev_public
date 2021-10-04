@@ -25,11 +25,11 @@ include nginx
   #   path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
   # }
 # PHP version
-include '::php'
-  # class { '::php::globals':
-  #   php_version => '7.4.24',
-  #   config_root => '/etc/php/7.0',
-  # }
+# include '::php'
+  class { '::php::globals':
+    php_version => '7.4.24',
+    config_root => '/etc/php/7.0',
+  }
 #   /etc/nginx/YOURLS/user/config.php #contains config settings for the YOURLS app to connect to its mysql server, time settings, and the webserver. It also stores local users authorized to login to the yourls admin page.
 # /etc/nginx/conf.d/yourls.conf #nginx conf file for YOURLS website and webpages.
 # /etc/php-fpm.d/*.conf #php-fpm must be configured properly and running for YOURLS to render properly.
