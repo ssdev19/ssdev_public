@@ -31,6 +31,8 @@ include nginx
     config_root => '/etc/php/7.0',
   }
   class { '::php':
+    fpm_user     => 'nginx',
+    fpm_group    => 'nginx',
     manage_repos => true
   }
   php::fpm::pool { 'test1':
