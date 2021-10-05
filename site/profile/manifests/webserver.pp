@@ -4,17 +4,17 @@ include nginx
 # include mysql::server
 
 # Below this line they only need to run once.  They can be commented out after first run.
-  Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]: #, 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
+  Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
   ensure => installed,
   }
   exec { 'yum-config-manager':
-    command => 'yum-config-manager --enable remi-php74',
+    command => 'yum-config-manager --enable remi-php73',
     path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
   }  # End comment out
 # PHP version
 # include '::php'
   class { '::php::globals':
-    php_version => '7.4.24',
+    php_version => '7.3.31',
     config_root => '/etc/php/7.0',
   }
   -> class { '::php':
