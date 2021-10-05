@@ -22,8 +22,8 @@ include nginx
     fpm_group    => 'nginx',
     manage_repos => true
   }
-  php::fpm::pool { 'webserver2':
-  listen => 'webserver2.us.lsst.org',
+  php::fpm::pool { 'webserver2-ssdev':
+  listen => 'webserver2-ssdev.us.lsst.org',
   }
 #   /etc/nginx/YOURLS/user/config.php #contains config settings for the YOURLS app to connect to its mysql server, time settings, and the webserver. It also stores local users authorized to login to the yourls admin page.
 # /etc/nginx/conf.d/yourls.conf #nginx conf file for YOURLS website and webpages.
