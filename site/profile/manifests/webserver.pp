@@ -4,13 +4,13 @@ include nginx
 # include mysql::server
 
 # Below this line they only need to run once.  They can be commented out after first run.
-  Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
-  ensure => installed,
-  }
-  exec { 'yum-config-manager':
-    command => 'yum-config-manager --enable remi-php73',
-    path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
-  }  # End comment out
+  # Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
+  # ensure => installed,
+  # }
+  # exec { 'yum-config-manager':
+  #   command => 'yum-config-manager --enable remi-php73',
+  #   path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
+  # }  # End comment out
 # PHP version
 # include '::php'
   class { '::php::globals':
@@ -18,9 +18,16 @@ include nginx
     config_root => '/etc/php/7.0',
   }
   -> class { '::php':
+    ensure       => 'present',
+    manage_repos => false,
+    fpm          => true,
+    dev          => false,
+    composer     => false,
+    pear         => true,
+    phpunit      => false,
+    fpm_pools    => {},
     fpm_user     => 'nginx',
     fpm_group    => 'nginx',
-    manage_repos => true
   }
   php::fpm::pool { 'webserver2-ssdev':
     listen => 'webserver2-ssdev.us.lsst.org',
