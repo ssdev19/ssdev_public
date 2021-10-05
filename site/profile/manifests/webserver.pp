@@ -22,7 +22,7 @@ include nginx
     fpm_group    => 'nginx',
     manage_repos => true
   }
-  php::fpm::pool { 'test1':
+  php::fpm::pool { 'www2':
     ensure => absent
   # listen => 'webserver2-ssdev.us.lsst.org',
   }
