@@ -1,7 +1,7 @@
 ---
-# nginx::nginx_servers:
-#   'test1.us.lsst.org':
-#     www_root: '/var/www/test1.us.lsst.org'
+nginx::nginx_servers:
+  'test1.us.lsst.org':
+    www_root: '/var/www/test1.us.lsst.org'
 
 # php::manage_repos: true
 # php::fpm: true
