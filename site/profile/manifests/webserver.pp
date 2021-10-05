@@ -4,13 +4,13 @@ include nginx
 # include mysql::server
 
 # Below this line they only need to run once.  They can be commented out after first run.
-  # Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]: #, 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
-  # ensure => installed,
-  # }
-  # exec { 'yum-config-manager':
-  #   command => 'yum-config-manager --enable remi-php74',
-  #   path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
-  # }  # End comment out
+  Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]: #, 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
+  ensure => installed,
+  }
+  exec { 'yum-config-manager':
+    command => 'yum-config-manager --enable remi-php74',
+    path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
+  }  # End comment out
 # PHP version
 # include '::php'
   class { '::php::globals':
@@ -22,8 +22,8 @@ include nginx
     fpm_group    => 'nginx',
     manage_repos => true
   }
-  php::fpm::pool { 'www2':
-    ensure => absent
+  php::fpm::pool { 'webserver2-ssdev':
+    listen => 'webserver2-ssdev.us.lsst.org',
   # listen => 'webserver2-ssdev.us.lsst.org',
   }
 #   /etc/nginx/YOURLS/user/config.php #contains config settings for the YOURLS app to connect to its mysql server, time settings, and the webserver. It also stores local users authorized to login to the yourls admin page.
