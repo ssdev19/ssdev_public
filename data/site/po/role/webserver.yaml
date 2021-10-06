@@ -3,13 +3,13 @@
 nginx::nginx_servers:
 'test1.us.lsst.org':
   www_root: '/etc/nginx/conf.d/yourls.conf'
-nginx::nginx_upstreams:
-  'yourls':
-    ensure: present
-    members:
-      'test1.us.lsst.org:80':
-        server: 'test1.us.lsst.org'
-        port: 80
+# nginx::nginx_upstreams:
+#   'yourls':
+#     ensure: present
+#     members:
+#       'test1.us.lsst.org:80':
+#         server: 'test1.us.lsst.org'
+#         port: 80
 # php::manage_repos: true
 # php::fpm: true
 # php::fpm_user: 'nginx'

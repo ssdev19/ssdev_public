@@ -1,5 +1,16 @@
 # webserver config.  SELinux should be disabled until rules are configured.
 class profile::webserver {
+  class { 'mysql::server':
+    root_password           => 'rootpwd',
+    remove_default_accounts => true,
+    restart                 => true,
+  }
+  mysql::db { 'yourlsdb':
+    user     => 'yourlsdbuser',
+    password => 'yourlsdbpasswd',
+    host     => 'localhost',
+    grant    => ['SELECT', 'UPDATE'],
+  }
 include nginx
 # include mysql::server
 
@@ -22,7 +33,6 @@ include nginx
     fpm_user     => 'nginx',
     fpm_group    => 'nginx',
   }
-
 #   /etc/nginx/YOURLS/user/config.php #contains config settings for the YOURLS app to connect to its mysql server, time settings, and the webserver. It also stores local users authorized to login to the yourls admin page.
 # /etc/nginx/conf.d/yourls.conf #nginx conf file for YOURLS website and webpages.
 # /etc/php-fpm.d/*.conf #php-fpm must be configured properly and running for YOURLS to render properly.
