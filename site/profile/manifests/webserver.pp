@@ -1,4 +1,4 @@
-# webserver
+# webserver config.  SELinux should be disabled until rules are configured.
 class profile::webserver {
 include nginx
 # include mysql::server
