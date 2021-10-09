@@ -15,24 +15,24 @@ include nginx
 # include mysql::server
 
 # Below this line they only need to run once.  They can be commented out after first run.
-  Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
-  ensure => installed,
-  }
-  exec { 'yum-config-manager':
-    command => 'yum-config-manager --enable remi-php73',
-    path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
-  }
+  # Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
+  # ensure => installed,
+  # }
+  # exec { 'yum-config-manager':
+  #   command => 'yum-config-manager --enable remi-php73',
+  #   path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
+  # }
 # PHP version
 # include '::php'
   class { '::php::globals':
     php_version => '7.3.31',
     # config_root => '/etc/php/7.0',
   }
-  -> class { '::php':
-    manage_repos => false,
-    fpm_user     => 'nginx',
-    fpm_group    => 'nginx',
-  }
+  # -> class { '::php':
+  #   manage_repos => false,
+  #   fpm_user     => 'nginx',
+  #   fpm_group    => 'nginx',
+  # }
 #   /etc/nginx/YOURLS/user/config.php #contains config settings for the YOURLS app to connect to its mysql server, time settings, 
 # and the webserver. It also stores local users authorized to login to the yourls admin page.
 # /etc/nginx/conf.d/yourls.conf #nginx conf file for YOURLS website and webpages.
