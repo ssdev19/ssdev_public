@@ -21,7 +21,7 @@ include nginx
   # exec { 'yum-config-manager':
   #   command => 'yum-config-manager --enable remi-php73',
   #   path    => [ '/usr/local/bin/', '/bin/' ],  # alternative syntax
-  # }  # End comment out
+  # }  
 # PHP version
 # include '::php'
   class { '::php::globals':
