@@ -1,8 +1,8 @@
 ---
 
 nginx::nginx_servers:
-'test1.us.lsst.org':
-  www_root: '/etc/nginx/YOURLS'
+  'test1.us.lsst.org':
+    www_root: '/etc/nginx/YOURLS'
 # nginx::nginx_upstreams:
 #   'yourls':
 #     ensure: present
