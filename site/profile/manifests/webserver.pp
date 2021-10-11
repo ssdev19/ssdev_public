@@ -12,6 +12,7 @@ class profile::webserver {
     grant    => ['SELECT', 'UPDATE'],
   }
 include nginx
+include selinux
 # include mysql::server
 
 # Below this line they only need to run once.  They can be commented out after first run.
