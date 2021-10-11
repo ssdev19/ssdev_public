@@ -2,7 +2,7 @@
 
 nginx::nginx_servers:
 'test1.us.lsst.org':
-  www_root: '/etc/nginx/conf.d/yourls.conf'
+  www_root: '/etc/nginx/YOURLS'
 # nginx::nginx_upstreams:
 #   'yourls':
 #     ensure: present
