@@ -5,6 +5,7 @@ classes:
   # - profile::drupal
   - profile::webserver
   # - profile::mysql
+selinux::mode: "disabled"
 network::interfaces_hash:
   eth0:
     type: Ethernet
