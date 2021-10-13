@@ -41,8 +41,8 @@ include selinux
 # nginx conf files:
 # /etc/nginx/nginx.conf
 # /etc/nginx/conf.d/yourls.conf
-  nginx::resource::server { 'webserver2-ssdev':
-    server_name          => [$servername],
+  nginx::resource::server { 'test1.us.lsst.org':
+    server_name          => ['test1.us.lsst.org'],
     ssl                  => true,
     ssl_cert             => '/etc/pki/tls/certs/cert.pem',
     ssl_key              => '/etc/pki/tls/certs/privkey.pem',
