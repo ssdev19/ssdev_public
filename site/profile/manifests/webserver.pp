@@ -52,13 +52,13 @@ include selinux
     www_root             => '/etc/nginx/YOURLS',
     include_files        => ['/etc/nginx/YOURLS/user/config.php'],
   }
-  nginx::resource::location { 'root':
-    location    => '/',
-    server      => 'webserver2-ssdev',
-    index_files => [],
-    ssl         => true,
-    ssl_only    => true,
-  }
+  # nginx::resource::location { 'root':
+  #   location    => '/',
+  #   server      => 'webserver2-ssdev',
+  #   index_files => [],
+  #   ssl         => true,
+  #   ssl_only    => true,
+  # }
   file{ '/etc/nginx/YOURLS':
   ensure => directory
   }
