@@ -41,6 +41,24 @@ include selinux
 # nginx conf files:
 # /etc/nginx/nginx.conf
 # /etc/nginx/conf.d/yourls.conf
+  nginx::resource::server { 'webserver2-ssdev':
+    server_name          => 'webserver2-ssdev.us.lsst.org',
+    ssl                  => true,
+    ssl_cert             => '/etc/pki/tls/certs/cert.pem',
+    ssl_key              => '/etc/pki/tls/certs/privkey.pem',
+    ssl_redirect         => true,
+    index_files          => ['index.php'],
+    use_default_location => false,
+    www_root             => '/etc/nginx/YOURLS',
+    include_files        => ['/etc/nginx/YOURLS/user/config.php'],
+  }
+  nginx::resource::location { 'root':
+    location    => '/',
+    server      => 'webserver2-ssdev',
+    index_files => [],
+    ssl         => true,
+    ssl_only    => true,
+  }
   file{ '/etc/nginx/YOURLS':
   ensure => directory
   }
