@@ -34,6 +34,7 @@ include selinux
     fpm_user     => 'nginx',
     fpm_group    => 'nginx',
   }
+  # 
 # /etc/nginx/YOURLS/user/config.php #contains config settings for the YOURLS app to connect to its mysql server,
 #   time settings, and the webserver. It also stores local users authorized to login to the yourls admin page.
 # /etc/nginx/conf.d/yourls.conf #nginx conf file for YOURLS website and webpages.
@@ -41,17 +42,17 @@ include selinux
 # nginx conf files:
 # /etc/nginx/nginx.conf
 # /etc/nginx/conf.d/yourls.conf
-  # nginx::resource::server { 'test1.us.lsst.org':
-  #   server_name          => ['test1.us.lsst.org'],
-  #   ssl                  => true,
-  #   ssl_cert             => '/etc/pki/tls/certs/cert.pem',
-  #   ssl_key              => '/etc/pki/tls/certs/privkey.pem',
-  #   ssl_redirect         => true,
-  #   index_files          => ['index.html'],
-  #   use_default_location => false,
-  #   www_root             => '/etc/nginx/YOURLS',
-  #   include_files        => ['/etc/nginx/YOURLS/user/config.php'],
-  # }
+  nginx::resource::server { 'test2':
+    server_name          => ['test2.us.lsst.org'],
+    ssl                  => true,
+    ssl_cert             => '/etc/pki/tls/certs/cert.pem',
+    ssl_key              => '/etc/pki/tls/certs/privkey.pem',
+    ssl_redirect         => true,
+    index_files          => ['index.html'],
+    use_default_location => false,
+    www_root             => '/etc/nginx/YOURLS',
+    # include_files        => ['/etc/nginx/YOURLS/user/config.php'],
+  }
   # nginx::resource::location { 'root':
   #   location    => '/',
   #   server      => 'webserver2-ssdev',
