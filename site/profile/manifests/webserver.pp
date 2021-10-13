@@ -47,7 +47,7 @@ include selinux
     ssl_cert             => '/etc/pki/tls/certs/cert.pem',
     ssl_key              => '/etc/pki/tls/certs/privkey.pem',
     ssl_redirect         => true,
-    index_files          => ['index.php'],
+    index_files          => ['index.html'],
     use_default_location => false,
     www_root             => '/etc/nginx/YOURLS',
     include_files        => ['/etc/nginx/YOURLS/user/config.php'],
