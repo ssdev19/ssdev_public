@@ -63,6 +63,11 @@ include selinux
   file{ '/etc/nginx/YOURLS':
   ensure => directory
   }
+  $lsstcrt = lookup('lsstcrt')
+  file{ '/etc/pki/tls/certs/ls.st.crt':
+  ensure  => present,
+  content => $lsstcrt,
+  }
   vcsrepo { '/etc/nginx/YOURLS':
     ensure   => present,
     provider => git,
