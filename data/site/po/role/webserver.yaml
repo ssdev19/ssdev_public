@@ -3,6 +3,8 @@
 nginx::nginx_servers:
   'test1.us.lsst.org':
     www_root: '/etc/nginx/YOURLS'
+  'test2.us.lsst.org':
+    www_root: '/etc/nginx/YOURLS2'
 # nginx::nginx_upstreams:
 #   'yourls':
 #     ensure: present
