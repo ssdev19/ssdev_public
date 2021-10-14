@@ -68,6 +68,11 @@ include selinux
   ensure  => present,
   content => $lsstcrt,
   }
+  $lsstkey = lookup('lsstkey')
+  file{ '/etc/pki/tls/certs/ls.st.key':
+  ensure  => present,
+  content => $lsstkey,
+  }
   vcsrepo { '/etc/nginx/YOURLS':
     ensure   => present,
     provider => git,
