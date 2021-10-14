@@ -16,7 +16,7 @@ include selinux
 # include mysql::server
 
 # Below this line they only need to run once.  They can be commented out after first run.
-  # Package { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
+  # Package  { [ 'php-drush-drush', 'epel-release', 'yum-utils', 'http://rpms.remirepo.net/enterprise/remi-release-7.rpm' ]:
   # ensure => installed,
   # }
   # exec { 'yum-config-manager':
