@@ -1,7 +1,7 @@
 ---
 # /etc/nginx/sites-available/test1.us.lsst.org.conf
 nginx::nginx_servers:
-  'test1.us.lsst.org':
+  'ls.st':
     www_root: '/etc/nginx/YOURLS'
     ssl: true
     ssl_cert: '/etc/pki/tls/certs/ls.st.crt'
