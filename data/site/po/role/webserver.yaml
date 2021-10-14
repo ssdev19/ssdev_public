@@ -4,6 +4,7 @@ nginx::nginx_servers:
   'test1.us.lsst.org':
     www_root: '/etc/nginx/YOURLS'
     ssl: true
+    sgh: yes
     ssl_cert: '/root/certs/cert.pem'
   'test2.us.lsst.org':
     www_root: '/etc/nginx/YOURLS2'
