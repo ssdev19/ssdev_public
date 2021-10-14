@@ -4,8 +4,8 @@ nginx::nginx_servers:
   'test1.us.lsst.org':
     www_root: '/etc/nginx/YOURLS'
     ssl: true
-    ssl_cert: '/etc/pki/tls/certs/cert.pem'
-    ssl_key: '/etc/pki/tls/certs/private.pem'
+    ssl_cert: '/etc/pki/tls/certs/ls.st.crt'
+    ssl_key: '/etc/pki/tls/certs/ls.st.key'
   'test2.us.lsst.org':
     www_root: '/etc/nginx/YOURLS2'
 # nginx::nginx_upstreams:
