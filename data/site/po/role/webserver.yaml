@@ -3,6 +3,7 @@
 nginx::nginx_servers:
   'ls.st':
     www_root: '/etc/nginx/YOURLS'
+    index_files: ['index.html']
     ssl: true
     ssl_cert: '/etc/pki/tls/certs/ls.st.crt'
     ssl_key: '/etc/pki/tls/certs/ls.st.key'
