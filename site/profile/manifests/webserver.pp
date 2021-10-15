@@ -63,12 +63,12 @@ include selinux
   file{ '/etc/nginx/YOURLS':
   ensure => directory
   }
-  $lsstcrt = lookup('lsstcrt')
+  $lsstcrt = lookup('ls_st_crt')
   file{ '/etc/pki/tls/certs/ls.st.crt':
   ensure  => present,
   content => $lsstcrt,
   }
-  $lsstkey = lookup('lsstkey')
+  $lsstkey = lookup('ls_st_key')
   file{ '/etc/pki/tls/certs/ls.st.key':
   ensure  => present,
   content => $lsstkey,
