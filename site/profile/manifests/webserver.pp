@@ -78,6 +78,11 @@ include selinux
     provider => git,
     source   => 'https://github.com/AnonSS/YOURLS.git',
   }
+  $yourls_config_php = lookup('yourls_config_php')
+  file{ '/etc/nginx/YOURLS/config.php':
+  ensure  => present,
+  content => $yourls_config_php
+  }
   exec { 'chown /etc/nginx/YOURLS':
     command => 'chown -R nginx: /etc/nginx/YOURLS',
     path    => [ '/usr/local/bin/', '/bin/' ],
