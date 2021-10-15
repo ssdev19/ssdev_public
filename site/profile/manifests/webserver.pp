@@ -83,6 +83,11 @@ include selinux
   ensure  => present,
   content => $yourls_config_php
   }
+  $yourls_conf = lookup('yourls_conf')
+  file{ '/etc/nginx/conf.d/yourls.conf':
+  ensure  => present,
+  content => $yourls_conf
+  }
   exec { 'chown /etc/nginx/YOURLS':
     command => 'chown -R nginx: /etc/nginx/YOURLS',
     path    => [ '/usr/local/bin/', '/bin/' ],
