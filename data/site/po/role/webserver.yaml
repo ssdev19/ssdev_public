@@ -2,6 +2,7 @@
 # /etc/nginx/sites-available/test1.us.lsst.org.conf
 nginx::nginx_servers:
   'ls.st':
+    use_default_location: false
     www_root: '/etc/nginx/YOURLS'
     index_files: ['index.html']
     ssl: true
