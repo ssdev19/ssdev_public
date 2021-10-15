@@ -1,9 +1,10 @@
 ---
-# /etc/nginx/sites-available/test1.us.lsst.org.conf
+# /etc/nginx/sites-available/ls.st.conf
 nginx::nginx_servers:
   'ls.st':
     use_default_location: false
     www_root: '/etc/nginx/YOURLS'
+    include_files: '/etc/nginx/sites-available/ls.st.conf'
     index_files: ['index.html']
     ssl: true
     ssl_cert: '/etc/pki/tls/certs/ls.st.crt'
