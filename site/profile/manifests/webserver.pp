@@ -70,7 +70,7 @@ include selinux
     keep_local_changes => true,
   }
   $yourls_config_php = lookup('yourls_config_php')
-  file{ '/etc/nginx/YOURLS/config.php':
+  file{ '/etc/nginx/YOURLS/user/config.php':
   ensure  => present,
   content => $yourls_config_php
   }
