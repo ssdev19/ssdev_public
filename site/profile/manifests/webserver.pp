@@ -66,7 +66,7 @@ include selinux
     ensure   => present,
     provider => git,
     revision => '53f6a04c4f929bc5d444df5cb96e4074d8311a4a',
-    source   => 'https://github.com/AnonSS/YOURLS.git',
+    source   => 'https://github.com/YOURLS/YOURLS.git',
   }
   $yourls_config_php = lookup('yourls_config_php')
   file{ '/etc/nginx/YOURLS/config.php':
