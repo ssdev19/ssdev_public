@@ -33,6 +33,13 @@ include selinux
     manage_repos => false,
     fpm_user     => 'nginx',
     fpm_group    => 'nginx',
+    settings     => {
+      'PHP/max_execution_time'  => '90',
+      'PHP/max_input_time'      => '300',
+      'PHP/memory_limit'        => '64M',
+      'PHP/post_max_size'       => '32M',
+      'PHP/upload_max_filesize' => '32M',
+    },
   }
   # 
 # /etc/nginx/YOURLS/user/config.php #contains config settings for the YOURLS app to connect to its mysql server,
@@ -41,25 +48,7 @@ include selinux
 # /etc/php-fpm.d/*.conf #php-fpm must be configured properly and running for YOURLS to render properly.
 # nginx conf files:
 # /etc/nginx/nginx.conf
-# /etc/nginx/conf.d/yourls.conf
-  # nginx::resource::server { 'test2':
-  #   server_name          => ['test2.us.lsst.org'],
-  #   ssl                  => true,
-  #   ssl_cert             => '/etc/pki/tls/certs/cert.pem',
-  #   ssl_key              => '/etc/pki/tls/certs/privkey.pem',
-  #   ssl_redirect         => true,
-  #   index_files          => ['index.html'],
-  #   use_default_location => false,
-  #   www_root             => '/etc/nginx/YOURLS',
-  #   # include_files        => ['/etc/nginx/YOURLS/user/config.php'],
-  # }
-  # nginx::resource::location { 'root':
-  #   location    => '/',
-  #   server      => 'webserver2-ssdev',
-  #   index_files => [],
-  #   ssl         => true,
-  #   ssl_only    => true,
-  # }
+
   file{ '/etc/nginx/YOURLS':
   ensure => directory
   }
@@ -76,6 +65,7 @@ include selinux
   vcsrepo { '/etc/nginx/YOURLS':
     ensure   => present,
     provider => git,
+    revision => '53f6a04c4f929bc5d444df5cb96e4074d8311a4a',
     source   => 'https://github.com/AnonSS/YOURLS.git',
   }
   $yourls_config_php = lookup('yourls_config_php')

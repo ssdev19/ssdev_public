@@ -70,3 +70,6 @@ mod 'puppetlabs-apache', '7.0.0'
 mod 'puppet-zypprepo', '4.0.1' # dependency for PHP
 mod 'puppet-php', '8.0.2'
 mod 'puppet-nginx', '3.2.0'
+# mod 'rubinobs/yourls'.
+#     git: 'https://github.com/YOURLS/YOURLS.git'
+#     ref: '1.8.2'
