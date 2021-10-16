@@ -46,7 +46,7 @@ include selinux
 #   time settings, and the webserver. It also stores local users authorized to login to the yourls admin page.
 # /etc/nginx/conf.d/yourls.conf #nginx conf file for YOURLS website and webpages.
 # /etc/php-fpm.d/*.conf #php-fpm must be configured properly and running for YOURLS to render properly.
-# nginx conf files:
+# nginx conf files: 
 # /etc/nginx/nginx.conf
 
   file{ '/etc/nginx/YOURLS':
