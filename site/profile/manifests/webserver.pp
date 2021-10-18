@@ -31,6 +31,7 @@ include selinux
   }
   -> class { '::php':
     manage_repos => false,
+    fpm          => true,
     fpm_user     => 'nginx',
     fpm_group    => 'nginx',
     settings     => {
