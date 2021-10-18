@@ -30,8 +30,8 @@ include selinux
     # config_root => '/etc/php/7.0',
   }
   -> class { '::php':
-    manage_repos => false,
-    fpm          => false,
+    manage_repos => true,
+    fpm          => true,
     fpm_user     => 'nginx',
     fpm_group    => 'nginx',
     settings     => {
