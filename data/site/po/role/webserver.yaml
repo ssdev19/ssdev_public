@@ -5,7 +5,7 @@ nginx::nginx_servers:
     # use_default_location: false
     www_root: '/etc/nginx/YOURLS'
     # include_files: '/etc/nginx/sites-available/ls.st.conf'
-    index_files: ['index.html']
+    index_files: ['index.html', 'index.php', 'index.htm']
     ssl: true
     ssl_cert: '/etc/pki/tls/certs/ls.st.crt'
     ssl_key: '/etc/pki/tls/certs/ls.st.key'
