@@ -83,10 +83,10 @@ include selinux
     command => 'chown -R nginx: /etc/nginx/YOURLS',
     path    => [ '/usr/local/bin/', '/bin/' ],
   }
-}
 # /etc/nginx/YOURLS/index.html
   $index_html = lookup('index_html')
   file{ '/etc/nginx/YOURLS/index.html':
   ensure  => present,
   content => $index_html
   }
+}
