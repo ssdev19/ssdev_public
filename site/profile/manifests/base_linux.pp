@@ -11,11 +11,11 @@ class profile::base_linux {
     version       => '1.1.2',
     extra_options => '--collector.systemd \--collector.processes \--collector.meminfo_numa',
   }
-    $fqdn = $::facts['networking']['fqdn']
-  @@profile::prometheus::target { "${fqdn} - node_exporter":
-    job  => 'node',
-    host => "${fqdn}:9100",
-  }
+  #   $fqdn = $::facts['networking']['fqdn']
+  # @@profile::prometheus::target { "${fqdn} - node_exporter":
+  #   job  => 'node',
+  #   host => "${fqdn}:9100",
+  # }
   class { 'ntp':
     servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
   }
