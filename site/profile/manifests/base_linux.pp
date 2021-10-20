@@ -11,6 +11,11 @@ class profile::base_linux {
     version       => '1.1.2',
     extra_options => '--collector.systemd \--collector.processes \--collector.meminfo_numa',
   }
+    $fqdn = $::facts['networking']['fqdn']
+  @@profile::prometheus::target { "${fqdn} - node_exporter":
+    job  => 'node',
+    host => "${fqdn}:9100",
+  }
   class { 'ntp':
     servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
   }
@@ -23,29 +28,29 @@ class profile::base_linux {
   ensure => installed,
   }
 # Modify these files to secure servers
-$host = lookup('host')
-file { '/etc/host.conf' :
-  ensure  => file,
-  content => $host,
-}
-$nsswitch = lookup('nsswitch')
-file { '/etc/nsswitch.conf' :
-  ensure  => file,
-  content => $nsswitch,
-}
-$sshd_banner = lookup('sshd_banner')
-file { '/etc/ssh/sshd_banner' :
-  ensure  => file,
-  content => $sshd_banner,
-}
-$denyhosts = lookup ('denyhosts')
-file { '/etc/hosts.deny' :
-  ensure  => file,
-  content => $denyhosts,
-}
-$allowhosts = lookup ('allowhosts')
-file { '/etc/hosts.allow' :
-  ensure  => file,
-  content => $allowhosts,
-}
+  $host = lookup('host')
+  file { '/etc/host.conf' :
+    ensure  => file,
+    content => $host,
+  }
+  $nsswitch = lookup('nsswitch')
+  file { '/etc/nsswitch.conf' :
+    ensure  => file,
+    content => $nsswitch,
+  }
+  $sshd_banner = lookup('sshd_banner')
+  file { '/etc/ssh/sshd_banner' :
+    ensure  => file,
+    content => $sshd_banner,
+  }
+  $denyhosts = lookup ('denyhosts')
+  file { '/etc/hosts.deny' :
+    ensure  => file,
+    content => $denyhosts,
+  }
+  $allowhosts = lookup ('allowhosts')
+  file { '/etc/hosts.allow' :
+    ensure  => file,
+    content => $allowhosts,
+  }
 }
