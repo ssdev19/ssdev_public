@@ -1,0 +1,4 @@
+# pwm node
+---
+classes:
+  - profile::base_linux
