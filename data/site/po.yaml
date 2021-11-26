@@ -61,3 +61,12 @@ rsyslog::config::actions:
       Target: "graylog-tuc.lsst.org"
       Port: 5514
       Protocol: "udp"
+cron::job:
+  'shutdown':
+    command: 'shutdown'
+    minute: 30 # every day at 6 PM
+    hour: 9
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/bin:/sbin:/bin"'

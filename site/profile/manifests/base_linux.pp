@@ -4,6 +4,7 @@ class profile::base_linux {
   include ::firewalld
   include ssh
   include accounts
+  include cron
   include rsyslog
   include rsyslog::config
 # config: /etc/systemd/system/node_exporter.service
