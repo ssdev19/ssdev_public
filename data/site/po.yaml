@@ -64,7 +64,7 @@ rsyslog::config::actions:
 cron::job:
   'shutdown':
     command: 'shutdown'
-    minute: 30 # every day at 6 PM
+    minute: 35 # every day at 6 PM
     hour: 9
     user: root
     environment:
