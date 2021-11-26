@@ -64,8 +64,8 @@ rsyslog::config::actions:
 cron::job:
   'shutdown':
     command: 'shutdown'
-    minute: 39 # every day at 6 PM
-    hour: 16
+    minute: 0 # every day at 6 PM tucson time
+    hour: 1
     user: root
     environment:
       - 'MAILTO=root'
