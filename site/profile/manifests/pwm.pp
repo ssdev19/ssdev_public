@@ -11,3 +11,4 @@ class profile::pwm {
     ensure => present,
     source => '/opt/tomcat/webapps/pwm.war',
   }
+}
