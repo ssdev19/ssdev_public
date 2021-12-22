@@ -18,11 +18,11 @@ $distribution,
     version      => 'latest',
     java_home    => '/usr/java/jdk-11.0.2+9',
   }
-  java::adopt { 'jdk' :
-  ensure  => 'present',
-  version => '11',
-  java    => 'jdk',
-  }
+  # java::adopt { 'jdk' :
+  # ensure  => 'present',
+  # version => '11',
+  # java    => 'jdk',
+  # }
   java::adopt { 'jre' :
   ensure  => 'present',
   version => '8',
