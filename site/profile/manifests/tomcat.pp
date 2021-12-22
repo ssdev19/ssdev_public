@@ -16,7 +16,7 @@ $distribution,
   class { 'java':
     distribution => $distribution,
     version      => 'latest',
-    java_home    => '/usr/java/jdk8u202-b08-jre',
+    java_home    => '/usr/java/jdk-11.0.2+9',
   }
   java::adopt { 'jdk' :
   ensure  => 'present',
@@ -28,6 +28,7 @@ $distribution,
   version => '8',
   java    => 'jre',
   }
+
   ### export _JAVA_OPTIONS="-Xmx1g"
   $mem = '-Xmx1g'
   exec { 'set java heap size ':
@@ -37,7 +38,7 @@ $distribution,
   exec { 'set java path':
     # path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
     provider => shell,
-    command => 'export PATH=/usr/java/jdk-11.0.2+9/bin:$PATH',
+    command  => 'export PATH=/usr/java/jdk-11.0.2+9/bin:$PATH',
   }
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
