@@ -35,8 +35,9 @@ $distribution,
     command => "sudo -s export _JAVA_OPTIONS=${mem}",
   }
   exec { 'set java path':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => 'sudo -s export PATH=/usr/java/jdk-11.0.2+9/bin:$PATH',
+    # path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    provider => shell,
+    command => 'export PATH=/usr/java/jdk-11.0.2+9/bin:$PATH',
   }
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
