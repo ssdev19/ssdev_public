@@ -43,16 +43,16 @@ $distribution,
   # For some reason it does not remove it, had to do it manually
   tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
   ensure        => 'absent',
-  catalina_base => '/opt/tomcat',
+  catalina_base => '/opt/tomcat/webapps/manager/META-INF/',
   }
-  file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
-    ensure => present,
-  }
-  ->  file_line { 'modify /opt/tomcat/webapps/manager/META-INF/context.xml':
-      path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
-      line  => ' ',
-      match => "^<Valve className.*$", # "^unspecified.*$" can be used for string
-    }
+  # file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
+  #   ensure => present,
+  # }
+  # ->  file_line { 'modify /opt/tomcat/webapps/manager/META-INF/context.xml':
+  #     path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
+  #     line  => ' ',
+  #     match => "^<Valve className.*$", # "^unspecified.*$" can be used for string
+  #   }
   tomcat::config::server::tomcat_users { 'tomcatuser':
     password      => 'tomcatpass',
     roles         => ['admin-gui, manager-gui, manager-script'],
