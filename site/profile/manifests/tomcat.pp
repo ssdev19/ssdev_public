@@ -43,16 +43,21 @@ $distribution,
   # For some reason it does not remove it, had to do it manually
   tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
   ensure        => 'absent',
-  catalina_base => '/opt/tomcat/webapps/manager/META-INF/',
+  catalina_base => '/opt/tomcat',
   }
-  # file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
-  #   ensure => present,
-  # }
-  # ->  file_line { 'modify /opt/tomcat/webapps/manager/META-INF/context.xml':
-  #     path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
-  #     line  => ' ',
-  #     match => "^<Valve className.*$", # "^unspecified.*$" can be used for string
-  #   }
+  file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
+    ensure => present,
+  }
+  -> file_line{ "remove_old_exports_aliases":
+      ensure => absent,
+      line   => ['<Valve className="org.apache.catalina.valves.RemoteAddrValve"'],
+      path   => '/opt/tomcat/webapps/manager/META-INF/context.xml',
+    }
+  -> file_line{ "remove aliases":
+      ensure => absent,
+      line   => ['allow="127\\.\\d+\\.\\d+\\.\\d+|::1|0:0:0:0:0:0:0:1" />'],
+      path   => '/opt/tomcat/webapps/manager/META-INF/context.xml',
+    }
   tomcat::config::server::tomcat_users { 'tomcatuser':
     password      => 'tomcatpass',
     roles         => ['admin-gui, manager-gui, manager-script'],
