@@ -16,7 +16,7 @@ $distribution,
   class { 'java':
     distribution => $distribution,
     version      => 'latest',
-    java_home    => '/usr/java/jdk-11.0.2+9',
+    java_home    => '/usr/java/jdk8u202-b08-jre',
   }
   # java::adopt { 'jdk' :
   # ensure  => 'present',
