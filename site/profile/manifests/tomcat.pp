@@ -45,6 +45,11 @@ $distribution,
   ensure        => 'absent',
   catalina_base => '/opt/tomcat',
   }
+  file_line { 'modify /opt/tomcat/webapps/manager/META-INF/context.xml':
+      path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
+      line  => '',
+      match => "^<Valve className.*$", # "^unspecified.*$" can be used for string
+    }
   tomcat::config::server::tomcat_users { 'tomcatuser':
     password      => 'tomcatpass',
     roles         => ['admin-gui, manager-gui, manager-script'],
