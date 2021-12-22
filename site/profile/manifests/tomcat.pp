@@ -48,16 +48,11 @@ $distribution,
   file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
     ensure => present,
   }
-  -> file_line{ 'remove_old_exports_aliases':
-      match => '<Valve className="org.apache.catalina.valves.RemoteAddrValve"',
+  -> file_line{ 'org.apache.catalina.valves.RemoteAddrValve':
+      match => 'org.apache.catalina.valves.RemoteAddrValve',
       line  => ' ',
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
     }
-  # -> file_line{ "remove aliases":
-  #     ensure => absent,
-  #     line   => ['allow="127\\.\\d+\\.\\d+\\.\\d+|::1|0:0:0:0:0:0:0:1" />'],
-  #     path   => '/opt/tomcat/webapps/manager/META-INF/context.xml',
-  #   }
   tomcat::config::server::tomcat_users { 'tomcatuser':
     password      => 'tomcatpass',
     roles         => ['admin-gui, manager-gui, manager-script'],
