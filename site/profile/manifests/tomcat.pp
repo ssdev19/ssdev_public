@@ -23,11 +23,11 @@ $distribution,
   version => '11',
   java    => 'jdk',
   }
-  java::adopt { 'jre' :
-  ensure  => 'present',
-  version => '8',
-  java    => 'jre',
-  }
+  # java::adopt { 'jre' :
+  # ensure  => 'present',
+  # version => '8',
+  # java    => 'jre',
+  # }
 
   ### export _JAVA_OPTIONS="-Xmx1g"
   $mem = '-Xmx1g'
