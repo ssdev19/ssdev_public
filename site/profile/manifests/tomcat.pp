@@ -5,13 +5,6 @@ $catalina_base,
 $version,
 $distribution,
 ){
-  tomcat::install { $catalina_home:
-  source_url     => "https://dlcdn.apache.org/tomcat/${version}.tar.gz",
-  }
-  tomcat::instance { 'default':
-  catalina_home => $catalina_home,
-  catalina_base => $catalina_base,
-  }
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
   class { 'java':
     distribution => $distribution,
@@ -23,6 +16,14 @@ $distribution,
   version => '11',
   java    => 'jdk',
   }
+  tomcat::install { $catalina_home:
+  source_url     => "https://dlcdn.apache.org/tomcat/${version}.tar.gz",
+  }
+  tomcat::instance { 'default':
+  catalina_home => $catalina_home,
+  catalina_base => $catalina_base,
+  }
+
   # java::adopt { 'jre' :
   # ensure  => 'present',
   # version => '8',
