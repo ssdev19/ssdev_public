@@ -36,7 +36,7 @@ $distribution,
   }
   exec { 'set java path':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => 'sudo -s export PATH=/usr/java/jdk8u202-b08-jre/bin:$PATH',
+    command => 'sudo -s export PATH=/usr/java/jdk-11.0.2+9/bin:$PATH',
   }
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
