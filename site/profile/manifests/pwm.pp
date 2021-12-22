@@ -7,8 +7,8 @@ class profile::pwm {
     provider => 'wget',
     cleanup  => false,
   }
-  file { '/tmp/pwm.war':
+  file { '/opt/tomcat/webapps/pwm.war':
     ensure => present,
-    source => '/opt/tomcat/webapps/pwm.war',
+    source => '/tmp/pwm.war',
   }
 }
