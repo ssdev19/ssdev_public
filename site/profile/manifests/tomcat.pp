@@ -50,7 +50,7 @@ $distribution,
   }
   ->  file_line { 'modify /opt/tomcat/webapps/manager/META-INF/context.xml':
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
-      line  => '',
+      line  => ' ',
       match => "^<Valve className.*$", # "^unspecified.*$" can be used for string
     }
   tomcat::config::server::tomcat_users { 'tomcatuser':
