@@ -2,3 +2,8 @@
 ---
 classes:
   - profile::base_linux
+  - profile::tomcat
+profile::it::tomcat::catalina_home: '/opt/tomcat'
+profile::it::tomcat::catalina_base: '/opt/tomcat'
+profile::it::tomcat::distribution: 'jre'
+profile::it::tomcat::version: 'tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56'
