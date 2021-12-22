@@ -3,6 +3,7 @@
 classes:
   - profile::base_linux
   - profile::tomcat
+  - profile::pwm
 profile::tomcat::catalina_home: '/opt/tomcat'
 profile::tomcat::catalina_base: '/opt/tomcat'
 profile::tomcat::distribution: 'jre'
