@@ -45,7 +45,10 @@ $distribution,
   ensure        => 'absent',
   catalina_base => '/opt/tomcat',
   }
-  file_line { 'modify /opt/tomcat/webapps/manager/META-INF/context.xml':
+  file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
+    ensure => present,
+  }
+  ->  file_line { 'modify /opt/tomcat/webapps/manager/META-INF/context.xml':
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
       line  => '',
       match => "^<Valve className.*$", # "^unspecified.*$" can be used for string
