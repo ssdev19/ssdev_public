@@ -49,7 +49,7 @@ $distribution,
     ensure => present,
   }
   -> file_line{ 'remove_old_exports_aliases':
-      match => ['<Valve className="org.apache.catalina.valves.RemoteAddrValve"'],
+      match => '<Valve className="org.apache.catalina.valves.RemoteAddrValve"',
       line  => ' ',
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
     }
