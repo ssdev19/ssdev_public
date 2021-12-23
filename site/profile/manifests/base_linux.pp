@@ -23,9 +23,9 @@ class profile::base_linux {
   class { 'timezone':
       timezone => 'UTC',
   }
-  Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'gcc', 'xinetd',
+  Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'gcc', 'xinetd',
   'bash-completion', 'sudo', 'screen', 'vim', 'openssl', 'openssl-devel',
-  'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute' ]:
+  'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute' ]:
   ensure => installed,
   }
 # Modify these files to secure servers
