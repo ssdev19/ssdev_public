@@ -8,3 +8,14 @@ profile::tomcat::catalina_home: '/opt/tomcat'
 profile::tomcat::catalina_base: '/opt/tomcat'
 profile::tomcat::distribution: 'jre'
 profile::tomcat::version: 'tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56'
+network::interfaces_hash:
+  eth0:
+    type: Ethernet
+    ipaddress: 140.252.32.185
+    netmask: 255.255.254.0
+    gateway: 140.252.32.1
+    dns1: 140.252.32.125
+    dns2: 140.252.32.126
+    peerdns: yes
+    bootproto: none
+    onboot: yes
