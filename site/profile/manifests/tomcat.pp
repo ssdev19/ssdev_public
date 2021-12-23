@@ -5,13 +5,12 @@ $catalina_base,
 $version,
 $distribution,
 ){
-  tomcat::install { '/opt/tomcat':
-  source_url     => 'https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56.tar.gz',
+  tomcat::install { $catalina_home:
+  source_url     => "https://dlcdn.apache.org/tomcat/${version}.tar.gz",
   }
   tomcat::instance { 'default':
-  catalina_home  => '/opt/tomcat',
-  catalina_base  => '/opt/tomcat',
-  # manage_service => true,
+  catalina_home => $catalina_home,
+  catalina_base => $catalina_base,
   }
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
   class { 'java':
@@ -44,7 +43,7 @@ $distribution,
   # For some reason it does not remove it, had to do it manually
   tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
   ensure        => 'absent',
-  catalina_base => '/opt/tomcat',
+  catalina_base => $catalina_base,
   }
   file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
     ensure => present,
@@ -57,22 +56,42 @@ $distribution,
   tomcat::config::server::tomcat_users { 'tomcatuser':
     password      => 'tomcatpass',
     roles         => ['admin-gui, manager-gui, manager-script'],
-    catalina_base => '/opt/tomcat',
+    catalina_base => $catalina_base,
   }
 
-  # tomcat::service {'tomcat':
-  #   # catalina_home  => '/opt/tomcat/',
-  #   catalina_base  => '/opt/tomcat/',
-  #   catalina_home  => '/opt/tomcat/',
-  #   use_init       => true,
-  #   java_home      => '/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.el7_9.x86_64/jre/',
-  #   user           => 'tomcat',
-  #   service_enable => true,
-  #   service_name   => 'tomcat',
-  #   service_ensure => running,
-  #   start_command  => 'use_init',
-  # }
-  # tomcat::config::server::tomcat_users {'/opt/tomcat/conf/tomcat-users.xml':
-  #   password => 'tomcatpass',
-  # }
+# Getting tomcat::service to work was too painful
+  $tomcat_service = @("EOT")
+    [Unit]
+    Description=Apache Tomcat Web Application Container
+    After=syslog.target network.target
+
+    [Service]
+    Type=forking
+    SuccessExitStatus=143
+
+    Environment=JAVA_HOME=/usr/java/jdk-11.0.2+9
+    Environment=CATALINA_PID=${catalina_home}/temp/tomcat.pid
+    Environment=CATALINA_HOME=${catalina_home}
+    Environment=CATALINA_BASE=${catalina_base}
+    Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+    Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+    ExecStart=${catalina_home}/bin/startup.sh
+    ExecStop=${catalina_home}/bin/shutdown.sh
+
+    User=tomcat
+    Group=tomcat
+
+    [Install]
+    WantedBy=multi-user.target
+    | EOT
+
+  systemd::unit_file { 'tomcat.service':
+    content => $tomcat_service,
+  }
+  -> service { 'tomcat':
+  subscribe => Tomcat::Instance['default'],
+  ensure    => 'running',
+  enable    => true,
+  }
 }
