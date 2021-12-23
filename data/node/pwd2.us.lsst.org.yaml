@@ -1,4 +1,4 @@
-# pwm node
+# # Run puppet agent about 4 times eo ensure all config has been applied.
 ---
 classes:
   - profile::base_linux
