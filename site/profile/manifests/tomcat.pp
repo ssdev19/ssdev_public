@@ -5,31 +5,30 @@ $catalina_base,
 $version,
 $distribution,
 ){
+  tomcat::install { '/opt/tomcat':
+  source_url     => 'https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56.tar.gz',
+  }
+  tomcat::instance { 'default':
+  catalina_home  => '/opt/tomcat',
+  catalina_base  => '/opt/tomcat',
+  # manage_service => true,
+  }
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
   class { 'java':
-    distribution => $distribution,
+    distribution => 'jre',
     version      => 'latest',
     java_home    => '/usr/java/jdk-11.0.2+9',
   }
   java::adopt { 'jdk' :
-  ensure  => 'present',
-  version => '11',
-  java    => 'jdk',
+    ensure  => 'present',
+    version => '11',
+    java    => 'jdk',
   }
-  tomcat::install { $catalina_home:
-  source_url     => "https://dlcdn.apache.org/tomcat/${version}.tar.gz",
+  java::adopt { 'jre' :
+    ensure  => 'present',
+    version => '8',
+    java    => 'jre',
   }
-  tomcat::instance { 'default':
-  catalina_home => $catalina_home,
-  catalina_base => $catalina_base,
-  }
-
-  # java::adopt { 'jre' :
-  # ensure  => 'present',
-  # version => '8',
-  # java    => 'jre',
-  # }
-
   ### export _JAVA_OPTIONS="-Xmx1g"
   $mem = '-Xmx1g'
   exec { 'set java heap size ':
@@ -37,9 +36,8 @@ $distribution,
     command => "sudo -s export _JAVA_OPTIONS=${mem}",
   }
   exec { 'set java path':
-    # path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    provider => shell,
-    command  => 'export PATH=/usr/java/jdk-11.0.2+9/bin:$PATH',
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    command => 'sudo -s export PATH=/usr/java/jdk8u202-b08-jre/bin:$PATH',
   }
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
@@ -51,7 +49,7 @@ $distribution,
   file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
     ensure => present,
   }
-  -> file_line{ 'org.apache.catalina.valves.RemoteAddrValve':
+  -> file_line{ 'remove org.apache.catalina.valves.RemoteAddrValve':
       match => 'org.apache.catalina.valves.RemoteAddrValve',
       line  => ' ',
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
@@ -61,6 +59,7 @@ $distribution,
     roles         => ['admin-gui, manager-gui, manager-script'],
     catalina_base => '/opt/tomcat',
   }
+
   # tomcat::service {'tomcat':
   #   # catalina_home  => '/opt/tomcat/',
   #   catalina_base  => '/opt/tomcat/',
