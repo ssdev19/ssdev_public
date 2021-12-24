@@ -1,7 +1,7 @@
 ## Reboot will be required following the installation of this
 class profile::pwm {
   # include firewalld
-  archive { '/tmp/pwm.war':
+  archive { '/tmp/pwm-1.9.2.war':
     ensure   => present,
     source   => 'https://github.com/pwm-project/pwm/releases/download/v1_9_2/pwm-1.9.2.war',
     provider => 'wget',
@@ -9,7 +9,7 @@ class profile::pwm {
   }
   file { '/opt/tomcat/webapps/pwm.war':
     ensure => present,
-    source => '/tmp/pwm.war',
+    source => '/tmp/pwm-1.9.2.war',
   }
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
@@ -21,4 +21,12 @@ class profile::pwm {
       line  => "<param-value>${applicationpath}</param-value>",
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
+# Manage certs
+java_ks { 'pwm:truststore':
+  ensure       => latest,
+  certificate  => '/tmp/ca.cert',
+  target       => '/usr/java/jdk-11.0.2+9/lib/security/test.cert',
+  password     => 'pass',
+  trustcacerts => true,
+}
 }
