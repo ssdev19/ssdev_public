@@ -22,25 +22,25 @@ class profile::pwm {
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
 # download MS sqljdbc 
-  archive { '/tmp/mssql-jdbc-9.4.0.jre11.jar':
-    ensure       => present,
-    source       => 'https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/9.4.0.jre11/mssql-jdbc-9.4.0.jre11.jar',
-    provider     => 'wget',
-    # extract      => true,
-    # extract_path => '/tmp',
-    cleanup      => false,
-  }
-  # Copy the extracted file
-    file { '/opt/tomcat/webapps/pwm.war':
-    ensure => present,
-    source => '/tmp/sqljdbc_6.2',
-  }
-# Manage certs
-java_ks { 'pwm:truststore':
-  ensure       => latest,
-  certificate  => '/tmp/ca.cert',
-  target       => '/usr/java/jdk-11.0.2+9/lib/security/test.cert',
-  password     => 'passpass', # Must be at least 6 characters
-  trustcacerts => true,
-}
+  # archive { '/tmp/mssql-jdbc-9.4.0.jre11.jar':
+  #   ensure       => present,
+  #   source       => 'https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/9.4.0.jre11/mssql-jdbc-9.4.0.jre11.jar',
+  #   provider     => 'wget',
+  #   # extract      => true,
+  #   # extract_path => '/tmp',
+  #   cleanup      => false,
+  # }
+  # # Copy the extracted file
+  #   file { '/opt/tomcat/webapps/pwm.war':
+  #   ensure => present,
+  #   source => '/tmp/sqljdbc_6.2',
+  # }
+  # # Manage certs
+  # java_ks { 'pwm:truststore':
+  #   ensure       => latest,
+  #   certificate  => '/tmp/ca.cert',
+  #   target       => '/usr/java/jdk-11.0.2+9/lib/security/test.cert',
+  #   password     => 'passpass', # Must be at least 6 characters
+  #   trustcacerts => true,
+  # }
 }
