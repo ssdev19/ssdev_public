@@ -21,6 +21,13 @@ class profile::pwm {
       line  => "<param-value>${applicationpath}</param-value>",
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
+# download MS sqljdbc 
+  archive { '/tmp/sqljdbc_6.2.2.1_enu.tar.gz':
+    ensure   => present,
+    source   => 'https://download.microsoft.com/download/3/F/7/3F74A9B9-C5F0-43EA-A721-07DA590FD186/sqljdbc_6.2.2.1_enu.tar.gz',
+    provider => 'wget',
+    cleanup  => false,
+  }
 # Manage certs
 java_ks { 'pwm:truststore':
   ensure       => latest,
