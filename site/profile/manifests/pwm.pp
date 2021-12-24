@@ -21,6 +21,12 @@ class profile::pwm {
       line  => "<param-value>${applicationpath}</param-value>",
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
+  # pwm configuration
+  $pwmconfig = lookup('pwmconfig')
+  file { '/opt/tomcat/webapps/pwm/WEB-INF/PwmConfiguration.xml':
+    ensure  => present,
+    content => $pwmconfig,
+  }
 # download MS sqljdbc 
   # archive { '/tmp/mssql-jdbc-9.4.0.jre11.jar':
   #   ensure       => present,
