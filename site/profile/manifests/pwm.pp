@@ -22,13 +22,18 @@ class profile::pwm {
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
 # download MS sqljdbc 
-  archive { '/tmp/sqljdbc_6.2.2.1_enu.tar.gz':
-    ensure   => present,
-    source   => 'https://download.microsoft.com/download/3/F/7/3F74A9B9-C5F0-43EA-A721-07DA590FD186/sqljdbc_6.2.2.1_enu.tar.gz',
-    provider => 'wget',
-    extract  => true,
-    extract_path  => '/tmp',
-    cleanup  => false,
+  archive { '/tmp/mssql-jdbc-9.4.0.jre11.jar':
+    ensure       => present,
+    source       => 'https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/9.4.0.jre11/mssql-jdbc-9.4.0.jre11.jar',
+    provider     => 'wget',
+    # extract      => true,
+    # extract_path => '/tmp',
+    cleanup      => false,
+  }
+  # Copy the extracted file
+    file { '/opt/tomcat/webapps/pwm.war':
+    ensure => present,
+    source => '/tmp/sqljdbc_6.2',
   }
 # Manage certs
 java_ks { 'pwm:truststore':
