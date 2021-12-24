@@ -26,7 +26,7 @@ java_ks { 'pwm:truststore':
   ensure       => latest,
   certificate  => '/tmp/ca.cert',
   target       => '/usr/java/jdk-11.0.2+9/lib/security/test.cert',
-  password     => 'passpass',
+  password     => 'passpass', # Must be at least 6 characters
   trustcacerts => true,
 }
 }
