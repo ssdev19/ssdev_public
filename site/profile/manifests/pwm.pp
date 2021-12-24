@@ -26,6 +26,7 @@ class profile::pwm {
     ensure   => present,
     source   => 'https://download.microsoft.com/download/3/F/7/3F74A9B9-C5F0-43EA-A721-07DA590FD186/sqljdbc_6.2.2.1_enu.tar.gz',
     provider => 'wget',
+    extract  => true,
     cleanup  => false,
   }
 # Manage certs
