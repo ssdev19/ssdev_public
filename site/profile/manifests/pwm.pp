@@ -47,7 +47,7 @@ class profile::pwm {
         mode    => '0600',
         content => "[default]\n",
     }
-  archive { '/opt/tomcat/webapps/pwm/WEB-INF/pwmPwmConfiguration.xml':
+  archive { '/opt/tomcat/webapps/pwm/WEB-INF/PwmConfiguration.xml':
     ensure  => present,
     source  => 's3://pwm/PwmConfiguration_pwm2.us.lsst.org.xml',
     cleanup => false,
