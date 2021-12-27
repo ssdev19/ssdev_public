@@ -27,26 +27,6 @@ class profile::pwm {
   #   ensure  => present,
   #   content => $pwmconfig,
   # }
-    # install awscli tool
-  Package { [ 'awscli' ]:
-  ensure => installed,
-  }
-  $awscreds = lookup('awscreds')
-    file {
-      '/root/.aws':
-        ensure => directory,
-        mode   => '0700',
-        ;
-      '/root/.aws/credentials':
-        ensure  => file,
-        mode    => '0600',
-        content => $awscreds,
-        ;
-      '/root/.aws/config':
-        ensure  => file,
-        mode    => '0600',
-        content => "[default]\n",
-    }
   $pwmconfig_dest = lookup('pwmconfig_dest')
   $pwmconfig_source = lookup('pwmconfig_source')
   archive { $pwmconfig_dest :

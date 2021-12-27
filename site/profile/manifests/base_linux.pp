@@ -1,5 +1,7 @@
 # Base profile for Linux OS
-class profile::base_linux {
+class profile::base_linux (
+  Boolean $awscli           = false,
+) {
   include network
   include ::firewalld
   include ssh
@@ -27,6 +29,28 @@ class profile::base_linux {
   'bash-completion', 'sudo', 'screen', 'vim', 'openssl', 'openssl-devel',
   'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute' ]:
   ensure => installed,
+  }
+    # install awscli tool
+  if $awscli {
+    Package { [ 'awscli' ]:
+    ensure => installed,
+    }
+    $awscreds = lookup('awscreds')
+      file {
+        '/root/.aws':
+          ensure => directory,
+          mode   => '0700',
+          ;
+        '/root/.aws/credentials':
+          ensure  => file,
+          mode    => '0600',
+          content => $awscreds,
+          ;
+        '/root/.aws/config':
+          ensure  => file,
+          mode    => '0600',
+          content => "[default]\n",
+      }
   }
 # Modify these files to secure servers
   $host = lookup('host')
