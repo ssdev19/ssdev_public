@@ -27,6 +27,21 @@ class profile::pwm {
     ensure  => present,
     content => $pwmconfig,
   }
+  # aws creds
+  $awscreds = lookup(-awscreds)
+    file {
+      '/root/.aws':
+        ensure => directory,
+        mode   => '0700',
+        backup => false,
+        ;
+      '/root/.aws/credentials':
+        ensure  => file,
+        mode    => '0600',
+        backup  => false,
+        content => $awscreds,
+        ;
+    }
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
