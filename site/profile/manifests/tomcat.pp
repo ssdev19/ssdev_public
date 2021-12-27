@@ -96,24 +96,24 @@ $ciphers,
   enable    => true,
   }
   # configure SSL and specify protocols and ciphers to use
-  tomcat::config::server::connector { "default-https":
-    catalina_base         => $catalina_base,
-    port                  => 8443,
-    protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
-    purge_connectors      => true,
-    additional_attributes => {
-      'redirectPort'        => absent,
-      'SSLEnabled'          => true, # bool2str($https_enabled),
-      'maxThreads'          => 150,
-      'scheme'              => https,
-      'secure'              => true, #bool2str($https_connector_secure),
-      'clientAuth'          => 'false',
-      'sslProtocol'         => 'TLS',
-      'sslEnabledProtocols' => 'TLSv1.2',
-      'ciphers'             => $ciphers,
+  # tomcat::config::server::connector { "default-https":
+  #   catalina_base         => $catalina_base,
+  #   port                  => 8443,
+  #   protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
+  #   purge_connectors      => true,
+  #   additional_attributes => {
+  #     'redirectPort'        => absent,
+  #     'SSLEnabled'          => true, # bool2str($https_enabled),
+  #     'maxThreads'          => 150,
+  #     'scheme'              => https,
+  #     'secure'              => true, #bool2str($https_connector_secure),
+  #     'clientAuth'          => 'false',
+  #     'sslProtocol'         => 'TLS',
+  #     'sslEnabledProtocols' => 'TLSv1.2',
+  #     'ciphers'             => $ciphers,
 
-      'keystorePass'        => 'changeit',
-      'keystoreFile'        => '/etc/pki/keystore',
-    },
-  }
+  #     'keystorePass'        => 'changeit',
+  #     'keystoreFile'        => '/etc/pki/keystore',
+  #   },
+  # }
 }
