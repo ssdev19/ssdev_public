@@ -48,8 +48,9 @@ class profile::pwm {
         content => "[default]\n",
     }
   archive { '/opt/tomcat/webapps/pwm/WEB-INF/pwmPwmConfiguration.xml':
-    ensure => present,
-    source => 's3://pwm/PwmConfiguration_pwm2.us.lsst.org.xml',
+    ensure  => present,
+    source  => 's3://pwm/PwmConfiguration_pwm2.us.lsst.org.xml',
+    cleanup => false,
   }
   # # Manage certs
   # java_ks { 'pwm:truststore':
