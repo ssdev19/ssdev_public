@@ -27,6 +27,9 @@ class profile::pwm {
     ensure  => present,
     content => $pwmconfig,
   }
+  Package { [ 'awscli' ]:
+  ensure => installed,
+  }
   # aws creds
   $awscreds = lookup('awscreds')
     file {
