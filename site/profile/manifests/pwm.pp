@@ -27,20 +27,6 @@ class profile::pwm {
     ensure  => present,
     content => $pwmconfig,
   }
-# download MS sqljdbc 
-  # archive { '/tmp/mssql-jdbc-9.4.0.jre11.jar':
-  #   ensure       => present,
-  #   source       => 'https://repo1.maven.org/maven2/com/microsoft/sqlserver/mssql-jdbc/9.4.0.jre11/mssql-jdbc-9.4.0.jre11.jar',
-  #   provider     => 'wget',
-  #   # extract      => true,
-  #   # extract_path => '/tmp',
-  #   cleanup      => false,
-  # }
-  # # Copy the extracted file
-  #   file { '/opt/tomcat/webapps/pwm.war':
-  #   ensure => present,
-  #   source => '/tmp/sqljdbc_6.2',
-  # }
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
