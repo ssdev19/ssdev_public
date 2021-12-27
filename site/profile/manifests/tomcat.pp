@@ -4,6 +4,7 @@ $catalina_home,
 $catalina_base,
 $version,
 $distribution,
+$ciphers,
 ){
   tomcat::install { $catalina_home:
   source_url     => "https://dlcdn.apache.org/tomcat/${version}.tar.gz",
