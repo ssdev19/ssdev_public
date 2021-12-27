@@ -47,9 +47,11 @@ class profile::pwm {
         mode    => '0600',
         content => "[default]\n",
     }
-  archive { '/opt/tomcat/webapps/pwm/WEB-INF/PwmConfiguration.xml':
+  $pwmconfig_dest = lookup('pwmconfig_dest')
+  $pwmconfig_source = lookup('pwmconfig_source')
+  archive { $pwmconfig_dest :
     ensure  => present,
-    source  => 's3://pwm/PwmConfiguration_pwm2.us.lsst.org.xml',
+    source  => $pwmconfig_source,
     cleanup => false,
   }
   # # Manage certs
