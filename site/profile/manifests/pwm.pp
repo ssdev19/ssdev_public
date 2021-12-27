@@ -47,6 +47,10 @@ class profile::pwm {
         mode    => '0600',
         content => "[default]\n",
     }
+  archive { '/tmp/PwmConfiguration_pwm2.us.lsst.org.xml':
+    ensure => present,
+    source => 's3://pwm/PwmConfiguration_pwm2.us.lsst.org.xml',
+  }
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
