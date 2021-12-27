@@ -2,7 +2,7 @@
 class profile::pwm {
   # install awscli tool
   class { 'archive':
-    gsutil_install  => true,
+    gsutil_install  => false,
     aws_cli_install => true,
   }
 
