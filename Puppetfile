@@ -17,6 +17,7 @@ mod 'puppet-download_file', '4.0.0'
 # AWS
 mod 'puppetlabs-aws', '2.1.0'
 mod 'jdowning-awscli', '2.2.0'
+mod 'landcareresearch-amazon_s3', '6.0.0'
 # Linux
 mod 'puppetlabs-ntp'
 # required for grafana ldap
