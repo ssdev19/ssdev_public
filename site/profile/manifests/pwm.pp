@@ -35,12 +35,11 @@ class profile::pwm {
         mode   => '0700',
         backup => false,
         ;
-      '/root/.aws/credentials':
+      '/root/.aws/creds':
         ensure  => file,
         mode    => '0600',
         backup  => false,
         content => $awscreds,
-        ;
     }
   # # Manage certs
   # java_ks { 'pwm:truststore':
