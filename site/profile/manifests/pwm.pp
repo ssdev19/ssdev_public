@@ -34,7 +34,7 @@ class profile::pwm {
     source  => $pwmconfig_source,
     cleanup => false,
   }
-  $pwmkeystore = lookup('keystore')
+  $pwmkeystore = lookup('pwmkeystore')
   archive { '/etc/pki/keystore' :
     ensure  => present,
     source  => $pwmkeystore,
