@@ -1,9 +1,9 @@
 ## Reboot will be required following the installation of this
 class profile::pwm {
   # install awscli tool
-  # class { 'archive':
-  #   aws_cli_install => true,
-  # }
+  class { 'archive':
+    aws_cli_install => true,
+  }
 
   archive { '/tmp/pwm-1.9.2.war':
     ensure   => present,
