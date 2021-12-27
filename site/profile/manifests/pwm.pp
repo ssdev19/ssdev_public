@@ -34,6 +34,12 @@ class profile::pwm {
     source  => $pwmconfig_source,
     cleanup => false,
   }
+  $pwmkeystore = lookup('keystore')
+  archive { '/etc/pki/keystore' :
+    ensure  => present,
+    source  => $pwmkeystore,
+    cleanup => false,
+  }
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
