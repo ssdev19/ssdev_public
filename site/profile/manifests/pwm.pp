@@ -22,11 +22,11 @@ class profile::pwm {
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
   # pwm configuration
-  $pwmconfig = lookup('pwmconfig')
-  file { '/opt/tomcat/webapps/pwm/WEB-INF/PwmConfiguration.xml':
-    ensure  => present,
-    content => $pwmconfig,
-  }
+  # $pwmconfig = lookup('pwmconfig')
+  # file { '/opt/tomcat/webapps/pwm/WEB-INF/PwmConfiguration.xml':
+  #   ensure  => present,
+  #   content => $pwmconfig,
+  # }
     # install awscli tool
   Package { [ 'awscli' ]:
   ensure => installed,
