@@ -28,7 +28,7 @@ class profile::pwm {
     content => $pwmconfig,
   }
   # aws creds
-  $awscreds = lookup(-awscreds)
+  $awscreds = lookup($awscreds)
     file {
       '/root/.aws':
         ensure => directory,
