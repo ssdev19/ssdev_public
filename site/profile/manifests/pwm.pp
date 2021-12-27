@@ -1,6 +1,10 @@
 ## Reboot will be required following the installation of this
 class profile::pwm {
-  # include firewalld
+  # install awscli tool
+  class { 'archive':
+    aws_cli_install => true,
+  }
+
   archive { '/tmp/pwm-1.9.2.war':
     ensure   => present,
     source   => 'https://github.com/pwm-project/pwm/releases/download/v1_9_2/pwm-1.9.2.war',
@@ -27,21 +31,17 @@ class profile::pwm {
     ensure  => present,
     content => $pwmconfig,
   }
-  # Package { [ 'awscli' ]:
-  # ensure => installed,
-  # }
-  # aws creds
-  $awscreds = lookup('awscreds')
-    file {
-      '/root/.aws':
-        ensure => directory,
-        mode   => '0700',
-        ;
-      '/root/.aws/creds':
-        ensure  => file,
-        mode    => '0600',
-        content => $awscreds,
-    }
+  # $awscreds = lookup('awscreds')
+  #   file {
+  #     '/root/.aws':
+  #       ensure => directory,
+  #       mode   => '0700',
+  #       ;
+  #     '/root/.aws/creds':
+  #       ensure  => file,
+  #       mode    => '0600',
+  #       content => $awscreds,
+  #   }
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
