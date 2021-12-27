@@ -28,17 +28,15 @@ class profile::pwm {
     content => $pwmconfig,
   }
   # aws creds
-  $awscreds = lookup($awscreds)
+  $awscreds = lookup('awscreds')
     file {
       '/root/.aws':
         ensure => directory,
         mode   => '0700',
-        backup => false,
         ;
       '/root/.aws/creds':
         ensure  => file,
         mode    => '0600',
-        backup  => false,
         content => $awscreds,
     }
   # # Manage certs
