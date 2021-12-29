@@ -51,7 +51,7 @@ $ciphers,
 # wait for tomcat service to start 
 exec {'wait for tomcat':
   require => Service['tomcat'],
-  command => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
+  command => 'sleep 30 && /usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
 }
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
   class { 'java':
