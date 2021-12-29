@@ -40,6 +40,14 @@ class profile::pwm {
     source  => $pwmkeystore,
     cleanup => false,
   }
+    firewall { '101 forward port 80 to 8080':
+    table   => 'nat',
+    chain   => 'PREROUTING',
+    jump    => 'REDIRECT',
+    proto   => 'tcp',
+    dport   => 80,
+    toports => 8080
+  }
   # class { 'firewalld':
   #   forward_port => {
   #     'port'     => '443',
