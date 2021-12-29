@@ -52,6 +52,7 @@ $ciphers,
 exec {'wait for tomcat':
   require => Service['tomcat'],
   command => 'sleep 30 && /usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
+  path    => '/usr/bin:/bin'
 }
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
   class { 'java':
