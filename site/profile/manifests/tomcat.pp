@@ -1,5 +1,7 @@
 # tomcat 
 class profile::tomcat ( String
+$tomcat_user,
+$tomcat_pass,
 $catalina_home,
 $catalina_base,
 $version,
@@ -60,8 +62,8 @@ $ciphers,
       line  => ' ',
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
     }
-  tomcat::config::server::tomcat_users { 'tomcatuser':
-    password      => 'tomcatpass',
+  tomcat::config::server::tomcat_users { $tomcat_user:
+    password      => $tomcat_pass,
     roles         => ['admin-gui, manager-gui, manager-script'],
     catalina_base => $catalina_base,
   }

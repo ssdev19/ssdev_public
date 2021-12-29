@@ -1,6 +1,8 @@
 ---
 profile::base_linux::awscli: true
 profile::base_linux::gralog: true
+profile::tomcat::tomcat_user: tomcatuser
+profile::tomcat::tomcat_pass: tomcatpass
 profile::tomcat::catalina_home: '/opt/tomcat'
 profile::tomcat::catalina_base: '/opt/tomcat'
 profile::tomcat::distribution: 'jre'
