@@ -53,7 +53,7 @@ class profile::pwm {
   #   # 'to_addr' => '10.2.1.1',
   #   'to_port'  => '8443'
   #   }
-  }
+  # }
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
