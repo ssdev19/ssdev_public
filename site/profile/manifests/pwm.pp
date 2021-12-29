@@ -40,13 +40,19 @@ class profile::pwm {
     source  => $pwmkeystore,
     cleanup => false,
   }
-  class { 'firewalld':
-    forward_port => {
-      'port'     => '443',
-      'protocol' => 'tcp',
-      # 'to_addr' => '10.2.1.1',
-      'to_port'  => '8443'
-    }
+  # class { 'firewalld':
+  #   forward_port => {
+  #     'port'     => '443',
+  #     'protocol' => 'tcp',
+  #     # 'to_addr' => '10.2.1.1',
+  #     'to_port'  => '8443'
+  #   };
+  #   forward_port => {
+  #   'port'     => '443',
+  #   'protocol' => 'tcp',
+  #   # 'to_addr' => '10.2.1.1',
+  #   'to_port'  => '8443'
+  #   }
   }
   # # Manage certs
   # java_ks { 'pwm:truststore':
