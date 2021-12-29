@@ -100,7 +100,7 @@ $ciphers,
   # configure SSL and specify protocols and ciphers to use
   tomcat::config::server::connector { "default-https":
     catalina_base         => $catalina_base,
-    port                  => [8080, 8443],
+    port                  => 443,
     protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
     purge_connectors      => true,
     additional_attributes => {

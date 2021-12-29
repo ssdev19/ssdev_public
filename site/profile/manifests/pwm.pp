@@ -40,28 +40,6 @@ class profile::pwm {
     source  => $pwmkeystore,
     cleanup => false,
   }
-    firewall { '101 forward port 80 to 8080':
-    table   => 'nat',
-    chain   => 'PREROUTING',
-    jump    => 'REDIRECT',
-    proto   => 'tcp',
-    dport   => 443,
-    toports => 8443
-  }
-  # class { 'firewalld':
-  #   forward_port => {
-  #     'port'     => '443',
-  #     'protocol' => 'tcp',
-  #     # 'to_addr' => '10.2.1.1',
-  #     'to_port'  => '8443'
-  #   };
-  #   forward_port => {
-  #   'port'     => '443',
-  #   'protocol' => 'tcp',
-  #   # 'to_addr' => '10.2.1.1',
-  #   'to_port'  => '8443'
-  #   }
-  # }
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
