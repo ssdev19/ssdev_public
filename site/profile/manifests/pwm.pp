@@ -45,7 +45,7 @@ class profile::pwm {
     chain   => 'PREROUTING',
     jump    => 'REDIRECT',
     proto   => 'tcp',
-    dport   => [80, 443],
+    dport   => [80, 443, 8080],
     toports => 8443
   }
   # class { 'firewalld':
