@@ -13,6 +13,8 @@ class profile::pwm {
     ensure => present,
     source => '/tmp/pwm-1.9.2.war',
   }
+  # using archive directly to destination breaks tomcat installation
+  # So it must first go to the tmp folder then compied over to destination.
     archive { '/tmp/PwmConfiguration.xml' :
     ensure  => present,
     source  => $pwmconfig_source,
