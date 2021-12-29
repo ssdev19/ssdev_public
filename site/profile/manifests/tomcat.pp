@@ -118,12 +118,12 @@ $ciphers,
       'keystoreFile'        => '/etc/pki/keystore',
     },
   }
-    firewall { '101 forward port 443 to 8443':
-    table   => 'nat',
-    chain   => 'PREROUTING',
-    jump    => 'REDIRECT',
-    proto   => 'tcp',
-    dport   => 443,
-    toports => 8443
+  class { 'firewalld': 
+   forward_port => {
+     'port' => '443',
+     'protocol' => 'tcp',
+    #  'to_addr' => '10.2.1.1',
+     'to_port' => '8443'
+   },
   }
 }
