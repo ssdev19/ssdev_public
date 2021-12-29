@@ -101,9 +101,6 @@ $ciphers,
   enable    => true,
   }
 
-function sleep(3000) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
   # setcap cap_net_bind_service+ep /usr/java/jdk-11.0.2+9/bin/java
   # or  setcap cap_net_bind_service+ep /usr/java/jdk8u202-b08-jre/bin/java
   # configure SSL and specify protocols and ciphers to use
