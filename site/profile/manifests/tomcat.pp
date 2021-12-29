@@ -45,6 +45,26 @@ $ciphers,
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
     command => 'sudo -s export PATH=/usr/java/jdk8u202-b08-jre/bin:$PATH',
   }
+
+  # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
+  # For some reason it does not remove it, had to do it manually
+  tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
+  ensure        => 'absent',
+  catalina_base => $catalina_base,
+  }
+  file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
+    ensure => present,
+  }
+  -> file_line{ 'remove org.apache.catalina.valves.RemoteAddrValve':
+      match => 'org.apache.catalina.valves.RemoteAddrValve',
+      line  => ' ',
+      path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
+    }
+  tomcat::config::server::tomcat_users { 'tomcatuser':
+    password      => 'tomcatpass',
+    roles         => ['admin-gui, manager-gui, manager-script'],
+    catalina_base => $catalina_base,
+  }
 # Getting tomcat::service to work was too painful
   $tomcat_service = @("EOT")
     [Unit]
@@ -79,26 +99,6 @@ $ciphers,
   subscribe => Tomcat::Instance['default'],
   ensure    => 'running',
   enable    => true,
-  }
-
-  # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
-  # For some reason it does not remove it, had to do it manually
-  tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
-  ensure        => 'absent',
-  catalina_base => $catalina_base,
-  }
-  file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
-    ensure => present,
-  }
-  -> file_line{ 'remove org.apache.catalina.valves.RemoteAddrValve':
-      match => 'org.apache.catalina.valves.RemoteAddrValve',
-      line  => ' ',
-      path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
-    }
-  tomcat::config::server::tomcat_users { 'tomcatuser':
-    password      => 'tomcatpass',
-    roles         => ['admin-gui, manager-gui, manager-script'],
-    catalina_base => $catalina_base,
   }
 
   # setcap cap_net_bind_service+ep /usr/java/jdk-11.0.2+9/bin/java
