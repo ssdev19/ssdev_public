@@ -95,6 +95,8 @@ $ciphers,
   ensure    => 'running',
   enable    => true,
   }
+  # setcap cap_net_bind_service+ep /usr/java/jdk-11.0.2+9/bin/java
+  # or  setcap cap_net_bind_service+ep /usr/java/jdk8u202-b08-jre/bin/java
   # configure SSL and specify protocols and ciphers to use
   tomcat::config::server::connector { "default-https":
     catalina_base         => $catalina_base,
