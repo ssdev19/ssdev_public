@@ -4,8 +4,8 @@ classes:
   - profile::base_linux
   - profile::tomcat
   - profile::pwm
-profile::base_linux:awscli: true
-# profile::base_linux:gralog: true
+profile::base_linux:awscli: false
+profile::base_linux:gralog: true
 profile::tomcat::catalina_home: '/opt/tomcat'
 profile::tomcat::catalina_base: '/opt/tomcat'
 profile::tomcat::distribution: 'jre'
