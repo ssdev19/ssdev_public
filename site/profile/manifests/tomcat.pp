@@ -13,6 +13,38 @@ $ciphers,
   catalina_home => $catalina_home,
   catalina_base => $catalina_base,
   }
+# wait for tomcat service to start 
+  exec { 'wait for tomcat':
+    command     => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
+    refreshonly => true,
+    subscribe   => Service['tomcat'],
+  }
+    # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
+  class { 'java':
+    distribution => 'jre',
+    version      => 'latest',
+    java_home    => '/usr/java/jdk-11.0.2+9',
+  }
+  java::adopt { 'jdk' :
+    ensure  => 'present',
+    version => '11',
+    java    => 'jdk',
+  }
+  java::adopt { 'jre' :
+    ensure  => 'present',
+    version => '8',
+    java    => 'jre',
+  }
+  ### export _JAVA_OPTIONS="-Xmx1g"
+  $mem = '-Xmx1g'
+  exec { 'set java heap size ':
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    command => "sudo -s export _JAVA_OPTIONS=${mem}",
+  }
+  exec { 'set java path':
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    command => 'sudo -s export PATH=/usr/java/jdk8u202-b08-jre/bin:$PATH',
+  }
 # Getting tomcat::service to work was too painful
   $tomcat_service = @("EOT")
     [Unit]
@@ -47,38 +79,6 @@ $ciphers,
   subscribe => Tomcat::Instance['default'],
   ensure    => 'running',
   enable    => true,
-  }
-# wait for tomcat service to start 
-exec {'wait for tomcat':
-  require => Service['tomcat'],
-  command => 'sleep 30 && /usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
-  path    => '/usr/bin:/bin'
-}
-    # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
-  class { 'java':
-    distribution => 'jre',
-    version      => 'latest',
-    java_home    => '/usr/java/jdk-11.0.2+9',
-  }
-  java::adopt { 'jdk' :
-    ensure  => 'present',
-    version => '11',
-    java    => 'jdk',
-  }
-  java::adopt { 'jre' :
-    ensure  => 'present',
-    version => '8',
-    java    => 'jre',
-  }
-  ### export _JAVA_OPTIONS="-Xmx1g"
-  $mem = '-Xmx1g'
-  exec { 'set java heap size ':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "sudo -s export _JAVA_OPTIONS=${mem}",
-  }
-  exec { 'set java path':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => 'sudo -s export PATH=/usr/java/jdk8u202-b08-jre/bin:$PATH',
   }
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
