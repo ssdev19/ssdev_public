@@ -13,6 +13,42 @@ $ciphers,
   catalina_home => $catalina_home,
   catalina_base => $catalina_base,
   }
+# Getting tomcat::service to work was too painful
+  $tomcat_service = @("EOT")
+    [Unit]
+    Description=Apache Tomcat Web Application Container
+    After=syslog.target network.target
+
+    [Service]
+    Type=forking
+    SuccessExitStatus=143
+
+    Environment=JAVA_HOME=/usr/java/jdk-11.0.2+9
+    Environment=CATALINA_PID=${catalina_home}/temp/tomcat.pid
+    Environment=CATALINA_HOME=${catalina_home}
+    Environment=CATALINA_BASE=${catalina_base}
+    Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+    Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+    ExecStart=${catalina_home}/bin/startup.sh
+    ExecStop=${catalina_home}/bin/shutdown.sh
+
+    User=tomcat
+    Group=tomcat
+
+    [Install]
+    WantedBy=multi-user.target
+    | EOT
+
+  systemd::unit_file { 'tomcat.service':
+    content => $tomcat_service,
+  }
+  -> service { 'tomcat':
+  subscribe => Tomcat::Instance['default'],
+  ensure    => 'running',
+  enable    => true,
+  }
+# wait for tomcat service to start 
 exec {'wait for tomcat':
   require => Service['tomcat'],
   command => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
@@ -64,41 +100,6 @@ exec {'wait for tomcat':
     catalina_base => $catalina_base,
   }
 
-# Getting tomcat::service to work was too painful
-  $tomcat_service = @("EOT")
-    [Unit]
-    Description=Apache Tomcat Web Application Container
-    After=syslog.target network.target
-
-    [Service]
-    Type=forking
-    SuccessExitStatus=143
-
-    Environment=JAVA_HOME=/usr/java/jdk-11.0.2+9
-    Environment=CATALINA_PID=${catalina_home}/temp/tomcat.pid
-    Environment=CATALINA_HOME=${catalina_home}
-    Environment=CATALINA_BASE=${catalina_base}
-    Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
-    Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
-
-    ExecStart=${catalina_home}/bin/startup.sh
-    ExecStop=${catalina_home}/bin/shutdown.sh
-
-    User=tomcat
-    Group=tomcat
-
-    [Install]
-    WantedBy=multi-user.target
-    | EOT
-
-  systemd::unit_file { 'tomcat.service':
-    content => $tomcat_service,
-  }
-  -> service { 'tomcat':
-  subscribe => Tomcat::Instance['default'],
-  ensure    => 'running',
-  enable    => true,
-  }
   # setcap cap_net_bind_service+ep /usr/java/jdk-11.0.2+9/bin/java
   # or  setcap cap_net_bind_service+ep /usr/java/jdk8u202-b08-jre/bin/java
   # configure SSL and specify protocols and ciphers to use
