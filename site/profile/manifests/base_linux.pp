@@ -3,7 +3,7 @@ class profile::base_linux (
   Boolean $awscli           = false,
 ) {
   include network
-  include ::firewalld
+  include firewalld
   include ssh
   include accounts
   include cron

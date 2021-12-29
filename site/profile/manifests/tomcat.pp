@@ -118,12 +118,5 @@ $ciphers,
       'keystoreFile'        => '/etc/pki/keystore',
     },
   }
-  class { 'firewalld': 
-   forward_port => {
-     'port' => '443',
-     'protocol' => 'tcp',
-    #  'to_addr' => '10.2.1.1',
-     'to_port' => '8443'
-   },
-  }
+
 }
