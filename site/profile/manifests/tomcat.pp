@@ -13,11 +13,10 @@ $ciphers,
   catalina_home => $catalina_home,
   catalina_base => $catalina_base,
   }
-    exec { 'wait for tomcat':
-    command     => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
-    refreshonly => true,
-    subscribe   => Service['tomcat'],
-  }
+exec {"wait for tomcat":
+  require => Service["tomcat"],
+  command => "/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate https://localhost:8443/service/",
+}
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
   class { 'java':
     distribution => 'jre',
