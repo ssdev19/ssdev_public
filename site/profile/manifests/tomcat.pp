@@ -104,7 +104,7 @@ $ciphers,
     protocol              =>'HTTP/1.1', # $http_version,
     # purge_connectors      => true,
     additional_attributes => {
-      'redirectPort'        => 8443,
+      'redirectPort'        => 443,
       # 'SSLEnabled'          => true, # bool2str($https_enabled),
       # 'maxThreads'          => 150,
       # 'scheme'              => https,
