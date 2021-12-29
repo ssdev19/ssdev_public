@@ -31,27 +31,27 @@ class profile::base_linux (
   ensure => installed,
   }
     # install awscli tool
-  if $awscli {
-    Package { [ 'awscli' ]:
-    ensure => installed,
-    }
-    $awscreds = lookup('awscreds')
-      file {
-        '/root/.aws':
-          ensure => directory,
-          mode   => '0700',
-          ;
-        '/root/.aws/credentials':
-          ensure  => file,
-          mode    => '0600',
-          content => $awscreds,
-          ;
-        '/root/.aws/config':
-          ensure  => file,
-          mode    => '0600',
-          content => "[default]\n",
-      }
+if $awscli {
+  Package { [ 'awscli' ]:
+  ensure => installed,
   }
+  $awscreds = lookup('awscreds')
+    file {
+      '/root/.aws':
+        ensure => directory,
+        mode   => '0700',
+        ;
+      '/root/.aws/credentials':
+        ensure  => file,
+        mode    => '0600',
+        content => $awscreds,
+        ;
+      '/root/.aws/config':
+        ensure  => file,
+        mode    => '0600',
+        content => "[default]\n",
+    }
+}
 # Modify these files to secure servers
   $host = lookup('host')
   file { '/etc/host.conf' :
