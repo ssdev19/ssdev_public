@@ -1,10 +1,6 @@
 ## Reboot will be required following the installation of this
 class profile::pwm {
-  exec { 'wait_for_tomcat_service' :
-  require => Service['tomcat'],
-  command => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080',
-  path    => '/usr/bin:/bin',
-}
+
   $pwmconfig_dest = lookup('pwmconfig_dest')
   $pwmconfig_source = lookup('pwmconfig_source')
   archive { '/tmp/pwm-1.9.2.war':
