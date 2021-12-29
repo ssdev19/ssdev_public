@@ -98,26 +98,6 @@ $ciphers,
   # setcap cap_net_bind_service+ep /usr/java/jdk-11.0.2+9/bin/java
   # or  setcap cap_net_bind_service+ep /usr/java/jdk8u202-b08-jre/bin/java
   # configure SSL and specify protocols and ciphers to use
-  tomcat::config::server::connector { "default-http":
-    catalina_base         => $catalina_base,
-    port                  => 80,
-    protocol              =>'HTTP/1.1', # $http_version,
-    # purge_connectors      => true,
-    additional_attributes => {
-      'redirectPort'        => 443,
-      # 'SSLEnabled'          => true, # bool2str($https_enabled),
-      # 'maxThreads'          => 150,
-      # 'scheme'              => https,
-      # 'secure'              => true, #bool2str($https_connector_secure),
-      # 'clientAuth'          => 'false',
-      # 'sslProtocol'         => 'TLS',
-      # 'sslEnabledProtocols' => 'TLSv1.2',
-      # 'ciphers'             => $ciphers,
-
-      # 'keystorePass'        => 'changeit',
-      # 'keystoreFile'        => '/etc/pki/keystore',
-    },
-  }
   tomcat::config::server::connector { "default-https":
     catalina_base         => $catalina_base,
     port                  => 8443,
