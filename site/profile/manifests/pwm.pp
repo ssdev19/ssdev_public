@@ -9,12 +9,11 @@ class profile::pwm {
     provider => 'wget',
     cleanup  => false,
   }
-  
   file { '/opt/tomcat/webapps/pwm.war':
     ensure => present,
     source => '/tmp/pwm-1.9.2.war',
   }
-    archive { $pwmconfig_dest :
+    archive { '/tmp/PwmConfiguration.xml' :
     ensure  => present,
     source  => $pwmconfig_source,
     cleanup => false,
@@ -24,6 +23,10 @@ class profile::pwm {
     ensure  => present,
     source  => $pwmkeystore,
     cleanup => false,
+  }
+  file { $pwmconfig_dest:
+    ensure => present,
+    source => '/tmp/PwmConfiguration.xml',
   }
 # $applicationpath = lookup('application_path')
   # $webpath = lookup('web_path')
