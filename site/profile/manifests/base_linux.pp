@@ -27,7 +27,7 @@ class profile::base_linux (
   }
   Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'gcc', 'xinetd',
   'bash-completion', 'sudo', 'screen', 'vim', 'openssl', 'openssl-devel',
-  'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute' ]:
+  'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute', 'mailx' ]:
   ensure => installed,
   }
     # install awscli tool

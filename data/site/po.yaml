@@ -38,7 +38,14 @@ accounts::user_list:
     groups:
       - 'wheel'
     password: "%{lookup('root_pwd')}"
-# rsyslog config
+  igoodenow_local:
+    groups:
+      - 'wheel'
+    sshkeys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRjClJiTdbQNIUFW6zzoBUmdqDi7iGJQoW6oWQe/tk+0EaoZef2+Qz0jcwxKItbN/QPmBjCtyFghEzlAGfOcyiG57D8ZDSNBGuyMpNcHBglKrAlWCQIgLm1UIbQ5xeIco4Sg5QDikRLjGVTYMeupiZCGaFqeKqMRKvbVcNaQf1auDX9rQPrqL4Hxz3wG6JQitUSAmYONIxR1K98MBq0kfvU79FPt+Rgd3Qy8mJU3Pgn0en9WqEpmWSnQPGnpOvYLpNvbW1QDFUK/9q4SPAUK0VHGgG5jmV20zX5GelhyqbCAfkhWZYuSA6RJ7Ju4W4G122KL+eLXUsJNkAKuJIgx9D rsa@puppet'
+    password: ''
+    ignore_password_if_empty: true
+# rsyslog config in /etc/rsyslog.d/50_rsyslog.conf
 rsyslog::config::global_config:
   workDirectory:
     value: "/var/lib/rsyslog"
@@ -64,7 +71,7 @@ rsyslog::config::actions:
 cron::job:
   'shutdown':
     command: 'shutdown'
-    minute: 1 # every day at 6 PM tucson time
+    minute: 1 # every day at 1 AM UTC, 6 PM tucson time
     hour: 1
     user: root
     environment:
