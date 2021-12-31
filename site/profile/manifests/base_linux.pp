@@ -20,11 +20,18 @@ class profile::base_linux (
   #   host => "${fqdn}:9100",
   # }
   # Postfix
-  postfix::config { 'relay_domains':
-    ensure => present,
-    value  => 'mail.lsst.org',
+  class { 'postfix':
+    inet_interfaces     => 'localhost',
+    inet_protocols      => 'ipv4',
+    relayhost           => 'mail.lsst.org',
     root_mail_recipient => 'shahram@lsst.org',
   }
+
+  # postfix::config { 'relay_domains':
+  #   ensure => present,
+  #   value  => 'mail.lsst.org',
+  #   root_mail_recipient => 'shahram@lsst.org',
+  # }
   class { 'ntp':
     servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
   }
