@@ -23,7 +23,7 @@ class profile::base_linux (
   class { 'postfix':
     inet_interfaces     => 'localhost',
     inet_protocols      => 'ipv4',
-    relayhost           => 'mail.lsst.org',
+    relayhost           => 'atlantis.lsst.org',
     root_mail_recipient => 'shahram@lsst.org',
   }
 
