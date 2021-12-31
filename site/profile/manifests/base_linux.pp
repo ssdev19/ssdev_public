@@ -23,6 +23,7 @@ class profile::base_linux (
   postfix::config { 'relay_domains':
     ensure => present,
     value  => 'mail.lsst.org',
+    root_mail_recipient => 'shahram@lsst.org',
   }
   class { 'ntp':
     servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
