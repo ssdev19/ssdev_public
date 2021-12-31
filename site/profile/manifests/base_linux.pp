@@ -20,6 +20,10 @@ class profile::base_linux (
   #   host => "${fqdn}:9100",
   # }
   # Postfix
+  postfix::config { 'relay_domains':
+    ensure  => present,
+    value   => 'atlantis.lsst.org',
+  }
   class { 'postfix':
     inet_interfaces     => 'localhost',
     inet_protocols      => 'ipv4',
