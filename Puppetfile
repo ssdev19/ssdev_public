@@ -40,6 +40,10 @@ mod 'saz/resolv_conf', '4.1.0'
 mod 'puppet-cron', '3.0.0'
 mod 'puppet-r10k', '10.0.0'
 # mod 'camptocamp-systemd', '3.0.0'
+mod 'puppet-postfix', '2.0.0'
+mod 'camptocamp-augeas', '1.9.0'
+mod 'puppet-alternatives', '4.0.0' # postfix dependency
+mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
 mod 'puppet-systemd', '3.5.0'
 mod 'bodgit/scl', '1.0.1'
 mod 'puppetlabs-postgresql', '7.5.0' # Foreman dependency

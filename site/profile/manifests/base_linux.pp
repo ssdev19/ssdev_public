@@ -19,6 +19,11 @@ class profile::base_linux (
   #   job  => 'node',
   #   host => "${fqdn}:9100",
   # }
+  # Postfix
+  postfix::config { 'relay_domains':
+    ensure => present,
+    value  => 'mail.lsst.org',
+  }
   class { 'ntp':
     servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
   }
