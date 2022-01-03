@@ -20,6 +20,7 @@ class profile::base_linux (
   #   host => "${fqdn}:9100",
   # }
   # Postfix -- test message: echo "My messagetd" | mail -s subject sym1@lsst.org
+  # mailx -- delete all messages: postsuper -d ALL
   # postfix::config { 'relay_domains':
   #   ensure => present,
   #   value  => 'localhost',
@@ -27,7 +28,7 @@ class profile::base_linux (
   class { 'postfix':
     # inet_interfaces     => 'localhost',
     # inet_protocols      => 'ipv4',
-    relayhost           => 'atlantis.lsst.org',
+    relayhost           => 'atlantis.lsst.local',
     root_mail_recipient => 'shahram@lsst.org',
   }
 
