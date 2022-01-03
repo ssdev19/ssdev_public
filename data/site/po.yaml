@@ -83,16 +83,4 @@ postfix::inet_interfaces: "localhost"
 postfix::mydestination: "$myhostname, localhost.$mydomain, localhost"
 postfix::relayhost: "140.252.32.25"
 postfix::root_mail_recipient: 'shahram@lsst.org'
-# postfix::configs:
-    # root_mail_recipient:
-    #   value: 'shahram@lsst.org'
-#   smtp_sasl_auth_enable:
-#     value: "yes"
-#   smtp_tls_security_level:
-#     value: "encrypt"
-#   smtp_sasl_tls_security_options:
-#     value: "noanonymous"
-#   smtp_sasl_password_maps:
-#     value: "hash:/etc/postfix/sasl_passwd"
-#   smtp_sasl_mechanism_filter:
-#     value: "plain, login"
+postfix::mta: true
