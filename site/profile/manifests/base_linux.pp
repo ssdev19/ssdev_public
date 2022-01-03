@@ -19,10 +19,10 @@ class profile::base_linux (
   #   job  => 'node',
   #   host => "${fqdn}:9100",
   # }
-  # Postfix
+  # Postfix -- test message: echo "My messagetd" | mail -s subject sym1@lsst.org
   postfix::config { 'relay_domains':
-    ensure  => present,
-    value   => 'atlantis.lsst.org',
+    ensure => present,
+    value  => 'localhost atlantis.lsst.org',
   }
   class { 'postfix':
     # inet_interfaces     => 'localhost',
