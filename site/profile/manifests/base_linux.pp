@@ -22,7 +22,7 @@ class profile::base_linux (
   # Postfix -- test message: echo "My messagetd" | mail -s subject sym1@lsst.org
   postfix::config { 'relay_domains':
     ensure => present,
-    value  => 'localhost 140.252.32.25',
+    value  => '140.252.32.25',
   }
   class { 'postfix':
     # inet_interfaces     => 'localhost',
