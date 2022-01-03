@@ -78,14 +78,15 @@ cron::job:
       - 'MAILTO=root'
       - 'PATH="/usr/bin:/sbin:/bin"'
 postfix::inet_protocols: "ipv4"
-postfix::manage_root_alias: true
+postfix::manage_root_alias: false
 postfix::inet_interfaces: "localhost"
 postfix::mydestination: "$myhostname, localhost.$mydomain, localhost"
 postfix::relayhost: "140.252.32.25"
 postfix::mta: true
-postfix::configs:
-    root_mail_recipient:
-      value: 'shahram@lsst.org'
+postfix::root_mail_recipient: 'shahram@lsst.org'
+# postfix::configs:
+    # root_mail_recipient:
+    #   value: 'shahram@lsst.org'
 #   smtp_sasl_auth_enable:
 #     value: "yes"
 #   smtp_tls_security_level:
