@@ -22,10 +22,10 @@ class profile::base_linux (
   # }
   # Postfix -- test message: echo "My messagetd" | mail -s subject sym1@lsst.org
   # mailx -- delete all messages: postsuper -d ALL
-  postfix::config { 'relayhost':
-    ensure => present,
-    value  => '140.252.32.25',
-  }
+  # postfix::config { 'relayhost':
+  #   ensure => present,
+  #   value  => '140.252.32.25',
+  # }
   # class { 'postfix':
   #   # inet_interfaces     => 'localhost',
   #   # inet_protocols      => 'ipv4',
