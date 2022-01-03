@@ -9,6 +9,7 @@ class profile::base_linux (
   include cron
   include rsyslog
   include rsyslog::config
+  include postfix
 # config: /etc/systemd/system/node_exporter.service
   class { 'prometheus::node_exporter':
     version       => '1.1.2',
@@ -25,12 +26,12 @@ class profile::base_linux (
   #   ensure => present,
   #   value  => 'localhost',
   # }
-  class { 'postfix':
-    # inet_interfaces     => 'localhost',
-    # inet_protocols      => 'ipv4',
-    relayhost           => '140.252.32.25',
-    root_mail_recipient => 'shahram@lsst.org',
-  }
+  # class { 'postfix':
+  #   # inet_interfaces     => 'localhost',
+  #   # inet_protocols      => 'ipv4',
+  #   relayhost           => '140.252.32.25',
+  #   root_mail_recipient => 'shahram@lsst.org',
+  # }
 
   # postfix::config { 'relay_domains':
   #   ensure => present,
