@@ -20,14 +20,14 @@ class profile::base_linux (
   #   host => "${fqdn}:9100",
   # }
   # Postfix -- test message: echo "My messagetd" | mail -s subject sym1@lsst.org
-  postfix::config { 'relay_domains':
-    ensure => present,
-    value  => 'localhost',
-  }
+  # postfix::config { 'relay_domains':
+  #   ensure => present,
+  #   value  => 'localhost',
+  # }
   class { 'postfix':
     # inet_interfaces     => 'localhost',
     # inet_protocols      => 'ipv4',
-    relayhost           => 'localhost',
+    relayhost           => 'atlantis.lsst.org',
     root_mail_recipient => 'shahram@lsst.org',
   }
 
