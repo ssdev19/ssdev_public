@@ -22,12 +22,12 @@ class profile::base_linux (
   # Postfix -- test message: echo "My messagetd" | mail -s subject sym1@lsst.org
   postfix::config { 'relay_domains':
     ensure => present,
-    value  => 'atlantis.lsst.local',
+    value  => 'localhost',
   }
   class { 'postfix':
     # inet_interfaces     => 'localhost',
     # inet_protocols      => 'ipv4',
-    relayhost           => 'atlantis.lsst.local',
+    relayhost           => 'localhost',
     root_mail_recipient => 'shahram@lsst.org',
   }
 
