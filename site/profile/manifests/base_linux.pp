@@ -10,7 +10,7 @@ class profile::base_linux (
   include cron
   include rsyslog
   include rsyslog::config
-
+  include ::collectd
   if $postfix {
   include postfix
   }
