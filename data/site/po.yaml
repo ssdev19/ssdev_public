@@ -83,5 +83,5 @@ postfix::inet_interfaces: "localhost"
 postfix::mydestination: "$myhostname, localhost.$mydomain, localhost"
 postfix::relayhost: "atlantis.lsst.org"
 postfix::root_mail_recipient: 'shahram@lsst.org'
-postfix::virtual_alias_maps: false
+postfix::virtual_alias_maps: absent
 postfix::mta: true
