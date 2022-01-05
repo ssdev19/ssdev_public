@@ -87,3 +87,7 @@ postfix::root_mail_recipient: 'shahram@lsst.org'
 postfix::configs:
   virtual_alias_maps: 
     ensure: absent
+  transport_maps: 
+    ensure: absent
+  networks: 
+    ensure: absent
