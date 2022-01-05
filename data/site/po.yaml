@@ -86,4 +86,4 @@ postfix::root_mail_recipient: 'shahram@lsst.org'
 # postfix::mta: true
 postfix::configs:
   virtual_alias_maps: 
-    value: absent
+    value: no
