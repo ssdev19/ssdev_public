@@ -1,6 +1,7 @@
 # Base profile for Linux OS
 class profile::base_linux (
   Boolean $awscli           = false,
+  Boolean $postfix          = false,
 ) {
   include network
   include firewalld
@@ -9,7 +10,10 @@ class profile::base_linux (
   include cron
   include rsyslog
   include rsyslog::config
+
+  if $postfix {
   include postfix
+  }
 # config: /etc/systemd/system/node_exporter.service
   class { 'prometheus::node_exporter':
     version       => '1.1.2',
