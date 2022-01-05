@@ -89,5 +89,7 @@ postfix::configs:
     ensure: absent
   transport_maps: 
     ensure: absent
-  networks: 
+  myorigin: 
+    ensure: absent
+  mynetworks: 
     ensure: absent
