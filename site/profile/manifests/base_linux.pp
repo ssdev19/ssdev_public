@@ -1,6 +1,6 @@
 # Base profile for Linux OS
 class profile::base_linux (
-  Boolean $awscli           = false,
+# Boolean $awscli           = false,
   Boolean $postfix          = false,
   Boolean $graylog = false,
 ) {
@@ -9,11 +9,13 @@ class profile::base_linux (
   include ssh
   include accounts
   include cron
-  include rsyslog
-  include rsyslog::config
   include ::collectd
   if $postfix {
   include postfix
+  }
+  if $graylog {
+  include rsyslog
+  include rsyslog::config
   }
 # config: /etc/systemd/system/node_exporter.service
   class { 'prometheus::node_exporter':
