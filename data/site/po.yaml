@@ -91,3 +91,5 @@ postfix::configs:
     ensure: absent
   mynetworks: 
     ensure: absent
+  myorigin: 
+    ensure: absent
