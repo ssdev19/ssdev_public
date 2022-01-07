@@ -37,14 +37,17 @@ class { 'prometheus::alertmanager':
   #   'receiver'        => 'slack',
   # },
   receivers => [
-      {
-      'name'          => 'slack',
+    { 'name'          => 'slack',
       'slack_configs' => [
         {
           'api_url'       => unwrap($slackapi_hide),
           'channel'       => '#monitoring',
-          'send_resolved' => true,
+          'icon_url'      => 'https://avatars3.githubusercontent.com/u/3380462',
           'username'      => unwrap($slackuser_hide),
+          'title'         => '{{ template "custom_title" . }}',
+          'text'          => '{{ template "custom_slack_message" . }}',
+          'send_resolved' => true,
+          # 'text'          => '{{ .GroupLabels.app }}/{{ .GroupLabels.alertname }}',
         },
       ],
     },
