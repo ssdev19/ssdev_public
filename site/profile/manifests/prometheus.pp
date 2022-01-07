@@ -28,15 +28,40 @@ $slackuser_hide,
   }
 # Alertmanager config
 class { 'prometheus::alertmanager':
-  version   => '0.22.2',
-  # route     => {
-  #   'group_by'        => ['job'],
-  #   'group_wait'      => '30s', # how long to wait to buffer alerts of the same group before sending a notification initially
-  #   'group_interval'  => '45s',  # ^^before sending an alert that has been added to a group for which there has already been a notification
-  #   'repeat_interval' => '3h',  # how long to wait before re-sending a given alert that has already been sent in a notification
+  # extra_options => '--cluster.listen-address=',
+  extra_options => "--cluster.advertise-address=${advertise_ip} \--cluster.listen-address=:9797 \--cluster.peer=${unwrap($cluster_hide)}",
+  version       => '0.22.2',
+  # global    => {
+  #   'resolve_timeout' => '1m',
+  #   'to'              => 'wf@belldex.com',
+  #   'from'            => $gmail_account,
+  #   'smarthost'       => 'smtp.gmail.com:587',
+  #   'auth_username'   => true,
+  #   'auth_identity'   => $gmail_account,
+  #   'auth_password'   => $gmail_auth_token,
+  #   },
+  # route         => {
+  #   'group_by'        => ['alertname', 'job'],
+  #   'group_wait'      => '30s',
+  #   'group_interval'  => '1m',
+  #   'repeat_interval' => '3h',
   #   'receiver'        => 'slack',
   # },
-  receivers => [
+  receivers     => [
+    # { 'name'          => 'email',
+    #   'email_configs' => [
+    #     {
+    #       'to'            => $gmail_account,
+    #       'from'          => $gmail_account,
+    #       'smarthost'     => 'smtp.gmail.com:587',
+    #       'auth_username' => $gmail_account,
+    #       'auth_identity' => $gmail_account,
+    #       'auth_password' => $gmail_auth_token,
+    #       'require_tls'   => true,
+    #       'send_resolved' => true,
+    #     },
+    #   ],
+    # },
     { 'name'          => 'slack',
       'slack_configs' => [
         {
