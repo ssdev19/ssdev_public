@@ -1,6 +1,6 @@
 # Base profile for Linux OS
 class profile::base_linux (
-# Boolean $awscli           = false,
+  Boolean $awscli           = false,
   Boolean $postfix          = false,
   Boolean $graylog = false,
 ) {
