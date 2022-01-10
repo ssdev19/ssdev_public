@@ -1,8 +1,8 @@
 # Base profile for Linux OS
 class profile::base_linux (
-  Boolean $awscli           = false,
-  Boolean $postfix          = false,
-  Boolean $graylog = false,
+  Boolean $awscli   = false,
+  Boolean $postfix  = false,
+  Boolean $graylog  = false,
 ) {
   include network
   include firewalld
