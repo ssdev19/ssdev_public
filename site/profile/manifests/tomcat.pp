@@ -5,6 +5,7 @@ $tomcat_pass_hide,
 $catalina_home,
 $catalina_base,
 $version,
+$java_home,
 $ciphers,
 ){
   tomcat::install { $catalina_home:
@@ -51,7 +52,7 @@ $ciphers,
     Type=forking
     SuccessExitStatus=143
 
-    Environment=JAVA_HOME=/usr/java/jdk-11.0.2+9-jre
+    Environment=JAVA_HOME=${java_home}
     Environment=CATALINA_PID=${catalina_home}/temp/tomcat.pid
     Environment=CATALINA_HOME=${catalina_home}
     Environment=CATALINA_BASE=${catalina_base}
