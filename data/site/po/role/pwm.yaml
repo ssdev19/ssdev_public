@@ -4,8 +4,8 @@ profile::base_linux::awscli: true
 profile::java::version: 'latest'
 profile::java::distribution: 'jre'
 profile::java::java_home: '/usr/java/jdk-11.0.2+9'
-profile::java::jre_version: 11
-profile::java::jdk_version: 8
+profile::java::jre_version: '11'
+profile::java::jdk_version: '8'
 profile::java::java_path: '/usr/java/jdk8u202-b08-jre/bin:$PATH'
 profile::java::mem: '-Xmx1g'
 profile::tomcat::tomcat_user: tomcatuser
