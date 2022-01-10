@@ -1,11 +1,16 @@
 ---
 profile::base_linux::awscli: true
 # profile::base_linux::gralog: true
+profile::java::distribution: 'jre'
+profile::java::java_home: '/usr/java/jdk-11.0.2+9'
+profile::java::jre_version: 11
+profile::java::jdk_version: 8
+profile::java::java_path: '/usr/java/jdk8u202-b08-jre/bin'
+profile::java::mem: '-Xmx1g'
 profile::tomcat::tomcat_user: tomcatuser
 profile::tomcat::tomcat_pass: tomcatpass
 profile::tomcat::catalina_home: '/opt/tomcat'
 profile::tomcat::catalina_base: '/opt/tomcat'
-profile::tomcat::distribution: 'jre'
 profile::tomcat::version: 'tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56'
 profile::tomcat::ciphers: |
   TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
