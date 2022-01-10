@@ -37,7 +37,7 @@ $ciphers,
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
     }
   tomcat::config::server::tomcat_users { unwrap($tomcat_user_hide):
-    password      => unwrap($tomcat_pass_hide),
+    password      => $tomcat_pass_hide.unwrap,
     roles         => ['admin-gui, manager-gui, manager-script'],
     catalina_base => $catalina_base,
   }
