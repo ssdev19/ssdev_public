@@ -1,9 +1,9 @@
 # Run puppet agent about 3 times eo ensure all config has been applied.
 ---
 classes:
+  - profile::tomcat
   - profile::base_linux
   - profile::java
-  - profile::tomcat
   - profile::pwm
 profile::base_linux::postfix: true
 network::interfaces_hash:
