@@ -1,5 +1,5 @@
 # tomcat 
-class profile::tomcat ( String
+class profile::tomcat ( Sensitive[String]
 $tomcat_user,
 $tomcat_pass,
 $catalina_home,
