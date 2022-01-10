@@ -69,7 +69,7 @@ $ciphers,
     | EOT
 
   systemd::unit_file { 'tomcat.service':
-    content => $tomcat_service,
+    content => "${tomcat_service}",
   }
   -> service { 'tomcat':
   subscribe => Tomcat::Instance['default'],
@@ -81,7 +81,7 @@ $ciphers,
   # or  setcap cap_net_bind_service+ep /usr/java/jdk8u202-b08-jre/bin/java
   # configure SSL and specify protocols and ciphers to use
   tomcat::config::server::connector { "default-https":
-    catalina_base         => $catalina_base,
+    catalina_base         => "${catalina_base}",
     port                  => 8443,
     protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
     purge_connectors      => true,
@@ -100,5 +100,4 @@ $ciphers,
       'keystoreFile'        => '/etc/pki/keystore',
     },
   }
-
 }
