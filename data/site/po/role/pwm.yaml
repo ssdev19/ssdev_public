@@ -15,7 +15,7 @@ profile::tomcat::tomcat_pass_hide: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQA
 profile::tomcat::catalina_home: '/opt/tomcat'
 profile::tomcat::catalina_base: '/opt/tomcat'
 profile::tomcat::version: 'tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56'
-profile::tomcat::java_home: '/usr/java/jdk-11.0.2+9'
+profile::tomcat::java_home: '/usr/java/jdk-11.0.2+9-jre'
 profile::tomcat::ciphers: |
   TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
