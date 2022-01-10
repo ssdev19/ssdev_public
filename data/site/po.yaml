@@ -77,7 +77,7 @@ cron::job:
     environment:
       - 'MAILTO=root'
       - 'PATH="/usr/bin:/sbin:/bin"'
-postfix::mta: true
+postfix::mta: false
 postfix::inet_protocols: "ipv4"
 postfix::manage_root_alias: true
 postfix::inet_interfaces: "localhost"
