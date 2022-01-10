@@ -51,7 +51,7 @@ $ciphers,
     Type=forking
     SuccessExitStatus=143
 
-    Environment=JAVA_HOME=/usr/java/jdk-11.0.2+9
+    Environment=JAVA_HOME=/usr/java/jdk-11.0.2+9-jre
     Environment=CATALINA_PID=${catalina_home}/temp/tomcat.pid
     Environment=CATALINA_HOME=${catalina_home}
     Environment=CATALINA_BASE=${catalina_base}
