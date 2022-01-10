@@ -2,6 +2,8 @@
 class profile::java ( String
 $version,
 $jdk_version,
+$version_minor,
+$version_major,
 $jre_version,
 $distribution,
 $java_home,
@@ -14,9 +16,11 @@ $mem,
     java_home    => $java_home,
   }
   java::adopt { 'jdk' :
-    ensure  => 'present',
-    version => $jdk_version,
-    java    => 'jdk',
+    ensure        => 'present',
+    version       => $jdk_version,
+    version_major => $version_major,
+    version_minor => $version_minor,
+    java          => 'jdk',
   }
   java::adopt { 'jre' :
     ensure  => 'present',
