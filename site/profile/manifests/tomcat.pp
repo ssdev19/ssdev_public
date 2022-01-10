@@ -5,7 +5,6 @@ $tomcat_pass,
 $catalina_home,
 $catalina_base,
 $version,
-$distribution,
 $ciphers,
 ){
   tomcat::install { $catalina_home:
