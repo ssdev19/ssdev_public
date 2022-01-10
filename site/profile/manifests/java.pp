@@ -7,7 +7,8 @@ $distribution,
 $java_home,
 $java_path,
 $mem,
-){  class { 'java':
+){
+  class { 'java':
     distribution => $distribution,
     version      => 'latest',
     java_home    => $java_home,
@@ -32,3 +33,4 @@ $mem,
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
     command => "sudo -s export PATH=${java_path}:$PATH",
   }
+}
