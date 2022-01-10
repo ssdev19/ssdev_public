@@ -36,8 +36,8 @@ $ciphers,
       line  => ' ',
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
     }
-  tomcat::config::server::tomcat_users { $tomcat_user:
-    password      => $tomcat_pass,
+  tomcat::config::server::tomcat_users { unwrap($tomcat_user):
+    password      => unwrap($tomcat_pass),
     roles         => ['admin-gui, manager-gui, manager-script'],
     catalina_base => $catalina_base,
   }
