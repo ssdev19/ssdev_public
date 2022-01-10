@@ -1,7 +1,7 @@
 # tomcat 
 class profile::tomcat ( Sensitive[String]
-$tomcat_user,
-$tomcat_pass,
+$tomcat_user_hide,
+$tomcat_pass_hide,
 $catalina_home,
 $catalina_base,
 $version,
@@ -36,8 +36,8 @@ $ciphers,
       line  => ' ',
       path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
     }
-  tomcat::config::server::tomcat_users { unwrap($tomcat_user):
-    password      => unwrap($tomcat_pass),
+  tomcat::config::server::tomcat_users { unwrap($tomcat_user_hide):
+    password      => unwrap($tomcat_pass_hide),
     roles         => ['admin-gui, manager-gui, manager-script'],
     catalina_base => $catalina_base,
   }
