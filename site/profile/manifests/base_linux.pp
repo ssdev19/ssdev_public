@@ -86,7 +86,7 @@ if $awscli {
     content => $host,
   }
   class { 'nsswitch':
-  hosts  => ['dns myhostname','filess'],
+  hosts  => ['dns myhostname','files'],
   }
   # $nsswitch = lookup('nsswitch')
   # file { '/etc/nsswitch.conf' :
