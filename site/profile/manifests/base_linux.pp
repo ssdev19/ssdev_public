@@ -85,11 +85,11 @@ if $awscli {
     ensure  => file,
     content => $host,
   }
-  $nsswitch = lookup('nsswitch')
-  file { '/etc/nsswitch.conf' :
-    ensure  => file,
-    content => $nsswitch,
-  }
+  # $nsswitch = lookup('nsswitch')
+  # file { '/etc/nsswitch.conf' :
+  #   ensure  => file,
+  #   content => $nsswitch,
+  # }
   $sshd_banner = lookup('sshd_banner')
   file { '/etc/ssh/sshd_banner' :
     ensure  => file,
