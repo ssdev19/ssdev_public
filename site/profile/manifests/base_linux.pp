@@ -10,6 +10,7 @@ class profile::base_linux (
   include accounts
   include cron
   include ::collectd
+  include nsswitch
   if $postfix {
   include postfix
   }
