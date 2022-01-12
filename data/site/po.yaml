@@ -82,7 +82,7 @@ postfix::inet_protocols: "ipv4"
 postfix::manage_root_alias: true
 postfix::inet_interfaces: "localhost"
 postfix::mydestination: "$myhostname, localhost.$mydomain, localhost"
-postfix::relayhost: '140.252.32.25'
+postfix::relayhost: 'atlantis.lsst.org'
 postfix::root_mail_recipient: 'shahram@belldex.com'
 postfix::configs:
   # virtual_alias_maps: 
