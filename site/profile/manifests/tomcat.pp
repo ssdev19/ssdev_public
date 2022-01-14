@@ -6,6 +6,7 @@ $catalina_home,
 $catalina_base,
 $version,
 $java_home,
+$https_enabled,
 $ciphers,
 ){
   tomcat::install { $catalina_home:
