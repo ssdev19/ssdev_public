@@ -7,7 +7,7 @@ $catalina_base,
 $version,
 $java_home,
 $https_enabled,
-$keystorepass,
+$keystorepass_hide,
 $ciphers,
 ){
   tomcat::install { $catalina_home:
@@ -60,7 +60,7 @@ $ciphers,
       'sslEnabledProtocols' => 'TLSv1.2',
       'ciphers'             => $ciphers,
 
-      'keystorePass'        => $keystorepass.unwrap,
+      'keystorePass'        => $keystorepass_hide.unwrap,
       'keystoreFile'        => '/etc/pki/keystore',
     },
   }
