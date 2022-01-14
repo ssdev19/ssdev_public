@@ -17,6 +17,7 @@ profile::tomcat::catalina_base: '/opt/tomcat'
 profile::tomcat::version: 'tomcat-9/v9.0.56/bin/apache-tomcat-9.0.56'
 profile::tomcat::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
 profile::tomcat::https_enabled: 'true'
+profile::tomcat::keystorepass: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAKdHzOC1PtK/COrwKUnFgCnKX+KoYCJoGeZMy7tZI1ODAVSHWqEhtabp0424Wo0zOFNwTsd/2lv9UqkraBJupZURi2m2QdD1I6qa9MzbOmAPNdGVM68lkPAK3URabcJGKTr/4DO31t8nAZgXF+PJQA/Wz0IKvHz5AyHKgU8BQN+FDUJslmIwCUoIWc75ET5RzNffQussYRgFX2jxWLHdgY8YpKLo2M0M7uNZFCx1z37wHCO9dhh2bRrvtslqGBZ2KNyOIwYD5pm/M9V+s0s7u7d2/IsNmVAUBo6f92VQoOstYwwIGRUuUkJzztLZCwl7MljO9UbCD6COECvsywO2GIjA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCmPVqEnQeGIQqvSe74VFGHgBBw0cHQfAVbdyo4liGkQFZK]
 profile::tomcat::ciphers: |
   TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,
   TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,
