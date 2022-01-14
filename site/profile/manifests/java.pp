@@ -22,10 +22,10 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-  java::adopt { 'jre' :
+  java::adopt { $distribution :
     ensure  => 'present',
     version => $jre_version,
-    java    => 'jre',
+    java    => $distribution,
   }
   ### export _JAVA_OPTIONS="-Xmx1g"
   exec { 'set java heap size ':
