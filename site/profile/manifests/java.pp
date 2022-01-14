@@ -12,8 +12,8 @@ $mem,
 ){
   class { 'java':
     distribution => $distribution,
-    version      => $version,
-    java_home    => $java_home,
+    # version      => $version,
+    # java_home    => $java_home,
   }
   # java::adopt { 'jdk' :
   #   ensure        => 'present',
@@ -22,11 +22,11 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-  java::adopt { $distribution :
-    ensure  => 'present',
-    version => $jre_version,
-    java    => $distribution,
-  }
+  # java::adopt { $distribution :
+  #   ensure  => 'present',
+  #   version => $jre_version,
+  #   java    => $distribution,
+  # }
   ### export _JAVA_OPTIONS="-Xmx1g"
   # exec { 'set java heap size ':
   #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
