@@ -60,7 +60,7 @@ $ciphers,
       'sslEnabledProtocols' => 'TLSv1.2',
       'ciphers'             => $ciphers,
 
-      'keystorePass'        => $keystorepass,
+      'keystorePass'        => $keystorepass.unwrap,
       'keystoreFile'        => '/etc/pki/keystore',
     },
   }
