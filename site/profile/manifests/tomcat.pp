@@ -25,10 +25,10 @@ $ciphers,
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
   # For some reason it does not remove it, had to do it manually
-  tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
-  ensure        => 'absent',
-  catalina_base => $catalina_base,
-  }
+  # tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
+  # ensure        => 'absent',
+  # catalina_base => $catalina_base,
+  # }
   file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
     ensure => present,
   }
