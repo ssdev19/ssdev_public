@@ -3,6 +3,8 @@
 classes:
   - profile::base_linux
   - profile::prometheus
+profile::prometheus::advertise_ip: 192.168.60.11:9093
+profile::prometheus::cluster_hide: 192.168.60.12:9797
 profile::base_linux::postfix: true
 network::interfaces_hash:
   eth0:

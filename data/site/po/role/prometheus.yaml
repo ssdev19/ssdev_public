@@ -488,7 +488,7 @@ prometheus::alerts:
           annotations:
             summary: Nginx down (instance {{ $labels.instance }})
             description: "Nginx service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-prometheus::alertmanager::version: '0.23.0'          
+        
 prometheus::alertmanager::route:
   group_by:
     - 'alertname'
