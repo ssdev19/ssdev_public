@@ -29,6 +29,10 @@ $slackuser_hide,
     }
   }
 # Alertmanager config
+  file { '/etc/alertmanager/notifications.tmpl':
+  ensure  => file,
+  content => epp('profile/it/alertmanager_custom.epp'),
+  }
 $gmail_auth_token = lookup('gmail_auth_token')
 $gmail_account = lookup('gmail_account')
 class { 'prometheus::alertmanager':
