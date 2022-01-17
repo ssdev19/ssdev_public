@@ -47,7 +47,7 @@ mod 'puppet-postfix', '2.0.0'
 mod 'camptocamp-augeas', '1.9.0'
 mod 'puppet-alternatives', '4.0.0' # postfix dependency
 mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
-mod 'puppet-systemd', '3.5.0'
+mod 'puppet-systemd', '3.5.2'
 mod 'bodgit/scl', '1.0.1'
 mod 'puppetlabs-postgresql', '7.5.0' # Foreman dependency
 mod 'puppet-extlib', '5.2.1'
