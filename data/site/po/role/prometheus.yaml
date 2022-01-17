@@ -498,3 +498,5 @@ prometheus::alertmanager::route:
   group_interval: '1m'
   repeat_interval: '3h'
   receiver: 'slack' # email it to me
+prometheus::alertmanager::template:
+  - '/alertmanager/notifications.tmpl'
