@@ -3,6 +3,7 @@ class profile::base_linux (
   Boolean $awscli   = false,
   Boolean $postfix  = false,
   Boolean $graylog  = false,
+  Boolean $ntp      = true,
 ) {
   include network
   include firewalld
@@ -48,8 +49,10 @@ class profile::base_linux (
   #   value  => 'mail.lsst.org',
   #   root_mail_recipient => 'shahram@lsst.org',
   # }
-  class { 'ntp':
-    servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
+  if $ntp {
+    class { 'ntp':
+      servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
+    }
   }
   class { 'timezone':
       timezone => 'UTC',
