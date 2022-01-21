@@ -74,7 +74,7 @@ class { 'prometheus::alertmanager':
       'slack_configs' => [
         {
           'api_url'       => unwrap($slackapi_hide),
-          'channel'       => '#monitoring',
+          'channel'       => '#ssdev_monitoring',
           'icon_url'      => 'https://avatars3.githubusercontent.com/u/3380462',
           'username'      => unwrap($slackuser_hide),
           'title'         => '{{ template "custom_title" . }}',
