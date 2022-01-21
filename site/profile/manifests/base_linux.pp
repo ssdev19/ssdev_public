@@ -3,7 +3,7 @@ class profile::base_linux (
   Boolean $awscli   = false,
   Boolean $postfix  = false,
   Boolean $graylog  = false,
-  Boolean $ntp      = true,
+  Boolean $ntp      = false,
 ) {
   include network
   include firewalld
