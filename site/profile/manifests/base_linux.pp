@@ -3,6 +3,7 @@ class profile::base_linux (
   Boolean $awscli   = false,
   Boolean $postfix  = false,
   Boolean $graylog  = false,
+  Boolean $nsswitch = true,
   Boolean $ntp      = false,
 ) {
   include network
@@ -90,8 +91,10 @@ if $awscli {
     ensure  => file,
     content => $host,
   }
-  class { 'nsswitch':
-  hosts  => ['dns myhostname','files'],
+  if $nsswitch {
+    class { 'nsswitch':
+    hosts  => ['dns myhostname','files'],
+    }
   }
   # $nsswitch = lookup('nsswitch')
   # file { '/etc/nsswitch.conf' :

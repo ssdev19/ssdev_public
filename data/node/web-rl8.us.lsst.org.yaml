@@ -3,3 +3,4 @@
 classes:
   - profile::base_linux
 # profile::base_linux::ntp: false
+profile::base_linux::nsswitch: false
