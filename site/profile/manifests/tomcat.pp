@@ -32,7 +32,7 @@ $ciphers,
   # catalina_base => $catalina_base,
   # }
   file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
-    ensure => present,
+    ensure => file,
   }
   -> file_line{ 'remove org.apache.catalina.valves.RemoteAddrValve':
       match => 'org.apache.catalina.valves.RemoteAddrValve',
