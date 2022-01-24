@@ -50,15 +50,15 @@ $ciphers,
   source_url     => "https://dlcdn.apache.org/tomcat/${version}.tar.gz",
   }
   tomcat::instance { 'default':
-  catalina_home => $catalina_home,
-  catalina_base => $catalina_base,
+    catalina_home => $catalina_home,
+    catalina_base => $catalina_base,
   }
 # wait for tomcat service to start 
-  exec { 'wait for tomcat':
-    command     => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080/CCSWebTrending/',
-    refreshonly => true,
-    subscribe   => Service['tomcat'],
-  }
+  # exec { 'wait for tomcat':
+  #   command     => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080/CCSWebTrending/',
+  #   refreshonly => true,
+  #   subscribe   => Service['tomcat'],
+  # }
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
