@@ -18,11 +18,11 @@ $ciphers,
   catalina_base => $catalina_base,
   }
 # wait for tomcat service to start 
-  # exec { 'wait for tomcat':
-  #   command     => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080/CCSWebTrending/',
-  #   refreshonly => true,
-  #   subscribe   => Service['tomcat'],
-  # }
+  exec { 'wait for tomcat':
+    command     => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080/CCSWebTrending/',
+    refreshonly => true,
+    subscribe   => Service['tomcat'],
+  }
     # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
 
   # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
@@ -31,14 +31,14 @@ $ciphers,
   # ensure        => 'absent',
   # catalina_base => $catalina_base,
   # }
-  # file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
-  #   ensure => file,
-  # }
-  # -> file_line{ 'remove org.apache.catalina.valves.RemoteAddrValve':
-  #     match => 'org.apache.catalina.valves.RemoteAddrValve',
-  #     line  => ' ',
-  #     path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
-  #   }
+  file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
+    ensure => file,
+  }
+  -> file_line{ 'remove org.apache.catalina.valves.RemoteAddrValve':
+      match => 'org.apache.catalina.valves.RemoteAddrValve',
+      line  => ' ',
+      path  => '/opt/tomcat/webapps/manager/META-INF/context.xml',
+    }
   tomcat::config::server::tomcat_users { unwrap($tomcat_user_hide):
     password      => $tomcat_pass_hide.unwrap,
     roles         => ['admin-gui, manager-gui, manager-script'],
