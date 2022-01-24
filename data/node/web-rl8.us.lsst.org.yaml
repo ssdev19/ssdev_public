@@ -3,7 +3,7 @@
 classes:
   - profile::tomcat
   - profile::base_linux
-  # - profile::java
+  - profile::java
   # - profile::pwm
 profile::base_linux::postfix: true
 profile::base_linux::nsswitch: false
