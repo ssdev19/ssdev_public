@@ -7,7 +7,7 @@ class profile::base_linux (
   Boolean $ntp      = false,
 ) {
   include network
-  include chrony
+  # include chrony
   include firewalld
   include ssh
   include accounts
