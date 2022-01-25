@@ -64,8 +64,8 @@ class profile::base_linux (
   'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute' ]:
   ensure => installed,
   }
-  Package { [ 'ntpd' ]:
-  ensure => removed,
+  Package { [ 'ntp' ]:
+  ensure => remove,
   }
     # install awscli tool
 if $awscli {
