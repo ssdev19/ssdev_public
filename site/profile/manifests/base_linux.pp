@@ -7,6 +7,7 @@ class profile::base_linux (
   Boolean $ntp      = false,
 ) {
   include network
+  include chrony
   include firewalld
   include ssh
   include accounts
@@ -50,11 +51,11 @@ class profile::base_linux (
   #   value  => 'mail.lsst.org',
   #   root_mail_recipient => 'shahram@lsst.org',
   # }
-  if $ntp {
-    class { 'ntp':
+  # if $ntp {
+    class { 'chrony':
       servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
     }
-  }
+  # }
   class { 'timezone':
       timezone => 'UTC',
   }
