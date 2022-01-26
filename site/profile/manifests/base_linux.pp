@@ -60,7 +60,7 @@ class profile::base_linux (
       timezone => 'UTC',
   }
   Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'gcc', 'xinetd',
-  'bash-completion', 'sudo', 'screen', 'vim', 'openssl', 'openssl-devel',
+  'bash-completion', 'sudo', 'vim', 'openssl', 'openssl-devel',
   'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute' ]:
   ensure => installed,
   }
