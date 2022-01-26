@@ -66,10 +66,10 @@ class profile::base_linux (
   }
 # install awscli tool
 class { 'awscli': }
-# if $awscli {
-#   Package { [ 'awscli' ]:
-#   ensure => installed,
-#   }
+if $awscli {
+  # Package { [ 'awscli' ]:
+  # ensure => installed,
+  # }
   $awscreds = lookup('awscreds')
     file {
       '/root/.aws':
