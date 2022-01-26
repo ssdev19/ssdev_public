@@ -67,10 +67,16 @@ class profile::base_linux (
 # install awscli tool
 # class { 'awscli': }
 if $awscli {
-  exec { 'curl awscli':
-    command => 'curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"',
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+  archive { '/tmp/awscli-bundle.zip':
+    ensure   => present,
+    source   => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
+    provider => 'wget',
+    cleanup  => false,
   }
+  # file { '/opt/tomcat/webapps/pwm.war':
+  #   ensure => present,
+  #   source => '/tmp/pwm-1.9.2.war',
+  # }
   $awscreds = lookup('awscreds')
     file {
       '/root/.aws':
