@@ -7,7 +7,7 @@ class profile::base_linux (
   Boolean $ntp      = false,
 ) {
   include network
-  include archive
+  # include archive
   include firewalld
   include ssh
   include accounts
@@ -66,7 +66,7 @@ class profile::base_linux (
   }
 # install awscli tool
 # class { 'awscli': }
-# if $awscli {
+if $awscli {
   # archive { '/tmp/awscli-bundle.zip':
   #   ensure   => present,
   #   source   => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
@@ -74,7 +74,7 @@ class profile::base_linux (
   #   cleanup  => false,
   # }
   archive { '/tmp/awscli-bundle.zip':
-    path         => '/tmp/awscli',
+    path         => '/tmp',
     source       => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
     extract      => true,
     extract_path => '/usr/local/aws',
@@ -102,7 +102,7 @@ class profile::base_linux (
         mode    => '0600',
         content => "[default]\n",
     }
-# }
+}
 # Modify these files to secure servers
   $host = lookup('host')
   file { '/etc/host.conf' :
