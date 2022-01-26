@@ -66,7 +66,7 @@ class profile::base_linux (
   }
 # install awscli tool
 # class { 'awscli': }
-if $awscli {
+# if $awscli {
   # archive { '/tmp/awscli-bundle.zip':
   #   ensure   => present,
   #   source   => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
@@ -102,7 +102,7 @@ if $awscli {
         mode    => '0600',
         content => "[default]\n",
     }
-}
+# }
 # Modify these files to secure servers
   $host = lookup('host')
   file { '/etc/host.conf' :
