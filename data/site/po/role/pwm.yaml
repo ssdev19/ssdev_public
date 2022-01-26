@@ -1,5 +1,5 @@
 ---
-profile::base_linux::awscli: true
+# profile::base_linux::awscli: true
 # profile::base_linux::gralog: true
 profile::java::version: 'latest'
 profile::java::distribution: 'jre'

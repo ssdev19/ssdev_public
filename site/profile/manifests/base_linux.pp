@@ -65,6 +65,7 @@ class profile::base_linux (
   ensure => installed,
   }
 # install awscli tool
+class { 'awscli': }
 if $awscli {
   Package { [ 'awscli' ]:
   ensure => installed,
