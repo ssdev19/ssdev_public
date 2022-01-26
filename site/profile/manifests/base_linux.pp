@@ -74,14 +74,14 @@ if $awscli {
   #   cleanup  => false,
   # }
   archive { '/tmp/awscli-bundle.zip':
-  path         => '/tmp/awscli',
-  source       => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
-  extract      => true,
-  extract_path => '/usr/local/aws',
-  creates      => '/usr/local/bin',
-  cleanup      => true,
+    path         => '/tmp/awscli',
+    source       => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
+    extract      => true,
+    extract_path => '/usr/local/aws',
+    creates      => '/usr/local/bin',
+    cleanup      => true,
   # require      => File['wso2_appdir'],
-}
+  }
   # file { '/opt/tomcat/webapps/pwm.war':
   #   ensure => present,
   #   source => '/tmp/pwm-1.9.2.war',
