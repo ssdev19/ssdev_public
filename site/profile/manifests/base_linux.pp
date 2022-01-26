@@ -67,8 +67,9 @@ class profile::base_linux (
 # install awscli tool
 # class { 'awscli': }
 if $awscli {
-  Package { [ 'awscli' ]:
-  ensure => installed,
+  exec { 'curl awscli':
+    command => 'curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"',
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
   }
   $awscreds = lookup('awscreds')
     file {
