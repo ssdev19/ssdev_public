@@ -41,6 +41,10 @@ $applicationpath = lookup('application_path')
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
     $lsst_theme = lookup('lsst_theme')
+    file {
+      '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
+        ensure => directory,
+    }
     archive { '/opt/tomcat/webapps/pwm/public/resources/themes/lsst' :
       ensure  => present,
       source  => $lsst_theme,
