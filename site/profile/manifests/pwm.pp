@@ -50,7 +50,8 @@ $applicationpath = lookup('application_path')
       source  => $lsst_theme,
       cleanup => true,
       extract      => true,
-      extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+      creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+      extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes',
     }
   # # Manage certs
   # java_ks { 'pwm:truststore':
