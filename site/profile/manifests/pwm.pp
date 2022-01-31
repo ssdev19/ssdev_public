@@ -45,7 +45,8 @@ $applicationpath = lookup('application_path')
       '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
         ensure => directory,
     }
-    archive { '/opt/tomcat/webapps/pwm/public/resources/themes/lsst' :
+    archive { 'lsst.zip' :
+      path => '/tmp/lsst.zip',
       # ensure  => present,
       source  => $lsst_theme,
       # cleanup => false,
