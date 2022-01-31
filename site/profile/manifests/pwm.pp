@@ -48,7 +48,9 @@ $applicationpath = lookup('application_path')
     archive { '/opt/tomcat/webapps/pwm/public/resources/themes/lsst' :
       ensure  => present,
       source  => $lsst_theme,
-      cleanup => false,
+      cleanup => true,
+      extract      => true,
+      extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
     }
   # # Manage certs
   # java_ks { 'pwm:truststore':
