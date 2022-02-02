@@ -45,15 +45,15 @@ $applicationpath = lookup('application_path')
       '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
         ensure => directory,
     }
-    archive { 'lsst.zip' :
-      path => '/tmp/lsst.zip',
+    archive { '/tmp/lsst.zip' :
+      # path => '/tmp/lsst.zip',
       # ensure  => present,
       source  => $lsst_theme,
       cleanup => false,
       extract      => true,
       extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes',
-      creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
-      require       => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
+      # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+      # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
     }
   # # Manage certs
   # java_ks { 'pwm:truststore':
