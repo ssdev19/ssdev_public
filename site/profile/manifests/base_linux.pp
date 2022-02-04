@@ -136,5 +136,5 @@ if $awscli {
   file { '/etc/hosts.allow' :
     ensure  => file,
     content => $allowhosts,
-  }
+  } 
 }
