@@ -6,7 +6,7 @@ class profile::base_linux (
   Boolean $nsswitch = true,
   Boolean $ntp      = false,
 ) {
-  include network+
+  include network
   # include archive
   include firewalld
   include ssh
@@ -136,5 +136,5 @@ if $awscli {
   file { '/etc/hosts.allow' :
     ensure  => file,
     content => $allowhosts,
-  } 
+  }
 }
