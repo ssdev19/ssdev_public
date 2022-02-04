@@ -27,7 +27,7 @@ ssh::server_options:
 ### Keep users created by puppet distinct ###
 #############################################
 accounts::user_list:
-  shahram_local:
+  shahram:
     groups:
       - 'wheel'
     sshkeys:
