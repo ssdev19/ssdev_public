@@ -30,6 +30,7 @@ class profile::pwm {
     ensure => present,
     source => '/tmp/PwmConfiguration.xml',
   }
+
 $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
   file { '/opt/tomcat/webapps/pwm/WEB-INF/web.xml':
