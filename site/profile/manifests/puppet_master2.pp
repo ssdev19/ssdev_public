@@ -7,11 +7,11 @@ class profile::puppet_master2 {
     #   ensure   => present,
     #   provider => 'puppetserver_gem',
     # }
-  java_ks { 'puppetca:truststore':
-    ensure       => latest,
-    certificate  => '/etc/puppet/ssl/certs/ca.pem',
-    target       => '/etc/activemq/broker.ts',
-    password     => 'puppet',
-    trustcacerts => true,
-  }
+  # java_ks { 'puppetca:truststore':
+  #   ensure       => latest,
+  #   certificate  => '/etc/puppet/ssl/certs/ca.pem',
+  #   target       => '/etc/activemq/broker.ts',
+  #   password     => 'puppet',
+  #   trustcacerts => true,
+  # }
 }
