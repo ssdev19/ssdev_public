@@ -1,0 +1,21 @@
+# web-rl8 node
+---
+classes:
+  - profile::tomcat
+  - profile::base_linux
+  - profile::java
+  - profile::pwm
+profile::base_linux::postfix: true
+profile::base_linux::nsswitch: false
+# profile::base_linux::ntp: true
+# network::interfaces_hash:
+#   eth0:
+#     type: Ethernet
+#     ipaddress: 140.252.32.187
+#     netmask: 255.255.254.0
+#     gateway: 140.252.32.1
+#     dns1: 140.252.32.125
+#     dns2: 140.252.32.126
+#     peerdns: yes
+#     bootproto: none
+#     onboot: yes
