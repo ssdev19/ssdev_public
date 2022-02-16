@@ -52,7 +52,7 @@ $applicationpath = lookup('application_path')
       source       => $lsst_theme,
       cleanup      => false,
       extract      => true,
-      extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes',
+      extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
       # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
       # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
     }
