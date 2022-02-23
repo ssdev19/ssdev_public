@@ -83,7 +83,7 @@ postfix::manage_root_alias: true
 postfix::inet_interfaces: "localhost"
 postfix::mydestination: "$myhostname, localhost.$mydomain, localhost"
 postfix::relayhost: 'atlantis.lsst.org'
-postfix::root_mail_recipient: 'shahram@belldex.com'
+postfix::root_mail_recipient: 'mysticguy9@yahoo.com'
 postfix::configs:
   # virtual_alias_maps: 
   #   ensure: absent

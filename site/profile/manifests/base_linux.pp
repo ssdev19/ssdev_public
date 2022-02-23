@@ -17,11 +17,11 @@ class profile::base_linux (
 
   # include nsswitch
   if $postfix {
-  include postfix
+    include postfix
   }
   if $graylog {
-  include rsyslog
-  include rsyslog::config
+    include rsyslog
+    include rsyslog::config
   }
 # config: /etc/systemd/system/node_exporter.service
   class { 'prometheus::node_exporter':
@@ -67,9 +67,9 @@ class profile::base_linux (
 # install awscli tool
 # class { 'awscli': }
 if $awscli {
-    Package { [ 'awscli' ]:
-      ensure => installed,
-    }
+  Package { [ 'awscli' ]:
+    ensure => installed,
+  }
   # archive { '/tmp/awscli-bundle.zip':
   #   ensure   => present,
   #   source   => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
