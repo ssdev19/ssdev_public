@@ -19,4 +19,3 @@ network::interfaces_hash:
     peerdns: yes
     bootproto: none
     onboot: yes
-pwmrl8-2.us.lsst.org
