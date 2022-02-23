@@ -20,6 +20,12 @@ class profile::pwm {
     source  => $pwmconfig_source,
     cleanup => false,
   }
+  $dc3cert = lookup('dc3cert')
+  archive { '/tmp/dc3April22.cer' :
+    ensure  => present,
+    source  => $dc3cert,
+    cleanup => false,
+  }
   $pwmkeystore = lookup('pwmkeystore')
   archive { '/etc/pki/keystore' :
     ensure  => present,
