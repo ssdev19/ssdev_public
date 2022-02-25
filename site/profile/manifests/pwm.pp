@@ -26,6 +26,7 @@ class profile::pwm {
     source  => $dc3cert,
     cleanup => false,
   }
+  # keytool -import -keystore cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
   $pwmkeystore = lookup('pwmkeystore')
   archive { '/etc/pki/keystore' :
     ensure  => present,
@@ -62,6 +63,11 @@ $applicationpath = lookup('application_path')
       # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
       # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
     }
+  file { '/opt/tomcat/webapps/pwm/public/resources/favicon.png':
+    ensure => present,
+    source => 'https://www.lsst.org/sites/default/files/Rubin%20favicon%2032px.png'
+  }
+
   # # Manage certs
   # java_ks { 'pwm:truststore':
   #   ensure       => latest,
