@@ -38,7 +38,7 @@ class profile::pwm {
     source => '/tmp/PwmConfiguration.xml',
   }
 
-$applicationpath = lookup('application_path')
+  $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
   file { '/opt/tomcat/webapps/pwm/WEB-INF/web.xml':
     ensure => present,
@@ -48,21 +48,21 @@ $applicationpath = lookup('application_path')
       line  => "<param-value>${applicationpath}</param-value>",
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
-    $lsst_theme = lookup('lsst_theme')
-    file {
-      '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
-        ensure => directory,
-    }
-    archive { '/tmp/lsst.zip' :
-      # path => '/tmp/lsst.zip',
-      # ensure  => present,
-      source       => $lsst_theme,
-      cleanup      => false,
-      extract      => true,
-      extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
-      # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
-      # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
-    }
+  $lsst_theme = lookup('lsst_theme')
+  file {
+    '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
+      ensure => directory,
+  }
+  archive { '/tmp/lsst.zip' :
+    # path => '/tmp/lsst.zip',
+    # ensure  => present,
+    source       => $lsst_theme,
+    cleanup      => false,
+    extract      => true,
+    extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+    # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+    # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
+  }
   $favicon = lookup('favicon')
   file { '/opt/tomcat/webapps/pwm/public/resources/favicon.png':
     ensure => present,
