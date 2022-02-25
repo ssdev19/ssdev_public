@@ -15,6 +15,21 @@ class profile::pwm {
   }
   # using archive directly to destination breaks tomcat installation
   # So it must first go to the tmp folder then compied over to destination.
+  archive { '/tmp/lsst.zip' :
+    # path => '/tmp/lsst.zip',
+    # ensure  => present,
+    source       => $lsst_theme,
+    cleanup      => false,
+    extract      => true,
+    extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+    # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+    # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
+  }
+  $favicon = lookup('favicon')
+  file { '/opt/tomcat/webapps/pwm/public/resources/favicon.png':
+    ensure => present,
+    source => $favicon,
+  }
   archive { '/tmp/PwmConfiguration.xml' :
     ensure  => present,
     source  => $pwmconfig_source,
@@ -53,21 +68,7 @@ class profile::pwm {
     '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
       ensure => directory,
   }
-  archive { '/tmp/lsst.zip' :
-    # path => '/tmp/lsst.zip',
-    # ensure  => present,
-    source       => $lsst_theme,
-    cleanup      => false,
-    extract      => true,
-    extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
-    # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
-    # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
-  }
-  $favicon = lookup('favicon')
-  file { '/opt/tomcat/webapps/pwm/public/resources/favicon.png':
-    ensure => present,
-    source => $favicon,
-  }
+
 
   # # Manage certs
   # java_ks { 'pwm:truststore':
