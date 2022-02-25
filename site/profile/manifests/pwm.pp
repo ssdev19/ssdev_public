@@ -15,6 +15,7 @@ class profile::pwm {
   }
   # using archive directly to destination breaks tomcat installation
   # So it must first go to the tmp folder then compied over to destination.
+  $lsst_theme = lookup('lsst_theme')
   archive { '/tmp/lsst.zip' :
     # path => '/tmp/lsst.zip',
     # ensure  => present,
@@ -63,7 +64,7 @@ class profile::pwm {
       line  => "<param-value>${applicationpath}</param-value>",
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
-  $lsst_theme = lookup('lsst_theme')
+
   file {
     '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
       ensure => directory,
