@@ -1,8 +1,8 @@
 ## Reboot will be required following the installation of this
-class profile::pwm {
+class profile::pwmrl8 {
 
   $pwmconfig_dest = lookup('pwmconfig_dest')
-  $pwmconfig_source = lookup('pwmconfig_source')
+  $pwmrl8config_source = lookup('pwmrl8config_source')
   archive { '/tmp/pwm-1.9.2.war':
     ensure   => present,
     source   => 'https://github.com/pwm-project/pwm/releases/download/v1_9_2/pwm-1.9.2.war',
@@ -17,7 +17,7 @@ class profile::pwm {
   # So it must first go to the tmp folder then compied over to destination.
   archive { '/tmp/PwmConfiguration.xml' :
     ensure  => present,
-    source  => $pwmconfig_source,
+    source  => $pwmrl8config_source,
     cleanup => false,
   }
   $dc3cert = lookup('dc3cert')
