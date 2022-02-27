@@ -51,7 +51,7 @@ $ciphers,
     protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
     purge_connectors      => true,
     additional_attributes => {
-      'redirectPort'        => false,
+      'redirectPort'        => absent,
       'SSLEnabled'          => $https_enabled,
       'maxThreads'          => 150,
       'scheme'              => https,
