@@ -43,7 +43,7 @@ $applicationpath = lookup('application_path')
   file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
     ensure => present,
   }
-  -> file_line { 'Append line to pwm/WEB-INF/web.xml':
+  -> file_line { 'Append line to ROOT/WEB-INF/web.xml':
       path  => $webpath,
       line  => "<param-value>${applicationpath}</param-value>",
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
