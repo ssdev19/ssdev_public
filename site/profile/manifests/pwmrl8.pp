@@ -5,7 +5,7 @@ class profile::pwmrl8 {
   $pwmrl8config_source = lookup('pwmrl8config_source')
   archive { '/tmp/pwm-1.9.2.war':
     ensure   => present,
-    source   => 'https://github.com/pwm-project/ROOT/releases/download/v1_9_2/pwm-1.9.2.war',
+    source   => 'https://github.com/pwm-project/pwm/releases/download/v1_9_2/pwm-1.9.2.war',
     provider => 'wget',
     cleanup  => false,
   }
