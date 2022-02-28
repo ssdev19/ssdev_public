@@ -5,7 +5,7 @@ class profile::pwmrl8 {
   $pwmrl8config_source = lookup('pwmrl8config_source')
   archive { '/tmp/pwm-1.9.2.war':
     ensure   => present,
-    source   => 'https://github.com/pwm-project/pwm/releases/download/v1_9_2/pwm-1.9.2.war',
+    source   => 'https://github.com/pwm-project/ROOT/releases/download/v1_9_2/pwm-1.9.2.war',
     provider => 'wget',
     cleanup  => false,
   }
@@ -40,7 +40,7 @@ class profile::pwmrl8 {
 
 $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
-  file { '/opt/tomcat/webapps/pwm/WEB-INF/web.xml':
+  file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
     ensure => present,
   }
   -> file_line { 'Append line to pwm/WEB-INF/web.xml':
@@ -50,7 +50,7 @@ $applicationpath = lookup('application_path')
     }
     $lsst_theme = lookup('lsst_theme')
     file {
-      '/opt/tomcat/webapps/pwm/public/resources/themes/lsst':
+      '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
         ensure => directory,
     }
     archive { '/tmp/lsst.zip' :
@@ -59,12 +59,12 @@ $applicationpath = lookup('application_path')
       source       => $lsst_theme,
       cleanup      => false,
       extract      => true,
-      extract_path => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
-      # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
-      # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
+      extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+      # creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+      # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
     }
   $favicon = lookup('favicon')
-  file { '/opt/tomcat/webapps/pwm/public/resources/favicon.png':
+  file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
     ensure => present,
     source => $favicon,
   }
