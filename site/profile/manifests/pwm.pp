@@ -15,22 +15,7 @@ include 'archive'
   }
   # using archive directly to destination breaks tomcat installation
   # So it must first go to the tmp folder then compied over to destination.
-  $lsst_theme = lookup('lsst_theme')
-  archive { '/tmp/lsst.zip' :
-    # path => '/tmp/lsst.zip',
-    ensure       => present,
-    source       => $lsst_theme,
-    cleanup      => false,
-    extract      => true,
-    extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes',
-    creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
-    # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
-  }
-  $favicon = lookup('favicon')
-  file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
-    ensure => present,
-    source => $favicon,
-  }
+
   archive { '/tmp/PwmConfiguration.xml' :
     ensure  => present,
     source  => $pwmconfig_source,
@@ -65,9 +50,25 @@ include 'archive'
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
 
-  file {
-    '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
-      ensure => directory,
+    $lsst_theme = lookup('lsst_theme')
+    file {
+      '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
+        ensure => directory,
+    }
+    archive { '/tmp/lsst.zip' :
+      # path => '/tmp/lsst.zip',
+      # ensure  => present,
+      source       => $lsst_theme,
+      cleanup      => false,
+      extract      => true,
+      extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+      # creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+      # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
+    }
+  $favicon = lookup('favicon')
+  file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
+    ensure => present,
+    source => $favicon,
   }
 
 
