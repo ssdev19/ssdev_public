@@ -20,7 +20,7 @@ include 'archive'
     # path => '/tmp/lsst.zip',
     ensure       => present,
     source       => $lsst_theme,
-    cleanup      => true,
+    cleanup      => false,
     extract      => true,
     extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes',
     creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
