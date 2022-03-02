@@ -65,10 +65,10 @@ include 'archive'
       match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
     }
 
-  # file {
-  #   '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
-  #     ensure => directory,
-  # }
+  file {
+    '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
+      ensure => directory,
+  }
 
 
   # # Manage certs
