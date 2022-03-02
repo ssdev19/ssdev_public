@@ -18,12 +18,12 @@ include 'archive'
   $lsst_theme = lookup('lsst_theme')
   archive { '/tmp/lsst.zip' :
     # path => '/tmp/lsst.zip',
-    # ensure  => present,
+    ensure       => present,
     source       => $lsst_theme,
     cleanup      => false,
     extract      => true,
-    extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
-    # creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+    extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes',
+    creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
     # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
   }
   $favicon = lookup('favicon')
