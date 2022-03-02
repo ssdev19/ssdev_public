@@ -20,11 +20,11 @@ include 'archive'
     # path => '/tmp/lsst.zip',
     ensure       => present,
     source       => $lsst_theme,
-    cleanup      => false,
+    cleanup      => true,
     extract      => true,
     extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes',
     creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
-    # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
+    # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
   }
   $favicon = lookup('favicon')
   file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
