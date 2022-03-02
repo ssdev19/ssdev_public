@@ -23,7 +23,7 @@ include 'archive'
     cleanup      => false,
     extract      => true,
     extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes',
-    creates      => '/opt/tomcat/webapps/pwm/public/resources/themes/lsst',
+    creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
     # require      => File['/opt/tomcat/webapps/pwm/public/resources/themes/lsst'],
   }
   $favicon = lookup('favicon')
