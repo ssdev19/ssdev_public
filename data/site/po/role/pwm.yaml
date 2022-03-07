@@ -62,7 +62,7 @@ profile::tomcat::ciphers: |
 cron::job:
   'pwmbackup':
     command: "aws s3 cp %{lookup('pwmconfig_dest')} s3://pwm/%{facts.fqdn}_pwmtest_"
-    minute: 20
+    minute: 24
     hour: 18
     date: '*'
     month: '*'
