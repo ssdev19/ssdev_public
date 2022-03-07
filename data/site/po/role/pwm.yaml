@@ -63,7 +63,7 @@ cron::job:
   'pwmbackup':
     command: "aws s3 cp %{lookup('pwmconfig_dest')} s3://pwm/%{facts.fqdn}-PwmConfiguration"
     minute: 1
-    hour: 19
+    hour: 35
     date: '*'
     month: '*'
     weekday: 0
