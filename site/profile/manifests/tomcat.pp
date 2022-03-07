@@ -59,7 +59,7 @@ $ciphers,
       # 'clientAuth'          => 'false',
       'sslProtocol'         => 'TLS',
       'sslEnabledProtocols' => 'TLSv1.2',
-      'useServerCipherSuitesOrder' => true,
+      # 'useServerCipherSuitesOrder' => true,
       'ciphers'             => $ciphers,
 
       'keystorePass'        => $keystorepass_hide.unwrap,
