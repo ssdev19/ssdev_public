@@ -47,7 +47,7 @@ $ciphers,
   }
   tomcat::config::server::connector { 'default-https':
     catalina_base         => $catalina_base,
-    port                  => ['8443'],
+    port                  => '8443',
     protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
     purge_connectors      => true,
     additional_attributes => {
@@ -59,7 +59,7 @@ $ciphers,
       'clientAuth'          => 'false',
       'sslProtocol'         => 'TLS',
       'sslEnabledProtocols' => 'TLSv1.2',
-      # 'useServerCipherSuitesOrder' => true,
+      'useServerCipherSuitesOrder' => true,
       'ciphers'             => $ciphers,
 
       'keystorePass'        => $keystorepass_hide.unwrap,
