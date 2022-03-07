@@ -66,7 +66,7 @@ cron::job:
     hour: 19
     date: '*'
     month: '*'
-    weekday: 0
+    weekday: '*'
     user: root
     environment:
       - 'MAILTO=root'
