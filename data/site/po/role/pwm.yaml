@@ -61,8 +61,8 @@ profile::tomcat::ciphers: |
   TLS_EMPTY_RENEGOTIATION_INFO_SCSVF
 cron::job:
   'pwmbackup':
-    command: "aws s3 cp /opt/tomcat/webapps/ROOT/WEB-INF/PwmConfiguration.xml s3://pwm/%{facts.fqdn}pwmtest"
-    minute: 10
+    command: "aws s3 cp %{lookup('pwmconfig_dest')} s3://pwm/%{facts.fqdn}_pwmtest_"
+    minute: 20
     hour: 18
     date: '*'
     month: '*'
