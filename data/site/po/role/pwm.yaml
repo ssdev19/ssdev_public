@@ -59,3 +59,16 @@ profile::tomcat::ciphers: |
   TLS_ECDH_ECDSA_WITH_3DES_EDE_CBC_SHA,
   TLS_ECDH_RSA_WITH_3DES_EDE_CBC_SHA,
   TLS_EMPTY_RENEGOTIATION_INFO_SCSVF
+cron::job:
+  'pwmbackup':
+    command: "aws s3 cp /opt/tomcat/webapps/ROOT/WEB-INF/PwmConfiguration.xml s3://pwm/%{facts.fqdn}pwmtest"
+    minute: 10
+    hour: 18
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/bin:/bin"'
+    description: 'pwm backup'
