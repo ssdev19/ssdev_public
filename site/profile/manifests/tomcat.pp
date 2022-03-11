@@ -18,20 +18,7 @@ $ciphers,
     catalina_home => $catalina_home,
     catalina_base => $catalina_base,
   }
-# wait for tomcat service to start 
-  # exec { 'wait for tomcat':
-  #   command     => '/usr/bin/wget --spider --tries 10 --retry-connrefused --no-check-certificate http://localhost:8080/CCSWebTrending/',
-  #   refreshonly => true,
-  #   subscribe   => Service['tomcat'],
-  # }
-    # Installs Java in '/usr/java/jdk-11.0.2+9/bin/'
 
-  # Removes entry in: /opt/tomcat/webapps/manager/META-INF/context.xml
-  # For some reason it does not remove it, had to do it manually
-  # tomcat::config::context::manager { 'org.apache.catalina.valves.RemoteAddrValve':
-  # ensure        => 'absent',
-  # catalina_base => $catalina_base,
-  # }
   file { '/opt/tomcat/webapps/manager/META-INF/context.xml':
     ensure => file,
   }
@@ -99,4 +86,12 @@ $ciphers,
   ensure    => 'running',
   enable    => true,
   }
+  # certs
+  java_ks { 'lsst.org:/etc/pki/keystore':
+  ensure              => latest,
+  certificate         => '/tmp/lsst-2023.key',
+  private_key         => '/tmp/lsst-2023-intermediate.pem',
+  password            => 'changeit',
+  password_fail_reset => true,
+}
 }
