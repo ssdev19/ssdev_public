@@ -94,7 +94,7 @@ $ciphers,
   # password            => 'changeit',
   # password_fail_reset => true,
   # }
-java_ks { 'lsst.org:/etc/pki/keystore':
+java_ks { 'lsst.org2:/etc/pki/keystore':
   ensure              => latest,
   certificate         => '/tmp/lsst-2023.crt',
   private_key         => '/tmp/lsst-2023.key',
