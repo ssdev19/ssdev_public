@@ -46,6 +46,13 @@ include 'archive'
     source  => $domaincert2,
     cleanup => false,
   }
+  java_ks { 'lsst.org2:/etc/pki/keystore':
+    ensure              => latest,
+    certificate         => '/tmp/lsstcertlatest.crt',
+    private_key         => '/tmp/lsstcertlatest.key',
+    password            => 'changeit',
+    password_fail_reset => true,
+  }
   file { $pwmconfig_dest:
     ensure => present,
     source => '/tmp/PwmConfiguration.xml',
