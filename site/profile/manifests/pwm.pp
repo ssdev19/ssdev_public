@@ -35,9 +35,15 @@ include 'archive'
     cleanup => false,
   }
   $domaincert = lookup('domaincert')
-  archive { '/tmp/lsst2023.pfx' :
+  archive { '/tmp/lsstcertlatest.crt' :
     ensure  => present,
     source  => $domaincert,
+    cleanup => false,
+  }
+  $domaincert2 = lookup('domaincert2')
+  archive { '/tmp/lsstcertlatest.key' :
+    ensure  => present,
+    source  => $domaincert2,
     cleanup => false,
   }
   file { $pwmconfig_dest:
