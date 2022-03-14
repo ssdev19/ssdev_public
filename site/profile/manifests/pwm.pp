@@ -35,7 +35,7 @@ include 'archive'
     cleanup => false,
   }
   $domaincert = lookup('domaincert')
-  archive { '/tmp/domaincert' :
+  archive { '/tmp/domaincert.p7b' :
     ensure  => present,
     source  => $domaincert,
     cleanup => false,
