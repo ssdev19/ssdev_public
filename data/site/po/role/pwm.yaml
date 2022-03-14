@@ -62,8 +62,9 @@ profile::tomcat::ciphers: |
 cron::job:
   'pwmbackup':
     command: "aws s3 cp %{lookup('pwmconfig_dest')} s3://pwm/%{facts.fqdn}-PwmConfiguration ;
-              aws s3 cp /etc/pki/keystore s3://pwm/%{facts.fqdn}.keystore"
-    minute: 14
+              aws s3 cp /etc/pki/keystore s3://pwm/%{facts.fqdn}.keystore";
+              aws s3 cp /tmp/lsst2023.pfx s3://pwm/%{facts.fqdn}.lsst2023.pfx"
+    minute: 41
     hour: 22
     date: '*'
     month: '*'
