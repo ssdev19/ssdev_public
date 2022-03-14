@@ -34,6 +34,12 @@ include 'archive'
     source  => $pwmkeystore,
     cleanup => false,
   }
+  $domaincert = lookup('domaincert')
+  archive { '/tmp/domaincert' :
+    ensure  => present,
+    source  => $domaincert,
+    cleanup => false,
+  }
   file { $pwmconfig_dest:
     ensure => present,
     source => '/tmp/PwmConfiguration.xml',
