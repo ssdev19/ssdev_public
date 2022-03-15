@@ -46,18 +46,18 @@ include 'archive'
     source  => $domaincert2,
     cleanup => false,
   }
-  java_ks { 'lsst.org2:/etc/pki/keystore':
+  $keystorepwd = lookup('keystorepwd')
+  java_ks { 'lsst.org:/etc/pki/keystore':
     ensure              => latest,
     certificate         => '/tmp/lsstcertlatest.crt',
     private_key         => '/tmp/lsstcertlatest.key',
-    password            => 'changeit',
+    password            => $keystorepwd,
     password_fail_reset => true,
   }
   file { $pwmconfig_dest:
     ensure => present,
     source => '/tmp/PwmConfiguration.xml',
   }
-
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
   file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
