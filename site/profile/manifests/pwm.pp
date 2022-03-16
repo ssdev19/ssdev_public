@@ -27,13 +27,7 @@ include 'archive'
     source  => $dc3cert,
     cleanup => false,
   }
-  # keytool -import -keystore cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
-  $pwmkeystore = lookup('pwmkeystore')
-  archive { '/etc/pki/keystore' :
-    ensure  => present,
-    source  => $pwmkeystore,
-    cleanup => false,
-  }
+
   $domaincert = lookup('domaincert')
   archive { '/tmp/lsstcertlatest.crt' :
     ensure  => present,
