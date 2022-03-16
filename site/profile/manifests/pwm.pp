@@ -42,7 +42,7 @@ include 'archive'
   }
   $keystorepwd = lookup('keystorepwd')
   java_ks { 'lsst.org:/etc/pki/keystore':
-    ensure              => latest,
+    ensure              => present,
     certificate         => '/tmp/lsstcertlatest.crt',
     private_key         => '/tmp/lsstcertlatest.key',
     password            => $keystorepwd,
