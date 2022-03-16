@@ -39,7 +39,7 @@ $ciphers,
     source  => $pwmkeystore,
     cleanup => false,
   }
-  -> tomcat::config::server::connector { 'default-https':
+    tomcat::config::server::connector { 'default-https':
       catalina_base         => $catalina_base,
       port                  => '8443',
       protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
