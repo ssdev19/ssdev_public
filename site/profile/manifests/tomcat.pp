@@ -32,32 +32,25 @@ $ciphers,
     roles         => ['admin-gui, manager-gui, manager-script'],
     catalina_base => $catalina_base,
   }
-  # keytool -import -keystore cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
-  $pwmkeystore = lookup('pwmkeystore')
-  archive { '/etc/pki/keystore' :
-    ensure  => present,
-    source  => $pwmkeystore,
-    cleanup => false,
+  tomcat::config::server::connector { 'default-https':
+    catalina_base         => $catalina_base,
+    port                  => '8443',
+    protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
+    purge_connectors      => true,
+    additional_attributes => {
+      'SSLEnabled'                 => $https_enabled,
+      'maxThreads'                 => 150,
+      'scheme'                     => https,
+      'secure'                     => true, # bool2str($https_connector_secure),
+      'clientAuth'                 => 'false',
+      'sslProtocol'                => 'TLS',
+      'sslEnabledProtocols'        => 'TLSv1.2',
+      'useServerCipherSuitesOrder' => true,
+      'ciphers'                    => $ciphers,
+      'keystorePass'               => $keystorepass_hide.unwrap,
+      'keystoreFile'               => '/etc/pki/keystore',
+    },
   }
-    tomcat::config::server::connector { 'default-https':
-      catalina_base         => $catalina_base,
-      port                  => '8443',
-      protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
-      purge_connectors      => true,
-      additional_attributes => {
-        'SSLEnabled'                 => $https_enabled,
-        'maxThreads'                 => 150,
-        'scheme'                     => https,
-        'secure'                     => true, # bool2str($https_connector_secure),
-        'clientAuth'                 => 'false',
-        'sslProtocol'                => 'TLS',
-        'sslEnabledProtocols'        => 'TLSv1.2',
-        'useServerCipherSuitesOrder' => true,
-        'ciphers'                    => $ciphers,
-        'keystorePass'               => $keystorepass_hide.unwrap,
-        'keystoreFile'               => '/etc/pki/keystore',
-      },
-    }
 # Getting tomcat::service to work was too painful
   $tomcat_service = @("EOT")
     [Unit]
