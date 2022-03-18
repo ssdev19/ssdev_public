@@ -21,10 +21,10 @@ include 'archive'
     source  => $pwmconfig_source,
     cleanup => false,
   }
-  $dc3cert = lookup('dc3cert')
-  archive { '/tmp/dc3April22.cer' :
+  $dc2cert = lookup('dc2cert')
+  archive { '/tmp/DC2Cert.cer' :
     ensure  => present,
-    source  => $dc3cert,
+    source  => $dc2cert,
     cleanup => false,
   }
   # keytool -import -keystore cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
