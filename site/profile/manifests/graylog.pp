@@ -1,5 +1,5 @@
 # graylog
-class profile::grafana {
+class profile::graylog {
   class { '::graylog::repository':
     version => '4.2'
   }
