@@ -1,10 +1,35 @@
 # graylog
 class profile::graylog {
   include java
-  include elasticsearch
     file { '/etc/ssl/graylog':
       ensure => directory,
     }
+  $pwmkeystore = lookup('pwmkeystore')
+  archive { '/etc/pki/keystore' :
+    ensure  => present,
+    source  => $pwmkeystore,
+    cleanup => false,
+  }
+  $domaincert = lookup('domaincert')
+  archive { '/tmp/lsstcertlatest.crt' :
+    ensure  => present,
+    source  => $domaincert,
+    cleanup => false,
+  }
+  $domaincert2 = lookup('domaincert2')
+  archive { '/tmp/lsstcertlatest.key' :
+    ensure  => present,
+    source  => $domaincert2,
+    cleanup => false,
+  }
+  $keystorepwd = lookup('keystorepwd')
+  java_ks { 'lsst.org:/etc/pki/keystore':
+    ensure              => latest,
+    certificate         => '/tmp/lsstcertlatest.crt',
+    private_key         => '/tmp/lsstcertlatest.key',
+    password            => $keystorepwd,
+    password_fail_reset => true,
+  }
 class { 'mongodb::globals':
   manage_package_repo => true,
 }
