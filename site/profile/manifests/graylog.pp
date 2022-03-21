@@ -4,15 +4,7 @@ class profile::graylog {
     file { '/etc/ssl/graylog':
       ensure => directory,
     }
-  ssl::self_signed_certficate { $::fqdn:
-  common_name      => $::fqdn,
-  email_address    => 'root@example.de',
-  country          => 'DE',
-  organization     => 'Example GmbH',
-  days             => 730,
-  directory        => '/etc/ssl/graylog/',
-  subject_alt_name => "DNS:*.${::domain}, DNS:${::domain}",
-}
+
   class { '::graylog::repository':
     version => '4.2'
   }
