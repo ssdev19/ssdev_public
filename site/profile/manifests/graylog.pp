@@ -1,5 +1,6 @@
 # graylog
 class profile::graylog {
+  include java
   class { '::graylog::repository':
     version => '4.2'
   }
@@ -30,7 +31,7 @@ class profile::graylog {
         mongodb_uri                                        => "mongodb://mongouser:mongopass@${fqdn}:27017",
       },
       require => Class[
-        '::java',
+        'java',
       ],
   }
 }
