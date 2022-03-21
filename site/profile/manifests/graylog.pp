@@ -23,7 +23,7 @@ class profile::graylog {
         http_enable_tls                                    => true,
         http_tls_cert_file                                 => '/etc/ssl/graylog/graylog_cert_chain.crt',
         http_tls_key_file                                  => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
-        http_tls_key_password                              => 'sslkey-password',
+        http_tls_key_password                              => 'changeit',
         rotation_strategy                                  => 'time',
         retention_strategy                                 => 'delete',
         elasticsearch_max_time_per_index                   => '1d',
