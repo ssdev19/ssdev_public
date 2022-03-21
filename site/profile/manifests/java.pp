@@ -2,6 +2,7 @@
 class profile::java ( String
 $version,
 $jdk_version,
+$j_version,
 $version_minor,
 $version_major,
 $jre_version,
@@ -24,7 +25,7 @@ $mem,
   # }
   java::adopt { $distribution :
     ensure  => 'present',
-    version => $jre_version,
+    version => $j_version,
     java    => $distribution,
   }
   ### export _JAVA_OPTIONS="-Xmx1g"
