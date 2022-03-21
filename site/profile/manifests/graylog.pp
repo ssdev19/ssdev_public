@@ -1,6 +1,7 @@
 # graylog
 class profile::graylog {
   include java
+  include elasticsearch
     file { '/etc/ssl/graylog':
       ensure => directory,
     }
