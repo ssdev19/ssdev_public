@@ -92,3 +92,4 @@ mod 'elastic-elasticsearch', '7.0.0'
 mod 'elastic-elastic_stack', '7.0.0' #dependency for elastic
 mod 'puppet-yum', '5.3.1'
 mod 'richardc-datacat', '0.6.2'
+mod 'fnerdwq-ssl', '0.0.4'
