@@ -42,11 +42,11 @@ class { 'elasticsearch':
   # repo_version => '8.x',
   manage_repo  => true,
 }
-  elasticsearch::instance { 'graylog':
-  config => {
-    'cluster.name' => 'graylog',
-    'network.host' => '127.0.0.1',
-  }
+  # elasticsearch::instance { 'graylog':
+  # config => {
+  #   'cluster.name' => 'graylog',
+  #   'network.host' => '127.0.0.1',
+  # }
 }
   class { '::graylog::repository':
     version => '4.2'
