@@ -48,7 +48,7 @@ mod 'puppet-postfix', '2.0.0'
 mod 'camptocamp-augeas', '1.9.0'
 mod 'puppet-alternatives', '4.0.0' # postfix dependency
 mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
-mod 'puppet-systemd', '3.5.2'
+mod 'puppet-systemd', '3.8.0'
 mod 'bodgit/scl', '1.0.1'
 mod 'puppetlabs-postgresql', '7.5.0' # Foreman dependency
 mod 'puppet-extlib', '5.2.1'
@@ -86,3 +86,10 @@ mod 'puppet-nginx', '3.2.0'
 mod 'puppetlabs-docker', '4.1.2'
 mod 'trlinkin-nsswitch', '2.2.0'
 mod 'puppet-chrony', '2.1.0'
+mod 'graylog-graylog', '1.0.0'
+mod 'puppet-mongodb', '4.1.1'
+mod 'puppet-zypprepo', '4.0.1' # dependency for mongodb
+mod 'elastic-elasticsearch', '7.0.0'
+mod 'elastic-elastic_stack', '7.0.0' #dependency for elastic
+mod 'puppet-yum', '5.3.1'
+mod 'richardc-datacat', '0.6.2'
