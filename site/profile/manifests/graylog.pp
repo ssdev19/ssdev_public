@@ -4,12 +4,12 @@ class profile::graylog {
     file { '/etc/ssl/graylog':
       ensure => directory,
     }
-  $pwmkeystore = lookup('pwmkeystore')
-  archive { '/etc/pki/keystore' :
-    ensure  => present,
-    source  => $pwmkeystore,
-    cleanup => false,
-  }
+  # $pwmkeystore = lookup('pwmkeystore')
+  # archive { '/etc/pki/keystore' :
+  #   ensure  => present,
+  #   source  => $pwmkeystore,
+  #   cleanup => false,
+  # }
   $domaincert = lookup('domaincert')
   archive { '/tmp/lsstcertlatest.crt' :
     ensure  => present,
