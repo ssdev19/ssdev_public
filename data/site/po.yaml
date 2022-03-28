@@ -94,3 +94,4 @@ postfix::configs:
 # puppet_agent::package_version: 6.25.1
 puppet_agent::config:
   - {section: 'agent', setting: 'show_diff', value: 'true'}
+puppet::report: true

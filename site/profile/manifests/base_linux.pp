@@ -3,7 +3,7 @@ class profile::base_linux (
   Boolean $awscli   = false,
   Boolean $postfix  = false,
   Boolean $graylog  = false,
-  Boolean $nsswitch = true,
+  Boolean $nsswitch = false,
   Boolean $ntp      = false,
 ) {
   include network
