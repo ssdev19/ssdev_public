@@ -57,7 +57,7 @@ include 'archive'
     ensure              => latest,
     certificate         => '/tmp/lsstcertlatest.crt',
     private_key         => '/tmp/lsstcertlatest.key',
-    chain               => '/tmp/lsstcertlatestintermediate.pem'
+    chain               => '/tmp/lsstcertlatestintermediate.pem',
     password            => $keystorepwd,
     password_fail_reset => true,
   }
