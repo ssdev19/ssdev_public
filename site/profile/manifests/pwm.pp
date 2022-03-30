@@ -1,7 +1,7 @@
 ## Reboot will be required following the installation of this
 class profile::pwm {
 include 'archive'
-include java_ks
+include ::java_ks
   $pwmconfig_dest = lookup('pwmconfig_dest')
   $pwmconfig_source = lookup('pwmconfig_source')
   archive { '/tmp/pwm-1.9.2.war':
