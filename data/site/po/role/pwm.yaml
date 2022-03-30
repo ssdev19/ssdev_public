@@ -75,3 +75,9 @@ cron::job:
       - 'MAILTO=root'
       - 'PATH="/usr/bin:/bin"'
     description: 'pwm backup'
+java_ks::config::params:
+  'dc3:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+    ensure: latest
+    certificate: '/tmp/DC3Cert.cer'
+    password: "%{lookup('keystorepwd')}"
+    trustcacerts: true

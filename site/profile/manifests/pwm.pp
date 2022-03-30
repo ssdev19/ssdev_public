@@ -100,18 +100,18 @@ include 'archive'
 
 
   # # Manage certs
-  java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
-    ensure       => latest,
-    certificate  => '/tmp/DC2Cert.cer',
-    # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
-    password     => $keystorepwd, # Must be at least 6 characters
-    trustcacerts => true,
-  }
-  java_ks { 'dc3.lsst.local':
-    ensure       => latest,
-    certificate  => '/tmp/DC3Cert.cer',
-    target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
-    password     => $keystorepwd, # Must be at least 6 characters
-    trustcacerts => true,
-  }
+  # java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+  #   ensure       => latest,
+  #   certificate  => '/tmp/DC2Cert.cer',
+  #   # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
+  #   password     => $keystorepwd, # Must be at least 6 characters
+  #   trustcacerts => true,
+  # }
+  # java_ks { 'dc3.lsst.local':
+  #   ensure       => latest,
+  #   certificate  => '/tmp/DC3Cert.cer',
+  #   target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
+  #   password     => $keystorepwd, # Must be at least 6 characters
+  #   trustcacerts => true,
+  # }
 }
