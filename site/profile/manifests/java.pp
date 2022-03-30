@@ -24,7 +24,7 @@ $mem,
   #   java          => 'jdk',
   # }
   java::adopt { $distribution :
-    ensure  => 'present',
+    # ensure  => 'present',
     version => $j_version,
     java    => $distribution,
   }
