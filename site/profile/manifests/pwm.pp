@@ -28,6 +28,7 @@ include 'archive'
     cleanup => false,
   }
   # keytool -import -keystore cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
+  # keytool -delete -noprompt -alias lsst.org  -keystore /etc/pki/keystore -storepass ${keystore.pass}
   $pwmkeystore = lookup('pwmkeystore')
   archive { '/etc/pki/keystore' :
     ensure  => present,
@@ -99,11 +100,11 @@ include 'archive'
 
 
   # # Manage certs
-  # java_ks { 'pwm:truststore':
-  #   ensure       => latest,
-  #   certificate  => '/tmp/ca.cert',
-  #   target       => '/usr/java/jdk-11.0.2+9/lib/security/test.cert',
-  #   password     => 'passpass', # Must be at least 6 characters
-  #   trustcacerts => true,
-  # }
+  java_ks { 'pwm:truststore':
+    ensure       => latest,
+    certificate  => '/tmp/DC2Cert.cer',
+    target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
+    # password     => $keystorepwd, # Must be at least 6 characters
+    trustcacerts => true,
+  }
 }
