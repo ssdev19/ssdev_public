@@ -100,7 +100,7 @@ include 'archive'
 
 
   # # Manage certs
-  java_ks { 'pwm:truststore':
+  java_ks { 'dc2.lsst.local:truststore':
     ensure       => latest,
     certificate  => '/tmp/DC2Cert.cer',
     target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
