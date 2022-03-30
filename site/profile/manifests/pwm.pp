@@ -55,14 +55,14 @@ include java_ks::config
     cleanup => false,
   }
   $keystorepwd = lookup('keystorepwd')
-  # java_ks { 'lsst.org:/etc/pki/keystore':
-  #   ensure              => latest,
-  #   certificate         => '/tmp/lsstcertlatest.crt',
-  #   private_key         => '/tmp/lsstcertlatest.key',
-  #   chain               => '/tmp/lsstcertlatestintermediate.pem',
-  #   password            => $keystorepwd,
-  #   password_fail_reset => true,
-  # }
+  java_ks { 'lsst.org:/etc/pki/keystore':
+    ensure              => latest,
+    certificate         => '/tmp/lsstcertlatest.crt',
+    private_key         => '/tmp/lsstcertlatest.key',
+    chain               => '/tmp/lsstcertlatestintermediate.pem',
+    password            => $keystorepwd,
+    password_fail_reset => true,
+  }
   file { $pwmconfig_dest:
     ensure => present,
     source => '/tmp/PwmConfiguration.xml',
