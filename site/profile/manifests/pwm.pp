@@ -27,7 +27,7 @@ include 'archive'
     source  => $dc2cert,
     cleanup => false,
   }
-  # keytool -import -keystore cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
+  # keytool -import -keystore /usr/java/jdk-11.0.2+9-jre/lib/security/cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
   # keytool -delete -noprompt -alias lsst.org  -keystore /etc/pki/keystore -storepass ${keystore.pass}
   $pwmkeystore = lookup('pwmkeystore')
   archive { '/etc/pki/keystore' :
@@ -100,14 +100,14 @@ include 'archive'
 
 
   # # Manage certs
-  java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts2':
+  java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
     ensure       => latest,
     certificate  => '/tmp/DC2Cert.cer',
     # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
     password     => $keystorepwd, # Must be at least 6 characters
     trustcacerts => true,
   }
-  java_ks { 'dc3.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts2':
+  java_ks { 'dc3.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
     ensure       => latest,
     certificate  => '/tmp/DC3Cert.cer',
     # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
