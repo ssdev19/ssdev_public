@@ -81,3 +81,4 @@ java_ks::config::params:
     certificate: '/tmp/DC3Cert.cer'
     password: "%{lookup('keystorepwd')}"
     trustcacerts: true
+    password_fail_reset: true
