@@ -107,7 +107,7 @@ include java_ks::config
     # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
     password     => $keystorepwd, # Must be at least 6 characters
     trustcacerts => true,
-    password_fail_reset => true,
+    # password_fail_reset => true,
   }
   java_ks { 'dc3.lsst.local':
     ensure       => latest,
@@ -115,7 +115,7 @@ include java_ks::config
     target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
     password     => $keystorepwd, # Must be at least 6 characters
     trustcacerts => true,
-    password_fail_reset => true,
+    # password_fail_reset => true,
   }
   #   exec { 'add dc certs to cacerts':
   #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
