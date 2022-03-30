@@ -27,7 +27,7 @@ $mem,
     ensure  => 'present',
     version => $j_version,
     java    => $distribution,
-    unless  => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts'
+    # unless  => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts'
   }
   ### export _JAVA_OPTIONS="-Xmx1g"
   exec { 'set java heap size ':
