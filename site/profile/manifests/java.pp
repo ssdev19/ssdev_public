@@ -34,8 +34,8 @@ $mem,
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
     command => "sudo -s export _JAVA_OPTIONS=${mem}",
   }
-  exec { 'set java path':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "sudo -s export PATH=${java_path}",
-  }
+  # exec { 'set java path':
+  #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+  #   command => "sudo -s export PATH=${java_path}",
+  # }
 }
