@@ -65,16 +65,7 @@ cron::job:
       - 'MAILTO=root'
       - 'PATH="/usr/bin:/bin"'
     description: 'pwm backup'
-profile::java::version: 'latest'
-profile::java::distribution: 'jre'
-profile::java::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
-profile::java::j_version: '11'
-profile::java::jre_version: '11'
-profile::java::jdk_version: '8'
-profile::java::version_major: '8u202'
-profile::java::version_minor: 'b08'
-profile::java::java_path: '/usr/java/jdk-11.0.2+9-jre/bin:$PATH'
-profile::java::mem: '-Xmx1g'
+
 # java_ks::config::params:
 #   'dc3:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
 #     ensure: latest
