@@ -23,12 +23,15 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-  java::adopt { $distribution :
-    ensure  => 'present',
-    version => $j_version,
-    java    => $distribution,
-    # require => File['/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts']
-  }
+    file { '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+    ensure => present,
+    }
+    ->  java::adopt { $distribution :
+      ensure  => 'present',
+      version => $j_version,
+      java    => $distribution,
+      # require => File['/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts']
+    }
   ### export _JAVA_OPTIONS="-Xmx1g"
   exec { 'set java heap size ':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
