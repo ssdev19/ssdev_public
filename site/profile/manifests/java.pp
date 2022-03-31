@@ -11,11 +11,11 @@ $java_home,
 $java_path,
 $mem,
 ){
-  class { 'java':
-    distribution => $distribution,
-    version      => $version,
-    java_home    => $java_home,
-  }
+  # class { 'java':
+  #   distribution => $distribution,
+  #   version      => $version,
+  #   java_home    => $java_home,
+  # }
   # java::adopt { 'jdk' :
   #   ensure        => 'present',
   #   version       => $jdk_version,
@@ -24,8 +24,8 @@ $mem,
   #   java          => 'jdk',
   # }
     java::adopt { $distribution :
-      # ensure  => 'present',
-      # version => installed,
+      ensure  => 'present',
+      version => $j_version,
       java    => $distribution,
       # require => File['/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts']
     }
