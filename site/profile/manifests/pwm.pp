@@ -28,6 +28,12 @@ include java_ks::config
     source  => $dc2cert,
     cleanup => false,
   }
+  $dc3cert = lookup('dc3cert')
+  archive { '/tmp/DC3Cert.cer' :
+    ensure  => present,
+    source  => $dc3cert,
+    cleanup => false,
+  }
   # keytool -import -keystore /usr/java/jdk-11.0.2+9-jre/lib/security/cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
   # keytool -delete -noprompt -alias lsst.org  -keystore /etc/pki/keystore -storepass ${keystore.pass}
   $pwmkeystore = lookup('pwmkeystore')
@@ -109,14 +115,14 @@ include java_ks::config
     trustcacerts => true,
     # password_fail_reset => true,
   }
-  # java_ks { 'dc3.lsst.local':
-  #   ensure       => latest,
-  #   certificate  => '/tmp/DC3Cert.cer',
-  #   target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
-  #   password     => $keystorepwd, # Must be at least 6 characters
-  #   trustcacerts => true,
-  #   # password_fail_reset => true,
-  # }
+  java_ks { 'dc3.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+    ensure       => latest,
+    certificate  => '/tmp/DC3Cert.cer',
+    # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
+    password     => $keystorepwd, # Must be at least 6 characters
+    trustcacerts => true,
+    # password_fail_reset => true,
+  }
   #   exec { 'add dc certs to cacerts':
   #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
   #   command => "sudo -s keytool -import -trustcacerts 'yes' -keystore /usr/java/jdk-11.0.2+9-jre/lib/security/cacerts -file /tmp/DC2Cert.cer -alias dc2.lsst.local -storepass ${keystorepwd}",
