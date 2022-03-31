@@ -23,7 +23,7 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-    java::adopt { 'java-1.8.0-openjdk' :
+    java::adopt { 'jre' :
       ensure  => 'present',
       version => $j_version,
       java    => $distribution,
