@@ -24,7 +24,7 @@ $mem,
   #   java          => 'jdk',
   # }
     java::adopt { 'jre' :
-      ensure  => 'present',
+      ensure  => '1:1.8.0.322.b06-1.el7_9',
       version => $j_version,
       java    => $distribution,
       # basedir => '/usr/java/',
