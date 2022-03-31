@@ -11,11 +11,11 @@ $java_home,
 $java_path,
 $mem,
 ){
-  # class { 'java':
-  #   distribution => $distribution,
-  #   version      => $version,
-  #   java_home    => $java_home,
-  # }
+  class { 'java':
+    distribution => $distribution,
+    version      => $version,
+    java_home    => $java_home,
+  }
   # java::adopt { 'jdk' :
   #   ensure        => 'present',
   #   version       => $jdk_version,
