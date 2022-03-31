@@ -23,7 +23,7 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-    file { '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+    file { '/usr/java/jdk-11.0.2+9-jre/lib/security/':
     ensure => present,
     }
     ->  java::adopt { $distribution :
