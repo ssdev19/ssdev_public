@@ -11,11 +11,10 @@ $java_home,
 $java_path,
 $mem,
 ){
-  class { 'java':
-    distribution => $distribution,
-    version      => $version,
-    java_home    => $java_home,
-  }
+class { 'java':
+  distribution => 'jre',
+}
+
   # java::adopt { 'jdk' :
   #   ensure        => 'present',
   #   version       => $jdk_version,
@@ -23,19 +22,19 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-    java::adopt { 'jre' :
-      ensure  => 'jdk-11.0.2+9-jre',
-      version => $j_version,
-      java    => $distribution,
-      # basedir => '/usr/java/',
-    }
+    # java::adopt { 'jre' :
+    #   ensure  => 'jdk-11.0.2+9-jre',
+    #   version => $j_version,
+    #   java    => $distribution,
+    #   # basedir => '/usr/java/',
+    # }
   ### export _JAVA_OPTIONS="-Xmx1g"
   exec { 'set java heap size ':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
     command => "sudo -s export _JAVA_OPTIONS=${mem}",
   }
-  exec { 'set java path':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "sudo -s export PATH=${java_path}",
-  }
+  # exec { 'set java path':
+  #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+  #   command => "sudo -s export PATH=${java_path}",
+  # }
 }
