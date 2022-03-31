@@ -23,11 +23,10 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-    java::adopt { 'AdoptOpenJDK java jre 11 11.0.2 9' :
+    java::adopt { 'java-1.8.0-openjdk' :
       ensure  => 'present',
       version => $j_version,
       java    => $distribution,
-      subscribe => File['/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts'],
       # basedir => '/usr/java/',
     }
   ### export _JAVA_OPTIONS="-Xmx1g"
