@@ -27,7 +27,7 @@ $mem,
       ensure  => 'present',
       version => $j_version,
       java    => $distribution,
-      basedir => $java_home,
+      # basedir => $java_home,
     }
   ### export _JAVA_OPTIONS="-Xmx1g"
   exec { 'set java heap size ':
