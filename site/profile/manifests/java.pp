@@ -11,6 +11,14 @@ $java_home,
 $java_path,
 $mem,
 ){
+  exec { 'set java heap size ':
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    command => "sudo -s export _JAVA_OPTIONS=${mem}",
+  }
+  exec { 'set java path':
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    command => "sudo -s export PATH=${java_path}",
+  }
   # class { 'java':
   #   distribution => $distribution,
   #   version      => $version,
@@ -30,12 +38,4 @@ $mem,
       # require => File['/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts']
     }
   ### export _JAVA_OPTIONS="-Xmx1g"
-  exec { 'set java heap size ':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "sudo -s export _JAVA_OPTIONS=${mem}",
-  }
-  exec { 'set java path':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "sudo -s export PATH=${java_path}",
-  }
 }
