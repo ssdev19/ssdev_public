@@ -24,7 +24,7 @@ $mem,
   #   java          => 'jdk',
   # }
   java::adopt { $distribution :
-    ensure  => 'installed',
+    ensure  => 'present',
     version => $j_version,
     java    => $distribution,
     # require => File['/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts']
