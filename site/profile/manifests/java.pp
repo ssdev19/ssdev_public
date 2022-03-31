@@ -23,12 +23,12 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-    # java::adopt { $distribution :
-    #   ensure  => 'present',
-    #   version => $j_version,
-    #   java    => $distribution,
-    #   # basedir => '/usr/java/',
-    # }
+    java::adopt { 'AdoptOpenJDK java jre 11 11.0.2 9' :
+      ensure  => 'present',
+      version => $j_version,
+      java    => $distribution,
+      # basedir => '/usr/java/',
+    }
   ### export _JAVA_OPTIONS="-Xmx1g"
   exec { 'set java heap size ':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
