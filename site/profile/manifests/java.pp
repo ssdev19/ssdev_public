@@ -13,7 +13,7 @@ $mem,
 ){
   class { 'java':
     distribution => $distribution,
-    version      => $j_version,
+    version      => $version,
     # java_home    => $java_home,
   }
   # java::adopt { 'jdk' :
