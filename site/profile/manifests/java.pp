@@ -11,9 +11,10 @@ $java_home,
 $java_path,
 $mem,
 ){
-class { 'java' :
-  package => 'java-1.8.0-openjdk-devel',
+class { 'java':
+  distribution => 'jre',
 }
+
 
   # java::adopt { 'jdk' :
   #   ensure        => 'present',
