@@ -30,7 +30,7 @@ $mem,
       version_major => '11.0.2',
       version_minor => '9',
       # basedir => '/usr/java/',
-    } 
+    }
   ### export _JAVA_OPTIONS="-Xmx1g"
   # exec { 'set java heap size ':
   #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
