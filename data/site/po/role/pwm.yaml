@@ -1,11 +1,11 @@
 ---
-classes:
-  - profile::tomcat
-  - profile::base_linux
-  - profile::java
-  - profile::pwm
 profile::base_linux::awscli: true
 # profile::base_linux::gralog: true
+classes:
+  - profile::java
+  - profile::tomcat
+  - profile::base_linux
+  - profile::pwm
 profile::java::version: 'latest'
 profile::java::distribution: 'jre'
 profile::java::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'

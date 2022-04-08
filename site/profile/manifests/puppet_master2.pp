@@ -26,8 +26,8 @@ class profile::puppet_master2 {
   # submit support to puppetlabs/puppet_agent for managing only the yumrepo.
   yumrepo { 'pc_repo':
     ensure   => 'present',
-    baseurl  => 'http://yum.puppet.com/puppet6/el/7/x86_64',
-    descr    => 'Puppet Labs puppet6 Repository',
+    baseurl  => 'https://yum.puppet.com/puppet7/el/7/x86_64',
+    descr    => 'Puppet Labs puppet7 Repository',
     enabled  => true,
     gpgcheck => '1',
     gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
