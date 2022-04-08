@@ -1,4 +1,9 @@
 ---
+classes:
+  - profile::base_linux
+  - profile::java
+  - profile::tomcat
+  - profile::pwm
 profile::base_linux::awscli: true
 # profile::base_linux::gralog: true
 profile::java::version: 'latest'
