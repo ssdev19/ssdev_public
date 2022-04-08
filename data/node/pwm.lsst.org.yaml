@@ -4,6 +4,7 @@ classes:
   - profile::tomcat
   - profile::base_linux
   - profile::pwm
+profile::base_linux::awscli: true
 profile::base_linux::postfix: true
 network::interfaces_hash:
   eth0:
