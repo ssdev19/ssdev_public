@@ -62,6 +62,12 @@ foreman_proxy::trusted_hosts: ["%{facts.fqdn}"]
 foreman_proxy::foreman_hosts: ["%{facts.fqdn}"]
 foreman_proxy::version: '3.2.0'
 foreman::cli::version: "%{lookup('foreman::version')}"
+foreman_proxy::ssl_port: 8443
+foreman_proxy::ssl: true
+foreman_proxy::tftp_listen_on: "https"
+foreman_proxy::tftp_managed: true
+foreman_proxy::tftp_manage_wget: true
+foreman_proxy::tftp: true
 foreman::repo::configure_scl_repo: false
 # foreman::repo::repo: "3.2.0"
 foreman::unattended: true
@@ -81,9 +87,9 @@ puppet::server_max_active_instances: 8  # see https://puppet.com/docs/puppet/6/s
 # puppet::server_jvm_min_heap_size: *jvm_heap
 # puppet::server_jvm_extra_args: ["-XX:ReservedCodeCacheSize=1G", "-Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger"]
 puppet::server::puppetdb::soft_write_failure: true
-puppet::server_puppetserver_version: &server_version "7.15.0"  # XXX does this do anything?
+# puppet::server_puppetserver_version: &server_version "7.15.0"  # XXX does this do anything?
 puppet::server_reports: "foreman,puppetdb"
-puppet::server_storeconfigs: false
+puppet::server_storeconfigs: true
 puppet::server: true
 puppet::server::puppetserver_metrics: false  # disabled for performance
 puppet::server::puppetserver_profiler: false  # disabled for performance
