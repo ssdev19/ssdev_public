@@ -1,8 +1,20 @@
 # puppet master config
 class profile::puppet_master2 {
   include r10k
+  include foreman
+  include foreman::cli
+  include foreman::compute::libvirt
+  include foreman::compute::vmware
+  include foreman::plugin::remote_execution
+  include foreman::plugin::tasks
+  include foreman_proxy
+  include foreman_proxy::plugin::dns::route53
+  include foreman_proxy::plugin::dynflow
+  include foreman_proxy::plugin::remote_execution::ssh
+  include foreman::repo
+  include puppet
 # Agent and puppetmaster:
-class { '::puppet': server => true }
+# class { '::puppet': server => true }
   # The toml gem is required for grafana ldap.
   # Be sure puppetserver service is restarted after the first run.
     # package { 'toml':
