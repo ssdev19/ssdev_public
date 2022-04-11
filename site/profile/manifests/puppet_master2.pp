@@ -2,14 +2,14 @@
 class profile::puppet_master2 {
   include r10k
   include foreman
-  include foreman::cli
+  # include foreman::cli
   # include foreman::compute::libvirt
   include foreman::plugin::remote_execution
   include foreman::plugin::tasks
   # include foreman_proxy
   # include foreman_proxy::plugin::dynflow
-  include foreman_proxy::plugin::remote_execution::ssh
-  include foreman::repo
+  # include foreman_proxy::plugin::remote_execution::ssh
+  # include foreman::repo
   include puppet
 # Agent and puppetmaster:
 # class { '::puppet': server => true }
