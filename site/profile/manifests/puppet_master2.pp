@@ -1,6 +1,8 @@
 # puppet master config
 class profile::puppet_master2 {
   include r10k
+# Agent and puppetmaster:
+class { '::puppet': server => true }
   # The toml gem is required for grafana ldap.
   # Be sure puppetserver service is restarted after the first run.
     # package { 'toml':
@@ -24,13 +26,13 @@ class profile::puppet_master2 {
   # XXX theforeman/puppet does not manage the yumrepo.  puppetlabs/puppet_agent is hardwired
   # to manage the puppet package and conflicts with theforeman/puppet.  We should try to
   # submit support to puppetlabs/puppet_agent for managing only the yumrepo.
-  yumrepo { 'pc_repo':
-    ensure   => 'present',
-    baseurl  => 'https://yum.puppet.com/puppet7/el/7/x86_64',
-    descr    => 'Puppet Labs puppet7 Repository',
-    enabled  => true,
-    gpgcheck => '1',
-    gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
-    # before   => Class['puppet'],
-  }
+  # yumrepo { 'pc_repo':
+  #   ensure   => 'present',
+  #   baseurl  => 'https://yum.puppet.com/puppet7/el/7/x86_64',
+  #   descr    => 'Puppet Labs puppet7 Repository',
+  #   enabled  => true,
+  #   gpgcheck => '1',
+  #   gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
+  #   # before   => Class['puppet'],
+  # }
 }
