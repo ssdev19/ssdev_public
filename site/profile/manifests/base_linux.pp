@@ -71,7 +71,7 @@ if $awscli {
   class { 'awscli': }
   # Package { [ 'awscli' ]:
   #   ensure => installed,
-  }
+  # }
   # archive { '/tmp/awscli-bundle.zip':
   #   ensure   => present,
   #   source   => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
