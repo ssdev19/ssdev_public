@@ -71,9 +71,9 @@ include java_ks::config
   }
   # unless {file ($pwmconfig_dest)}
     file { $pwmconfig_dest:
-      ensure => present,
-      source => '/tmp/PwmConfiguration.xml',
-      # replace => 'no',
+      ensure  => present,
+      source  => '/tmp/PwmConfiguration.xml',
+      replace => 'no',
     }
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
