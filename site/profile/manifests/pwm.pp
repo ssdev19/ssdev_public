@@ -69,10 +69,12 @@ include java_ks::config
     password            => $keystorepwd,
     password_fail_reset => true,
   }
-  file { $pwmconfig_dest:
-    ensure => present,
-    source => '/tmp/PwmConfiguration.xml',
-  }
+  # unless {file ($pwmconfig_dest)}
+    file { $pwmconfig_dest:
+      ensure => present,
+      source => '/tmp/PwmConfiguration.xml',
+      replace => 'no',
+    }
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
   file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
