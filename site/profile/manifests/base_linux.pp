@@ -69,7 +69,7 @@ class profile::base_linux (
 # class { 'awscli': }
 if $awscli {
   # class { 'awscli': }
-  Package { [ 'awscli' ]:
+  Package { [ 'python3-pip', 'python3-devel', 'awscli' ]:
     ensure => installed,
   }
   # archive { '/tmp/awscli-bundle.zip':
