@@ -68,10 +68,10 @@ class profile::base_linux (
 # install awscli tool
 # class { 'awscli': }
 if $awscli {
-  class { 'awscli': }
-  # Package { [ 'awscli' ]:
-  #   ensure => installed,
-  # }
+  # class { 'awscli': }
+  Package { [ 'awscli' ]:
+    ensure => installed,
+  }
   # archive { '/tmp/awscli-bundle.zip':
   #   ensure   => present,
   #   source   => 'https://s3.amazonaws.com/aws-cli/awscli-bundle.zip',
