@@ -73,7 +73,7 @@ include java_ks::config
     file { $pwmconfig_dest:
       ensure => present,
       source => '/tmp/PwmConfiguration.xml',
-      replace => 'no',
+      # replace => 'no',
     }
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
