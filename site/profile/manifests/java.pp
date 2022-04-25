@@ -27,8 +27,8 @@ $mem,
       ensure  => 'present',
       version => $j_version,
       java    => $distribution,
-      version_major => '11.0.2',
-      version_minor => '9',
+      version_major => $version_major,
+      version_minor => $version_minor,
       # basedir => '/usr/java/',
     }
   ### export _JAVA_OPTIONS="-Xmx1g"
