@@ -75,7 +75,7 @@ if $awscli {
   exec { 'Install awscli':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
     command => 'sudo pip3 install awscli',
-    onlyif  => "/usr/bin/test ! -x /usr/local/bin/aws"
+    onlyif  => '/usr/bin/test ! -x /usr/local/bin/aws'
   }
   # archive { '/tmp/awscli-bundle.zip':
   #   ensure   => present,
