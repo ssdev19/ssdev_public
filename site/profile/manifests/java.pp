@@ -24,9 +24,9 @@ $mem,
   #   java          => 'jdk',
   # }
     java::adopt { 'jre11' :
-      ensure  => 'present',
-      version => $j_version,
-      java    => $distribution,
+      ensure        => 'present',
+      version       => $j_version,
+      java          => $distribution,
       version_major => $version_major,
       version_minor => $version_minor,
       # basedir => '/usr/java/',

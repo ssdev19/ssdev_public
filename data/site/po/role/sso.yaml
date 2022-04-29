@@ -1,0 +1,15 @@
+---
+classes:
+  - profile::base_linux
+  - profile::java
+profile::base_linux::awscli: true
+profile::base_linux::postfix: true
+# profile::base_linux::gralog: true
+profile::java::version: 'latest'
+profile::java::distribution: 'jre'
+profile::java::j_version: '8'
+profile::java::jre_version: '8'
+profile::java::version_major: '8u202'
+profile::java::version_minor: 'b08'
+# profile::java::java_path: '/usr/java/jdk-11.0.2+9-jre/bin:$PATH'
+profile::java::mem: '-Xmx1g'
