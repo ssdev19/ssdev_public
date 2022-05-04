@@ -51,11 +51,11 @@ include 'archive'
   ensure    => 'running',
   enable    => true,
   }
-      file {
-      $pf_home:
-        ensure => directory,
-        owner  => $pf_user,
-        group  => $pf_user,
-        mode   => '0775',
-    }
+  file {
+    $pf_home:
+    ensure => directory,
+    owner  => $pf_user,
+    group  => $pf_user,
+    mode   => '0775',
+  }
 }
