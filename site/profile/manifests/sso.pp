@@ -26,11 +26,11 @@ include 'archive'
     extract      => true,
     extract_path => '/opt',
   }
-  exec {'Install pingfed':
-  command  => '/opt/pingfederate-11.0.2/pingfederate/bin/run.sh',
-  provider => shell,
-  # onlyif   => '/usr/bin/test -e /path/to/file/test.txt',
-  }
+  # exec {'Install pingfed':
+  # command  => '/opt/pingfederate-11.0.2/pingfederate/bin/run.sh',
+  # provider => shell,
+  # # onlyif   => '/usr/bin/test -e /path/to/file/test.txt',
+  # }
   $pingfederate_service = @("EOT")
     [Unit]
     Description=PingFederate ${pf_version}
