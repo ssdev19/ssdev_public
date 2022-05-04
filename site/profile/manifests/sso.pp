@@ -11,13 +11,7 @@ $pf_version,
     password => $pf_pass
   }
 include 'archive'
-    # file {
-    #   '/opt/pingfederate':
-    #     ensure => directory,
-    #     owner  => $pf_user,
-    #     group  => $pf_user,
-    #     mode   => '0775',
-    # }
+
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
     source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
@@ -57,4 +51,11 @@ include 'archive'
   ensure    => 'running',
   enable    => true,
   }
+      file {
+      $pf_home:
+        ensure => directory,
+        owner  => $pf_user,
+        group  => $pf_user,
+        mode   => '0775',
+    }
 }
