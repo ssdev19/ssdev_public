@@ -6,6 +6,10 @@ $java_home,
 $pf_home,
 $pf_version,
 ){
+  user { $pf_user:
+    ensure   => present,
+    password => $pf_pass
+  }
 include 'archive'
     file {
       '/opt/pingfederate':
