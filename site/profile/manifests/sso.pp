@@ -50,6 +50,7 @@ include 'archive'
 # 
   systemd::unit_file { 'pingfederate.service':
     content => "${pingfederate_service}",
+    mode => '0664',
   }
   -> service { 'pingfederate':
   # subscribe => Pingfederate::Instance['default'],
