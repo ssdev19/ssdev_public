@@ -2,15 +2,16 @@
 class profile::sso {
 include 'archive'
     file {
-      '/tmp/pf_install':
+      '/opt/pingfederate':
         ensure => directory,
     }
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
-    source   => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
+    source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
     # provider => 'wget',
-    cleanup  => false,
+    cleanup      => false,
     extract      => true,
-    extract_path => '/tmp/pf_install',
+    extract_path => '/opt/pingfederate',
   }
+  
 }
