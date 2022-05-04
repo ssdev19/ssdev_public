@@ -1,5 +1,5 @@
 #  PingFed config
-class profile::pwm {
+class profile::sso {
 include 'archive'
   archive { '/tmp/pingfed.zip':
     ensure   => present,
