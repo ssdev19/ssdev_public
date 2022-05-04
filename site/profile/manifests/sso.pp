@@ -14,6 +14,9 @@ include 'archive'
     file {
       '/opt/pingfederate':
         ensure => directory,
+        owner  => $pf_user,
+        group  => $pf_user,
+        mode   => '0775',
     }
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
