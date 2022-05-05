@@ -38,7 +38,7 @@ include 'archive'
     User=${pf_user}
     WorkingDirectory=${pf_home}
     Environment='JAVA_HOME=${java_home}'
-    ExecStart=/bin/bash ${pf_home}/bin/run.sh
+    ExecStart=${pf_home}/bin/run.sh
 
     | EOT
 # 
