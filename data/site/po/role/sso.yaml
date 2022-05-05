@@ -25,3 +25,4 @@ accounts::user_list:
   pfuser:
     groups:
       - 'pfuser'
+    managehome: false
