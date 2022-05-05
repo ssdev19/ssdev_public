@@ -21,13 +21,6 @@ include 'archive'
     extract      => true,
     extract_path => '/opt',
   }
-    file {
-      $pf_home:
-      ensure => directory,
-      owner  => $pf_user,
-      group  => $pf_user,
-      mode   => '0775',
-    }
 
   # exec {'Install pingfed':
   # command  => '/opt/pingfederate-11.0.2/pingfederate/bin/run.sh',
@@ -60,4 +53,11 @@ include 'archive'
   ensure    => 'running',
   enable    => true,
   }
+    file {
+      $pf_home:
+      ensure => directory,
+      owner  => $pf_user,
+      group  => $pf_user,
+      mode   => '0775',
+    }
 }
