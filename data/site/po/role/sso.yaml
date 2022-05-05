@@ -21,3 +21,7 @@ profile::java::version_major: '11.0.2'
 profile::java::version_minor: '9'
 profile::java::java_path: '/usr/java/jdk-11.0.2+9-jre/bin:$PATH'
 profile::java::mem: '-Xmx1g'
+accounts::user_list:
+  pfuser:
+    groups:
+      - 'pfuser'
