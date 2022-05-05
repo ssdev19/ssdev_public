@@ -1,14 +1,14 @@
 ---
-classes:
-  - profile::base_linux
-  - profile::java
-  - profile::sso
 accounts::user_list:
   pfuser:
     groups:
       - 'pfuser'
     managehome: false
     system: true
+classes:
+  - profile::base_linux
+  - profile::java
+  - profile::sso
 profile::base_linux::awscli: true
 profile::base_linux::postfix: true
 # profile::base_linux::gralog: true
