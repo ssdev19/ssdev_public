@@ -57,12 +57,7 @@ include 'archive'
       $pf_home:
       ensure => directory,
       owner  => $pf_user,
-      group  => $pf_user,
+      # group  => $pf_user,
       mode   => '0775',
-    }
-    file {
-      '/etc/systemd/system/pingfederate.service':
-      ensure => file,
-      mode   => '0664',
     }
 }
