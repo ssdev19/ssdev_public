@@ -16,7 +16,7 @@ include 'archive'
     # ensure   => present,
     source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
     # provider => 'wget',
-    cleanup      => true,
+    cleanup      => false,
     user         => $pf_user,
     extract      => true,
     extract_path => '/opt',
