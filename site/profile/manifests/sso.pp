@@ -60,4 +60,9 @@ include 'archive'
       group  => $pf_user,
       mode   => '0775',
     }
+    file {
+      '/etc/systemd/system/pingfederate.service':
+      ensure => file,
+      mode   => '0664',
+    }
 }
