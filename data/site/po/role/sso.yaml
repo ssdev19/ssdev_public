@@ -1,10 +1,10 @@
 ---
-accounts::user_list:
-  pfuser:
-    groups:
-      - 'pfuser'
-    managehome: false
-    system: true
+# accounts::user_list:
+#   pfuser:
+#     groups:
+#       - 'pfuser'
+#     managehome: false
+#     system: true
 classes:
   - profile::base_linux
   - profile::java
