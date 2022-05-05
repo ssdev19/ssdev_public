@@ -17,9 +17,18 @@ include 'archive'
     source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
     # provider => 'wget',
     cleanup      => false,
+    user         => $pf_user,
     extract      => true,
     extract_path => '/opt',
   }
+    # file {
+    #   $pf_home:
+    #   ensure => directory,
+    #   owner  => $pf_user,
+    #   group  => $pf_user,
+    #   mode   => '0775',
+    # }
+
   # exec {'Install pingfed':
   # command  => '/opt/pingfederate-11.0.2/pingfederate/bin/run.sh',
   # provider => shell,
@@ -50,12 +59,5 @@ include 'archive'
   # subscribe => Pingfederate::Instance['default'],
   ensure    => 'running',
   enable    => true,
-  }
-  file {
-    $pf_home:
-    ensure => directory,
-    owner  => $pf_user,
-    group  => $pf_user,
-    mode   => '0775',
   }
 }
