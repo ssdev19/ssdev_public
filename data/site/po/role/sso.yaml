@@ -26,3 +26,4 @@ accounts::user_list:
     groups:
       - 'pfuser'
     managehome: false
+    system: true
