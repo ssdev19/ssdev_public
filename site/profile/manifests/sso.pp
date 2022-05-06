@@ -76,6 +76,6 @@ include 'archive'
   archive { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic' :
     ensure  => present,
     source  => $pf_lic,
-    replace => 'no',
+    cleanup => false,
   }
 }
