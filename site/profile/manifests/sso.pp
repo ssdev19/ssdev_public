@@ -59,5 +59,6 @@ include 'archive'
       owner  => $pf_user,
       # group  => $pf_user,
       mode   => '0775',
+      recurse => true,
     }
 }
