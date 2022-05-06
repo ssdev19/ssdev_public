@@ -68,7 +68,12 @@ include 'archive'
     group     => $pf_user,
   }
   $pf_lic = lookup('pf_lic')
-    file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
+  #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
+  #   ensure  => present,
+  #   source  => $pf_lic,
+  #   replace => 'no',
+  # }
+  archive { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic' :
     ensure  => present,
     source  => $pf_lic,
     replace => 'no',
