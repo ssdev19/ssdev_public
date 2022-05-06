@@ -53,12 +53,18 @@ include 'archive'
   ensure    => 'running',
   enable    => true,
   }
-    file {
-      $pf_home:
-      ensure => directory,
-      owner  => $pf_user,
-      # group  => $pf_user,
-      mode   => '0775',
-      recurse => true,
-    }
-}
+#     file {
+#       $pf_home:
+#       ensure => directory,
+#       owner  => $pf_user,
+#       # group  => $pf_user,
+#       mode   => '0775',
+#       recurse => true,
+#     }
+  recursive_file_permissions { '/opt/app':
+    file_mode => '0640',
+    dir_mode  => '0775',
+    owner     => $pf_user,
+    group     => $pf_user,
+  }
+# }
