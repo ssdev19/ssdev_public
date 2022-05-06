@@ -1,7 +1,7 @@
 #  PingFed config
 class profile::sso ( String
 $pf_user,
-$pf_pass,
+# $pf_pass,
 $java_home,
 $pf_home,
 $pf_version,
