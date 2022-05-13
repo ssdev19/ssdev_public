@@ -488,6 +488,26 @@ prometheus::alerts:
           annotations:
             summary: Nginx down (instance {{ $labels.instance }})
             description: "Nginx service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Jira mail queue error
+        - alert: jira mail queue error
+          expr: jira_mail_queue_error_gauge != 0
+          for: 3m
+          labels:
+            severity: critical
+          annotations:
+            summary: confluence_mail_queue_errors_gauge (instance {{ $labels.instance }})
+            identifier: '{{ $labels.instance }}'
+            description: "confluence_mail_queue_errors_gauge is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Confluence mail queue error
+        - alert: Confluence mail queue error
+          expr: confluence_mail_queue_errors_gauge != 0
+          for: 3m
+          labels:
+            severity: critical
+          annotations:
+            summary: confluence_mail_queue_errors_gauge (instance {{ $labels.instance }})
+            identifier: '{{ $labels.instance }}'
+            description: "confluence_mail_queue_errors_gauge is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
         
 prometheus::alertmanager::route:
   group_by:
