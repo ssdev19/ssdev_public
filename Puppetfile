@@ -27,7 +27,7 @@ mod 'puppet-prometheus', '12.3.0'
 mod 'puppet-prometheus_reporter', '1.1.0'
 mod 'saz/timezone', '6.1.0'
 # mod 'puppet-rsyslog', '5.2.0'
-mod 'puppet/rsyslog', git: 'https://github.com/voxpupuli/puppet-rsyslog/', ref: '297ca80'  # concat https://github.com/voxpupuli/puppet-rsyslog/pull/195
+mod 'puppet/rsyslog', git: 'https://github.com/voxpupuli/puppet-rsyslog/', ref: 'dfec146'  # concat https://github.com/voxpupuli/puppet-rsyslog/pull/195
 mod 'saz/ssh', '6.0.0'
 mod 'puppet-selinux', '3.4.1'
 mod 'puppet-firewalld', '4.4.0'
