@@ -11,7 +11,7 @@ classes:
   - profile::sso
 profile::base_linux::awscli: true
 profile::base_linux::postfix: true
-profile::base_linux::gralog: true
+# profile::base_linux::gralog: true
 profile::sso::pf_user: pfuser
 # profile::sso::pf_pass: pfpass
 profile::sso::pf_version: '11.0.2'
