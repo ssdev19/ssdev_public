@@ -392,7 +392,7 @@ prometheus::alerts:
 # Kernel version deviation
         - alert: HostKernelVersionDeviations
           expr: count(sum(label_replace(node_uname_info, "kernel", "$1", "release", "([0-9]+.[0-9]+.[0-9]+).*")) by (kernel)) > 1
-          for: 6h
+          for: 6m
           labels:
             severity: warning
           annotations:
