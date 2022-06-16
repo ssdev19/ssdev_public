@@ -12,7 +12,7 @@ class profile::base_linux (
   include ssh
   include accounts
   include cron
-  include ::collectd
+  # include ::collectd
   include puppet_agent
 
   # include nsswitch
