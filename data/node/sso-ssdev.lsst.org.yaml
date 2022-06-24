@@ -1,5 +1,4 @@
 ---
-profile::base_linux::gralog: true
 network::interfaces_hash:
   eth0:
     type: Ethernet
