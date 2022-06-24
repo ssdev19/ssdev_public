@@ -13,4 +13,7 @@ include 'archive'
     extract      => true,
     extract_path => '/opt/xerox',
   }
+  exec {'install docushre':
+    command => '/opt/xerox/Linux/DocuShare/docushare -silent',
+  }
 }
