@@ -13,14 +13,10 @@ include 'archive'
     extract      => true,
     extract_path => '/opt/xerox',
   }
-  file { '/opt/xerox/Linux/DocuShare/':
-    # mode    => '644',
-    content => 'PATH=$PATH:/opt/xerox/Linux/DocuShare',
+  $path = '$PATH:/opt/xerox/Linux/DocuShare'
+  exec { 'set DocuShare path':
+    # path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    command => "PATH=${path}",
   }
-  # $path = '$PATH:/opt/xerox/Linux/DocuShare'
-  # exec { 'set DocuShare path':
-  #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-  #   command => "PATH=${path}",
-  # }
 
 }
