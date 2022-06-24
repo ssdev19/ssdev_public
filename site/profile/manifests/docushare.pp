@@ -3,17 +3,13 @@ class profile::docushare {
 include 'archive'
 
 #download docushare
-  file {
-    '/opt/DocuShare':
-      ensure => directory,
-  }
   archive { '/tmp/docushare.tar.gz':
     # ensure   => present,
     source       => 'https://download.support.xerox.com/pub/drivers/docushare/utils/wins2016x64/en_GB/ds750-b215-linux.tar.gz',
     # provider => 'wget',
     cleanup      => true,
     extract      => true,
-    extract_path => '/opt/DocuShare',
+    extract_path => '/opt/',
   }
 
 }
