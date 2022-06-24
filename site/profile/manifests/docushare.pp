@@ -13,10 +13,4 @@ include 'archive'
     extract      => true,
     extract_path => '/opt/xerox',
   }
-  $path = '$PATH:/opt/xerox/Linux/DocuShare'
-  exec { '$PATH:/opt/xerox/Linux/DocuShare':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    # command => "export PATH=${path}",
-  }
-
 }
