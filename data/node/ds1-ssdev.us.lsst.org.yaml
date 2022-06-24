@@ -1,8 +1,9 @@
 # .
 ---
-# classes:
-#   - profile::docushare
-# profile::base_linux::postfix: true
+classes:
+  - profile::base_linux
+  - profile::docushare
+profile::base_linux::postfix: true
 network::interfaces_hash:
   eth0:
     type: Ethernet
