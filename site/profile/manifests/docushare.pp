@@ -16,7 +16,7 @@ include 'archive'
   $path = '$PATH:/opt/xerox/Linux/DocuShare'
   exec { 'set DocuShare path':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "sudo -s PATH=${path}",
+    command => "sudo PATH=${path}",
   }
 
 }
