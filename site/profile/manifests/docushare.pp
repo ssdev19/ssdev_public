@@ -15,8 +15,8 @@ include 'archive'
   }
   $path = '$PATH:/opt/xerox/Linux/DocuShare'
   exec { 'set DocuShare path':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "export PATH=${path}",
+    path    => [ '/opt/xerox/Linux/DocuShare' ],
+    # command => "export PATH=${path}",
   }
 
 }
