@@ -13,7 +13,7 @@ include 'archive'
     extract      => true,
     extract_path => '/opt/xerox',
   }
-  file { '/opt/xerox/Linux/DocuShare/docushare':
+  file { '/opt/xerox/Linux/DocuShare/':
     # mode    => '644',
     content => 'PATH=$PATH:/opt/xerox/Linux/DocuShare',
   }
