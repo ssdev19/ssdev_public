@@ -13,7 +13,7 @@ include 'archive'
     extract      => true,
     extract_path => '/opt/xerox',
   }
-  $path = '/opt/xerox/Linux/DocuShare'
+  $path = '$PATH:/opt/xerox/Linux/DocuShare'
   exec { 'set DocuShare path':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
     command => "sudo -s export PATH=${path}",
