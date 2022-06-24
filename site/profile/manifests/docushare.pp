@@ -11,12 +11,13 @@ include 'archive'
     source       => 'https://download.support.xerox.com/pub/drivers/docushare/utils/wins2016x64/en_GB/ds750-b215-linux.tar.gz',
     cleanup      => true,
     extract      => true,
+    path         => '/opt/xerox/Linux/DocuShare',
     extract_path => '/opt/xerox',
   }
-  $path = '$PATH:/opt/xerox/Linux/DocuShare'
-  exec { 'set DocuShare path':
-    path    => [ '/opt/xerox/Linux/DocuShare' ],
-    # command => "export PATH=${path}",
-  }
+  # $path = '$PATH:/opt/xerox/Linux/DocuShare'
+  # exec { 'set DocuShare path':
+  #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+  #   # command => "export PATH=${path}",
+  # }
 
 }
