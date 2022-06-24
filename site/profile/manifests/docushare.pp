@@ -14,7 +14,7 @@ include 'archive'
     extract_path => '/opt/xerox',
   }
   file { '/opt/xerox/Linux/DocuShare/docushare':
-    mode    => '644',
+    # mode    => '644',
     content => 'PATH=$PATH:/opt/xerox/Linux/DocuShare',
   }
   # $path = '$PATH:/opt/xerox/Linux/DocuShare'
