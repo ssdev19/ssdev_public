@@ -1,6 +1,4 @@
 ---
-classes:
-  - profile::base_linux
 accounts::user_list:
   pfuser:
     groups:
