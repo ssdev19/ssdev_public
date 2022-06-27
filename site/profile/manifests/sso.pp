@@ -37,11 +37,6 @@ include 'archive'
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
-
-  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar':
-    ensure => present,
-    source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
-  }
   # Copy file needed for Atlassian connector & modify run.properties
   file { '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties':
     ensure => file,

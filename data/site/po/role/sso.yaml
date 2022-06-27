@@ -31,7 +31,7 @@ profile::java::mem: '-Xmx1g'
 cron::job:
   'ssobackup':
     command: "aws s3 cp %{lookup('ssoconfig_dest')} s3://pingfe/%{facts.fqdn}-pf-logs"
-    minute: 54
+    minute: 55
     hour: 20
     date: '*'
     month: '*'
