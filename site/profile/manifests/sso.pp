@@ -103,4 +103,10 @@ include 'archive'
     source  => $pf_lic,
     cleanup => false,
   }
+  # Backup logs
+  archive { '/tmp/ssolog' :
+    ensure  => present,
+    source  => '/opt/pingfederate-11.0.2/pingfederate/log',
+    cleanup => false,
+  }
 }
