@@ -14,9 +14,9 @@ profile::base_linux::postfix: true
 profile::base_linux::gralog: true
 profile::sso::pf_user: pfuser
 # profile::sso::pf_pass: pfpass
-profile::sso::pf_version: '11.0.2'
+profile::sso::pf_version: '11.1.0'
 profile::sso::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
-profile::sso::pf_home: '/opt/pingfederate-11.0.2/pingfederate' #'/usr/java/jdk-11.0.2+9'
+profile::sso::pf_home: '/opt/pingfederate-11.1.0/pingfederate' #'/usr/java/jdk-11.0.2+9'
 profile::java::version: 'latest'
 profile::java::distribution: 'jre'
 profile::java::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
@@ -30,7 +30,7 @@ profile::java::mem: '-Xmx1g'
 # Backup log files
 cron::job:
   'ssobackup':
-    command: "aws s3 cp --recursive /opt/pingfederate-11.0.2/pingfederate/log/ s3://pingfe/pf-logs"
+    command: "aws s3 cp --recursive /opt/pingfederate-11.1.0/pingfederate/log/ s3://pingfe/pf-logs"
     minute: 11
     hour: 21
     date: '*'
