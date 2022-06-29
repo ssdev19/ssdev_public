@@ -14,7 +14,7 @@ include 'archive'
 
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
-    source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.1.0.zip',
+    source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
     # provider => 'wget',
     cleanup      => true,
     # user         => $pf_user,
@@ -28,23 +28,23 @@ include 'archive'
     cleanup      => true,
     # user         => $pf_user,
     extract      => true,
-    # extract_path => '/opt/pingfederate-11.1.0/pingfederate/server/default/deploy',
+    # extract_path => '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy',
     extract_path => '/tmp/',
     # creates      => '/tmp/atlassianconnector'
   }
 
-  file { '/opt/pingfederate-11.1.0/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar':
+  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar':
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
   # Copy file needed for Atlassian connector & modify run.properties
-  file { '/opt/pingfederate-11.1.0/pingfederate/bin/run.properties':
+  file { '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties':
     ensure => file,
   }
   -> file_line{ 'change pf.provisioner.mode to STANDALONE':
       match => 'pf.provisioner.mode=OFF',
       line  => 'pf.provisioner.mode=STANDALONE',
-      path  => '/opt/pingfederate-11.1.0/pingfederate/bin/run.properties',
+      path  => '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties',
     }
   # Pingfederate service
   $pingfederate_service = @("EOT")
@@ -81,19 +81,19 @@ include 'archive'
 #       mode   => '0775',
 #       recurse => true,
 #     }
-  recursive_file_permissions { '/opt/pingfederate-11.1.0/pingfederate/':
+  recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
     file_mode => '0775',
     dir_mode  => '0775',
     owner     => $pf_user,
     group     => $pf_user,
   }
   $pf_lic = lookup('pf_lic')
-  #   file { '/opt/pingfederate-11.1.0/pingfederate/server/default/conf/pf/pingfederate.lic':
+  #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
   #   ensure  => present,
   #   source  => $pf_lic,
   #   replace => 'no',
   # }
-  archive { '/opt/pingfederate-11.1.0/pingfederate/server/default/conf/pingfederate.lic' :
+  archive { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pingfederate.lic' :
     ensure  => present,
     source  => $pf_lic,
     cleanup => false,
@@ -101,7 +101,7 @@ include 'archive'
   # Backup logs
   # archive { '/tmp/ssolog' :
   #   ensure  => present,
-  #   source  => '/opt/pingfederate-11.1.0/pingfederate/log',
+  #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
 }
