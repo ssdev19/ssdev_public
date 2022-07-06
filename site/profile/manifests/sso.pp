@@ -49,7 +49,7 @@ include 'archive'
       path  => '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties',
     }
   # Send audit logs to graylog
-  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
+  # file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
   #   ensure => file,
   # }
   # -> file_line{ 'Syslog config':
