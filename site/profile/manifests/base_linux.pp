@@ -62,7 +62,7 @@ class profile::base_linux (
   Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'gcc', 'xinetd',
   'bash-completion', 'sudo', 'vim', 'openssl', 'openssl-devel',
   'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute',
-  'gzip', 'tar', 'unzip', 'net-tools', 'fping' ]:
+  'gzip', 'tar', 'unzip', 'net-tools' ]:
   ensure => installed,
   }
 # install awscli tool
