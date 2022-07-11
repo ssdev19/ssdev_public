@@ -118,7 +118,7 @@ include 'archive'
   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
   ensure  => present,
   source  => '/tmp/log4j2.xml',
-  replace => 'no',
+  replace => 'yes',
   }
 
   # Backup logs
