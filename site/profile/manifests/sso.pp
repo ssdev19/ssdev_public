@@ -109,11 +109,16 @@ include 'archive'
     source  => $pf_lic,
     cleanup => false,
   }
+  archive { '/tmp/PwmConfiguration.xml' :
+    ensure  => present,
+    source  => 's3://pingfe/log4j2.xml',
+    cleanup => false,
+  }
 
-  file { 's3://pingfe/log4j2.xml':
+  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
   ensure  => present,
-  source  => '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml',
-  # replace => 'no',
+  source  => '/tmp/log4j2.xml',
+  replace => 'no',
   }
 
   # Backup logs
