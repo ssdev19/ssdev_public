@@ -109,6 +109,13 @@ include 'archive'
     source  => $pf_lic,
     cleanup => false,
   }
+
+  file { 's3://pingfe/log4j2.xml':
+  ensure  => present,
+  source  => '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml',
+  # replace => 'no',
+  }
+
   # Backup logs
   # archive { '/tmp/ssolog' :
   #   ensure  => present,
