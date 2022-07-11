@@ -109,7 +109,7 @@ include 'archive'
     source  => $pf_lic,
     cleanup => false,
   }
-  archive { '/tmp/PwmConfiguration.xml' :
+  archive { '/tmp/log4j2.xml' :
     ensure  => present,
     source  => 's3://pingfe/log4j2.xml',
     cleanup => false,
