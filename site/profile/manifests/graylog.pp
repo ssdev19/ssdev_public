@@ -19,7 +19,7 @@ class { 'elasticsearch':
 #     'cluster.name' => 'graylog',
 #     'network.host' => '127.0.0.1',
 #   }
-}
+# }
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
   archive { '/tmp/lsstcertlatest.crt' :
