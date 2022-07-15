@@ -4,12 +4,24 @@ class profile::graylog {
     file { '/etc/ssl/graylog':
       ensure => directory,
     }
-  # $pwmkeystore = lookup('pwmkeystore')
-  # archive { '/etc/pki/keystore' :
-  #   ensure  => present,
-  #   source  => $pwmkeystore,
-  #   cleanup => false,
-  # }
+class { 'mongodb::globals':
+  manage_package_repo => true,
+}
+-> class { 'mongodb::server':
+  bind_ip => ['127.0.0.1'],
+}
+
+class { 'elasticsearch':
+  version      => '7.10.2',
+  repo_version => '7.x',
+  manage_repo  => true,
+}
+-> elasticsearch::instance { 'graylog':
+  config => {
+    'cluster.name' => 'graylog',
+    'network.host' => '127.0.0.1',
+  }
+}
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
   archive { '/tmp/lsstcertlatest.crt' :
