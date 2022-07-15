@@ -14,11 +14,11 @@ class { 'mongodb::globals':
 class { 'elasticsearch':
   version      => '7.10.2',
 }
--> elasticsearch::instance { 'graylog':
-  config => {
-    'cluster.name' => 'graylog',
-    'network.host' => '127.0.0.1',
-  }
+# -> elasticsearch::instance { 'graylog':
+#   config => {
+#     'cluster.name' => 'graylog',
+#     'network.host' => '127.0.0.1',
+#   }
 }
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
