@@ -10,6 +10,7 @@ class profile::graylog {
   #   source  => $pwmkeystore,
   #   cleanup => false,
   # }
+  $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
   archive { '/tmp/lsstcertlatest.crt' :
     ensure  => present,
@@ -38,9 +39,9 @@ class { 'mongodb::globals':
 }
 
 class { 'elasticsearch':
-  version      => '8.1.0',
+  version     => '8.1.0',
   # repo_version => '8.x',
-  manage_repo  => true,
+  manage_repo => true,
 }
   # elasticsearch::instance { 'graylog':
   # config => {
@@ -57,7 +58,7 @@ class { 'elasticsearch':
         node_id_file                        => '/etc/graylog/server/node-id',
         password_secret                     => 'password_secret',
         root_username                       => 'admin',
-        root_password_sha2                  => "ada6995028c231eff4f2bf1b647b2e120459d0ea972138e89ad394f6e8698b8c",
+        root_password_sha2                  => 'ada6995028c231eff4f2bf1b647b2e120459d0ea972138e89ad394f6e8698b8c',
         root_timezone                       => 'UTC',
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
