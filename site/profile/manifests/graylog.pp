@@ -40,6 +40,10 @@ class { 'elasticsearch':
   # repo_version => '8.x',
   # ensure => 'absent',
   manage_repo => true,
+  jvm_options => [
+  '-Xms1g',
+  '-Xmx1g'
+  ]
 }
   # elasticsearch::instance { 'graylog':
   # config => {
