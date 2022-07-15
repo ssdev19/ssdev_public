@@ -34,8 +34,9 @@ class { 'mongodb::globals':
 }
 
 class { 'elasticsearch':
-  version     => '8.3.2',
+  # version     => '8.3.2',
   # repo_version => '8.x',
+  ensure => 'absent',
   manage_repo => true,
 }
   # elasticsearch::instance { 'graylog':
