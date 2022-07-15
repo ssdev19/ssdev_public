@@ -32,7 +32,9 @@ class { 'mongodb::globals':
 -> class { 'mongodb::server':
   bind_ip => ['127.0.0.1'],
 }
-
+class { 'elastic_stack::repo':
+  version => 8,
+}
 class { 'elasticsearch':
   version     => '8.3.2',
   # repo_version => '8.x',
