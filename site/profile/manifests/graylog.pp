@@ -11,21 +11,21 @@ class { 'mongodb::globals':
   bind_ip => ['127.0.0.1'],
 }
 class { 'elastic_stack::repo':
-  version => 8,
+  version => 7,
 }
-class { 'elasticsearch':
-  ensure => 'absent'
-}
-
 # class { 'elasticsearch':
-#   version     => '8.3.2',
-#   # repo_version => '8.x',
-#   # ensure => 'absent',
-#   manage_repo => true,
-#   jvm_options => [
-#   '-Xms1g',
-#   '-Xmx1g'
-#   ]
+#   ensure => 'absent'
 # }
+
+class { 'elasticsearch':
+  version     => '7.9.3',
+  # repo_version => '8.x',
+  # ensure => 'absent',
+  manage_repo => true,
+  jvm_options => [
+  '-Xms1g',
+  '-Xmx1g'
+  ]
+}
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 }
