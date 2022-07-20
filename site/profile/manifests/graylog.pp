@@ -13,15 +13,15 @@ class { 'mongodb::globals':
 class { 'elastic_stack::repo':
   version => 8,
 }
-class { 'elasticsearch':
-  version     => '8.3.2',
-  # repo_version => '8.x',
-  # ensure => 'absent',
-  manage_repo => true,
-  jvm_options => [
-  '-Xms1g',
-  '-Xmx1g'
-  ]
-}
+# class { 'elasticsearch':
+#   version     => '8.3.2',
+#   # repo_version => '8.x',
+#   # ensure => 'absent',
+#   manage_repo => true,
+#   jvm_options => [
+#   '-Xms1g',
+#   '-Xmx1g'
+#   ]
+# }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 }
