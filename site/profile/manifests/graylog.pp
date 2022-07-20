@@ -13,6 +13,10 @@ class { 'mongodb::globals':
 class { 'elastic_stack::repo':
   version => 8,
 }
+class { 'elasticsearch':
+  ensure => 'absent'
+}
+
 # class { 'elasticsearch':
 #   version     => '8.3.2',
 #   # repo_version => '8.x',
