@@ -18,14 +18,31 @@ class profile::graylog {
     source  => $domaincert2,
     cleanup => false,
   }
-  $keystorepwd = lookup('keystorepwd')
-  java_ks { 'lsst.org:/etc/pki/keystore':
-    ensure              => latest,
-    certificate         => '/tmp/lsstcertlatest.crt',
-    private_key         => '/tmp/lsstcertlatest.key',
-    password            => $keystorepwd,
-    password_fail_reset => true,
+  $chain = lookup('chain')
+  archive { '/tmp/lsstcertlatestintermediate.pem' :
+    ensure  => present,
+    source  => $chain,
+    cleanup => false,
   }
+    file { '/etc/ssl/graylog/graylog_cert_chain.crt':
+    ensure  => present,
+    source  => '/tmp/lsstcertlatest.crt',
+    replace => 'no',
+  }
+    file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
+    ensure  => present,
+    source  => '/tmp/lsstcertlatestintermediate.pem',
+    replace => 'no',
+  }
+
+  # $keystorepwd = lookup('keystorepwd')
+  # java_ks { 'lsst.org:/etc/pki/keystore':
+  #   ensure              => latest,
+  #   certificate         => '/tmp/lsstcertlatest.crt',
+  #   private_key         => '/tmp/lsstcertlatest.key',
+  #   password            => $keystorepwd,
+  #   password_fail_reset => true,
+  # }
 class { 'mongodb::globals':
   manage_package_repo => true,
 }
