@@ -2,7 +2,7 @@
 classes:
   - profile::base_linux
   - profile::graylog
-  # - profile::java
+  - profile::java
 profile::base_linux::postfix: true
 network::interfaces_hash:
   eth0:
