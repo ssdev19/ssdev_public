@@ -84,5 +84,8 @@ class { 'elasticsearch':
         elasticsearch_hosts                 => "http://${fqdn}:9200,http://${fqdn}:9200",
         mongodb_uri                         => "mongodb://mongouser:mongopass@${fqdn}:27017",
       },
+      require => Class[
+        '::java',
+      ],
   }
 }
