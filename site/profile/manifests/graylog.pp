@@ -88,7 +88,7 @@ class { 'elasticsearch':
         elasticsearch_shards                => '4',
         elasticsearch_replicas              => '1',
         elasticsearch_index_prefix          => 'graylog',
-        elasticsearch_hosts                 => "http://${fqdn}:9200,http://${fqdn}:9200",
+        elasticsearch_hosts                 => "http://${fqdn}:9200,https://${fqdn}:9200",
         mongodb_uri                         => "mongodb://mongouser:mongopass@${fqdn}:27017/graylog",
       },
       require => Class[
