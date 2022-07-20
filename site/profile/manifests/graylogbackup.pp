@@ -1,6 +1,6 @@
 # graylog
 class profile::graylog {
-  include java
+  # include java
     file { '/etc/ssl/graylog':
       ensure => directory,
     }
@@ -50,10 +50,10 @@ class { 'mongodb::globals':
   bind_ip => ['127.0.0.1'],
 }
 class { 'elastic_stack::repo':
-  version => 8,
+  version => 7,
 }
 class { 'elasticsearch':
-  version     => '8.3.2',
+  version     => '7.9.3',
   # repo_version => '8.x',
   # ensure => 'absent',
   manage_repo => true,
