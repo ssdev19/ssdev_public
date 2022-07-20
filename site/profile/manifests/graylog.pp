@@ -26,10 +26,6 @@ class profile::graylog {
     password            => $keystorepwd,
     password_fail_reset => true,
   }
-  file {
-  '/etc/ssl/graylog':
-    ensure => directory,
-  }
 class { 'mongodb::globals':
   manage_package_repo => true,
 }
