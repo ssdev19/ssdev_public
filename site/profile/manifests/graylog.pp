@@ -80,7 +80,7 @@ class { 'elasticsearch':
         http_enable_tls                     => true,
         http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
         http_tls_key_file                   => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
-        http_tls_key_password               => 'changeit',
+        # http_tls_key_password               => 'changeit',
         rotation_strategy                   => 'time',
         retention_strategy                  => 'delete',
         elasticsearch_max_time_per_index    => '1d',
@@ -96,30 +96,4 @@ class { 'elasticsearch':
       ],
   }
 
-
-
-
-#     file { '/etc/ssl/graylog':
-#       ensure => directory,
-#     }
-# class { 'mongodb::globals':
-#   manage_package_repo => true,
-# }
-# -> class { 'mongodb::server':
-#   bind_ip => ['127.0.0.1'],
-# }
-# class { 'elastic_stack::repo':
-#   version => 7,
-# }
-# class { 'elasticsearch':
-#   version     => '7.9.3',
-#   # repo_version => '8.x',
-#   # ensure => 'absent',
-#   manage_repo => true,
-#   jvm_options => [
-#   '-Xms1g',
-#   '-Xmx1g'
-#   ]
-# }
-# # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 }
