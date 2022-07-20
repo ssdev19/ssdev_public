@@ -125,8 +125,4 @@ include java_ks::config
     trustcacerts => true,
     # password_fail_reset => true,
   }
-  #   exec { 'add dc certs to cacerts':
-  #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-  #   command => "sudo -s keytool -import -trustcacerts 'yes' -keystore /usr/java/jdk-11.0.2+9-jre/lib/security/cacerts -file /tmp/DC2Cert.cer -alias dc2.lsst.local -storepass ${keystorepwd}",
-  # }
 }

@@ -26,6 +26,10 @@ class profile::graylog {
     password            => $keystorepwd,
     password_fail_reset => true,
   }
+  file {
+  '/etc/ssl/graylog':
+    ensure => directory,
+  }
 class { 'mongodb::globals':
   manage_package_repo => true,
 }
@@ -45,12 +49,12 @@ class { 'elasticsearch':
   '-Xmx1g'
   ]
 }
-  # elasticsearch::instance { 'graylog':
-  # config => {
-  #   'cluster.name' => 'graylog',
-  #   'network.host' => '127.0.0.1',
-  # }
-# }
+  elasticsearch::instance { 'graylog':
+  config => {
+    'cluster.name' => 'graylog',
+    'network.host' => '127.0.0.1',
+  }
+}
   class { '::graylog::repository':
     version => '4.2'
   }
@@ -58,9 +62,9 @@ class { 'elasticsearch':
       config  => {
         is_master                           => true,
         node_id_file                        => '/etc/graylog/server/node-id',
-        password_secret                     => 'password_secret',
+        password_secret                     => 'password',
         root_username                       => 'admin',
-        root_password_sha2                  => 'ada6995028c231eff4f2bf1b647b2e120459d0ea972138e89ad394f6e8698b8c',
+        root_password_sha2                  => '6b3a55e0261b0304143f805a24924d0c1c44524821305f31d9277843b8a10f4e',
         root_timezone                       => 'UTC',
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
