@@ -64,6 +64,7 @@ class { 'elasticsearch':
 }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 # config file: /etc/graylog/server/server.conf
+# Password must be at least 16 character long and complex or the service will not start
   class { '::graylog::repository':
     version => '4.2.9'
   }
@@ -91,7 +92,7 @@ class { 'elasticsearch':
         elasticsearch_replicas              => '1',
         elasticsearch_index_prefix          => 'graylog',
         elasticsearch_hosts                 => "http://${fqdn}:9200,https://${fqdn}:9200",
-        # mongodb_uri                         => "mongodb://mongouser:mongopass@${fqdn}:27017/graylog",
+        mongodb_uri                         => "mongodb://mongouser:mongopass@${fqdn}:27017/graylog",
       },
       require => Class[
         '::java',
