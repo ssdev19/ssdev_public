@@ -46,7 +46,7 @@ class { 'mongodb::globals':
   manage_package_repo => true,
 }
 -> class { 'mongodb::server':
-  bind_ip => ['127.0.0.1'],
+  bind_ip => ['140.252.32.189'],
 }
 class { 'elastic_stack::repo':
   version => 7,
