@@ -51,6 +51,7 @@ class { 'mongodb::globals':
 class { 'elastic_stack::repo':
   version => 7,
 }
+#  /usr/lib/sysctl.d/elasticsearch.conf; config file: /etc/elasticsearch/elasticsearch.yml
 class { 'elasticsearch':
   version     => '7.9.3',
   # repo_version => '8.x',
@@ -63,7 +64,7 @@ class { 'elasticsearch':
 }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
   class { '::graylog::repository':
-    version => '4.3.3'
+    version => '4.3'
   }
   -> class { '::graylog::server':
       config  => {
