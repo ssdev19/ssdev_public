@@ -78,7 +78,7 @@ class { 'elasticsearch':
         root_timezone                       => 'UTC',
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
-        http_bind_address                   => '0.0.0.0:9000',
+        http_bind_address                   => "${fqdn}:9000/",  #'0.0.0.0:9000',
         http_external_uri                   => "https://${fqdn}:9000/",
         http_enable_tls                     => true,
         http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
