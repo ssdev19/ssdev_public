@@ -64,7 +64,7 @@ class { 'elasticsearch':
 }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
   class { '::graylog::repository':
-    version => '4.3'
+    version => '4.2.9'
   }
   -> class { '::graylog::server':
       config  => {
