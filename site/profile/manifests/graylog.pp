@@ -71,7 +71,7 @@ class { 'elasticsearch':
       config  => {
         is_master                           => true,
         node_id_file                        => '/etc/graylog/server/node-id',
-        password_secret                     => 'password1$',
+        password_secret                     => 'password1$password1$password1$password1$',
         root_username                       => 'admin',
         root_password_sha2                  => '409955bd1d9e0f6291a748d965b9b8a3c2236edeb37e75f5bf8356dab971258f',
         root_timezone                       => 'UTC',
