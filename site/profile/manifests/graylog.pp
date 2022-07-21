@@ -92,7 +92,7 @@ class { 'elasticsearch':
         elasticsearch_replicas              => '1',
         elasticsearch_index_prefix          => 'graylog',
         elasticsearch_hosts                 => "http://${fqdn}:9200,https://${fqdn}:9200",
-        mongodb_uri                         => "mongodb://mongouser:mongopass@${fqdn}:27017/graylog",
+        # mongodb_uri                         => "mongodb://mongouser:mongopass@${fqdn}:27017/graylog",
       },
       require => Class[
         '::java',
