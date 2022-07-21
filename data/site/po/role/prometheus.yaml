@@ -434,6 +434,15 @@ prometheus::alerts:
           annotations:
             summary: Crowd down (instance {{ $labels.instance }})
             description: "Crowd service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Graylog down 
+        - alert: SSH
+          expr: node_systemd_unit_state{name="graylog-server.service", state="active"} != 1
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: graylog-server down (instance {{ $labels.instance }})
+            description: "graylog-server service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # SSH down 
         - alert: SSH
           expr: node_systemd_unit_state{name="sshd.service", state="active"} != 1
