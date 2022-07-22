@@ -57,16 +57,18 @@ class { 'elasticsearch':
   # repo_version => '8.x',
   # ensure => 'absent',
   manage_repo => true,
+  restart_on_change => true,
+  instance => 'graylog',
   jvm_options => [
     '-Xms2g',
     '-Xmx2g'
   ]
 }
--> elasticsearch::instance { 'graylog':
-    config => {
-      'cluster.name' => 'graylog',
-      'network.host' => '127.0.0.1',
-    }
+# -> elasticsearch::instance { 'graylog':
+#     config => {
+#       'cluster.name' => 'graylog',
+#       'network.host' => '127.0.0.1',
+#     }
   }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 # config file: /etc/graylog/server/server.conf
