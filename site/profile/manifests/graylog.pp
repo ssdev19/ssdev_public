@@ -63,12 +63,10 @@ class { 'elasticsearch':
     '-Xmx2g'
   ]
 }
--> elasticsearch::instance { 'graylog':
-    config => {
-      'cluster.name' => 'graylog',
-      'network.host' => '127.0.0.1',
-    }
-  }
+-> es_instance_conn_validator { 'myinstance' :
+    server => 'graylog-ssdev.us.lsst.org',
+    port   => '9200',
+}
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 # config file: /etc/graylog/server/server.conf
 # Password must be at least 16 character long and complex or the service will not start

@@ -92,9 +92,8 @@ mod 'trlinkin-nsswitch', '2.2.0'
 mod 'puppet-chrony', '2.1.0'
 mod 'graylog-graylog', '1.0.0'
 mod 'puppet-mongodb', '4.1.1'
-# mod 'puppet-elasticsearch', '8.0.2'
-mod 'elastic-elasticsearch', '7.0.0'
-mod 'elastic-elastic_stack', '7.0.0' #dependency for elastic
+mod 'puppet-elasticsearch', '8.0.2'
+mod 'puppet-elastic_stack', '8.0.0' #dependency for elastic
 mod 'puppet-yum', '5.6.1'
 mod 'puppetlabs-yumrepo_core', '1.1.0'
 mod 'richardc-datacat', '0.6.2'
