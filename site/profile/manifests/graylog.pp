@@ -3,7 +3,7 @@ class profile::graylog {
     file { '/etc/ssl/graylog':
       ensure => directory,
     }
-
+  $my_ip   = $::ipaddress
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
   archive { '/tmp/lsstcertlatest.crt' :
@@ -46,7 +46,7 @@ class { 'mongodb::globals':
   manage_package_repo => true,
 }
 -> class { 'mongodb::server':
-  bind_ip => ["${my_ip}"],
+  bind_ip => [$my_ip],
 }
 class { 'elastic_stack::repo':
   version => 7,
@@ -65,13 +65,12 @@ class { 'elasticsearch':
   ]
 }
 -> es_instance_conn_validator { 'graylog' :
-    server => "${my_ip}", #graylog-ssdev.us.lsst.org',
+    server => $my_ip, #graylog-ssdev.us.lsst.org',
     port   => '9200',
   }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 # config file: /etc/graylog/server/server.conf
 # Password must be at least 16 character long and complex or the service will not start
-  $my_ip = $::ipaddress
   class { '::graylog::repository':
     version => '4.2'
   }
