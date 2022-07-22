@@ -58,7 +58,7 @@ class { 'elasticsearch':
   # ensure => 'absent',
   manage_repo => true,
   restart_on_change => true,
-  instance => 'graylog',
+  'cluster.name' => 'graylog',
   jvm_options => [
     '-Xms2g',
     '-Xmx2g'
