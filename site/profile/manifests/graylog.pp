@@ -65,7 +65,7 @@ class { 'elasticsearch':
   ]
 }
 -> es_instance_conn_validator { 'graylog' :
-    server => 'graylog-ssdev.us.lsst.org',
+    server => '127.0.0.1', #graylog-ssdev.us.lsst.org',
     port   => '9200',
   }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
