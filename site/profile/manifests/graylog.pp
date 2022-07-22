@@ -65,7 +65,7 @@ class { 'elasticsearch':
   ]
 }
 -> es_instance_conn_validator { 'graylog' :
-    server => $my_ip, #graylog-ssdev.us.lsst.org',
+    server => '127.0.0.1', #graylog-ssdev.us.lsst.org',
     port   => '9200',
   }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
@@ -97,7 +97,7 @@ class { 'elasticsearch':
         elasticsearch_shards                => '4',
         elasticsearch_replicas              => '1',
         elasticsearch_index_prefix          => 'graylog',
-        elasticsearch_hosts                 => "http://${my_ip}:9200",
+        elasticsearch_hosts                 => "http://localhost:9200",
         mongodb_uri                         => "mongodb://${my_ip}/graylog",
       },
       require => Class[
