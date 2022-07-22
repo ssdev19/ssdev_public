@@ -85,7 +85,7 @@ class { 'elasticsearch':
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
         http_bind_address                   => "${my_ip}:9000",
-        # http_external_uri                   => "https://${fqdn}:9000/",
+        http_external_uri                   => "https://${fqdn}:9000/",
         # http_enable_tls                     => true,
         # http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
         # http_tls_key_file                   => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
@@ -97,7 +97,7 @@ class { 'elasticsearch':
         elasticsearch_shards                => '4',
         elasticsearch_replicas              => '1',
         elasticsearch_index_prefix          => 'graylog',
-        elasticsearch_hosts                 => "http://localhost:9200",
+        elasticsearch_hosts                 => 'http://localhost:9200',
         mongodb_uri                         => "mongodb://${my_ip}/graylog",
       },
       require => Class[
