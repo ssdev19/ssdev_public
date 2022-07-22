@@ -54,12 +54,12 @@ class { 'elastic_stack::repo':
 }
 #  /usr/lib/sysctl.d/elasticsearch.conf; config file: /etc/elasticsearch/elasticsearch.yml
 class { 'elasticsearch':
-  version     => '7.9.3',
-  oss => true,
+  version           => '7.9.3',
+  oss               => true,
   # ensure => 'absent',
-  manage_repo => true,
+  manage_repo       => true,
   restart_on_change => true,
-  jvm_options => [
+  jvm_options       => [
     '-Xms2g',
     '-Xmx2g'
   ]
