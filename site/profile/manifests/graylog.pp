@@ -73,7 +73,7 @@ class { 'elasticsearch':
 # config file: /etc/graylog/server/server.conf
 # Password must be at least 16 character long and complex or the service will not start
   class { '::graylog::repository':
-    version => '4.3' # Installs the latest available release and not necessarily the version. 
+    version => '4.3' # Installs the latest available release of the version
   }
   -> class { '::graylog::server':
       config  => {
