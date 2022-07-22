@@ -49,11 +49,11 @@ class { 'mongodb::globals':
   bind_ip => ['127.0.0.1'],
 }
 class { 'elastic_stack::repo':
-  version => 6,
+  version => 7,
 }
 #  /usr/lib/sysctl.d/elasticsearch.conf; config file: /etc/elasticsearch/elasticsearch.yml
 class { 'elasticsearch':
-  version     => '6.8.23',
+  version     => '7.9.3',
   # repo_version => '8.x',
   # ensure => 'absent',
   manage_repo => true,
@@ -63,12 +63,12 @@ class { 'elasticsearch':
     '-Xmx2g'
   ]
 }
--> elasticsearch::instance { 'graylog':
-    config => {
-      'cluster.name' => 'graylog',
-      'network.host' => '127.0.0.1',
-    }
-  }
+# -> elasticsearch::instance { 'graylog':
+#     config => {
+#       'cluster.name' => 'graylog',
+#       'network.host' => '127.0.0.1',
+#     }
+#   }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 # config file: /etc/graylog/server/server.conf
 # Password must be at least 16 character long and complex or the service will not start
