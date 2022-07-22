@@ -58,8 +58,8 @@ class { 'elasticsearch':
   # ensure => 'absent',
   manage_repo => true,
   jvm_options => [
-  '-Xms1g',
-  '-Xmx1g'
+    '-Xms2g',
+    '-Xmx2g'
   ]
 }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
