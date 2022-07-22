@@ -6,6 +6,7 @@ class profile::graylog {
   $my_ip   = $::ipaddress
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
+  $glog_pwd = lookup('glog_pwd')
   archive { '/tmp/lsstcertlatest.crt' :
     ensure  => present,
     source  => $domaincert,
@@ -78,9 +79,9 @@ class { 'elasticsearch':
       config  => {
         is_master                           => true,
         node_id_file                        => '/etc/graylog/server/node-id',
-        password_secret                     => 'password1$password1$',
+        password_secret                     => $glog_pwd,
         root_username                       => 'admin',
-        root_password_sha2                  => '409955bd1d9e0f6291a748d965b9b8a3c2236edeb37e75f5bf8356dab971258f',
+        root_password_sha2                  => 'c26421aac2f98be43a59bb3776160aa62057430ee9a9e51343cdfaab875be203',
         root_timezone                       => 'UTC',
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
