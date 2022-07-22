@@ -97,7 +97,7 @@ class { 'elasticsearch':
         elasticsearch_shards                => '4',
         elasticsearch_replicas              => '1',
         elasticsearch_index_prefix          => 'graylog',
-        elasticsearch_hosts                 => 'http://localhost:9200',
+        elasticsearch_hosts                 => "http://${my_ip}:9200",
         mongodb_uri                         => "mongodb://${my_ip}/graylog",
       },
       require => Class[
