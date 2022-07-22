@@ -55,7 +55,7 @@ class { 'elastic_stack::repo':
 }
 #  /usr/lib/sysctl.d/elasticsearch.conf; config file: /etc/elasticsearch/elasticsearch.yml
 class { 'elasticsearch':
-  version           => '7.9.3',
+  version           => '7.9.3', #Currently 7.11 and above not supported in Graylog
   oss               => true,
   # ensure => 'absent',
   manage_repo       => true,
