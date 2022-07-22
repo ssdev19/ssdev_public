@@ -63,7 +63,7 @@ class { 'elasticsearch':
     '-Xmx2g'
   ]
 }
--> es_instance_conn_validator { 'myinstance' :
+-> es_instance_conn_validator { 'graylog' :
     server => 'graylog-ssdev.us.lsst.org',
     port   => '9200',
 }
