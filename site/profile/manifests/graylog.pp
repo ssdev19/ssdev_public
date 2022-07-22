@@ -71,6 +71,7 @@ class { 'elasticsearch':
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 # config file: /etc/graylog/server/server.conf
 # Password must be at least 16 character long and complex or the service will not start
+  $my_ip = $::ipaddress
   class { '::graylog::repository':
     version => '4.2'
   }
@@ -84,7 +85,7 @@ class { 'elasticsearch':
         root_timezone                       => 'UTC',
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
-        http_bind_address                   => $::ipaddress + ':9000',
+        http_bind_address                   => "${my_ip}:9000",
         # http_external_uri                   => "https://${fqdn}:9000/",
         # http_enable_tls                     => true,
         # http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
