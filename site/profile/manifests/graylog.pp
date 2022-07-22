@@ -50,11 +50,12 @@ class { 'mongodb::globals':
 }
 class { 'elastic_stack::repo':
   version => 7,
+  oss     => true,
 }
 #  /usr/lib/sysctl.d/elasticsearch.conf; config file: /etc/elasticsearch/elasticsearch.yml
 class { 'elasticsearch':
   version     => '7.9.3',
-  # repo_version => '8.x',
+  oss => true,
   # ensure => 'absent',
   manage_repo => true,
   restart_on_change => true,
