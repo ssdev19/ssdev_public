@@ -46,7 +46,7 @@ class { 'mongodb::globals':
   manage_package_repo => true,
 }
 -> class { 'mongodb::server':
-  bind_ip => [$my_ip],
+  bind_ip => ['140.252.32.189'],
 }
 class { 'elastic_stack::repo':
   version => 7,
@@ -65,7 +65,7 @@ class { 'elasticsearch':
   ]
 }
 -> es_instance_conn_validator { 'graylog' :
-    server => $my_ip, #graylog-ssdev.us.lsst.org',
+    server => '140.252.32.189', #graylog-ssdev.us.lsst.org',
     port   => '9200',
   }
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
@@ -84,7 +84,7 @@ class { 'elasticsearch':
         root_timezone                       => 'UTC',
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
-        http_bind_address                   => "${my_ip}:9000",
+        http_bind_address                   => '140.252.32.189:9000',
         # http_external_uri                   => "https://${fqdn}:9000/",
         # http_enable_tls                     => true,
         # http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
