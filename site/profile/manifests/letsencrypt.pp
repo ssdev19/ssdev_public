@@ -4,6 +4,11 @@ class profile::letsencrypt {
   $fqdn = $facts['networking']['fqdn']
 letsencrypt::certonly { $host:
   domains     => [$fqdn],
-  manage_cron => true,
+  manage_cron          => true,
+  cron_hour            => [0,12],
+  cron_minute          => '30',
+  cron_before_command  => 'service graylog-server stop',
+  cron_success_command => '/bin/systemctl reload graylog-server.service',
+  suppress_cron_output => true,
 }
 }
