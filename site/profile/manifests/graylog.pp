@@ -7,33 +7,33 @@ class profile::graylog {
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
   $glog_pwd = lookup('glog_pwd')
-  archive { '/tmp/lsstcertlatest.crt' :
-    ensure  => present,
-    source  => $domaincert,
-    cleanup => false,
-  }
-  $domaincert2 = lookup('domaincert2')
-  archive { '/tmp/lsstcertlatest.key' :
-    ensure  => present,
-    source  => $domaincert2,
-    cleanup => false,
-  }
-  $chain = lookup('chain')
-  archive { '/tmp/lsstcertlatestintermediate.pem' :
-    ensure  => present,
-    source  => $chain,
-    cleanup => false,
-  }
-    file { '/etc/ssl/graylog/graylog_cert_chain.crt':
-    ensure  => present,
-    source  => '/tmp/lsstcertlatest.crt',
-    replace => 'no',
-  }
-    file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
-    ensure  => present,
-    source  => '/tmp/lsstcertlatestintermediate.pem',
-    replace => 'no',
-  }
+  # archive { '/tmp/lsstcertlatest.crt' :
+  #   ensure  => present,
+  #   source  => $domaincert,
+  #   cleanup => false,
+  # }
+  # $domaincert2 = lookup('domaincert2')
+  # archive { '/tmp/lsstcertlatest.key' :
+  #   ensure  => present,
+  #   source  => $domaincert2,
+  #   cleanup => false,
+  # }
+  # $chain = lookup('chain')
+  # archive { '/tmp/lsstcertlatestintermediate.pem' :
+  #   ensure  => present,
+  #   source  => $chain,
+  #   cleanup => false,
+  # }
+  #   file { '/etc/ssl/graylog/graylog_cert_chain.crt':
+  #   ensure  => present,
+  #   source  => '/tmp/lsstcertlatest.crt',
+  #   replace => 'no',
+  # }
+  #   file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
+  #   ensure  => present,
+  #   source  => '/tmp/lsstcertlatestintermediate.pem',
+  #   replace => 'no',
+  # }
 
   # $keystorepwd = lookup('keystorepwd')
   # java_ks { 'lsst.org:/etc/pki/keystore':
