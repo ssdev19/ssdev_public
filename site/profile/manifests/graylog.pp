@@ -47,7 +47,7 @@ class { 'mongodb::globals':
   manage_package_repo => true,
 }
 -> class { 'mongodb::server':
-  bind_ip => [ $my_ip ],
+  bind_ip => [ '127.0.0.1' ],
   service_enable => true,
 }
 class { 'elastic_stack::repo':
@@ -100,7 +100,7 @@ class { 'elasticsearch':
         elasticsearch_replicas              => '1',
         elasticsearch_index_prefix          => 'graylog',
         elasticsearch_hosts                 => 'http://localhost:9200',
-        mongodb_uri                         => "mongodb://${my_ip}/graylog",
+        mongodb_uri                         => "mongodb://127.0.0.1/graylog",
       },
       require => Class[
         '::java',
