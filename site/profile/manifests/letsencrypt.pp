@@ -2,6 +2,10 @@
 class profile::letsencrypt {
   $host = $facts['networking']['hostname']
   $fqdn = $facts['networking']['fqdn']
+  class { 'letsencrypt':
+  email => 'foo@example.com',
+}
+
 letsencrypt::certonly { $host:
   domains     => [$fqdn],
   config_dir  => '/etc/ssl/graylog/',
