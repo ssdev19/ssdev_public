@@ -4,7 +4,7 @@ class profile::letsencrypt {
   $fqdn = $facts['networking']['fqdn']
 letsencrypt::certonly { $host:
   domains     => [$fqdn],
-  config_dir  => '/etc/ssl/graylog/'
+  config_dir  => '/etc/ssl/graylog/',
   manage_cron          => true,
   cron_hour            => [0,12],
   cron_minute          => '30',
