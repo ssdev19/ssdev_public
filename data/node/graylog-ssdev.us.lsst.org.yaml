@@ -3,7 +3,7 @@ classes:
   - profile::base_linux
   - profile::java
   - profile::graylog
-  - profile::letsencrypt
+  # - profile::letsencrypt
 profile::base_linux::postfix: true
 network::interfaces_hash:
   eth0:
