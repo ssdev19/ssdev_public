@@ -61,6 +61,10 @@ class { 'elasticsearch':
   # ensure => 'absent',
   manage_repo       => true,
   restart_on_change => true,
+  config            => {
+    'cluster.name' => 'graylog',
+    'network.host' => '127.0.0.1',
+  },
   jvm_options       => [
     '-Xms1g',
     '-Xmx1g'
