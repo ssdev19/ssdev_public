@@ -28,11 +28,17 @@ class profile::graylog {
     ensure  => present,
     source  => '/tmp/lsstcertlatest.crt',
     replace => 'no',
+    mode    => '0644',
+    owner   => 'graylog',
+    group   => 'graylog',
   }
     file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
     ensure  => present,
     source  => '/tmp/lsstcertlatestintermediate.pem',
     replace => 'no',
+    mode    => '0644',
+    owner   => 'graylog',
+    group   => 'graylog',
   }
 
   # $keystorepwd = lookup('keystorepwd')
