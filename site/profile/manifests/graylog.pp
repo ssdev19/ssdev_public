@@ -95,7 +95,7 @@ class { 'elasticsearch':
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
         http_bind_address                   => '0.0.0.0:9000',
-        http_external_uri                   => 'https://0.0.0.0:9000/',
+        http_external_uri                   => "https://${fqdn}:9000/",
         # http_enable_tls                     => true,
         http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
         http_tls_key_file                   => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
