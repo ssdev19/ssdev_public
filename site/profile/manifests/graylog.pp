@@ -81,7 +81,8 @@ class { 'elasticsearch':
     version => '4.3' # Installs the latest available release of the version
   }
   -> class { '::graylog::server':
-      config  => {
+      package_version => 'latest',
+      config          => {
         is_master                           => true,
         node_id_file                        => '/etc/graylog/server/node-id',
         password_secret                     => $glog_pwd,
@@ -106,7 +107,7 @@ class { 'elasticsearch':
         elasticsearch_hosts                 => 'http://localhost:9200',
         mongodb_uri                         => 'mongodb://127.0.0.1/graylog',
       },
-      require => Class[
+      require         => Class[
         '::java',
       ],
   }
