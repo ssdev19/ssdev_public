@@ -2,8 +2,9 @@
 class profile::letsencrypt {
   $host = $facts['networking']['hostname']
   $fqdn = $facts['networking']['fqdn']
+  $email = lookup('email')
   class { 'letsencrypt':
-  email => 'foo@example.com',
+  email => $email,
 }
 
 letsencrypt::certonly { $host:
