@@ -50,6 +50,8 @@ class { 'mongodb::globals':
 -> class { 'mongodb::server':
   bind_ip        => [ '127.0.0.1' ],
   service_enable => true,
+  ensure         => 'present',
+  restart        => true,
 }
 class { 'elastic_stack::repo':
   version => 7,
