@@ -44,7 +44,8 @@ class profile::graylog {
   #   password_fail_reset => true,
   # }
 class { 'mongodb::globals':
-  manage_package_repo => true,
+  manage_package_repo => false,
+  manage_package      => true,
 }
 -> class { 'mongodb::server':
   bind_ip        => [ '127.0.0.1' ],
