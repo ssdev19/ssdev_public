@@ -56,14 +56,14 @@ class { 'elastic_stack::repo':
 }
 #  /usr/lib/sysctl.d/elasticsearch.conf; config file: /etc/elasticsearch/elasticsearch.yml
 class { 'elasticsearch':
-  version           => '7.9.3', #Currently 7.11 and above not supported in Graylog
+  version           => '7.10.2', #Currently 7.11 and above not supported in Graylog
   oss               => true,
   # ensure => 'absent',
   manage_repo       => true,
   restart_on_change => true,
   jvm_options       => [
-    '-Xms2g',
-    '-Xmx2g'
+    '-Xms1g',
+    '-Xmx1g'
   ]
 }
 -> es_instance_conn_validator { 'graylog' :
