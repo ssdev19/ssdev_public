@@ -1,8 +1,8 @@
 # Graylog
 class profile::graylog {
-    file { '/etc/ssl/graylog':
-      ensure => directory,
-    }
+  file { '/etc/ssl/graylog':
+    ensure => directory,
+  }
   $my_ip   = $::ipaddress
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
@@ -49,9 +49,9 @@ class { 'mongodb::globals':
 }
 -> class { 'mongodb::server':
   bind_ip        => [ '127.0.0.1' ],
-  service_enable => true,
   ensure         => 'present',
   restart        => true,
+  service_enable => true,
 }
 class { 'elastic_stack::repo':
   version => 7,
@@ -94,8 +94,8 @@ class { 'elasticsearch':
         root_timezone                       => 'UTC',
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
-        http_bind_address                   => "0.0.0.0:9000",
-        http_external_uri                   => "https://${fqdn}:9000/",
+        http_bind_address                   => '0.0.0.0:9000',
+        http_external_uri                   => 'https://0.0.0.0:9000/',
         # http_enable_tls                     => true,
         http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
         http_tls_key_file                   => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
