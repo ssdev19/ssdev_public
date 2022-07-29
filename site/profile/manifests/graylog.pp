@@ -7,39 +7,39 @@ class profile::graylog {
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
   $glog_pwd = lookup('glog_pwd')
-  archive { '/tmp/lsstcertlatest.crt' :
-    ensure  => present,
-    source  => $domaincert,
-    cleanup => false,
-  }
-  $domaincert2 = lookup('domaincert2')
-  archive { '/tmp/lsstcertlatest.key' :
-    ensure  => present,
-    source  => $domaincert2,
-    cleanup => false,
-  }
-  $chain = lookup('chain')
-  archive { '/tmp/lsstcertlatestintermediate.pem' :
-    ensure  => present,
-    source  => $chain,
-    cleanup => false,
-  }
-    file { '/etc/ssl/graylog/graylog_cert_chain.crt':
-    ensure  => present,
-    source  => '/tmp/lsstcertlatest.crt',
-    replace => 'no',
-    mode    => '0644',
-    owner   => 'graylog',
-    group   => 'graylog',
-  }
-    file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
-    ensure  => present,
-    source  => '/tmp/lsstcertlatestintermediate.pem',
-    replace => 'no',
-    mode    => '0644',
-    owner   => 'graylog',
-    group   => 'graylog',
-  }
+  # archive { '/tmp/lsstcertlatest.crt' :
+  #   ensure  => present,
+  #   source  => $domaincert,
+  #   cleanup => false,
+  # }
+  # $domaincert2 = lookup('domaincert2')
+  # archive { '/tmp/lsstcertlatest.key' :
+  #   ensure  => present,
+  #   source  => $domaincert2,
+  #   cleanup => false,
+  # }
+  # $chain = lookup('chain')
+  # archive { '/tmp/lsstcertlatestintermediate.pem' :
+  #   ensure  => present,
+  #   source  => $chain,
+  #   cleanup => false,
+  # }
+  #   file { '/etc/ssl/graylog/graylog_cert_chain.crt':
+  #   ensure  => present,
+  #   source  => '/tmp/lsstcertlatest.crt',
+  #   replace => 'no',
+  #   mode    => '0644',
+  #   owner   => 'graylog',
+  #   group   => 'graylog',
+  # }
+  #   file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
+  #   ensure  => present,
+  #   source  => '/tmp/lsstcertlatestintermediate.pem',
+  #   replace => 'no',
+  #   mode    => '0644',
+  #   owner   => 'graylog',
+  #   group   => 'graylog',
+  # }
 
   # $keystorepwd = lookup('keystorepwd')
   # java_ks { 'lsst.org:/etc/pki/keystore':
@@ -102,7 +102,7 @@ class { 'elasticsearch':
         allow_highlighting                  => true,
         http_bind_address                   => '0.0.0.0:9000',
         http_external_uri                   => "https://${fqdn}:443/",
-        # http_enable_tls                     => true,
+        http_enable_tls                     => true,
         http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
         http_tls_key_file                   => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
         # http_tls_key_password               => 'changeit',
