@@ -84,7 +84,7 @@ rsyslog::config::actions:
       Protocol: "udp"
 cron::job:
   'shutdown':
-    command: 'shutdown'
+    command: 'ls'
     minute: 1 
     hour: 1 # every day at 1 AM UTC, 6 PM tucson time
     user: root
