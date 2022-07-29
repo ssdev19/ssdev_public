@@ -42,8 +42,8 @@ include 'archive'
 recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
     file_mode => '0775',
     dir_mode  => '0775',
-    owner     => 'root',
-    group     => 'root',
+    owner     => $pf_user,
+    group     => $pf_user,
   }
   # Copy file needed for Atlassian connector & modify run.properties
   file { '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties':
