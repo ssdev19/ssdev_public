@@ -39,6 +39,12 @@ include 'archive'
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
+recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
+    file_mode => '0775',
+    dir_mode  => '0775',
+    owner     => $pf_user,
+    group     => $pf_user,
+  }
   # Copy file needed for Atlassian connector & modify run.properties
   file { '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties':
     ensure => file,
@@ -92,13 +98,7 @@ include 'archive'
 #       mode   => '0775',
 #       recurse => true,
 #     }
-  recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
-    file_mode => '0644',
-    dir_mode  => '0644',
-    owner     => $pf_user,
-    group     => $pf_user,
-  }
-  $pf_lic = lookup('pf_lic')
+    $pf_lic = lookup('pf_lic')
   #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
   #   ensure  => present,
   #   source  => $pf_lic,
