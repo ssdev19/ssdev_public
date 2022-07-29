@@ -7,48 +7,48 @@ class profile::graylog {
   $fqdn    = $facts['networking']['fqdn']
   $domaincert = lookup('domaincert')
   $glog_pwd = lookup('glog_pwd')
-  archive { '/tmp/lsstcertlatest.crt' :
-    ensure  => present,
-    source  => $domaincert,
-    cleanup => false,
-  }
-  $domaincert2 = lookup('domaincert2')
-  archive { '/tmp/lsstcertlatest.key' :
-    ensure  => present,
-    source  => $domaincert2,
-    cleanup => false,
-  }
-  $chain = lookup('chain')
-  archive { '/tmp/lsstcertlatestintermediate.pem' :
-    ensure  => present,
-    source  => $chain,
-    cleanup => false,
-  }
-    file { '/etc/ssl/graylog/graylog_cert_chain.crt':
-    ensure  => present,
-    source  => '/tmp/lsstcertlatest.crt',
-    replace => 'no',
-    mode    => '0644',
-    owner   => 'graylog',
-    group   => 'graylog',
-  }
-    file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
-    ensure  => present,
-    source  => '/tmp/lsstcertlatestintermediate.pem',
-    replace => 'no',
-    mode    => '0644',
-    owner   => 'graylog',
-    group   => 'graylog',
-  }
+  # archive { '/tmp/lsstcertlatest.crt' :
+  #   ensure  => present,
+  #   source  => $domaincert,
+  #   cleanup => false,
+  # }
+  # $domaincert2 = lookup('domaincert2')
+  # archive { '/tmp/lsstcertlatest.key' :
+  #   ensure  => present,
+  #   source  => $domaincert2,
+  #   cleanup => false,
+  # }
+  # $chain = lookup('chain')
+  # archive { '/tmp/lsstcertlatestintermediate.pem' :
+  #   ensure  => present,
+  #   source  => $chain,
+  #   cleanup => false,
+  # }
+  #   file { '/etc/ssl/graylog/graylog_cert_chain.crt':
+  #   ensure  => present,
+  #   source  => '/tmp/lsstcertlatest.crt',
+  #   replace => 'no',
+  #   mode    => '0644',
+  #   owner   => 'graylog',
+  #   group   => 'graylog',
+  # }
+  #   file { '/etc/ssl/graylog/graylog_key_pkcs8.pem':
+  #   ensure  => present,
+  #   source  => '/tmp/lsstcertlatestintermediate.pem',
+  #   replace => 'no',
+  #   mode    => '0644',
+  #   owner   => 'graylog',
+  #   group   => 'graylog',
+  # }
 
-  $keystorepwd = lookup('keystorepwd')
-  java_ks { 'lsst.org:/etc/pki/keystore':
-    ensure              => latest,
-    certificate         => '/tmp/lsstcertlatest.crt',
-    private_key         => '/tmp/lsstcertlatest.key',
-    password            => $keystorepwd,
-    password_fail_reset => true,
-  }
+  # $keystorepwd = lookup('keystorepwd')
+  # java_ks { 'lsst.org:/etc/pki/keystore':
+  #   ensure              => latest,
+  #   certificate         => '/tmp/lsstcertlatest.crt',
+  #   private_key         => '/tmp/lsstcertlatest.key',
+  #   password            => $keystorepwd,
+  #   password_fail_reset => true,
+  # }
 class { 'mongodb::globals':
   manage_package_repo => true,
   manage_package      => true,
