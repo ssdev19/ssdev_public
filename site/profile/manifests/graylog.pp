@@ -104,7 +104,7 @@ class { 'elasticsearch':
         http_external_uri                   => "https://${fqdn}:443/",
         http_enable_tls                     => true,
         http_tls_cert_file                  => '/etc/ssl/graylog/cert.pem',
-        http_tls_key_file                   => '/etc/ssl/graylog/pkcs8-plain.pem',
+        http_tls_key_file                   => '/etc/ssl/graylog/pkcs5-plain.pem',
         # http_tls_key_password               => 'changeit',
         rotation_strategy                   => 'time',
         retention_strategy                  => 'delete',
