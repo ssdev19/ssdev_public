@@ -93,8 +93,8 @@ include 'archive'
 #       recurse => true,
 #     }
   recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
-    file_mode => '0774',
-    dir_mode  => '0774',
+    file_mode => '0644',
+    dir_mode  => '0644',
     owner     => $pf_user,
     group     => $pf_user,
   }
