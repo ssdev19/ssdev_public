@@ -39,12 +39,15 @@ include 'archive'
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
-# recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
-#     file_mode => '0775',
-#     dir_mode  => '0775',
-#     owner     => $pf_user,
-#     group     => $pf_user,
-#   }
+$pingservice = '/etc/systemd/system/pingfederate.service'
+unless ($pingservice) {
+  recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
+      file_mode => '0775',
+      dir_mode  => '0775',
+      owner     => $pf_user,
+      group     => $pf_user,
+    }
+  }
   # Copy file needed for Atlassian connector & modify run.properties
   file { '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties':
     ensure => file,
@@ -63,7 +66,18 @@ include 'archive'
   #     line  => $line,
   #     path  => '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml',
   #   }
-  # Pingfederate service
+  archive { '/tmp/log4j2.xml' :
+    ensure  => present,
+    source  => 's3://pingfe/log4j2.xml',
+    cleanup => false,
+  }
+
+  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
+  ensure  => present,
+  source  => '/tmp/log4j2.xml',
+  replace => 'yes',
+  }
+  # Pingfederate service /etc/systemd/system/pingfederate.service
   $pingfederate_service = @("EOT")
     [Unit]
     Description=PingFederate ${pf_version}
@@ -97,7 +111,7 @@ include 'archive'
 #       # group  => $pf_user,
 #       mode   => '0775',
 #       recurse => true,
-#     } test
+#     }
     $pf_lic = lookup('pf_lic')
   #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
   #   ensure  => present,
@@ -108,17 +122,6 @@ include 'archive'
     ensure  => present,
     source  => $pf_lic,
     cleanup => false,
-  }
-  archive { '/tmp/log4j2.xml' :
-    ensure  => present,
-    source  => 's3://pingfe/log4j2.xml',
-    cleanup => false,
-  }
-
-  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
-  ensure  => present,
-  source  => '/tmp/log4j2.xml',
-  replace => 'yes',
   }
 
   # Backup logs
