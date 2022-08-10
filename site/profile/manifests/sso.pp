@@ -40,14 +40,19 @@ include 'archive'
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
 $pingservice = '/etc/systemd/system/pingfederate.service'
-unless ($pingservice) {
+if $pingservice {
   recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
       file_mode => '0775',
       dir_mode  => '0775',
       owner     => $pf_user,
       group     => $pf_user,
     }
-  }
+}
+# else {
+  # when false
+
+
+
   # Copy file needed for Atlassian connector & modify run.properties
   file { '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties':
     ensure => file,
