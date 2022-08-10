@@ -41,7 +41,7 @@ include 'archive'
   }
 $pingservice = '/etc/systemd/system/pingfederate.service'
 if $pingservice {
-
+  warning ('nothing to do')
 }
   else {
     recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
