@@ -48,8 +48,8 @@ if $pingservice {
         group     => $pf_user,
       }
 }
-  # else {
-  # }
+  else {
+  }
 
 
   # Copy file needed for Atlassian connector & modify run.properties
