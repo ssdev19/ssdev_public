@@ -97,7 +97,7 @@ recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
 #       # group  => $pf_user,
 #       mode   => '0775',
 #       recurse => true,
-#     }
+#     } test
     $pf_lic = lookup('pf_lic')
   #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
   #   ensure  => present,
