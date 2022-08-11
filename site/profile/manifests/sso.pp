@@ -19,10 +19,10 @@ include 'archive'
     source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
     # provider => 'wget',
     cleanup      => true,
-    # user         => $pf_user,
+    user         => $pf_user,
     extract      => true,
     extract_path => '/opt',
-    owner  => $pf_user,
+    # owner  => $pf_user,
     group  => $pf_user,
     mode   => '0775',
   }
