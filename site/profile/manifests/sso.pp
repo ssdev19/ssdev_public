@@ -41,13 +41,14 @@ include 'archive'
   }
 $pingservice = '/etc/systemd/system/pingfederate.service'
 unless $pingservice {
-      recursive_file_permissions { '/opt/pingfederate-11.0.2/pingfederate/':
+
+      recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
         file_mode => '0775',
         dir_mode  => '0775',
         owner     => $pf_user,
         group     => $pf_user,
       }
-}
+  }
   # else {
   # }
 
