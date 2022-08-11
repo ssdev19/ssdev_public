@@ -22,6 +22,9 @@ include 'archive'
     # user         => $pf_user,
     extract      => true,
     extract_path => '/opt',
+    owner  => $pf_user,
+    group  => $pf_user,
+    mode   => '0775',
   }
   archive { '/tmp/jirapingfed.zip':
     # ensure   => present,
@@ -39,18 +42,18 @@ include 'archive'
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
-$pingservice = '/etc/systemd/system/pingfederate.service1'
-$file_exists = find_file($pingservice)
-unless $file_exists {
-notify { 'Do nothing' :}
-  } else {
-      recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
-        file_mode => '0775',
-        dir_mode  => '0775',
-        owner     => $pf_user,
-        group     => $pf_user,
-      }
-  }
+# $pingservice = '/etc/systemd/system/pingfederate.service1'
+# $file_exists = find_file($pingservice)
+# unless $file_exists {
+# notify { 'Do nothing' :}
+#   } else {
+#       recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
+#         file_mode => '0775',
+#         dir_mode  => '0775',
+#         owner     => $pf_user,
+#         group     => $pf_user,
+#       }
+#   }
 
 
   # Copy file needed for Atlassian connector & modify run.properties
