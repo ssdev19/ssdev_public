@@ -41,7 +41,7 @@ include 'archive'
   }
 $pingservice = '/etc/systemd/system/pingfederate.service'
 $file_exists = find_file($pingservice)
-if $file_exists {
+unless $file_exists {
 notify { 'Do nothing' :}
   } else {
       recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
