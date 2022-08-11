@@ -49,7 +49,7 @@ if $file_exists {
         group     => $pf_user,
       }
   } else {
-notify { 'file exists' :}
+notify { 'Do nothing' :}
   }
 
 
