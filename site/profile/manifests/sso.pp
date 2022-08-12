@@ -13,6 +13,10 @@ $line,
   #   password => $pf_pass
   # }
 include 'archive'
+  exec { "chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; chmod -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
+    path   => ['/sbin', '/usr/sbin', '/bin'],
+    onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
+  }
 
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
@@ -33,10 +37,6 @@ include 'archive'
     # extract_path => '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy',
     extract_path => '/tmp/',
     # creates      => '/tmp/atlassianconnector'
-  }
-  exec { "chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; chmod -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
-    path   => ['/sbin', '/usr/sbin', '/bin'],
-    onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
   }
 
   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar':
