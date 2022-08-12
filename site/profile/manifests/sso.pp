@@ -39,7 +39,7 @@ include 'archive'
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
-$pingservice = '/etc/systemd/system/pingfederate.service'
+$pingservice = "/etc/systemd/system/pingfederate.service"
 $file_exists = find_file($pingservice)
 if $file_exists {
   notify{"service exists at ${file_exists}.":}
