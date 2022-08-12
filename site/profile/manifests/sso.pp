@@ -41,7 +41,7 @@ include 'archive'
   }
   exec { 'chmod -R 775 /opt/pingfederate-11.0.2/pingfederate' :
     path   => ['/sbin', '/usr/sbin', '/bin'],
-    onlyif => ['test ! -d /etc/systemd/system/pingfederate.service'],
+    onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
   }
 
 # $pingservice = '/etc/systemd/system/pingfederate.service'
