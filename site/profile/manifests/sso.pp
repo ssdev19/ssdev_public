@@ -44,12 +44,13 @@ $file_exists = find_file($pingservice)
 if $file_exists {
   notify{'service exists already.':}
 } else {
-      recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
-        file_mode => '0775',
-        dir_mode  => '0775',
-        owner     => $pf_user,
-        group     => $pf_user,
-        }
+  notify{'service does not exists.':}
+      # recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
+      #   file_mode => '0775',
+      #   dir_mode  => '0775',
+      #   owner     => $pf_user,
+      #   group     => $pf_user,
+      #   }
 }
 
 
