@@ -13,10 +13,6 @@ $line,
   #   password => $pf_pass
   # }
 include 'archive'
-  exec { "sudo chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; sudo chown -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
-    path   => ['/sbin', '/usr/sbin', '/bin'],
-    onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
-  }
 
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
@@ -88,6 +84,11 @@ include 'archive'
   source  => '/tmp/log4j2.xml',
   replace => 'yes',
   }
+    exec { "sudo chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; sudo chown -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
+    path   => ['/sbin', '/usr/sbin', '/bin'],
+    onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
+  }
+
   # Pingfederate service /etc/systemd/system/pingfederate.service
   $pingfederate_service = @("EOT")
     [Unit]
