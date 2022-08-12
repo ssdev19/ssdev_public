@@ -15,7 +15,7 @@ $line,
 include 'archive'
   exec { "sudo chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; sudo chown -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
     path   => ['/sbin', '/usr/sbin', '/bin'],
-    # onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
+    onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
   }
 
   archive { '/tmp/pingfed.zip':
