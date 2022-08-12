@@ -13,7 +13,7 @@ $line,
   #   password => $pf_pass
   # }
 include 'archive'
-  exec { "chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; chmod -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
+  exec { "sudo chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; sudo chmod -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
     path   => ['/sbin', '/usr/sbin', '/bin'],
     onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
   }
