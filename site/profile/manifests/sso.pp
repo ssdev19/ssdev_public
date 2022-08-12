@@ -44,7 +44,7 @@ $file_exists = find_file($pingservice)
 if $file_exists {
   notify{"service exists at ${file_exists}.":}
 } else {
-  notify{"service ${pingservice} does not exists.":}
+  notify{"service ${pingservice} does not exists.${file_exists}":}
       # recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
       #   file_mode => '0775',
       #   dir_mode  => '0775',
