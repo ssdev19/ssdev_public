@@ -39,7 +39,7 @@ include 'archive'
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
-  exec { 'chmod -R 775 /opt/pingfederate-11.0.2/pingfederate' :
+  exec { "chmod -R 775 /opt/pingfederate-11.0.2/pingfederate; chmod -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate" :
     path   => ['/sbin', '/usr/sbin', '/bin'],
     onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
   }
