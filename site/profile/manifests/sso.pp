@@ -40,8 +40,8 @@ include 'archive'
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
 $pingservice = '/etc/systemd/system/pingfederate.service'
-$file_exists !~ find_file($pingservice)
-if $file_exists {
+$file_exists = find_file($pingservice)
+if $file_exists != '/etc/systemd/system/pingfederate.service' {
       recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
         file_mode => '0775',
         dir_mode  => '0775',
