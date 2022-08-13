@@ -123,11 +123,22 @@ include 'archive'
 #       mode   => '0775',
 #       recurse => true,
 #     }
-
+    $pf_lic = lookup('pf_lic')
+  #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
+  #   ensure  => present,
+  #   source  => $pf_lic,
+  #   replace => 'no',
+  # }
   archive { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pingfederate.lic' :
     ensure  => present,
     source  => $pf_lic,
     cleanup => false,
   }
 
+  # Backup logs
+  # archive { '/tmp/ssolog' :
+  #   ensure  => present,
+  #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
+  #   cleanup => false,
+  # }
 }
