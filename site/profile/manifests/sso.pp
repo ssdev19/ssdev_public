@@ -8,12 +8,14 @@ $pf_version,
 $match,
 $line,
 ){
-  # user { $pf_user:
-  #   ensure   => present,
-  #   password => $pf_pass
-  # }
-include 'archive'
 
+include 'archive'
+    file { '/opt/pingfederate-11.0.2':
+      ensure  => directory,
+      owner   => $pf_user,
+      mode    => '0775',
+      recurse => true,
+    }
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
     source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
@@ -84,10 +86,7 @@ include 'archive'
   source  => '/tmp/log4j2.xml',
   replace => 'yes',
   }
-    exec { "sudo chmod -R 775 /opt/pingfederate-11.0.2/pingfederate/; sudo chown -R ${pf_user} /opt/pingfederate-11.0.2/pingfederate/" :
-    path   => ['/sbin', '/usr/sbin', '/bin'],
-    # onlyif => ['test ! -f /etc/systemd/system/pingfederate.service'],
-  }
+
 
   # Pingfederate service /etc/systemd/system/pingfederate.service
   $pingfederate_service = @("EOT")
@@ -124,22 +123,11 @@ include 'archive'
 #       mode   => '0775',
 #       recurse => true,
 #     }
-    $pf_lic = lookup('pf_lic')
-  #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
-  #   ensure  => present,
-  #   source  => $pf_lic,
-  #   replace => 'no',
-  # }
+
   archive { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pingfederate.lic' :
     ensure  => present,
     source  => $pf_lic,
     cleanup => false,
   }
 
-  # Backup logs
-  # archive { '/tmp/ssolog' :
-  #   ensure  => present,
-  #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
-  #   cleanup => false,
-  # }
 }
