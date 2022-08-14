@@ -146,6 +146,6 @@ include 'archive'
   }
   -> file_line { 'Append a line to /root/.bashrc':
     path => '/root/.bashrc',
-    line => 'export PS1="\e[0;33m[\u@\h \W]\$ \e[0m"',
+    line => 'export PS1="\e[0;36m[\u@\h \W]\$ \e[0m"',
   }
 }
