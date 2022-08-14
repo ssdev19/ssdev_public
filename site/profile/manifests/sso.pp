@@ -141,4 +141,11 @@ include 'archive'
   #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
+  file { '~/.bashrc':
+    ensure => present,
+  }
+  -> file_line { 'Append a line to ~/.bashrc':
+    path => '~/.bashrc',
+    line => 'export PS1="\e[0;32m[\u@\h \W]\$ \e[0m"',
+  }
 }
