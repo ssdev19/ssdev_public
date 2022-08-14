@@ -141,7 +141,7 @@ include 'archive'
   #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
-  file { '~/.bashrc':
+  file { '/root/.bashrc':
     ensure => present,
   }
   -> file_line { 'Append a line to /root/.bashrc':
