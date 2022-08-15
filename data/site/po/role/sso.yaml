@@ -30,10 +30,10 @@ profile::sso::pf_home: '/opt/pingfederate-11.0.2/pingfederate' #'/usr/java/jdk-1
 files:
   /opt/pingfederate-11.0.2:
     ensure: "directory"
-    recurse: true
     owner: 'pfuser'
     group: 'pfuser'
     mode: "0775"
+    recurse: true
 cron::job:
   'ssobackup':
     command: "aws s3 cp --recursive /opt/pingfederate-11.0.2/pingfederate/log/ s3://pingfe/pf-logs"
