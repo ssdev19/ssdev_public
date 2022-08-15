@@ -10,12 +10,12 @@ $line,
 ){
 
 include 'archive'
-    file { '/opt/pingfederate-11.0.2':
-      ensure  => directory,
-      owner   => $pf_user,
-      mode    => '0775',
-      recurse => true,
-    }
+    # file { '/opt/pingfederate-11.0.2':
+    #   ensure  => directory,
+    #   owner   => $pf_user,
+    #   mode    => '0775',
+    #   recurse => true,
+    # }
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
     source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
