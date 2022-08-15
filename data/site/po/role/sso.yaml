@@ -5,10 +5,6 @@ accounts::user_list:
       - 'pfuser'
     managehome: false
     system: true
-classes:
-  - profile::base_linux
-  - profile::java
-  - profile::sso
 files:
   /opt/pingfederate-11.0.2:
     ensure: "directory"
@@ -16,6 +12,10 @@ files:
     group: 'pfuser'
     mode: "0775"
     recurse: true
+classes:
+  - profile::base_linux
+  - profile::java
+  - profile::sso
 profile::base_linux::awscli: true
 profile::base_linux::postfix: true
 profile::base_linux::gralog: true
