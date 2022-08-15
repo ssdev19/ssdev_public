@@ -9,6 +9,13 @@ classes:
   - profile::base_linux
   - profile::java
   - profile::sso
+files:
+  /opt/pingfederate-11.0.2:
+    ensure: "directory"
+    owner: 'pfuser'
+    group: 'pfuser'
+    mode: "0775"
+    recurse: true
 profile::base_linux::awscli: true
 profile::base_linux::postfix: true
 profile::base_linux::gralog: true
@@ -27,13 +34,6 @@ profile::sso::pf_user: pfuser
 profile::sso::pf_version: '11.0.2'
 profile::sso::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
 profile::sso::pf_home: '/opt/pingfederate-11.0.2/pingfederate' #'/usr/java/jdk-11.0.2+9'
-files:
-  /opt/pingfederate-11.0.2:
-    ensure: "directory"
-    owner: 'pfuser'
-    group: 'pfuser'
-    mode: "0775"
-    recurse: true
 cron::job:
   'ssobackup':
     command: "aws s3 cp --recursive /opt/pingfederate-11.0.2/pingfederate/log/ s3://pingfe/pf-logs"
