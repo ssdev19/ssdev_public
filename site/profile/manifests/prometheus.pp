@@ -24,7 +24,8 @@ $cluster_hide,
         'prober' => 'tcp',
       },
       'icmp'        => {
-        'prober' => 'icmp',
+        'prober'  => 'icmp',
+        'timeout' => '5s'
       },
     }
   }
