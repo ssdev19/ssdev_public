@@ -27,14 +27,6 @@ prometheus::alerts:
             severity: "critical"
           annotations:
             summary: "Endpoint  down"
-# Alerts for ping endpoints
-        - alert: ping
-          expr: probe_success == 0
-          for: 2m
-          labels:
-            severity: "critical"
-          annotations:
-            summary: "Ping  down"
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
