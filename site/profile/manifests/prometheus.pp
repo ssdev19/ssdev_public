@@ -26,9 +26,7 @@ $cluster_hide,
       'icmp'        => {
         'prober'  => 'icmp',
         'timeout' => '5s',
-        'icmp'    => {
-          'preferred_ip_protocol' => 'ip4',
-        }
+        'preferred_ip_protocol' => 'ip4',
                   },
     }
   }
