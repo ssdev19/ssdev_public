@@ -26,8 +26,10 @@ $cluster_hide,
       'icmp'        => {
         'prober'  => 'icmp',
         'timeout' => '5s',
-        'preferred_ip_protocol' => 'ip4',
-                  },
+        'icmp'    => {
+          'preferred_ip_protocol' => 'ip4',
+        }
+      },
     }
   }
 # Alertmanager config
