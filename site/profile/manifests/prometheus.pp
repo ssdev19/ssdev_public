@@ -28,7 +28,7 @@ $cluster_hide,
         'timeout' => '5s',
         'icmp'    => {
           'valid_status_codes'    => [],
-          'method'                => 'GET',
+          # 'method'                => 'GET',
           'preferred_ip_protocol' => 'ip4',
         }
       },
