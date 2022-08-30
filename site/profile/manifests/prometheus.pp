@@ -27,6 +27,8 @@ $cluster_hide,
         'prober'  => 'icmp',
         'timeout' => '5s',
         'icmp'    => {
+          'valid_status_codes'    => [],
+          'method'                => 'GET',
           'preferred_ip_protocol' => 'ip4',
         }
       },
