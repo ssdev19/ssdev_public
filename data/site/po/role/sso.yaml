@@ -31,9 +31,9 @@ profile::java::java_path: '/usr/java/jdk-11.0.2+9-jre/bin:$PATH'
 profile::java::mem: '-Xmx1g'
 profile::sso::pf_user: pfuser
 # profile::sso::pf_pass: pfpass
-profile::sso::pf_version: '11.1.0'
+profile::sso::pf_version: '11.0.2'
 profile::sso::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
-profile::sso::pf_home: '/opt/pingfederate-11.1.0/pingfederate' #'/usr/java/jdk-11.0.2+9'
+profile::sso::pf_home: '/opt/pingfederate-11.0.2/pingfederate' #'/usr/java/jdk-11.0.2+9'
 # cron::job:
 #   'ssobackup':
 #     command: "aws s3 cp --recursive /opt/pingfederate-11.1.0/pingfederate/log/ s3://pingfe/pf-logs"
