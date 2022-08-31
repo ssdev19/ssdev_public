@@ -34,7 +34,7 @@ include 'archive'
     extract      => true,
     # extract_path => '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy',
     extract_path => '/tmp/',
-    # creates      => '/tmp/atlassianconnector'
+    # creates      => '/tmp/atlassianconnector' 
   }
 
   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar':
