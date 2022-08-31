@@ -10,7 +10,7 @@ $line,
 ){
 
 include 'archive'
-    file { '/opt/pingfederate-11.1.0':
+    file { "/opt/pingfederate-${pf_version}":
       ensure  => directory,
       owner   => $pf_user,
       mode    => '0775',
@@ -18,7 +18,7 @@ include 'archive'
     }
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
-    source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.1.0.zip',
+    source       => "https://project.lsst.org/zpuppet/pingfederate/pingfederate-${pf_version}.zip",
     # provider => 'wget',
     cleanup      => true,
     # user         => $pf_user,
@@ -37,7 +37,7 @@ include 'archive'
     # creates      => '/tmp/atlassianconnector' 
   }
 
-  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar':
+  file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar":
     ensure => present,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
@@ -58,7 +58,7 @@ include 'archive'
 
 
   # Copy file needed for Atlassian connector & modify run.properties
-  file { '/opt/pingfederate-11.1.0/pingfederate/bin/run.properties':
+  file { "/opt/pingfederate-${pf_version}/pingfederate/bin/run.properties":
     ensure => file,
   }
   -> file_line{ 'change pf.provisioner.mode to STANDALONE':
@@ -81,7 +81,7 @@ include 'archive'
     cleanup => false,
   }
 
-  file { '/opt/pingfederate-11.1.0/pingfederate/server/default/conf/log4j2.xml':
+  file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/conf/log4j2.xml":
   ensure  => present,
   source  => '/tmp/log4j2.xml',
   replace => 'yes',
@@ -129,7 +129,7 @@ include 'archive'
   #   source  => $pf_lic,
   #   replace => 'no',
   # }
-  archive { '/opt/pingfederate-11.1.0/pingfederate/server/default/conf/pingfederate.lic' :
+  archive { "/opt/pingfederate-${pf_version}/pingfederate/server/default/conf/pingfederate.lic" :
     ensure  => present,
     source  => $pf_lic,
     cleanup => false,
