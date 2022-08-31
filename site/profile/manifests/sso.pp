@@ -18,7 +18,7 @@ include 'archive'
     }
   archive { '/tmp/pingfed.zip':
     # ensure   => present,
-    source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.0.2.zip',
+    source       => 'https://project.lsst.org/zpuppet/pingfederate/pingfederate-11.1.0.zip',
     # provider => 'wget',
     cleanup      => true,
     # user         => $pf_user,
