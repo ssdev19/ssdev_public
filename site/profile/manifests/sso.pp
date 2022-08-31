@@ -10,7 +10,7 @@ $line,
 ){
 
 include 'archive'
-    file { '/opt/pingfederate-11.0.2':
+    file { '/opt/pingfederate-11.1.0':
       ensure  => directory,
       owner   => $pf_user,
       mode    => '0775',
@@ -58,13 +58,13 @@ include 'archive'
 
 
   # Copy file needed for Atlassian connector & modify run.properties
-  file { '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties':
+  file { '/opt/pingfederate-11.1.0/pingfederate/bin/run.properties':
     ensure => file,
   }
   -> file_line{ 'change pf.provisioner.mode to STANDALONE':
       match => 'pf.provisioner.mode=OFF',
       line  => 'pf.provisioner.mode=STANDALONE',
-      path  => '/opt/pingfederate-11.0.2/pingfederate/bin/run.properties',
+      path  => '/opt/pingfederate-11.1.0/pingfederate/bin/run.properties',
     }
   # Send audit logs to graylog
   # file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
@@ -81,7 +81,7 @@ include 'archive'
     cleanup => false,
   }
 
-  file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
+  file { '/opt/pingfederate-11.1.0/pingfederate/server/default/conf/log4j2.xml':
   ensure  => present,
   source  => '/tmp/log4j2.xml',
   replace => 'yes',
@@ -129,7 +129,7 @@ include 'archive'
   #   source  => $pf_lic,
   #   replace => 'no',
   # }
-  archive { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pingfederate.lic' :
+  archive { '/opt/pingfederate-11.1.0/pingfederate/server/default/conf/pingfederate.lic' :
     ensure  => present,
     source  => $pf_lic,
     cleanup => false,
