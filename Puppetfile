@@ -49,7 +49,7 @@ mod 'puppet-postfix', '2.0.0'
 mod 'camptocamp-augeas', '1.9.0'
 mod 'puppet-alternatives', '4.0.0' # postfix dependency
 mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
-mod 'puppet-systemd', '3.8.0'
+mod 'puppet-systemd', '3.10.0'
 mod 'bodgit/scl', '1.0.1'
 mod 'puppetlabs-postgresql', '7.5.0' # Foreman dependency
 mod 'puppet-extlib', '5.2.1'
@@ -65,7 +65,7 @@ mod 'puppetlabs-concat', '7.1.1'
 mod 'puppetlabs-inifile', '5.2.0'
 mod 'puppetlabs-java', '8.1.0'
 mod 'puppetlabs-java_ks', '4.2.0' # Kestore management
-mod 'puppetlabs-stdlib', '8.1.0'
+mod 'puppetlabs-stdlib', '8.4.0'
 mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
@@ -93,8 +93,8 @@ mod 'puppet-chrony', '2.1.0'
 mod 'graylog-graylog', '1.0.0'
 mod 'puppet-mongodb', '4.1.1'
 mod 'puppet-elasticsearch', '8.0.2'
-mod 'puppet-elastic_stack', '8.0.0' #dependency for elastic
-mod 'puppet-yum', '5.6.1'
+mod 'puppet-elastic_stack', '8.0.2' #dependency for elastic
+mod 'puppet-yum', '6.0.0'
 mod 'puppetlabs-yumrepo_core', '1.1.0'
 mod 'richardc-datacat', '0.6.2'
 mod 'npwalker-recursive_file_permissions', '0.6.2'
