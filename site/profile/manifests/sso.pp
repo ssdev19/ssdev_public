@@ -9,21 +9,18 @@ $match,
 $line,
 ){
 
-include 'archive'
-    file { "/opt/pingfederate-${pf_version}":
-      ensure  => directory,
-      owner   => $pf_user,
-      mode    => '0775',
-      recurse => true,
-    }
   archive { '/tmp/pingfed.zip':
-    # ensure   => present,
-    source       => "https://project.lsst.org/zpuppet/pingfederate/pingfederate-${pf_version}.zip",
-    # provider => 'wget',
+    source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
     cleanup      => true,
-    # user         => $pf_user,
     extract      => true,
     extract_path => '/opt',
+  }
+  # Required for Atlassian connector
+    archive { '/tmp/atlassianpingfed.zip':
+    source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
+    cleanup      => true,
+    extract      => true,
+    extract_path => '/tmp/',
   }
   archive { '/tmp/jirapingfed.zip':
     # ensure   => present,
