@@ -9,7 +9,7 @@ ssh::server_options:
   PubkeyAuthentication: "yes"
   AuthorizedKeysFile: ".ssh/authorized_keys"
   PasswordAuthentication: "yes"
-  ChallengeResponseAuthentication: "no"
+  ChallengeResponseAuthentication: "yes"
   GSSAPIAuthentication: "yes"
   GSSAPICleanupCredentials: "no"
   UsePAM: "yes"
