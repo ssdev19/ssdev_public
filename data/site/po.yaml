@@ -8,7 +8,7 @@ ssh::server_options:
   PermitRootLogin: "no"
   PubkeyAuthentication: "yes"
   AuthorizedKeysFile: ".ssh/authorized_keys"
-  PasswordAuthentication: "no"
+  PasswordAuthentication: "yes"
   ChallengeResponseAuthentication: "no"
   GSSAPIAuthentication: "yes"
   GSSAPICleanupCredentials: "no"
