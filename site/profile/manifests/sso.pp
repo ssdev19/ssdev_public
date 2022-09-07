@@ -64,7 +64,7 @@ include 'archive'
   -> file_line{ 'change pf.provisioner.mode to STANDALONE':
       match => 'pf.provisioner.mode=OFF',
       line  => 'pf.provisioner.mode=STANDALONE',
-      path  => '/opt/pingfederate-11.1.0/pingfederate/bin/run.properties',
+      path  => "/opt/pingfederate-${pf_version}/pingfederate/bin/run.properties",
     }
   # Send audit logs to graylog
   # file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':

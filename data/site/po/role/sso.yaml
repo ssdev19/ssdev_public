@@ -36,7 +36,7 @@ profile::sso::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
 profile::sso::pf_home: '/opt/pingfederate-11.0.2/pingfederate' #'/usr/java/jdk-11.0.2+9'
 # cron::job:
 #   'ssobackup':
-#     command: "aws s3 cp --recursive /opt/pingfederate-11.1.0/pingfederate/log/ s3://pingfe/pf-logs"
+#     command: "aws s3 cp --recursive /opt/pingfederate-11.0.2/pingfederate/log/ s3://pingfe/pf-logs"
 #     minute: 11
 #     hour: 21
 #     date: '*'
