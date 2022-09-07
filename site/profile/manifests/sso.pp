@@ -134,7 +134,12 @@ include 'archive'
     source  => $pf_lic,
     cleanup => false,
   }
-
+  recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
+    file_mode => '0775',
+    dir_mode  => '0775',
+    owner     => $pf_user,
+    group     => $pf_user,
+  }
   # Backup logs
   # archive { '/tmp/ssolog' :
   #   ensure  => present,
