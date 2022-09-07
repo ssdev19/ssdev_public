@@ -45,6 +45,12 @@ accounts::user_list:
       - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRjClJiTdbQNIUFW6zzoBUmdqDi7iGJQoW6oWQe/tk+0EaoZef2+Qz0jcwxKItbN/QPmBjCtyFghEzlAGfOcyiG57D8ZDSNBGuyMpNcHBglKrAlWCQIgLm1UIbQ5xeIco4Sg5QDikRLjGVTYMeupiZCGaFqeKqMRKvbVcNaQf1auDX9rQPrqL4Hxz3wG6JQitUSAmYONIxR1K98MBq0kfvU79FPt+Rgd3Qy8mJU3Pgn0en9WqEpmWSnQPGnpOvYLpNvbW1QDFUK/9q4SPAUK0VHGgG5jmV20zX5GelhyqbCAfkhWZYuSA6RJ7Ju4W4G122KL+eLXUsJNkAKuJIgx9D rsa@puppet'
     password: ''
     ignore_password_if_empty: true
+  spiceworks:
+    groups:
+      - 'wheel'
+    sshkeys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCDkZVAss+6tdH/Mjb8lnTXy4arCjhP2hzvjbkmaRcdF5TMLsr57GcZcIXQyh44WToL5p7bbZWmkTaaaOPZ8/fNS2kkpj79/nzZL1tIKtAF6OkLPWPlyehyTPnzxN1cIA6vN1FAt8Alp3bs4qesYmYiYH+VS166VVSLY82f4TODnkOwT2DNl48Zdzfo6szSHmpDsLxUaLSx1S8zDrNR43UagmqSnNhoA+W/wAUjsbYRfeFv5j0DE5o3qOo0Dy0hinOSiZOhAAs2Q82Eq/ORrFLkgYvZmuVpLM3zx2PBm6HlOavPZpgBWqW/tpNxeR23mx+7QGv21wM07qubDx7fQJYt rsa@puppet'
+    password: "%{lookup('root_pwd')}"
   # jcockrum_local:
   #   groups:
   #     - 'wheel'
