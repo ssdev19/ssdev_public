@@ -14,7 +14,7 @@ class profile::base_linux (
   include cron
   # include ::collectd
   include puppet_agent
-  include snmp::client
+  # include snmp::client
 
   # include nsswitch
   if $postfix {
@@ -24,6 +24,10 @@ class profile::base_linux (
     include rsyslog
     include rsyslog::config
   }
+  class { 'snmp':
+    manage_client => true,
+  }
+
 # config: /etc/systemd/system/node_exporter.service
   class { 'prometheus::node_exporter':
     version       => '1.4.0-rc.0',
