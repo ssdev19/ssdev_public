@@ -14,6 +14,7 @@ class profile::base_linux (
   include cron
   # include ::collectd
   include puppet_agent
+  include snmp::client
 
   # include nsswitch
   if $postfix {
