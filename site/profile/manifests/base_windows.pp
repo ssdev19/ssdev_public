@@ -8,7 +8,7 @@ class profile::base_windows {
   package { 'Notepad++':
       ensure => installed,
       source => "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.5/npp.8.4.5.Installer.x64.exe",
-      install_options => '/S',
+      install_options => '/q',
       # provider => 'chocolatey',
   }
   # Start service if it has stopped or crashed.
