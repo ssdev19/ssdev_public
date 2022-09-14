@@ -8,7 +8,7 @@ class profile::base_windows {
   package { 'Notepad++ (64-bit x64)':
       ensure => installed,
       source => 'http://wsus.lsst.org/puppetfiles/notepad/Notepad++7_9_1.msi',
-      install_options => '/S',
+      install_options => '/quiet',
   }
   # Start service if it has stopped or crashed.
   service { 'windows_exporter':
