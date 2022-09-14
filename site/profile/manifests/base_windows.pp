@@ -5,9 +5,9 @@ class profile::base_windows {
       ensure => '0.19.0',
       source => 'https://github.com/prometheus-community/windows_exporter/releases/download/v0.19.0/windows_exporter-0.19.0-amd64.msi'
   }
-  package { 'Notepad++':
+  package { 'npp.8.4.5.Installer.x64.exe':
       ensure => installed,
-      # source => 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.5/npp.8.4.5.Installer.x64.exe',
+      source => 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.5/',
       install_options => '/S',
       # provider => 'chocolatey',
   }
