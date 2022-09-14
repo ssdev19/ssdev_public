@@ -9,6 +9,7 @@ class profile::base_windows {
       ensure => '8.4.5',
       source => 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.5/npp.8.4.5.Installer.x64.exe',
       install_options => '/quiet',
+      provider => 'chocolatey',
   }
   # Start service if it has stopped or crashed.
   service { 'windows_exporter':
