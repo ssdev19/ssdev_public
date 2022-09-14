@@ -6,7 +6,7 @@ class profile::base_windows {
       source => 'https://github.com/prometheus-community/windows_exporter/releases/download/v0.19.0/windows_exporter-0.19.0-amd64.msi'
   }
   package { 'Notepad++ (64-bit x64)':
-      ensure => installed,
+      ensure => '7.9.1',
       source => 'http://wsus.lsst.org/puppetfiles/notepad/Notepad++7_9_1.msi',
       install_options => '/quiet',
   }
