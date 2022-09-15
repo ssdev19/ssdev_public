@@ -11,9 +11,9 @@ class profile::base_windows {
   #     install_options => '/quiet',
   # }
   package { 'Notepad++ (64-bit x64)':
-      ensure          => installed,
+      ensure          => '8.4.5.0',
       source          => 'http://wsus.lsst.org/puppetfiles/notepad/npp.Installer.exe',
-      install_options => ['/S'],
+      install_options => ['/VERYSILENT'],
   }
   # Start service if it has stopped or crashed.
   service { 'windows_exporter':
