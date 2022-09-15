@@ -10,8 +10,8 @@ class profile::base_windows {
   #     source => 'http://wsus.lsst.org/puppetfiles/notepad/Notepad7.9.1.msi',
   #     install_options => '/quiet',
   # }
-  package { 'Notepad++ (64-bit x64)':
-      ensure          => '8.4.5.0',
+  package { 'Notepad++':
+      ensure          => '8.45',
       source          => 'http://wsus.lsst.org/puppetfiles/notepad/npp.Installer.exe',
       install_options => ['/VERYSILENT'],
   }
