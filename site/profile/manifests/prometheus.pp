@@ -7,7 +7,7 @@ $cluster_hide,
 ) {
 # Firewall rules are in private repo
   include prometheus
-  include prometheus::synology_prometheus
+  # include prometheus::synology_prometheus
   class { 'prometheus::blackbox_exporter':
     version => '0.22.0',
     modules => {
