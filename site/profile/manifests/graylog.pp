@@ -91,7 +91,7 @@ class { 'elasticsearch':
     version => '5.0' # Installs the latest available release of the version
   }
   -> class { '::graylog::server':
-      package_version => 'latest',
+      package_version => '5.0.2',
       config          => {
         is_master                           => true,
         node_id_file                        => '/etc/graylog/server/node-id',
