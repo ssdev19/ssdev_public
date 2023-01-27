@@ -123,6 +123,6 @@ class { 'elasticsearch':
   }
   class { 'java':
 
-    java_home    => '/etc/java/java-17-openjdk/',
+    java_home    => '/etc/java/java-17-openjdk/java-17-openjdk-17.0.6.0.10-3.el8_7.x86_64',
   }
 }
