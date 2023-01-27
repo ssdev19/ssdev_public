@@ -55,6 +55,7 @@ class { 'mongodb::globals':
 }
 -> class { 'mongodb::server':
   bind_ip        => [ '127.0.0.1' ],
+  version        => '6.0.4',
   ensure         => 'present',
   restart        => true,
   service_enable => true,
