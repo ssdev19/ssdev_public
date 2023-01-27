@@ -117,9 +117,9 @@ class { 'elasticsearch':
         elasticsearch_hosts                 => 'http://localhost:9200',
         mongodb_uri                         => 'mongodb://127.0.0.1/graylog',
       },
-      require         => Class[
-        '::java',
-      ],
+      # require         => Class[
+      #   '::java',
+      # ],
   }
 
 }
