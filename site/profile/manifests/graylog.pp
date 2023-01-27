@@ -52,10 +52,10 @@ class profile::graylog {
 class { 'mongodb::globals':
   manage_package_repo => true,
   manage_package      => true,
+  version             => '6.0.4',
 }
 -> class { 'mongodb::server':
   bind_ip        => [ '127.0.0.1' ],
-  version        => '6.0.4',
   ensure         => 'present',
   restart        => true,
   service_enable => true,
