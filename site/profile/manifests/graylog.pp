@@ -121,5 +121,8 @@ class { 'elasticsearch':
       #   '::java',
       # ],
   }
+  class { 'java':
 
+    java_home    => '/etc/java/java-17-openjdk/',
+  }
 }
