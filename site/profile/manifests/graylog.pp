@@ -104,7 +104,7 @@ class { 'elasticsearch':
         allow_leading_wildcard_searches     => true,
         allow_highlighting                  => true,
         http_bind_address                   => '0.0.0.0:9000',
-        http_external_uri                   => "http://127.0.0.1:9000/",
+        http_external_uri                   => "http://graylog-ssdev.lsst.org:9000/",
         http_enable_tls                     => true,
         http_tls_cert_file                  => '/etc/ssl/graylog/cert.pem',
         http_tls_key_file                   => '/etc/ssl/graylog/pkcs5-plain.pem',
