@@ -49,9 +49,6 @@ class profile::graylog {
   #   password            => $keystorepwd,
   #   password_fail_reset => true,
   # }
-  class { 'java':
-
-  }
 
     java::adopt { 'jre17' :
       ensure        => 'present',
