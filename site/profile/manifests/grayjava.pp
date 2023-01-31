@@ -1,9 +1,7 @@
 # Java
 class profile::grayjava {
 
-class { 'java' :
-  package => 'java-17-openjdk-devel',
-}
+
 
 
   # class { 'java':

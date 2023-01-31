@@ -50,14 +50,9 @@ class profile::graylog {
   #   password_fail_reset => true,
   # }
 
-    java::adopt { 'jre17' :
-      ensure        => 'present',
-      version       => 17,
-      java          => 'jdk',
-      # version_major => $version_major,
-      # version_minor => $version_minor,
-      # basedir => '/usr/java/',
-    }
+class { 'java' :
+  package => 'java-17-openjdk-devel',
+}
 class { 'mongodb::globals':
   manage_package_repo => true,
   manage_package      => true,
