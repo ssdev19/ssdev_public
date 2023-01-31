@@ -1,7 +1,7 @@
 # Java
 class profile::grayjava {
   class { 'java':
-    distribution => jdk,
+    distribution => 'jre',
     version      => 'latest',
     # java_home    => $java_home,
   }
