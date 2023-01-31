@@ -2,7 +2,7 @@
 class profile::grayjava {
   class { 'java':
     distribution => jdk,
-    version      => 11,
+    version      => installed,
     # java_home    => $java_home,
   }
   java::adopt { 'jdk11' :
