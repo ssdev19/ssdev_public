@@ -49,8 +49,7 @@ class profile::graylog {
   #   password            => $keystorepwd,
   #   password_fail_reset => true,
   # }
-  class { 'java':
-  }
+
 class { 'mongodb::globals':
   manage_package_repo => true,
   manage_package      => true,
