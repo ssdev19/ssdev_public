@@ -51,7 +51,7 @@ class profile::graylog {
   # }
   include java
 java::adopt { 'jdk17' :
-  ensure  => 'present',
+  ensure  => 'latest',
   version => '17',
   java    => 'jdk',
 }
