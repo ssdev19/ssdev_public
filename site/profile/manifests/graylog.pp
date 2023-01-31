@@ -53,7 +53,7 @@ class profile::graylog {
     java::adopt { 'jre17' :
       ensure        => 'present',
       version       => 17,
-      java          => 'openjdk',
+      java          => 'jdk',
       # version_major => $version_major,
       # version_minor => $version_minor,
       # basedir => '/usr/java/',
