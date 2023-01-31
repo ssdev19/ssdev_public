@@ -1,10 +1,10 @@
 # Java
 class profile::grayjava {
-  java::adopt { 'jdk11' :
+  java::adopt { 'jdk17' :
     ensure  => 'latest',
-    version => '11',
-    version_major => '2',
-    version_minor => '9',
+    version => '17',
+    # version_major => '2',
+    # version_minor => '9',
     java    => 'jdk',
   }
 }
