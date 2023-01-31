@@ -23,12 +23,12 @@ $mem,
   #   version_minor => $version_minor,
   #   java          => 'jdk',
   # }
-    java::adopt { 'jre11' :
+    java::adopt { 'jdk' :
       ensure        => 'present',
       version       => $j_version,
       java          => $distribution,
-      version_major => $version_major,
-      version_minor => $version_minor,
+      # version_major => $version_major,
+      # version_minor => $version_minor,
       # basedir => '/usr/java/',
     }
   ### export _JAVA_OPTIONS="-Xmx1g"
