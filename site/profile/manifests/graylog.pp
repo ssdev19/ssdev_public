@@ -49,19 +49,18 @@ class profile::graylog {
   #   password            => $keystorepwd,
   #   password_fail_reset => true,
   # }
-  # include java
-# java::adopt { 'jdk17' :
-#   ensure  => 'latest',
-#   version => '17',
-#   java    => 'jdk',
-# }
-# java::adoptium { 'jdk17' :
-#   ensure  => 'present',
-#   version_major => '17',
-#   version_minor => '0',
-#   version_patch => '1',
-#   version_build => '12',
-# }
+  class { 'java':
+
+  }
+
+    java::adopt { 'jre17' :
+      ensure        => 'present',
+      version       => 17,
+      java          => 'openjdk',
+      # version_major => $version_major,
+      # version_minor => $version_minor,
+      # basedir => '/usr/java/',
+    }
 class { 'mongodb::globals':
   manage_package_repo => true,
   manage_package      => true,
