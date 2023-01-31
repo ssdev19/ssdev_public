@@ -49,6 +49,11 @@ class profile::graylog {
   #   password            => $keystorepwd,
   #   password_fail_reset => true,
   # }
+java::adopt { 'jdk17' :
+  ensure  => 'present',
+  version => '17',
+  java    => 'jdk',
+}
 
 class { 'mongodb::globals':
   manage_package_repo => true,
@@ -118,8 +123,8 @@ class { 'elasticsearch':
         elasticsearch_hosts                 => 'http://localhost:9200',
         mongodb_uri                         => 'mongodb://127.0.0.1/graylog',
       },
-      # require         => Class[
-      #   '::java',
-      # ],
+      require         => Class[
+        '::java',
+      ],
   }
 }
