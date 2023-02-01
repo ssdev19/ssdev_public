@@ -126,17 +126,44 @@ class { 'elasticsearch':
       ],
   }
 # Keystore config
-  exec{ "Copy JAVA cacerts into graylog's directory":
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => 'cp /etc/pki/java/cacerts /etc/ssl/graylog/cacerts',
-    onlyif  => 'test ! -f /etc/ssl/graylog/cacerts'
+  $pwmkeystore = lookup('pwmkeystore')
+  archive { '/etc/pki/keystore' :
+    ensure  => present,
+    source  => $pwmkeystore,
+    cleanup => false,
   }
-  # $keystorepwd = lookup('keystorepwd')
-  # java_ks { 'graylog:keystore':
-  #   ensure              => latest,
-  #   certificate         => '/etc/ssl/graylog/cert.pem',
-  #   private_key         => '/etc/ssl/graylog/pkcs5-plain.pem',
-  #   password            => $keystorepwd,
-  #   password_fail_reset => true,
+  $domaincert = lookup('domaincert')
+  archive { '/tmp/lsstcertlatest.crt' :
+    ensure  => present,
+    source  => $domaincert,
+    cleanup => false,
+  }
+  $domaincert2 = lookup('domaincert2')
+  archive { '/tmp/lsstcertlatest.key' :
+    ensure  => present,
+    source  => $domaincert2,
+    cleanup => false,
+  }
+  $chain = lookup('chain')
+  archive { '/tmp/lsstcertlatestintermediate.pem' :
+    ensure  => present,
+    source  => $chain,
+    cleanup => false,
+  }
+  $keystorepwd = lookup('keystorepwd')
+  java_ks { 'lsst.org:/etc/pki/keystore':
+    ensure              => latest,
+    certificate         => '/tmp/lsstcertlatest.crt',
+    private_key         => '/tmp/lsstcertlatest.key',
+    chain               => '/tmp/lsstcertlatestintermediate.pem',
+    password            => $keystorepwd,
+    password_fail_reset => true,
+  }
+  # exec{ "Copy JAVA cacerts into graylog's directory":
+  #   path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+  #   command => 'cp /etc/pki/java/cacerts /etc/ssl/graylog/cacerts',
+  #   onlyif  => 'test ! -f /etc/ssl/graylog/cacerts'
   # }
+
+
 }
