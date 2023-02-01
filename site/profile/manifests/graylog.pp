@@ -126,12 +126,17 @@ class { 'elasticsearch':
       ],
   }
 # Keystore config
-  $keystorepwd = lookup('keystorepwd')
-  java_ks { 'graylog:keystore':
-    ensure              => latest,
-    certificate         => '/etc/ssl/graylog/cert.pem',
-    private_key         => '/etc/ssl/graylog/pkcs5-plain.pem',
-    password            => $keystorepwd,
-    password_fail_reset => true,
+  exec{ "Copy JAVA cacerts into graylog's directory":
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    command => 'cp /etc/pki/java/cacerts /etc/ssl/graylog/cacerts',
+    onlyif  => 'test ! -f /etc/ssl/graylog/cacerts'
   }
+  # $keystorepwd = lookup('keystorepwd')
+  # java_ks { 'graylog:keystore':
+  #   ensure              => latest,
+  #   certificate         => '/etc/ssl/graylog/cert.pem',
+  #   private_key         => '/etc/ssl/graylog/pkcs5-plain.pem',
+  #   password            => $keystorepwd,
+  #   password_fail_reset => true,
+  # }
 }
