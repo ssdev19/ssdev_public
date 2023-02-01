@@ -91,6 +91,16 @@ class { 'elasticsearch':
 # Support for elasticsearch multi instance has been remove so cannot user: elasticsearch::instance
 # config file: /etc/graylog/server/server.conf
 # Password must be at least 16 character long and complex or the service will not start
+$tlscert = lookup('tlscert')
+  file { '/etc/ssl/graylog/cert.pem' :
+    ensure  => file,
+    content => $tlscert,
+  }
+$tlskey  = lookup('tlskey')
+  file { '/etc/ssl/graylog/pkcs5-plain.pem' :
+    ensure  => file,
+    content => $tlskey,
+  }
   class { '::graylog::repository':
     version => '5.0' # Installs the latest available release of the version
   }
