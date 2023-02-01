@@ -127,7 +127,7 @@ class { 'elasticsearch':
   }
 # Keystore config
   $keystorepwd = lookup('keystorepwd')
-  java_ks { 'graylog-ssdev.lsst.org:/etc/ssl/graylog/broker.ks':
+  java_ks { 'graylog:keystore':
     ensure              => latest,
     certificate         => '/etc/ssl/graylog/cert.pem',
     private_key         => '/etc/ssl/graylog/pkcs5-plain.pem',
