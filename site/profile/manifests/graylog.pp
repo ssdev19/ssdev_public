@@ -127,7 +127,7 @@ class { 'elasticsearch':
   }
 # Keystore config
   $pwmkeystore = lookup('pwmkeystore')
-  archive { '/etc/pki/keystore' :
+  archive { '/etc/pki/java/keystore' :
     ensure  => present,
     source  => $pwmkeystore,
     cleanup => false,
