@@ -142,4 +142,10 @@ if $awscli {
   #   path => '/root/.bashrc',
   #   line => 'export PS1="\e[0;36m[\u@\h \W]\$ \e[0m"',
   # }
+$file_path = '/tmp/test_file'
+
+$file_exists = find_file($file_path)
+if $file_exists  {
+  notify{"File ${file_path} exist":}
+}
 }

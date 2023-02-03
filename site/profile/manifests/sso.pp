@@ -133,12 +133,7 @@ $line,
   }
 
 
-$file_path = '/tmp/test_file'
 
-$file_exists = find_file($file_path)
-if $file_exists  {
-  notify{"File ${file_path} exist":}
-}
 
 
 
