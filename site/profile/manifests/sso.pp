@@ -144,6 +144,10 @@ $line,
       owner     => $pf_user,
       group     => $pf_user,
     }
+    file { '/opt/pingfederate-11.0.2/pingfederate/server/test':
+      ensure => directory,
+      mode   => '0700',
+   }
  }
   # Backup logs
   # archive { '/tmp/ssolog' :
@@ -151,9 +155,5 @@ $line,
   #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
-file {
-  '/opt/pingfederate-11.0.2/pingfederate/server/test':
-    ensure => directory,
-    mode   => '0700',
-}
+
 }
