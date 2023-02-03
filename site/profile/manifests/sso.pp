@@ -131,13 +131,12 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
- $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/test' 
+ $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/testd' 
  $path_exists = find_file($dir_path)
  if $dir_path {
    notify{"File ${dir_path} exist":}
     } else {  
       # notify{"File ${dir_path} does not exist":}
-
     recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
       file_mode => '0775',
       dir_mode  => '0775',
