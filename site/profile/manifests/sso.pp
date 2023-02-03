@@ -131,7 +131,7 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
- $dir_path = '/tmp' 
+ $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server' 
  $path_exists = find_file($dir_path)
  if $dir_path {
    notify{"File ${dir_path} exist":}
