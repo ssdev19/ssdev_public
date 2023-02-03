@@ -131,7 +131,7 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
- $file_path = '/opt/pingfederate-11.0.2/pingfederate/bin/start.ini' 
+ $file_path = '/tmp/log4j2.xml' 
  $file_exists = find_file($file_path)
  if $file_exists {
    notify{"File ${file_path} exist":}
