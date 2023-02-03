@@ -10,8 +10,8 @@ $line,
 ){
 file { "/opt/pingfederate-${pf_version}":
   ensure => directory,
-  owner  => 'pf_user',
-  group  => 'pf_user',
+  owner  => $pf_user,
+  group  => $pf_user,
   mode   => '0755',
 }
   archive { '/tmp/pingfed.zip':
