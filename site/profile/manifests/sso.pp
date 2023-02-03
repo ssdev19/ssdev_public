@@ -8,13 +8,17 @@ $pf_version,
 $match,
 $line,
 ){
-
+file { "/opt/pingfederate-${pf_version}":
+  ensure => directory,
+  owner  => 'pf_user',
+  group  => 'pf_user',
+  mode   => '0755',
+}
   archive { '/tmp/pingfed.zip':
     source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
     cleanup      => true,
     extract      => true,
     extract_path => '/opt',
-    mode         => '0755',
   }
   # Required for Atlassian connector
     archive { '/tmp/atlassianpingfed.zip':
