@@ -135,7 +135,7 @@ $line,
 
 $dir_path = '/tmp/test_path'
 $path_exists = find_file($dir_path)
-if $path_exists  {
+unless $file_exists $path_exists  {
   notify{"Path ${dir_path} exist":}
 } else {
   notify{"Path ${dir_path} does not exist":}
