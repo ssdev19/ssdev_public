@@ -14,6 +14,7 @@ $line,
     cleanup      => true,
     extract      => true,
     extract_path => '/opt',
+    mode         => '0755',
   }
   # Required for Atlassian connector
     archive { '/tmp/atlassianpingfed.zip':
@@ -131,31 +132,18 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
-
-$file_path = '/tmp/test_file'
-
-$file_exists = find_file($file_path)
-if $file_exists  {
-  notify{"File ${file_path} exist":}
-} else {
-  notify{"File ${file_path} does not exist":}
-}
-
-
-
-
 #  $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/tests' 
 #  $path_exists = find_file($dir_path)
 #  if $path_exists {
 #    notify{"Path ${dir_path} exist":}
 #     } else {  
 #       notify{"File ${dir_path} does not exist":}
-  #   recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
-  #     file_mode => '0775',
-  #     dir_mode  => '0775',
-  #     owner     => $pf_user,
-  #     group     => $pf_user,
-  #   }
+    # recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
+    #   file_mode => '0775',
+    #   dir_mode  => '0775',
+    #   owner     => $pf_user,
+    #   group     => $pf_user,
+    # }
   #   file { '/opt/pingfederate-11.0.2/pingfederate/server/test':
   #     ensure => directory,
   #     mode   => '0775',
