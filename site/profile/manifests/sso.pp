@@ -131,7 +131,7 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
- $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server' 
+ $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/test' 
  $path_exists = find_file($dir_path)
  if $dir_path {
    notify{"File ${dir_path} exist":}
@@ -151,4 +151,9 @@ $line,
   #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
+    file {
+      '/opt/pingfederate-11.0.2/pingfederate/server/test':
+        ensure => directory,
+        mode   => '0700',
+    }
 }
