@@ -135,7 +135,7 @@ $line,
  $file_exists = find_file($file_path)
  if $file_exists {
    notify{"File ${file_path} exist":}
- } else {  
+    } else {  
     recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
       file_mode => '0775',
       dir_mode  => '0775',
