@@ -151,9 +151,9 @@ $line,
   #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
-    file {
-      '/opt/pingfederate-11.0.2/pingfederate/server/test':
-        ensure => directory,
-        mode   => '0700',
-    }
+file {
+  '/opt/pingfederate-11.0.2/pingfederate/server/test':
+    ensure => directory,
+    mode   => '0700',
+}
 }
