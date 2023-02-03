@@ -131,12 +131,24 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
- $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/tests' 
- $path_exists = find_file($dir_path)
- if $path_exists {
-   notify{"Path ${dir_path} exist":}
-    } else {  
-      notify{"File ${dir_path} does not exist":}
+
+
+$dir_path = '/tmp/test_path'
+$path_exists = find_file($dir_path)
+if $path_exists  {
+  notify{"Path ${dir_path} exist":}
+} else {
+  notify{"Path ${dir_path} does not exist":}
+}
+
+
+
+#  $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/tests' 
+#  $path_exists = find_file($dir_path)
+#  if $path_exists {
+#    notify{"Path ${dir_path} exist":}
+#     } else {  
+#       notify{"File ${dir_path} does not exist":}
   #   recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
   #     file_mode => '0775',
   #     dir_mode  => '0775',
@@ -147,7 +159,7 @@ $line,
   #     ensure => directory,
   #     mode   => '0775',
   #  }
- }
+#  }
   # Backup logs
   # archive { '/tmp/ssolog' :
   #   ensure  => present,
