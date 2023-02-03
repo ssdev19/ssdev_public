@@ -133,12 +133,13 @@ $line,
   }
 
 
-$dir_path = '/tmp/test_pathz'
-$path_exists = find_file($dir_path)
-if $path_exists  {
-  notify{"Path ${dir_path} exist":}
+$file_path = '/tmp/test_file'
+
+$file_exists = find_file($file_path)
+if $file_exists  {
+  notify{"File ${file_path} exist":}
 } else {
-  notify{"Path ${dir_path} does not exist":}
+  notify{"File ${file_path} does not exist":}
 }
 
 
