@@ -136,12 +136,14 @@ $line,
  if $file_exists {
    notify{"File ${file_path} exist":}
     } else {  
-    recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
-      file_mode => '0775',
-      dir_mode  => '0775',
-      owner     => $pf_user,
-      group     => $pf_user,
-    }
+      notify{"File ${file_path} does not exist":}
+
+    # recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
+    #   file_mode => '0775',
+    #   dir_mode  => '0775',
+    #   owner     => $pf_user,
+    #   group     => $pf_user,
+    # }
  }
   # Backup logs
   # archive { '/tmp/ssolog' :
