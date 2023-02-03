@@ -133,7 +133,7 @@ $line,
   }
  $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/test/' 
  $path_exists = find_file($dir_path)
- if $dir_path {
+ if $path_exists {
    notify{"Path ${dir_path} exist":}
     } else {  
       # notify{"File ${dir_path} does not exist":}
