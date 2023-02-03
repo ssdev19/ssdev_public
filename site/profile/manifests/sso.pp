@@ -131,12 +131,12 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
- $file_path = '/tmp/log4j2.xml' 
- $file_exists = find_file($file_path)
- if $file_exists {
-   notify{"File ${file_path} exist":}
+ $dir_path = '/tmp' 
+ $path_exists = find_file($dir_path)
+ if $dir_path {
+   notify{"File ${dir_path} exist":}
     } else {  
-      notify{"File ${file_path} does not exist":}
+      notify{"File ${dir_path} does not exist":}
 
     # recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
     #   file_mode => '0775',
