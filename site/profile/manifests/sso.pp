@@ -8,12 +8,6 @@ $pf_version,
 $match,
 $line,
 ){
-file { "/opt/pingfederate-${pf_version}":
-  ensure => directory,
-  owner  => $pf_user,
-  group  => $pf_user,
-  mode   => '0755',
-}
   archive { '/tmp/pingfed.zip':
     source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
     cleanup      => true,
@@ -142,12 +136,12 @@ file { "/opt/pingfederate-${pf_version}":
 #    notify{"Path ${dir_path} exist":}
 #     } else {  
 #       notify{"File ${dir_path} does not exist":}
-    # recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
-    #   file_mode => '0775',
-    #   dir_mode  => '0775',
-    #   owner     => $pf_user,
-    #   group     => $pf_user,
-    # }
+    recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
+      file_mode => '0775',
+      dir_mode  => '0775',
+      owner     => $pf_user,
+      group     => $pf_user,
+    }
   #   file { '/opt/pingfederate-11.0.2/pingfederate/server/test':
   #     ensure => directory,
   #     mode   => '0775',
