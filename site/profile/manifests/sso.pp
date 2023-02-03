@@ -134,7 +134,7 @@ $line,
  $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/testd' 
  $path_exists = find_file($dir_path)
  if $dir_path {
-   notify{"File ${dir_path} exist":}
+   notify{"Path ${dir_path} exist":}
     } else {  
       # notify{"File ${dir_path} does not exist":}
     recursive_file_permissions { "/opt/pingfederate-${pf_version}/pingfederate/":
