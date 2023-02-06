@@ -149,7 +149,7 @@ $line,
   #   cleanup => false,
   # }
   
-unless $facts['test_file_exists'] {
+if $test1 == 'true' {
     recursive_file_permissions { $pf_home:
       file_mode => '0775',
       dir_mode  => '0775',

@@ -1,6 +1,6 @@
-if((test-path '/opt/pingfederate-11.0.2/pingfederate/server/default') -or (test-path '/opt/pingfederate-11.0.2/pingfederate/server')){
-    write-host "test_file_exists=true
-}
-else{
-  write-host "test_file_exists=false"
-}
+#
+f FileTest.directory?("/opt/pingfederate-11.0.2/pingfederate/server/default")
+    Facter.add("file_exists") do
+        setcode { true }
+    end
+end
