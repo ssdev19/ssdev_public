@@ -149,7 +149,7 @@ $line,
   #   cleanup => false,
   # }
   
-if $test1 == 'true' {
+if $test11 == 'true' {
     notify{"Pathexist":}
     } else {  
       notify{"File does not exist":}
