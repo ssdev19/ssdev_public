@@ -153,5 +153,9 @@ $line,
   #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
-
+unless $facts['test_file_exists'] {
+  service { 'test service':
+    ensure => 'running',
+    enable => true,
+  }
 }
