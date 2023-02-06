@@ -150,11 +150,14 @@ $line,
   # }
   
 if $test1 == 'true' {
-    recursive_file_permissions { $pf_home:
-      file_mode => '0775',
-      dir_mode  => '0775',
-      owner     => $pf_user,
-      group     => $pf_user,
-    }
+    notify{"Pathexist":}
+    } else {  
+      notify{"File does not exist":}
+    # recursive_file_permissions { $pf_home:
+    #   file_mode => '0775',
+    #   dir_mode  => '0775',
+    #   owner     => $pf_user,
+    #   group     => $pf_user,
+    # }
   }
 }
