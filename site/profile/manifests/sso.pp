@@ -136,12 +136,7 @@ $line,
 #    notify{"Path ${dir_path} exist":}
 #     } else {  
 #       notify{"File ${dir_path} does not exist":}
-    recursive_file_permissions { $pf_home:
-      file_mode => '0775',
-      dir_mode  => '0775',
-      owner     => $pf_user,
-      group     => $pf_user,
-    }
+
   #   file { '/opt/pingfederate-11.0.2/pingfederate/server/test':
   #     ensure => directory,
   #     mode   => '0775',
@@ -154,8 +149,11 @@ $line,
   #   cleanup => false,
   # }
 unless $facts['test_file_exists'] {
-  service { 'test service':
-    ensure => 'running',
-    enable => true,
+    recursive_file_permissions { $pf_home:
+      file_mode => '0775',
+      dir_mode  => '0775',
+      owner     => $pf_user,
+      group     => $pf_user,
+    }
   }
 }
