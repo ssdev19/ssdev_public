@@ -148,6 +148,7 @@ $line,
   #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
   #   cleanup => false,
   # }
+  
 unless $facts['test_file_exists'] {
     recursive_file_permissions { $pf_home:
       file_mode => '0775',
