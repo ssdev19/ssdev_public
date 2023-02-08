@@ -1,7 +1,7 @@
 #
 
-Facter.add(:testf) do
+Facter.add('testf') do
     setcode do
-        File.exists?('/tmp/testfile1')
+        File.exists?('/tmp/testfile')
     end
    end
