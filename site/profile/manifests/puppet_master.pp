@@ -13,4 +13,8 @@ if ($facts['test_fact'] == true ) {
     } else {
       notify{"File does not existss":}
   }
+if $facts['os']['family'] == 'RedHat' {
+      notify{"It is Centos":}
+    } else {
+      notify{"This is not centos":}
 }
