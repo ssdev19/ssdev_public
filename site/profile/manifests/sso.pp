@@ -14,6 +14,12 @@ $line,
     extract      => true,
     extract_path => '/opt',
   }
+      recursive_file_permissions { $pf_home:
+      file_mode => '0775',
+      dir_mode  => '0775',
+      owner     => $pf_user,
+      group     => $pf_user,
+    }
   # Required for Atlassian connector
     archive { '/tmp/atlassianpingfed.zip':
     source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
@@ -149,15 +155,10 @@ $line,
   #   cleanup => false,
   # }
   
-if $test11 == 'true' {
+if $test1 == 'true' {
     notify{"Pathexist":}
     } else {  
       notify{"File does not exist":}
-    # recursive_file_permissions { $pf_home:
-    #   file_mode => '0775',
-    #   dir_mode  => '0775',
-    #   owner     => $pf_user,
-    #   group     => $pf_user,
-    # }
+
   }
 }
