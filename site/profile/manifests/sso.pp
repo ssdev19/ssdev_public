@@ -155,7 +155,7 @@ $line,
   #   cleanup => false,
   # }
   
-if $::test1  {
+if $::testf  {
     notify{"Pathexist":}
     } else {  
       notify{"File does not existss":}
