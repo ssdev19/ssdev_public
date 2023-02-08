@@ -18,3 +18,4 @@ if $facts['os']['family'] == 'RedHat' {
     } else {
       notify{"This is not centos":}
 }
+}
