@@ -2,6 +2,6 @@
 
 Facter.add(:testf) do
     setcode do
-        ! Dir.glob('/tmp/testfile').empty?
+        File.exists?('/tmp/testfile')
     end
    end
