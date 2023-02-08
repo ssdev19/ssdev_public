@@ -2,6 +2,7 @@
 
 Facter.add(:testf) do
     setcode do
-        File.exists?('/tmp/testfile')
+      if  File.exists?('/tmp/testfile')
+        'true'
     end
    end
