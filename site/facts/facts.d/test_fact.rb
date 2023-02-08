@@ -2,6 +2,7 @@
 
 Facter.add('test_fact') do
     setcode do
-        File.directory?('/tmp')
+        if File.exist? '/tmp/testfile'
+            'true'
     end
    end
