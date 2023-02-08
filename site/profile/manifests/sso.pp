@@ -158,6 +158,6 @@ $line,
 if $::test1  {
     notify{"Pathexist":}
     } else {  
-      notify{"File does not exist":}
+      notify{"File does not existss":}
   }
 }
