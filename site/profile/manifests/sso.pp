@@ -155,10 +155,9 @@ $line,
   #   cleanup => false,
   # }
   
-if $test1 == '/opt/pingfederate-11.0.2/pingfederate/server/default' {
+if $facts['test1']  {
     notify{"Pathexist":}
     } else {  
       notify{"File does not exist":}
-
   }
 }
