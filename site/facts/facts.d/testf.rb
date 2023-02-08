@@ -2,6 +2,6 @@
 
 Facter.add('testf') do
     setcode do
-        File.exists?('/tmp/testfile')
+        File.directory?('/tmp')
     end
    end
