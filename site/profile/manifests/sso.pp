@@ -156,7 +156,7 @@ $line,
   # }
   
 if $::testf  {
-    notify{"Pathexist":}
+    notify{"Path exist":}
     } else {  
       notify{"File does not existss":}
   }
