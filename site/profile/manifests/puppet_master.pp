@@ -8,7 +8,7 @@ class profile::puppet_master {
       provider => 'puppetserver_gem',
     }
 
-if $facts['test_fact']  {
+if $facts['test_fact'] == true {
     notify{"Path exist":}
     } else {
       notify{"File does not existss":}
