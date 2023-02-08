@@ -7,4 +7,10 @@ class profile::puppet_master {
       ensure   => present,
       provider => 'puppetserver_gem',
     }
+
+if $::testf  {
+    notify{"Path exist":}
+    } else {
+      notify{"File does not existss":}
+  }
 }

@@ -155,9 +155,5 @@ $line,
   #   cleanup => false,
   # }
   
-if $::testf  {
-    notify{"Path exist":}
-    } else {  
-      notify{"File does not existss":}
-  }
+
 }
