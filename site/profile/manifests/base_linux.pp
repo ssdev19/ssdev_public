@@ -135,11 +135,11 @@ if $awscli {
     content => $allowhosts,
   }
   # Changes root's prompt color to cyan (36)
-  file { '/root/.bashrc':
-    ensure => present,
-  }
-  -> file_line { 'Append a line to /root/.bashrc':
-    path => '/root/.bashrc',
-    line => 'export PS1= "\e[0;36m[\u@\h \W]\$ \e[0m"',
-  }
+  # file { '/root/.bashrc':
+  #   ensure => present,
+  # }
+  # -> file_line { 'Append a line to /root/.bashrc':
+  #   path => '/root/.bashrc',
+  #   line => 'export PS1= "\e[0;36m[\u@\h \W]\$ \e[0m"',
+  # }
 }
