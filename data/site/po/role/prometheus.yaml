@@ -39,7 +39,7 @@ prometheus::alerts:
             summary: "Endpoint  down"
 # Alerts for URL endpoints up
         - alert: EndpointUp
-          expr: probe_success == 1
+          expr: probe_failure == 1
           for: 2m
           labels:
             severity: "critical"
