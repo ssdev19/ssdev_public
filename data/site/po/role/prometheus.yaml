@@ -55,7 +55,7 @@ prometheus::alerts:
             summary: Prometheus job missing (instance {{ $labels.instance }})
             description: "A Prometheus job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
         - alert: webdown
-          expr: absent(up{agent_hostname="140.252.35.50"})
+          expr: absent(up{status="140.252.35.50"})
           for: 10m
           labels:
             severity: warning
