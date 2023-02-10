@@ -19,6 +19,16 @@ prometheus::alerts:
             summary: 'Instance {{ .Labels.instance }} {{ .Value }} down'
             description: '{{ $labels.instance }} of job {{ $labels.job }} has been
               down for more than VALUE = {{ $value }}\n minutes.'
+# Applies to all devices if instance is up
+        # - alert: 'InstanceUp'
+        #   expr: 'up == 1'
+        #   for: '4m'
+        #   labels:
+        #     severity: 'page'
+        #   annotations:
+        #     summary: 'Instance {{ .Labels.instance }} {{ .Value }} up'
+        #     description: '{{ $labels.instance }} of job {{ $labels.job }} has been
+        #       up for more than VALUE = {{ $value }}\n minutes.'
 # Alerts for URL endpoints
         - alert: EndpointDown
           expr: probe_success == 0
@@ -27,6 +37,14 @@ prometheus::alerts:
             severity: "critical"
           annotations:
             summary: "Endpoint  down"
+# Alerts for URL endpoints up
+        - alert: EndpointUp
+          expr: probe_success == 1
+          for: 2m
+          labels:
+            severity: "critical"
+          annotations:
+            summary: "Endpoint  Up"
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
