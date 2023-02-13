@@ -21,7 +21,7 @@ prometheus::alerts:
               down for more than VALUE = {{ $value }}\n minutes.'
 # Applies to all devices if instance is up
         - alert: 'InstanceUp'
-          expr: 'up == 0'
+          expr: 'probe_success == 0'
           for: '4m'
           labels:
             severity: 'page'
