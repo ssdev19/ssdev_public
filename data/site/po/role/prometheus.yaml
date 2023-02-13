@@ -27,6 +27,15 @@ prometheus::alerts:
             severity: "critical"
           annotations:
             summary: "Endpoint  down"
+# Alerts for URL endpoints up
+        - alert: EndpointUp
+          expr: probe_success == 1
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: Endpoint is up (instance {{ $labels.instance }})
+            description: "Endpoint is up\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}\n  groups = {{ $groups }}"
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
@@ -36,7 +45,6 @@ prometheus::alerts:
           annotations:
             summary: Prometheus job missing (instance {{ $labels.instance }})
             description: "A Prometheus job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-# Alerts for URL endpoints up
 # Windows Disk space usage
         - alert: WindowsServerDiskSpaceUsage
           expr: 100.0 - 100 * (((windows_logical_disk_free_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024 ) / ((windows_logical_disk_size_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024)) > 80
