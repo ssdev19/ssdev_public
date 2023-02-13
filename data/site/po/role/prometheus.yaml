@@ -11,7 +11,7 @@ prometheus::alerts:
       rules:
 # Applies to all devices
         - alert: 'InstanceDown'
-          expr: 'up == 0'
+          expr: 'up{job!="isonline"} == 0'
           for: '4m'
           labels:
             severity: 'page'
