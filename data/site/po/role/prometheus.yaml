@@ -35,7 +35,7 @@ prometheus::alerts:
             severity: warning
           annotations:
             summary: Endpoint is up (instance {{ $labels.instance }})
-            description: "Endpoint is up\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}\n  groups = {{ $groups }}"
+            description: "Endpoint is up\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
