@@ -18,7 +18,7 @@ $cluster_hide,
           'valid_status_codes'    => [],
           'method'                => 'GET',
           'preferred_ip_protocol' => 'ip4',
-        }
+        },
       },
       'tcp_connect' => {
         'prober' => 'tcp',
@@ -28,7 +28,7 @@ $cluster_hide,
         'timeout' => '5s',
         'icmp'    => {
           'preferred_ip_protocol' => 'ip4',
-        }
+        },
       },
     }
   }
