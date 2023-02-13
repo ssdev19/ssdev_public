@@ -13,7 +13,7 @@ $cluster_hide,
     modules => {
       'http_2xx'    => {
         'prober'  => 'http',
-        'timeout' => '5s',
+        'timeout' => '10s',
         'http'    => {
           'valid_status_codes'    => [],
           'method'                => 'GET',
@@ -25,7 +25,7 @@ $cluster_hide,
       },
       'icmp'        => {
         'prober'  => 'icmp',
-        'timeout' => '5s',
+        'timeout' => '10s',
         'icmp'    => {
           'preferred_ip_protocol' => 'ip4',
         },
