@@ -29,7 +29,7 @@ prometheus::alerts:
             summary: "Endpoint  down"
 # Alerts for URL endpoints up
         - alert: EndpointUp
-          expr: probe_success{group="isonline"} == 0
+          expr: probe_success{group="isonline"} == 1
           for: 10m
           labels:
             severity: warning
