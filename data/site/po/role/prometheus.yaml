@@ -27,7 +27,7 @@ prometheus::alerts:
             severity: 'page'
           annotations:
             summary: 'Instance {{ .Labels.instance0 }} {{ .Value }} up'
-            description: '{{ $labels.instance0 }} of job {{ $labels.job }} has been
+            description: '{{ $labels.instance0 }} of job {{ $labels }} has been
               up for more than VALUE = {{ $value }}\n minutes.'
 # Alerts for URL endpoints
         - alert: EndpointDown
