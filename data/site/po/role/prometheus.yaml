@@ -34,8 +34,8 @@ prometheus::alerts:
           labels:
             severity: warning
           annotations:
-            summary: Device is online (instance {{ $labels.instance }})
-            description: "Device is online\n  LABELS = {{ $labels.instance }}\n  GROUP = {{ $labels.group }}"
+            summary: "Device is online"
+            # description: "Device is online\n  LABELS = {{ $labels.instance }}\n  GROUP = {{ $labels.group }}"
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
