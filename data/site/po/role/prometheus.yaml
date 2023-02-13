@@ -29,13 +29,13 @@ prometheus::alerts:
             summary: "Endpoint  down"
 # Alerts for URL endpoints up
         - alert: EndpointUp
-          expr: probe_success{group="moneta"} == 0
+          expr: probe_success{group="isonline"} == 0
           for: 10m
           labels:
             severity: warning
           annotations:
-            summary: Endpoint is up (instance {{ $labels.instance }})
-            description: "Endpoint is up\n  VALUE = {{ $value }}\n  LABELS = {{ $labels.instance }}\n  GROUP = {{ $labels.group }}"
+            summary: Device is online (instance {{ $labels.instance }})
+            description: "Device is online\n  VALUE = {{ $value }}\n  LABELS = {{ $labels.instance }}\n  GROUP = {{ $labels.group }}"
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
