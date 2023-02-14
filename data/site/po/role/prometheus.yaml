@@ -21,7 +21,7 @@ prometheus::alerts:
               down for more than VALUE = {{ $value }}\n minutes.'
 # Alerts for URL endpoints
         - alert: EndpointDown
-          expr: probe_success{job!="isonline"} == 0
+          expr: probe_success{group!="isonline"} == 0
           for: 2m
           labels:
             severity: "critical"
