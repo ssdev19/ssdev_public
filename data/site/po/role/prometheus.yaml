@@ -16,9 +16,9 @@ prometheus::alerts:
           labels:
             severity: 'page'
           annotations:
-            summary: 'Instance {{ .Labels.instance }} {{ .Value }} down'
-            description: '{{ $labels.instance }} of job {{ $labels.job }} has been
-              down for more than VALUE = {{ $value }}\n minutes.'
+            summary: "Instance {{ .Labels.instance }} {{ .Value }} down"
+            description: "{{ $labels.instance }} of job {{ $labels.job }} has been
+              down for more than VALUE = {{ $value }}\n minutes."
 # Alerts for URL endpoints
         - alert: EndpointDown
           expr: probe_success{group!="isonline"} == 0
@@ -72,7 +72,7 @@ prometheus::alerts:
           labels:
             severity: critical
           annotations:
-            summary: Windows Hyperv service Status (instance {{ $labels.instance }})
+            summary: 'Windows Hyperv service Status (instance {{ $labels.instance }})'
             description: "Windows Hyperv state is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Symantec monitoring
         - alert: WindowsSymantecServiceStatus
