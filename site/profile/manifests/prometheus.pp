@@ -93,6 +93,6 @@ $gmail_account = lookup('gmail_account')
   }
     exec { 'Allow any user to use icmp ':
     path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => "sysctl net.ipv4.ping_group_range= 0 2147483647",
+    command => 'sysctl net.ipv4.ping_group_range= 0 21474',
   }
 }
