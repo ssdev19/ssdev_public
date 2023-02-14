@@ -28,6 +28,7 @@ $cluster_hide,
         'timeout' => '10s',
         'icmp'    => {
           'preferred_ip_protocol' => 'ip4',
+          'ip_protocol_fallback'  => true,
         },
       },
     }
