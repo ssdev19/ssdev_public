@@ -30,7 +30,7 @@ prometheus::alerts:
 # Alerts for URL endpoints up
         - alert: EndpointUp
           expr: probe_success{group="isonline"} == 1
-          for: 1m
+          for: 2m
           labels:
             severity: warning
           annotations:
