@@ -528,7 +528,7 @@ prometheus::alerts:
           annotations:
             summary: pingfederate.service down (instance {{ $labels.instance }})
             description: "pingfederate.service service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-        
+# alertmanager       
   prometheus::alertmanager::route:
   group_by:
     - 'alertname'
