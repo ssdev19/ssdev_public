@@ -34,7 +34,7 @@ prometheus::alerts:
           labels:
             severity: warning
           annotations:
-            summary: 'Why is {{ .Labels.instance }} {{ .Value }} up?'
+            summary: 'Why is {{ .Labels.instance }} up?'
             # description: "Device is online\n  LABELS = {{ $labels.instance }}\n  GROUP = {{ $labels.group }}"
             description: "{{ $labels.instance }} of job {{ $labels.job }} has been
               up for more than VALUE = {{ $value }}\n minutes."
