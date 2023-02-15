@@ -529,7 +529,7 @@ prometheus::alerts:
             summary: pingfederate.service down (instance {{ $labels.instance }})
             description: "pingfederate.service service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
         
-prometheus::alertmanager::route:
+  prometheus::alertmanager::route:
   group_by:
     - 'alertname'
     - 'cluster'
@@ -538,5 +538,5 @@ prometheus::alertmanager::route:
   group_interval: '1m'
   repeat_interval: '3h'
   receiver: 'slack' # email it to me
-prometheus::alertmanager::template:
+  prometheus::alertmanager::template:
   - '/alertmanager/notifications.tmpl'
