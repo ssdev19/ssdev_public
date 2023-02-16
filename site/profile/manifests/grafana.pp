@@ -20,6 +20,9 @@ class profile::grafana {
       enabled     => true,
       config_file => '/etc/grafana/ldap.toml',
     },
+    'server'    => {
+      http_port     => 8080,
+    },
   }
 }
 
