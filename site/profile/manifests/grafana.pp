@@ -22,6 +22,9 @@ class profile::grafana {
     },
     'server'    => {
       http_port => 3000,
+      domain    => 'lsst.org',
+      root_url  => 'https://grafana.us.lsst.org:3000',
+      enforce_domain => False,
       cert_key  => '/etc/grafana/grafana.key',
       cert_file => '/etc/grafana/grafana.crt',
       protocol  => 'https',
