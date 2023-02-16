@@ -21,7 +21,8 @@ class profile::grafana {
       config_file => '/etc/grafana/ldap.toml',
     },
     'server'    => {
-      http_port     => 3000,
+      http_port => 3000,
+      cert_key  => '/etc/grafana/grafana.key',
     },
   }
 }
