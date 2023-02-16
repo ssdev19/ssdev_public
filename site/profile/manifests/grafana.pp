@@ -22,4 +22,16 @@ class profile::grafana {
     },
   }
 }
+  $domaincert = lookup('domaincert')
+  archive { '/etc/grafana/grafana.crt' :
+    ensure  => present,
+    source  => $domaincert,
+    cleanup => false,
+  }
+  $domaincert2 = lookup('domaincert2')
+  archive { '/etc/grafana/grafana.key' :
+    ensure  => present,
+    source  => $domaincert2,
+    cleanup => false,
+  }
 }
