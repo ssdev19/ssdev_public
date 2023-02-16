@@ -22,6 +22,13 @@ class profile::grafana {
     },
   }
 }
+http_conn_validator { 'grafana-conn-validator' :
+  host     => 'localhost',
+  port     => '3000',
+  use_ssl  => false,
+  test_url => '/public/img/grafana_icon.svg',
+  require  => Class['grafana'],
+}
   $domaincert = lookup('domaincert')
   archive { '/etc/grafana/grafana.crt' :
     ensure  => present,
