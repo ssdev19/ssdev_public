@@ -1,5 +1,5 @@
 # Grafana url: http://grafana-x.lsst.org:3000
-# Keys containg dots should be quoted.
+# Keys containg dots should be within quotes.
 class profile::grafana {
 
   class { 'grafana':
