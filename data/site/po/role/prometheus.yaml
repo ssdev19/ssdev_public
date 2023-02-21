@@ -533,7 +533,7 @@ prometheus::alerts:
           expr: avg(irate(node_cpu_seconds_total{mode="idle"}[1m]) * 100) < 99
           for: 1m
           annotations:
-            summary: "High usage on {{ $labels.instance }}"
+            summary: High usage on {{ $labels.instance }}
             description: "{{ $labels.instance }} has a average CPU idle (current value: {{ $value }}s)"# alertmanager       
 # another cpu high usage
         - alert: HostHighCpuLoad
