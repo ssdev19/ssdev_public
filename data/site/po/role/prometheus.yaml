@@ -530,7 +530,7 @@ prometheus::alerts:
             description: "pingfederate.service service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
   # Alert for any cluster that has average CPU idle < 50%
         - alert: HighUsageCPU
-          expr: avg(irate(node_cpu_seconds_total{mode="idle"}[1m]) * 100) < 50
+          expr: avg(irate(node_cpu_seconds_total{mode="idle"}[1m]) * 100) < 99
           for: 1m
           annotations:
             summary: "High usage on {{ $labels.instance }}"
