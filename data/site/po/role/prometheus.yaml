@@ -537,7 +537,7 @@ prometheus::alerts:
             description: "{{ $labels.instance }} has a average CPU idle (current value: {{ $value }}s)"# alertmanager       
 # another cpu high usage
         - alert: HostHighCpuLoad
-          expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 50
+          expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 90
           for: 1m
           labels:
             severity: warning
