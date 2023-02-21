@@ -535,6 +535,15 @@ prometheus::alerts:
           annotations:
             summary: "High usage on {{ $labels.instance }}"
             description: "{{ $labels.instance }} has a average CPU idle (current value: {{ $value }}s)"# alertmanager       
+# another cpu high usage
+        - alert: HostHighCpuLoad
+          expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
+          for: 0m
+          labels:
+            severity: warning
+          annotations:
+            summary: Host high CPU load (instance {{ $labels.instance }})
+            description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 prometheus::alertmanager::route:
   group_by:
     - 'alertname'
