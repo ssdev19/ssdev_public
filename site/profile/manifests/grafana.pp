@@ -28,7 +28,7 @@ class profile::grafana {
         protocol  => 'https',
       },
       security    => {
-        change_grafana_admin_password => 'admin1',
+        admin_password => 'admin1',
       },
   }
 
