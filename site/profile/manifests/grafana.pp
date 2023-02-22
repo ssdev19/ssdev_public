@@ -28,8 +28,10 @@ class profile::grafana {
         protocol  => 'https',
       },
       security    => {
-        admin_password => 'admin1',
-      },
+        change_grafana_admin_password => 'admin1',
+
+      }
+    }
   }
 
   $domaincert = lookup('domaincert')
