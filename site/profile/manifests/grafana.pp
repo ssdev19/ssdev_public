@@ -26,9 +26,10 @@ class profile::grafana {
         cert_key  => '/etc/grafana/grafana.key',
         cert_file => '/etc/grafana/grafana.crt',
         protocol  => 'https',
+      },
+      security    => {
         change_grafana_admin_password => 'admin1',
       },
-    }
   }
 
   $domaincert = lookup('domaincert')
