@@ -155,5 +155,13 @@ $line,
   #   cleanup => false,
   # }
   
+# Vulnerability check 2/22/2023
+  archive { '/tmp/pf-security-advisory.zip':
+    source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pf-security-advisory-utility-assembly-SECADV033-1.0.zip",
+    cleanup      => true,
+    extract      => true,
+    extract_path => '/opt/pingfederate-11.0.2/pingfederate/bin',
+  }
+
 
 }
