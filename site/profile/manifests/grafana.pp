@@ -26,6 +26,7 @@ class profile::grafana {
         cert_key  => '/etc/grafana/grafana.key',
         cert_file => '/etc/grafana/grafana.crt',
         protocol  => 'https',
+        change_grafana_admin_password => 'admin1',
       },
     }
   }
