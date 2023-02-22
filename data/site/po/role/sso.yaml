@@ -13,7 +13,7 @@ accounts::user_list:
     password: "%{lookup('root_pwd')}"
     # ignore_password_if_empty: true
 # files:
-#   /opt/pingfederate-11.0.2:
+#   /opt/pingfederate-11.0.7:
 #     ensure: "directory"
 #     owner: 'pfuser'
 #     group: 'pfuser'
@@ -38,12 +38,12 @@ profile::java::java_path: '/usr/java/jdk-11.0.2+9-jre/bin:$PATH'
 profile::java::mem: '-Xmx1g'
 profile::sso::pf_user: pfuser
 # profile::sso::pf_pass: pfpass
-profile::sso::pf_version: '11.0.2'
+profile::sso::pf_version: '11.0.7'
 profile::sso::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
-profile::sso::pf_home: '/opt/pingfederate-11.0.2/pingfederate' #'/usr/java/jdk-11.0.2+9'
+profile::sso::pf_home: '/opt/pingfederate-11.0.7/pingfederate' #'/usr/java/jdk-11.0.2+9'
 # cron::job:
 #   'ssobackup':
-#     command: "aws s3 cp --recursive /opt/pingfederate-11.0.2/pingfederate/log/ s3://pingfe/pf-logs"
+#     command: "aws s3 cp --recursive /opt/pingfederate-11.0.7/pingfederate/log/ s3://pingfe/pf-logs"
 #     minute: 11
 #     hour: 21
 #     date: '*'

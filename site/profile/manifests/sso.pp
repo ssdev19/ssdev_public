@@ -34,7 +34,7 @@ $line,
     cleanup      => true,
     # user         => $pf_user,
     extract      => true,
-    # extract_path => '/opt/pingfederate-11.0.2/pingfederate/server/default/deploy',
+    # extract_path => '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy',
     extract_path => '/tmp/',
     # creates      => '/tmp/atlassianconnector' 
   }
@@ -50,7 +50,7 @@ $line,
 #   notify{"service exists at ${file_exists}.":}
 # } else {
 #   notify{"service ${pingservice} does not exists.${file_exists}":}
-      # recursive_file_permissions {'/opt/pingfederate-11.0.2/pingfederate/':
+      # recursive_file_permissions {'/opt/pingfederate-11.0.7/pingfederate/':
       #   file_mode => '0775',
       #   dir_mode  => '0775',
       #   owner     => $pf_user,
@@ -69,13 +69,13 @@ $line,
       path  => "/opt/pingfederate-${pf_version}/pingfederate/bin/run.properties",
     }
   # Send audit logs to graylog
-  # file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml':
+  # file { '/opt/pingfederate-11.0.7/pingfederate/server/default/conf/log4j2.xml':
   #   ensure => file,
   # }
   # -> file_line{ 'Syslog config':
   #     match => $match,
   #     line  => $line,
-  #     path  => '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/log4j2.xml',
+  #     path  => '/opt/pingfederate-11.0.7/pingfederate/server/default/conf/log4j2.xml',
   #   }
   archive { '/tmp/log4j2.xml' :
     ensure  => present,
@@ -126,7 +126,7 @@ $line,
 #       recurse => true,
 #     }
     $pf_lic = lookup('pf_lic')
-  #   file { '/opt/pingfederate-11.0.2/pingfederate/server/default/conf/pf/pingfederate.lic':
+  #   file { '/opt/pingfederate-11.0.7/pingfederate/server/default/conf/pf/pingfederate.lic':
   #   ensure  => present,
   #   source  => $pf_lic,
   #   replace => 'no',
@@ -136,14 +136,14 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
-#  $dir_path = '/opt/pingfederate-11.0.2/pingfederate/server/tests' 
+#  $dir_path = '/opt/pingfederate-11.0.7/pingfederate/server/tests' 
 #  $path_exists = find_file($dir_path)
 #  if $path_exists {
 #    notify{"Path ${dir_path} exist":}
 #     } else {  
 #       notify{"File ${dir_path} does not exist":}
 
-  #   file { '/opt/pingfederate-11.0.2/pingfederate/server/test':
+  #   file { '/opt/pingfederate-11.0.7/pingfederate/server/test':
   #     ensure => directory,
   #     mode   => '0775',
   #  }
@@ -151,7 +151,7 @@ $line,
   # Backup logs
   # archive { '/tmp/ssolog' :
   #   ensure  => present,
-  #   source  => '/opt/pingfederate-11.0.2/pingfederate/log',
+  #   source  => '/opt/pingfederate-11.0.7/pingfederate/log',
   #   cleanup => false,
   # }
   
@@ -160,7 +160,7 @@ $line,
     source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pf-security-advisory-utility-assembly-SECADV033-1.0.zip",
     cleanup      => true,
     extract      => true,
-    extract_path => '/opt/pingfederate-11.0.2/pingfederate/bin',
+    extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   }
 
 
