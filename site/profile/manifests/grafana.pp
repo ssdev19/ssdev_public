@@ -1,6 +1,9 @@
 # Grafana url: http://grafana-x.lsst.org:3000
 # Keys containg dots should be within quotes.
-class profile::grafana {
+class profile::grafana ( String
+$pname,
+$url,
+) {
   $grafana_pwd = lookup('grafana_pwd')
   class { 'grafana':
     version                  => '9.3.6',
@@ -8,10 +11,10 @@ class profile::grafana {
     apiVersion  => 1,
     datasources => [
       {
-        name      => 'prometheus',
+        name      => $name,
         type      => 'prometheus',
         access    => 'proxy',
-        url       => 'http://prometheus.us.lsst.org:9090/',
+        url       => $url,
         isDefault => true,
       },
     ],
