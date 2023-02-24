@@ -1,7 +1,7 @@
 # Grafana url: http://grafana-x.lsst.org:3000
 # Keys containg dots should be within quotes.
 class profile::grafana {
-
+  $grafana_pwd = lookup('grafana_pwd')
   class { 'grafana':
     version                  => '9.3.6',
     provisioning_datasources => {
@@ -29,7 +29,7 @@ class profile::grafana {
       },
       security    => {
         admin_user     => 'admin',
-        admin_password => 'admin1',
+        admin_password => $grafana_pwd,
       },
     }
   }
