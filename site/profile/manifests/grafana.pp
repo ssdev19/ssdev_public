@@ -1,8 +1,8 @@
 # Grafana url: http://grafana-x.lsst.org:3000
 # Keys containg dots should be within quotes.
 class profile::grafana ( String
-$pname,
-$url,
+$pname1,
+$url1,
 ) {
   $grafana_pwd = lookup('grafana_pwd')
   class { 'grafana':
