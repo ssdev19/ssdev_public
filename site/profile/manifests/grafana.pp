@@ -32,7 +32,7 @@ $url1,
       },
       security    => {
         admin_user     => 'admin',
-        admin_password => $grafana_pwd,
+        admin_password => unwrap($grafana_pwd),
       },
     }
   }
