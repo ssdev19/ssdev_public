@@ -41,7 +41,7 @@ prometheus::alerts:
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
-          for: 10m
+          for: 2h
           labels:
             severity: warning
           annotations:
