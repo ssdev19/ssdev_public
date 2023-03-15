@@ -1,5 +1,7 @@
 # Base profile for Windows OS
-class profile::base_windows {
+class profile::base_windows (
+  Boolean $ipmi  = false,
+) {
   include chocolatey # Needed for just about most things for Windows.
   package { 'windows_exporter':
       ensure => '0.19.0',
@@ -9,6 +11,14 @@ class profile::base_windows {
       ensure => installed,
       source => 'http://wsus.lsst.org/puppetfiles/notepad/Notepad7.9.1.msi',
       install_options => '/quiet',
+  }
+# Install ipmi
+  if $ipmi {
+    package { 'ipmi':
+        ensure => installed,
+        source => 'http://wsus.lsst.org/puppetfiles/ipmi/IPMIView_2.9.32_Windows_20140624.exe',
+        install_options => '/quiet',
+    }
   }
   # package { 'Notepad++':
   #     ensure          => '8.45',
