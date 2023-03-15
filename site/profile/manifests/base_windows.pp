@@ -14,8 +14,8 @@ class profile::base_windows (
   }
 # Install ipmi
   if $ipmi {
-    package { 'ipmi':
-        ensure => installed,
+    package { 'IPMIView':
+        ensure => '2.6.0.0',
         source => 'http://wsus.lsst.org/puppetfiles/ipmi/IPMIView_2.9.32_Windows_20140624.exe',
         install_options => '/quiet',
     }
