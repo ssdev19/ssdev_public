@@ -18,7 +18,7 @@ class profile::base_windows (
     package { 'IPMIView':
         ensure => installed,
         source => "e:\\temp\\IPMIView.exe",
-        install_options => ['/s', 'INSTALLDIR=C:\\Program Files\\Supermicro\\IPMIView'],
+        install_options => ['/s'], # ,'INSTALLDIR=C:\\Program Files\\Supermicro\\IPMIView'
     }
   # Start service if it has stopped or crashed.
   service { 'windows_exporter':
