@@ -14,12 +14,12 @@ class profile::base_windows (
       install_options => '/quiet',
   }
 # Install ipmi
-  if $ipmi {
-    package { 'IPMIView':
-        ensure => installed,
-        source => "e:\\temp\\IPMIView.exe",
-        install_options => ['n'], # ,'INSTALLDIR=C:\\Program Files\\Supermicro\\IPMIView'
-    }
+  # if $ipmi {
+  #   package { 'IPMIView':
+  #       ensure => installed,
+  #       source => "e:\\temp\\IPMIView.exe",
+  #       install_options => ['n'], # ,'INSTALLDIR=C:\\Program Files\\Supermicro\\IPMIView'
+  #   }
   # Start service if it has stopped or crashed.
   service { 'windows_exporter':
     ensure => running,
