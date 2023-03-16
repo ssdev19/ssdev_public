@@ -18,7 +18,7 @@ class profile::base_windows (
     package { 'IPMIView':
         ensure => installed,
         source => "e:\\temp\\IPMIView.exe",
-        # install_options => ['/VERYSILENT'],
+        install_options => ['INSTALLDIR=C:\\Program Files\\Supermicro\\IPMIView'],
     }
   }  # package { 'Notepad++':
   #     ensure          => '8.45',
