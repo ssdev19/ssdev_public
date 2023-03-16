@@ -17,7 +17,7 @@ class profile::base_windows (
   if $ipmi {
     package { 'IPMIView':
         ensure => installed,
-        source => 'http://wsus.lsst.org/puppetfiles/ipmi/IPMIView_2.9.32_Windows_20140624.exe',
+        source => "e:\\temp\\IPMIView_2.21.0_build.221118_Windows.exe",
         install_options => ['/VERYSILENT'],
     }
   }  # package { 'Notepad++':
