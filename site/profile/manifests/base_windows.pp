@@ -1,5 +1,8 @@
 # Base profile for Windows OS
-class profile::base_windows {
+class profile::base_windows (
+  Boolean $ipmi  = false,
+) {
+
   include chocolatey # Needed for just about most things for Windows.
   package { 'windows_exporter':
       ensure => '0.19.0',
