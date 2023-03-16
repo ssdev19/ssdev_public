@@ -10,7 +10,14 @@ class profile::base_windows {
       source => 'http://wsus.lsst.org/puppetfiles/notepad/Notepad7.9.1.msi',
       install_options => '/quiet',
   }
-  # package { 'Notepad++':
+# Install ipmi
+  if $ipmi {
+    package { 'IPMIView':
+        ensure => installed,
+        source => 'http://wsus.lsst.org/puppetfiles/ipmi/IPMIView_2.9.32_Windows_20140624.exe',
+        install_options => ['/VERYSILENT'],
+    }
+  }  # package { 'Notepad++':
   #     ensure          => '8.45',
   #     source          => 'http://wsus.lsst.org/puppetfiles/notepad/npp.Installer.exe',
   #     install_options => ['/VERYSILENT'],
