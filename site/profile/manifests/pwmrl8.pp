@@ -1,6 +1,7 @@
 ## Reboot will be required following the installation of this
 class profile::pwmrl8 {
-
+include 'archive'
+include java_ks::config
   $pwmconfig_dest = lookup('pwmconfig_dest')
   $pwmrl8config_source = lookup('pwmrl8config_source')
   archive { '/tmp/pwm-1.9.2.war':
