@@ -8,18 +8,24 @@ $pf_version,
 $match,
 $line,
 ){
+file { '/opt/pingfederate-11.0.7':
+  ensure => directory,
+  owner  => $pf_user,
+  group  => $pf_user,
+  mode   => '0755',
+}
   archive { '/tmp/pingfed.zip':
     source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
     cleanup      => true,
     extract      => true,
     extract_path => '/opt',
   }
-      recursive_file_permissions { $pf_home:
-      file_mode => '0775',
-      dir_mode  => '0775',
-      owner     => $pf_user,
-      group     => $pf_user,
-    }
+    #   recursive_file_permissions { $pf_home:
+    #   file_mode => '0775',
+    #   dir_mode  => '0775',
+    #   owner     => $pf_user,
+    #   group     => $pf_user,
+    # }
   # Required for Atlassian connector
     archive { '/tmp/atlassianpingfed.zip':
     source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
