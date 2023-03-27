@@ -14,6 +14,12 @@ file { '/opt/pingfederate-11.0.7':
   group  => $pf_user,
   mode   => '0755',
 }
+file { '/opt/pingfederate-11.0.7/pingfederate':
+  ensure => directory,
+  owner  => $pf_user,
+  group  => $pf_user,
+  mode   => '0755',
+}
   archive { '/tmp/pingfed.zip':
     source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
     cleanup      => true,
