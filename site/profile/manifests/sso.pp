@@ -51,7 +51,7 @@ $line,
 #   notify{"service exists at ${file_exists}.":}
 # } else {
 #   notify{"service ${pingservice} does not exists.${file_exists}":}
-if ($::uptime_days < 0.01) {
+if ($::uptime_days > 0.01) {
       recursive_file_permissions {'/opt/pingfederate-11.0.7/pingfederate/':
         file_mode => '0775',
         dir_mode  => '0775',
