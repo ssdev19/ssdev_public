@@ -1,5 +1,5 @@
 # Pingfederate service installed.rb
-Facter.add('pf_svc') do
+Facter.add(':pf_svc') do
     setcode do
       File.exists?('/etc/systemd/system/pingfederate.service')
     end

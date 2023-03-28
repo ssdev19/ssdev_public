@@ -133,4 +133,7 @@ if $facts['os']['family'] == 'RedHat' {
       notify{"This is not centos":}
 }
 
+if $::pf_svc == true {
+  notify{"It does exist":}
+}
 }
