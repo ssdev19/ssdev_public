@@ -165,10 +165,10 @@ $line,
     extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   }
 
-if ($OperatingSystem == "Linux") { 
-   $message = "This machine OS is of the type $OperatingSystem \n" 
-} else { 
-   $message = "This machine is unknown \n" 
-} 
+# if ($OperatingSystem == "Linux") { 
+#    $message = "This machine OS is of the type $OperatingSystem \n" 
+# } else { 
+#    $message = "This machine is unknown \n" 
+# } 
 
 }
