@@ -134,6 +134,6 @@ if $facts['os']['family'] == 'RedHat' {
 }
 
 if $::pf_svc  {
-  notify{"It does exist":}
+  notify{"It does exist ${::pf_svc}":}
 }
 }
