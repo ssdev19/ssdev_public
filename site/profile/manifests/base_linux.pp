@@ -12,6 +12,7 @@ class profile::base_linux (
   include ssh
   include accounts
   include cron
+  include facter
   # include ::collectd
   include puppet_agent
   # include snmp::client
