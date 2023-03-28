@@ -45,21 +45,6 @@ $line,
     source => '/tmp/pf-atlassian-cloud-connector/dist/pf-atlassian-cloud-quickconnection-1.0.jar',
   }
 
-# $pingservice = '/etc/systemd/system/pingfederate.service'
-# $file_exists = find_file($pingservice)
-# if $file_exists {
-#   notify{"service exists at ${file_exists}.":}
-# } else {
-#   notify{"service ${pingservice} does not exists.${file_exists}":}
-  # unless $pf_svc == ('/etc/systemd/system/pingfederate.service') {
-  #   recursive_file_permissions {'/opt/pingfederate-11.0.7/pingfederate/':
-  #     file_mode => '0775',
-  #     dir_mode  => '0775',
-  #     owner     => $pf_user,
-  #     group     => $pf_user,
-  #   }
-  # }
-
 
   # Copy file needed for Atlassian connector & modify run.properties
   file { "/opt/pingfederate-${pf_version}/pingfederate/bin/run.properties":
@@ -119,14 +104,7 @@ $line,
   ensure    => 'running',
   enable    => true,
   }
-#     file {
-#       $pf_home:
-#       ensure => directory,
-#       owner  => $pf_user,
-#       # group  => $pf_user,
-#       mode   => '0775',
-#       recurse => true,
-#     }
+
     $pf_lic = lookup('pf_lic')
   #   file { '/opt/pingfederate-11.0.7/pingfederate/server/default/conf/pf/pingfederate.lic':
   #   ensure  => present,
@@ -138,24 +116,7 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
-#  $dir_path = '/opt/pingfederate-11.0.7/pingfederate/server/tests' 
-#  $path_exists = find_file($dir_path)
-#  if $path_exists {
-#    notify{"Path ${dir_path} exist":}
-#     } else {  
-#       notify{"File ${dir_path} does not exist":}
 
-  #   file { '/opt/pingfederate-11.0.7/pingfederate/server/test':
-  #     ensure => directory,
-  #     mode   => '0775',
-  #  }
-#  }
-  # Backup logs
-  # archive { '/tmp/ssolog' :
-  #   ensure  => present,
-  #   source  => '/opt/pingfederate-11.0.7/pingfederate/log',
-  #   cleanup => false,
-  # }
   
 # Vulnerability check 2/22/2023
   archive { '/tmp/pf-security-advisory.zip':
@@ -165,8 +126,8 @@ $line,
     extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   }
 
-if ($OperatingSystem == "Linux") { 
-   $message = "This machine OS is of the type $OperatingSystem \n" 
+if $osfamily == 'RedHat'  { 
+   $message = "This machine OS is of the type $osfamily \n" 
 } else { 
    $message = "This machine is unknown \n" 
 } 
