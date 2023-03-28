@@ -51,14 +51,14 @@ $line,
 #   notify{"service exists at ${file_exists}.":}
 # } else {
 #   notify{"service ${pingservice} does not exists.${file_exists}":}
-  unless $pf_svc == ('/etc/systemd/system/pingfederate.service') {
-    recursive_file_permissions {'/opt/pingfederate-11.0.7/pingfederate/':
-      file_mode => '0775',
-      dir_mode  => '0775',
-      owner     => $pf_user,
-      group     => $pf_user,
-    }
-  }
+  # unless $pf_svc == ('/etc/systemd/system/pingfederate.service') {
+  #   recursive_file_permissions {'/opt/pingfederate-11.0.7/pingfederate/':
+  #     file_mode => '0775',
+  #     dir_mode  => '0775',
+  #     owner     => $pf_user,
+  #     group     => $pf_user,
+  #   }
+  # }
 
 
   # Copy file needed for Atlassian connector & modify run.properties
