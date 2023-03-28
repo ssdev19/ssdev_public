@@ -126,7 +126,7 @@ $line,
     extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   }
 
-if $osfamily == 'RedHat'  { 
+if $facts['os']['family'] == 'RedHat'  { 
    $message = "This machine OS is of the type $osfamily \n" 
 } else { 
    $message = "This machine is unknown \n" 
