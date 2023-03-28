@@ -57,7 +57,7 @@ $line,
       dir_mode  => '0775',
       owner     => $pf_user,
       group     => $pf_user,
-      }
+    }
   }
 
 
