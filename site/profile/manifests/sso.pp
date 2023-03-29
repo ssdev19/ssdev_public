@@ -132,7 +132,7 @@ $line,
 #     } else {
 #       notify{"This is not centos":}
 # }
-
+include stdlib
 if $::pf_svc  {
   notify{"It does exist ${::pf_svc}":}
     } else {
