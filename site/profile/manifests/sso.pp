@@ -139,7 +139,7 @@ if $::pf_svc  {
     } else {
       notify{"file ${::pf_svc} does not exist":}
 }
-if $::hello  {
+unless $::hello  {
   notify{"${::hello} does exist ":}
     } else {
       notify{" ${::hello} does not exist":}
