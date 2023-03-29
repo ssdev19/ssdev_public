@@ -144,7 +144,7 @@ if $::hello  {
       notify{" ${::hello} does not exist":}
 }
 # if ($::uptime_days > 365) {
-  notify{"${::uptime_days}  ":}
+  notify{"${::uptime_minutes}  ":}
 #     } else {
 #       notify{" ${::uptime_days} uptime days":}
 # }
