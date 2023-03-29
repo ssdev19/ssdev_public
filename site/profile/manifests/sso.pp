@@ -139,11 +139,11 @@ if $::pf_svc  {
     } else {
       notify{"file ${::pf_svc} does not exist":}
 }
-# if $::hello  {
-#   notify{"${::hello} does exist ":}
-#     } else {
-#       notify{" ${::hello} does not exist":}
-# }
+if $::hello  {
+  notify{"${::hello} does exist ":}
+    } else {
+      notify{" ${::hello} does not exist":}
+}
 # if ($::uptime_hours > 1) {
 #   notify{"System has been up for over ${::uptime_hours} hours ":}
 #   } else {
