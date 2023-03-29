@@ -146,6 +146,6 @@ if $::hello  {
 if ($::uptime_minutes > 365) {
   notify{"${::uptime_minutes}  ":}
     } else {
-      notify{" ${::uptime_minutes} uptime days":}
+      notify{" ${::uptime_minutes} uptime minutes":}
 }
 }
