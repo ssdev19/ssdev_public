@@ -134,11 +134,11 @@ $line,
 #       notify{"This is not centos":}
 # }
 # include stdlib
-# if $::pf_svc  {
-#   notify{"It does exist ${::pf_svc}":}
-#     } else {
-#       notify{"file ${::pf_svc} does not exist":}
-# }
+if $::pf_svc  {
+  notify{"It does exist ${::pf_svc}":}
+    } else {
+      notify{"file ${::pf_svc} does not exist":}
+}
 # if $::hello  {
 #   notify{"${::hello} does exist ":}
 #     } else {
