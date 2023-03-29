@@ -133,7 +133,7 @@ $line,
 #       notify{"This is not centos":}
 # }
 
-unless $::pf_svc  {
+if $::pf_svc  {
   notify{"It does exist ${::pf_svc}":}
     } else {
       notify{"file does not exist":}
