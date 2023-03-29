@@ -126,14 +126,16 @@ $line,
     extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   }
 
-$os = $facts['os']['family']
-if $facts['os']['family'] == 'RedHat' {
-      notify{"It is ${os}":}
-    } else {
-      notify{"This is not centos":}
-}
+# $os = $facts['os']['family']
+# if $facts['os']['family'] == 'RedHat' {
+#       notify{"It is ${os}":}
+#     } else {
+#       notify{"This is not centos":}
+# }
 
 unless $::pf_svc  {
   notify{"It does exist ${::pf_svc}":}
+    } else {
+      notify{"file does not exist":}
 }
 }
