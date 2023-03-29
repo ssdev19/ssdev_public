@@ -136,6 +136,6 @@ $line,
 if $::pf_svc  {
   notify{"It does exist ${::pf_svc}":}
     } else {
-      notify{"file does not exist":}
+      notify{"file ${::pf_svc} does not exist":}
 }
 }
