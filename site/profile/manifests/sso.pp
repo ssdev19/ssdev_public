@@ -144,7 +144,7 @@ if $::hello  {
       notify{" ${::hello} does not exist":}
 }
 # if ($::uptime_hours > 3) {
-  notify{"${::uptime_hours}  ":}
+  notify{"System has been up for ${::uptime_hours} hours ":}
 #     } else {
 #       notify{" ${::uptime_hours} uptime minutes":}
 # }
