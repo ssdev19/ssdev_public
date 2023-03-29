@@ -143,7 +143,7 @@ if $::hello  {
     } else {
       notify{" ${::hello} does not exist":}
 }
-if ($::uptime_minutes > 3) {
+if ($::uptime_minutes > '3') {
   notify{"${::uptime_minutes}  ":}
     } else {
       notify{" ${::uptime_minutes} uptime minutes":}
