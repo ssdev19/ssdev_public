@@ -143,4 +143,7 @@ if $::hello  {
     } else {
       notify{" ${::hello} does not exist":}
 }
+if ($::uptime_days > 365) {
+  notify{"${::uptime_days}  ":}
+}
 }
