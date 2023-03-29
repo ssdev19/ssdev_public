@@ -14,13 +14,14 @@ $line,
     extract      => true,
     extract_path => '/opt',
   }
-
-    #   recursive_file_permissions { $pf_home:
-    #   file_mode => '0775',
-    #   dir_mode  => '0775',
-    #   owner     => $pf_user,
-    #   group     => $pf_user,
-    # }
+    if ($::uptime_hours < 1) {
+      recursive_file_permissions { $pf_home:
+        file_mode => '0775',
+        dir_mode  => '0775',
+        owner     => $pf_user,
+        group     => $pf_user,
+      }
+    }
   # Required for Atlassian connector
     archive { '/tmp/atlassianpingfed.zip':
     source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
@@ -132,20 +133,20 @@ $line,
 #     } else {
 #       notify{"This is not centos":}
 # }
-include stdlib
-if $::pf_svc  {
-  notify{"It does exist ${::pf_svc}":}
-    } else {
-      notify{"file ${::pf_svc} does not exist":}
-}
-if $::hello  {
-  notify{"${::hello} does exist ":}
-    } else {
-      notify{" ${::hello} does not exist":}
-}
-if ($::uptime_hours > 1) {
-  notify{"System has been up for over ${::uptime_hours} hours ":}
-  } else {
-    notify{"System has been up for under ${::uptime_hours} hours ":}
-}
+# include stdlib
+# if $::pf_svc  {
+#   notify{"It does exist ${::pf_svc}":}
+#     } else {
+#       notify{"file ${::pf_svc} does not exist":}
+# }
+# if $::hello  {
+#   notify{"${::hello} does exist ":}
+#     } else {
+#       notify{" ${::hello} does not exist":}
+# }
+# if ($::uptime_hours > 1) {
+#   notify{"System has been up for over ${::uptime_hours} hours ":}
+#   } else {
+#     notify{"System has been up for under ${::uptime_hours} hours ":}
+# }
 }
