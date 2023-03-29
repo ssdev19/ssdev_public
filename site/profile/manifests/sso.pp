@@ -14,7 +14,7 @@ $line,
     extract      => true,
     extract_path => '/opt',
   }
-    if ($::uptime_hours < 1) {
+    if $::pf_svc  {
       recursive_file_permissions { $pf_home:
         file_mode => '0775',
         dir_mode  => '0775',
