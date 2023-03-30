@@ -120,35 +120,12 @@ $line,
 
   
 # Vulnerability check 2/22/2023
-  archive { '/tmp/pf-security-advisory.zip':
-    source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pf-security-advisory-utility-assembly-SECADV033-1.0.zip",
-    cleanup      => true,
-    extract      => true,
-    extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
-  }
+  # archive { '/tmp/pf-security-advisory.zip':
+  #   source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pf-security-advisory-utility-assembly-SECADV033-1.0.zip",
+  #   cleanup      => true,
+  #   extract      => true,
+  #   extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
+  # }
 
-# $os = $facts['os']['family']
-# if $facts['os']['family'] == 'RedHat' {
-#       notify{"It is ${os}":}
-#     } else {
-#       notify{"This is not centos":}
-# }
-# include stdlib
-# if $::pf_svc  {
-#   notify{"It does exist ${::pf_svc}":}
-#     } else {
-#       notify{"file ${::pf_svc} does not exist":}
-# }
-# if $::hello  {
-#   notify{"${::hello} does exist ":}
-#     } else {
-#       notify{" ${::hello} does not exist":}
-# }
-# if ($::uptime_hours > 1) {
-#   notify{"System has been up for over ${::uptime_hours} hours ":}
-#   } else {
-#     notify{"System has been up for under ${::uptime_hours} hours ":}
-# }
-# notify{"Hardware platform is ${::hardware_platform} . ":}
-# notify{"os family is ${::osfamily} . ":}
+
 }
