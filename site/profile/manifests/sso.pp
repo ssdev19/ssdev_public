@@ -76,6 +76,17 @@ $line,
   source  => '/tmp/log4j2.xml',
   replace => 'yes',
   }
+  $pf_lic = lookup('pf_lic')
+  #   file { '/opt/pingfederate-11.0.7/pingfederate/server/default/conf/pf/pingfederate.lic':
+  #   ensure  => present,
+  #   source  => $pf_lic,
+  #   replace => 'no',
+  # }
+  archive { "/opt/pingfederate-${pf_version}/pingfederate/server/default/conf/pingfederate.lic" :
+    ensure  => present,
+    source  => $pf_lic,
+    cleanup => false,
+  }
 
 
   # Pingfederate service /etc/systemd/system/pingfederate.service
@@ -106,17 +117,6 @@ $line,
   enable    => true,
   }
 
-    $pf_lic = lookup('pf_lic')
-  #   file { '/opt/pingfederate-11.0.7/pingfederate/server/default/conf/pf/pingfederate.lic':
-  #   ensure  => present,
-  #   source  => $pf_lic,
-  #   replace => 'no',
-  # }
-  archive { "/opt/pingfederate-${pf_version}/pingfederate/server/default/conf/pingfederate.lic" :
-    ensure  => present,
-    source  => $pf_lic,
-    cleanup => false,
-  }
 
   
 # Vulnerability check 2/22/2023
