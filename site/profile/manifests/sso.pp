@@ -87,8 +87,6 @@ $line,
     source  => $pf_lic,
     cleanup => false,
   }
-
-
   # Pingfederate service /etc/systemd/system/pingfederate.service
   $pingfederate_service = @("EOT")
     [Unit]
