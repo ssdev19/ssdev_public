@@ -14,7 +14,7 @@ $line,
     extract      => true,
     extract_path => '/opt',
   }
-  unless $::pf_svc  {
+  unless $::pf_svca  {
     recursive_file_permissions { $pf_home:
       file_mode => '0775',
       dir_mode  => '0775',
