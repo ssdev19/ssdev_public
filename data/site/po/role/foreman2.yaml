@@ -94,5 +94,6 @@ puppet::server: true
 puppet::server::puppetserver_metrics: false  # disabled for performance
 puppet::server::puppetserver_profiler: false  # disabled for performance
 puppet::server_version: *server_version  # XXX does this do anything?
-puppet::version: "7.24.0"  # agent version
+# puppet::version: "7.24.0"  # agent version
 # puppetdb::globals::version: "7.15.0"
+puppet_agent::package_version: 7.24.0
