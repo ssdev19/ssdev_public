@@ -25,12 +25,12 @@ class profile::base_linux (
     include rsyslog
     include rsyslog::config
   }
-  $snmp = lookup('snmp')
-  class { 'snmp':
-    # agentaddress => [ 'udp:161', ],
-    ro_community => $snmp,
-    # ro_network   => '140.252.32.0/22',
-  }
+  # $snmp = lookup('snmp')
+  # class { 'snmp':
+  #   # agentaddress => [ 'udp:161', ],
+  #   ro_community => $snmp,
+  #   # ro_network   => '140.252.32.0/22',
+  # }
 
 
 # config: /etc/systemd/system/node_exporter.service
