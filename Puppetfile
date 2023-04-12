@@ -15,7 +15,7 @@ mod 'puppet-nsclient', '2.1.0'
 mod 'puppetlabs-pwshlib', '0.10.3'
 mod 'puppetlabs-powershell', '5.1.0'
 mod 'puppetlabs-registry', '4.1.0'
-mod 'puppetlabs-ruby_task_helper', '0.6.1'
+# mod 'puppetlabs-ruby_task_helper', '0.6.1'
 mod 'puppet-download_file', '4.0.0'
 # AWS
 mod 'puppetlabs-aws', '2.1.0'
