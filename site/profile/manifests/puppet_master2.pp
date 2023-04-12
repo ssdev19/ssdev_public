@@ -1,21 +1,21 @@
 # puppet master config
 class profile::puppet_master2 {
   include r10k
-  include foreman
+  # include foreman
   # include foreman::cli
   # include foreman::compute::libvirt
-  include foreman::plugin::remote_execution
-  include foreman::plugin::tasks
+  # include foreman::plugin::remote_execution
+  # include foreman::plugin::tasks
   # include foreman_proxy
   # include foreman_proxy::plugin::dynflow
   # include foreman_proxy::plugin::remote_execution::ssh
   # include foreman::repo
-  include puppet
-    Package { [
-    'devtoolset-8',
-    'rh-ruby27-ruby-devel' ]:
-    ensure => installed,
-    }
+  # include puppet
+  #   Package { [
+  #   'devtoolset-8',
+  #   'rh-ruby27-ruby-devel' ]:
+  #   ensure => installed,
+  #   }
 # Agent and puppetmaster:
 # class { '::puppet': server => true }
   # The toml gem is required for grafana ldap.
