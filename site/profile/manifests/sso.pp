@@ -8,7 +8,7 @@ $pf_version,
 $match,
 $line,
 ){
-  archive { '/tmp/pingfed.zip':
+  archive { '/opt/pingfed.zip':
     source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
     cleanup      => true,
     extract      => true,
