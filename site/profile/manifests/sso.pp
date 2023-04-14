@@ -18,7 +18,7 @@ $line,
     # Required for Atlassian connector
     archive { '/tmp/atlassianpingfed.zip':
       source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
-      cleanup      => false,
+      cleanup      => true,
       extract      => true,
       extract_path => '/tmp/',
     }
@@ -26,7 +26,7 @@ $line,
       # ensure   => present,
       source       => 'https://project.lsst.org/zpuppet/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
       # provider => 'wget',
-      cleanup      => false,
+      cleanup      => true,
       # user         => $pf_user,
       extract      => true,
       # extract_path => '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy',
