@@ -8,9 +8,9 @@ $pf_version,
 $match,
 $line,
 ){
-  archive { '/opt/pingfed.zip':
+  archive { '/tmp/pingfed.zip':
     source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
-    cleanup      => true,
+    cleanup      => false,
     extract      => true,
     extract_path => '/opt',
   }
@@ -25,7 +25,7 @@ $line,
   # Required for Atlassian connector
     archive { '/tmp/atlassianpingfed.zip':
     source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
-    cleanup      => true,
+    cleanup      => false,
     extract      => true,
     extract_path => '/tmp/',
   }
