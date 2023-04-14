@@ -8,37 +8,37 @@ $pf_version,
 $match,
 $line,
 ){
-  archive { '/tmp/pingfed.zip':
-    source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
-    cleanup      => false,
-    extract      => true,
-    extract_path => '/opt',
-  }
   unless $::pf_svc  {
+    archive { '/tmp/pingfed.zip':
+      source       => "http://wsus.lsst.org/puppetfiles/pingfederate/pingfederate-${pf_version}.zip",
+      cleanup      => false,
+      extract      => true,
+      extract_path => '/opt',
+    }
+    # Required for Atlassian connector
+    archive { '/tmp/atlassianpingfed.zip':
+      source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
+      cleanup      => false,
+      extract      => true,
+      extract_path => '/tmp/',
+    }
+    archive { '/tmp/jirapingfed.zip':
+      # ensure   => present,
+      source       => 'https://project.lsst.org/zpuppet/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
+      # provider => 'wget',
+      cleanup      => false,
+      # user         => $pf_user,
+      extract      => true,
+      # extract_path => '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy',
+      extract_path => '/tmp/',
+      # creates      => '/tmp/atlassianconnector' 
+    }
     recursive_file_permissions { $pf_home:
       file_mode => '0775',
       dir_mode  => '0775',
       owner     => $pf_user,
       group     => $pf_user,
     }
-  }
-  # Required for Atlassian connector
-    archive { '/tmp/atlassianpingfed.zip':
-    source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
-    cleanup      => false,
-    extract      => true,
-    extract_path => '/tmp/',
-  }
-  archive { '/tmp/jirapingfed.zip':
-    # ensure   => present,
-    source       => 'https://project.lsst.org/zpuppet/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
-    # provider => 'wget',
-    cleanup      => true,
-    # user         => $pf_user,
-    extract      => true,
-    # extract_path => '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy',
-    extract_path => '/tmp/',
-    # creates      => '/tmp/atlassianconnector' 
   }
 
   file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar":
