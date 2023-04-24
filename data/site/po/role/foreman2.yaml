@@ -73,8 +73,8 @@ foreman::repo::configure_scl_repo: false
 foreman::unattended: true
 foreman::user: "foreman"
 foreman::user_groups: ["puppet"]
-foreman::version: "3.7.0"
-# puppet::agent: true
+foreman::version: "3.6.0"
+puppet::agent: true
 puppet::environment: "test4"  # always overridden via enc
 puppet::master::config::soft_write_failure: true
 puppet::remove_lock: true
