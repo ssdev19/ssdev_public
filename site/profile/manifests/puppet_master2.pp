@@ -1,6 +1,6 @@
 # puppet master config
 class profile::puppet_master2 {
-  include r10k
+  # include r10k
   # include foreman
   # include foreman::cli
   # include foreman::compute::libvirt
