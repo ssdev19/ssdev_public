@@ -10,14 +10,14 @@ class profile::puppet_master3 {
   # include foreman_proxy::plugin::remote_execution::script
   include foreman::repo
   # include puppet
-  yumrepo { 'pc_repo':
-    ensure   => 'present',
-    baseurl  => "https://yum.puppet.com/puppet7-release-el-8.noarch.rpm",
-    descr    => 'Puppet Labs puppet7 Repository',
-    enabled  => true,
+  # yumrepo { 'pc_repo':
+  #   ensure   => 'present',
+  #   baseurl  => "https://yum.puppet.com/puppet7-release-el-8.noarch.rpm",
+  #   descr    => 'Puppet Labs puppet7 Repository',
+  #   enabled  => true,
     # gpgcheck => '1',
     # gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
-    before   => Class['puppet'],
+    # before   => Class['puppet'],
   }
 
   file { '/var/lib/tftpboot/boot/udev_fact.zip':
