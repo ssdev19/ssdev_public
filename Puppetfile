@@ -64,7 +64,7 @@ mod 'theforeman-foreman_proxy', '21.0.0'
 mod 'theforeman/dhcp', '6.1.0'
 mod 'theforeman/dns', '8.0.0'
 mod 'puppet-archive', '6.0.2'
-mod 'puppetlabs-concat', '8.0.0'
+mod 'puppetlabs-concat', '7.4.0'
 mod 'puppetlabs-inifile', '5.2.0'
 mod 'puppetlabs-java', '9.0.1'
 mod 'puppetlabs-java_ks', '4.2.0' # Kestore management
