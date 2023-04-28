@@ -73,7 +73,14 @@ foreman::repo::repo: "3.6"
 foreman::unattended: true
 foreman::user: "foreman"
 foreman::user_groups: ["puppet"]
-# foreman::version: "3.6.0"
+foreman::version: "3.6.1"
+postgresql::server::config_entries:
+  max_connections: 1000
+  shared_buffers: "2GB"
+  work_mem: "8MB"
+  autovacuum_vacuum_cost_limit: 2000
+  log_min_duration_statement: 10000  # log slow queries >= 10s
+profile::core::puppet_master::enable_puppetdb: true
 puppet::agent: true
 puppet::environment: "test4"  # always overridden via enc
 puppet::master::config::soft_write_failure: true
