@@ -2,6 +2,17 @@
 class profile::puppet_master3 {
   include r10k
   include foreman
+  include foreman::plugin::puppet
+  include foreman::plugin::remote_execution
+  include foreman::plugin::tasks
+  include foreman::plugin::templates
+  include foreman_proxy
+  include foreman_proxy::plugin::discovery
+  include foreman_proxy::plugin::dns::route53
+  include foreman_proxy::plugin::dynflow
+  include foreman_proxy::plugin::remote_execution::script
+  include foreman::repo
+  include puppet
   # include foreman::cli
   # include foreman::compute::libvirt
   # include foreman::plugin::remote_execution
