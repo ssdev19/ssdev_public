@@ -61,7 +61,7 @@ foreman_proxy::bind_host: '*'
 foreman_proxy::trusted_hosts: ["%{facts.fqdn}"]
 foreman_proxy::foreman_hosts: ["%{facts.fqdn}"]
 foreman_proxy::version: '3.2.0'
-foreman::cli::version: "%{lookup('foreman::version')}"
+# foreman::cli::version: "%{lookup('foreman::version')}"
 foreman_proxy::ssl_port: 8443
 foreman_proxy::ssl: true
 foreman_proxy::tftp_listen_on: "https"
@@ -73,7 +73,7 @@ foreman::repo::repo: "3.6"
 foreman::unattended: true
 foreman::user: "foreman"
 foreman::user_groups: ["puppet"]
-foreman::version: "3.6.1"
+foreman::version: "3.6.0"
 puppet::agent: true
 puppet::environment: "test4"  # always overridden via enc
 puppet::master::config::soft_write_failure: true
