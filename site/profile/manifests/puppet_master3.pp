@@ -1,7 +1,7 @@
 # puppet master config
 class profile::puppet_master3 {
   include r10k
-  # include foreman
+  include foreman
   # include foreman::cli
   # include foreman::compute::libvirt
   # include foreman::plugin::remote_execution
