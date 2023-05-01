@@ -12,7 +12,7 @@ class profile::puppet_master3 {
   # include puppet
   yumrepo { 'pc_repo':
     ensure   => 'present',
-    baseurl  => "http://yum.puppet.com/puppet7-release-el-8.noarch.rpm",
+    baseurl  => 'http://yum.puppet.com/puppet7-release-el-8.noarch.rpm',
     descr    => 'Puppet Labs puppet 7 Repository',
     enabled  => true,
     # gpgcheck => '1',
