@@ -12,21 +12,21 @@ class profile::puppet_master3 {
   # include puppet
   yumrepo { 'pc_repo':
     ensure   => 'present',
-    baseurl  => "https://yum.puppet.com/puppet7-release-el-8.noarch.rpm",
-    descr    => 'Puppet Labs puppet7 Repository',
+    baseurl  => "http://yum.puppet.com/puppet7-release-el-8.noarch.rpm",
+    descr    => 'Puppet Labs puppet 7 Repository',
     enabled  => true,
-    gpgcheck => '1',
-    gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
+    # gpgcheck => '1',
+    # gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
     before   => Class['puppet'],
   }
 
-  file { '/var/lib/tftpboot/boot/udev_fact.zip':
-    ensure => file,
-    owner  => 'foreman-proxy',
-    group  => 'foreman-proxy',
-    mode   => '0644',
-    source => "puppet:///modules/${module_name}/foreman/udev_fact.zip",
-  }
+  # file { '/var/lib/tftpboot/boot/udev_fact.zip':
+  #   ensure => file,
+  #   owner  => 'foreman-proxy',
+  #   group  => 'foreman-proxy',
+  #   mode   => '0644',
+  #   source => "puppet:///modules/${module_name}/foreman/udev_fact.zip",
+  # }
 
   #   Package { [
   #   'devtoolset-8',
