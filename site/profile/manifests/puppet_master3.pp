@@ -10,6 +10,10 @@ class profile::puppet_master3 {
   # include foreman_proxy::plugin::remote_execution::script
   include foreman::repo
   # include puppet
+    file { '/etc/puppetlabs/puppet/eyaml' :
+      ensure  => directory,
+    }
+
   yumrepo { 'pc_repo':
     ensure   => 'present',
     baseurl  => 'http://yum.puppet.com/puppet7-release-el-8.noarch.rpm',
