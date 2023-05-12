@@ -114,5 +114,6 @@ postfix::configs:
 # puppet_agent::package_version: 7.24.0
 puppet_agent::config:
   - {section: 'agent', setting: 'show_diff', value: 'true'}
-  - {section: 'server', setting: 'server', value: 'foreman-ssdev.us.lsst.org'}
+  - {section: 'agent', setting: 'server', value: 'foreman-ssdev2.us.lsst.org'}
+  - {section: 'agent', setting: 'ca_server', value: 'foreman-ssdev2.us.lsst.org'}
 puppet::report: true
