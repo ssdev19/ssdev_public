@@ -116,4 +116,5 @@ puppet_agent::config:
   - {section: 'agent', setting: 'show_diff', value: 'true'}
   - {section: 'agent', setting: 'server', value: 'foreman2-ssdev.us.lsst.org'}
   - {section: 'agent', setting: 'ca_server', value: 'foreman2-ssdev.us.lsst.org'}
+  - {section: "agent", setting: 'environment', ensure: 'absent'}
 puppet::report: true
