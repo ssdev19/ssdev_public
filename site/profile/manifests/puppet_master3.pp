@@ -14,15 +14,15 @@ class profile::puppet_master3 {
       ensure  => directory,
     }
 
-  yumrepo { 'pc_repo':
-    ensure   => 'removed',
+  # yumrepo { 'pc_repo':
+  #   ensure   => 'removed',
     # baseurl  => 'http://yum.puppet.com/puppet7-release-el-8.noarch.rpm',
     # descr    => 'Puppet Labs puppet 7 Repository',
     # enabled  => true,
     # gpgcheck => '1',
     # gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
     # before   => Class['puppet'],
-  }
+  # }
 
   # file { '/var/lib/tftpboot/boot/udev_fact.zip':
   #   ensure => file,
