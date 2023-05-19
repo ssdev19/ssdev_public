@@ -63,8 +63,8 @@ r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
 # foreman::user: "foreman"
 # foreman::user_groups: ["puppet"]
 # foreman::version: "3.6.1"
-foreman_proxy::plugin::remote_execution::script::mode: "ssh"
-foreman_proxy::plugin::remote_execution::script::enabled: true
+# foreman_proxy::plugin::remote_execution::script::mode: "ssh"
+# foreman_proxy::plugin::remote_execution::script::enabled: true
 # postgresql::server::config_entries:
 #   max_connections: 1000
 #   shared_buffers: "2GB"
