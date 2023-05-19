@@ -3,7 +3,7 @@ class profile::puppet_master3 {
   include r10k
   # include foreman
   # include foreman::plugin::puppet
-  # include foreman::plugin::remote_execution
+  include foreman::plugin::remote_execution
   # include foreman::plugin::tasks
   # include foreman::plugin::templates
   # include foreman_proxy
