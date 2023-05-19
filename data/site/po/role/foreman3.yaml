@@ -45,7 +45,7 @@ r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
 # r10k::webhook::user: "root"
 # r10k::webhook::group: "root"
 # r10k::deploy_settings:
-foreman_proxy::base_url: "https://sds.er.com"
+foreman_proxy::base_url: "https://%{facts.fqdn}"
 # foreman_proxy::bind_host: '*'
 # foreman_proxy::trusted_hosts: ["%{facts.fqdn}"]
 # foreman_proxy::foreman_hosts: ["%{facts.fqdn}"]
