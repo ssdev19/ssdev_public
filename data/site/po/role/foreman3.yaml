@@ -74,21 +74,21 @@ foreman::version: "3.6.1"
 # profile::core::puppet_master::enable_puppetdb: true
 # puppet::agent: true
 # puppet::environment: "test4"  # always overridden via enc
-# puppet::master::config::soft_write_failure: true
-# puppet::remove_lock: true
-# puppet::report: true
-# puppet::server_common_modules_path: ""
-# puppet::server_foreman_facts: true
-# puppet::server_foreman: true
-# puppet::server_max_active_instances: 8  # see https://puppet.com/docs/puppet/6/server/tuning_guide.html
-# # puppet::server_jvm_max_heap_size: &jvm_heap "5G"  # (max-act-inst * 0.5G) + 1G
-# # puppet::server_jvm_min_heap_size: *jvm_heap
-# # puppet::server_jvm_extra_args: ["-XX:ReservedCodeCacheSize=1G", "-Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger"]
-# puppet::server::puppetdb::soft_write_failure: true
-# puppet::server_puppetserver_version: &server_version "7.11.0"  # XXX does this do anything?
-# puppet::server_reports: "foreman,puppetdb"
-# puppet::server_storeconfigs: true
-# puppet::server: true
+puppet::master::config::soft_write_failure: true
+puppet::remove_lock: true
+puppet::report: true
+puppet::server_common_modules_path: ""
+puppet::server_foreman_facts: true
+puppet::server_foreman: true
+puppet::server_max_active_instances: 8  # see https://puppet.com/docs/puppet/6/server/tuning_guide.html
+puppet::server_jvm_max_heap_size: &jvm_heap "5G"  # (max-act-inst * 0.5G) + 1G
+puppet::server_jvm_min_heap_size: *jvm_heap
+puppet::server_jvm_extra_args: ["-XX:ReservedCodeCacheSize=1G", "-Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger"]
+puppet::server::puppetdb::soft_write_failure: true
+puppet::server_puppetserver_version: &server_version "7.11.0"  # XXX does this do anything?
+puppet::server_reports: "foreman,puppetdb"
+puppet::server_storeconfigs: true
+puppet::server: true
 # puppet::server::puppetserver_metrics: false  # disabled for performance
 # puppet::server::puppetserver_profiler: false  # disabled for performance
 # puppet::server_version: *server_version  # XXX does this do anything?
