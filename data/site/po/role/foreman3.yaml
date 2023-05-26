@@ -65,9 +65,9 @@ foreman::user_groups: ["puppet"]
 foreman::version: "3.6.1"
 # foreman_proxy::plugin::remote_execution::script::mode: "ssh"
 # foreman_proxy::plugin::remote_execution::script::enabled: true
-  foreman-postgresql:
-    ensure: "present"
-    version: "3.6"
+foreman-postgresql:
+  ensure: "present"
+  version: "3.6"
 postgresql::server::config_entries:
   max_connections: 1000
   shared_buffers: "2GB"
