@@ -58,11 +58,11 @@ r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
 # foreman_proxy::tftp_manage_wget: true
 # foreman_proxy::tftp: true
 foreman::repo::configure_scl_repo: false
-foreman::repo::repo: "3.6"
+foreman::repo::repo: "3.5"
 foreman::unattended: true
 foreman::user: "foreman"
 foreman::user_groups: ["puppet"]
-foreman::version: "3.6.1"
+foreman::version: "3.5.0"
 # foreman_proxy::plugin::remote_execution::script::mode: "ssh"
 # foreman_proxy::plugin::remote_execution::script::enabled: true
 postgresql::server::config_entries:
