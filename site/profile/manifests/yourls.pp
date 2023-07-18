@@ -3,6 +3,7 @@ class profile::yourls {
   include apache
   include '::php'
 
+  unless $::yourls_config  {
   archive { '/tmp/yourls-1.9.2.zip':
     ensure   => present,
     source   => 'https://github.com/YOURLS/YOURLS/archive/refs/tags/1.9.2.zip',
@@ -15,4 +16,5 @@ class profile::yourls {
   #   ensure => present,
   #   source => '/tmp/pwm-1.9.2.war',
   # }
+  }
 }
