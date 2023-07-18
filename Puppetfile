@@ -73,7 +73,7 @@ mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
 mod 'example42-network', '3.6.0'
-mod 'puppetlabs-mysql', '12.0.1'
+mod 'puppetlabs-mysql', '15.0.0'
 mod 'edestecd-mariadb', '2.1.1'
 mod 'previousnext-drush', '0.1.2'
 mod 'willdurand-composer', '1.2.10'
