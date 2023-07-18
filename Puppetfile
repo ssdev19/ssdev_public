@@ -85,7 +85,7 @@ mod 'binford2k-node_encrypt', '0.4.1'
 mod 'jlondon-phpmyadmin', '1.3.0'
 mod 'puppetlabs-apache', '10.1.1'
 mod 'puppet-zypprepo', '4.0.1' # dependency for PHP & elastic
-mod 'puppet-php', '8.0.2'
+mod 'puppet-php', '8.2.0'
 mod 'puppet-nginx', '3.2.0'
 # mod 'rubinobs/yourls'.
 #     git: 'https://github.com/YOURLS/YOURLS.git'
