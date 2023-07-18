@@ -7,6 +7,7 @@ class profile::yourls {
     ensure   => present,
     source   => 'https://github.com/YOURLS/YOURLS/archive/refs/tags/1.9.2.zip',
     extract_path => '/var/www',
+    extract      => true,
     provider => 'wget',
     cleanup  => false,
   }
