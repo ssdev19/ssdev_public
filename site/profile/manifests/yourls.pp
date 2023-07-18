@@ -12,9 +12,9 @@ class profile::yourls {
     provider     => 'wget',
     cleanup      => false,
   }
-  # file { '/opt/tomcat/webapps/ROOT.war':
-  #   ensure => present,
-  #   source => '/tmp/pwm-1.9.2.war',
-  # }
+  file { '/var/www/YOURLS-1.9.2/user/config-sample.php':
+            ensure => present,
+            source => '/var/www/YOURLS-1.9.2/user/config.php',
+  }
   }
 }
