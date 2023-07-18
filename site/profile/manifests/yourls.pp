@@ -12,9 +12,9 @@ class profile::yourls {
     provider     => 'wget',
     cleanup      => false,
   }
-  file { '/var/www/YOURLS-1.9.2/user/config-sample.php':
+  file { '/var/www/YOURLS-1.9.2/user/config.php':
             ensure => present,
-            source => '/var/www/YOURLS-1.9.2/user/config.php',
+            source => '/var/www/YOURLS-1.9.2/user/config-sample.php',
   }
   }
 }
