@@ -22,16 +22,16 @@ $yourls_version,
   #           source  => "/etc/nginx/YOURLS-${yourls_version}",
   #           recurse => 'remote',
   # }
+
+  }
   file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
             ensure => present,
             source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
   }
-  -> file_line{ 'change pf.provisioner.mode to STANDALONE':
-    match => "define( 'YOURLS_DB_NAME', 'yourls' );",
-    line  => "define( 'YOURLS_DB_NAME', 'yourlsTest' );",
-    path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
-  }
-
+  -> file_line{ 'Change db name to yourlstest':
+      match => "define( 'YOURLS_DB_NAME', 'yourls' );",
+      line  => "define( 'YOURLS_DB_NAME', 'yourlsTest2' );",
+      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
 
 
