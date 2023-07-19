@@ -22,7 +22,7 @@ $yourls_version,
   #           source  => "/etc/nginx/YOURLS-${yourls_version}",
   #           recurse => 'remote',
   # }
-  file { '/etc/nginx/YOURLS/user/config.php':
+  file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
             ensure => present,
             source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
   }
