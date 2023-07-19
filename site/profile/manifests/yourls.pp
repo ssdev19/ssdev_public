@@ -19,7 +19,7 @@ $yourls_version,
   }
   file { '/etc/nginx/YOURLS':
             ensure  => present,
-            source  => "/etc/nginx/YOURLS-${yourls_version}"",
+            source  => "/etc/nginx/YOURLS-${yourls_version}",
             recurse => 'remote',
   }
   file { '/etc/nginx/YOURLS/user/config.php':
