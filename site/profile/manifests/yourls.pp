@@ -2,6 +2,7 @@
 class profile::yourls ( String
 
 $yourls_version,
+$yourls_site,
 
 ){
   include nginx
@@ -36,7 +37,7 @@ $yourls_version,
   }
   file_line { 'Change URL to':
       match => 'YOURLS_SITE',
-      line  => "define( 'YOURLS_SITE', 'https://ls.st' );",
+      line  => "define( 'YOURLS_SITE', '${yourls_site}' );",
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
 file { '/etc/nginx/YOURLS':
