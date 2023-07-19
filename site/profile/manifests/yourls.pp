@@ -40,6 +40,12 @@ $yourls_site,
       line  => "define( 'YOURLS_SITE', '${yourls_site}' );",
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
+$yourls_user_passwords = lookup('yourls_user_passwords')
+  file_line { 'Add yourls users':
+      match => 'yourls_user_passwords',
+      line  => $yourls_user_passwords,
+      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
+  }
 file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
