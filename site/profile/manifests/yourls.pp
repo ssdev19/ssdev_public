@@ -26,5 +26,12 @@ $yourls_version,
             ensure => present,
             source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
   }
+  file { YOURLS:
+    ensure => link,
+    target => "/etc/nginx/YOURLS-${yourls_version}"
+    owner  => user,
+    group  => group,
+    mode   => 'a=rx,u+w'
+  }
   }
 }
