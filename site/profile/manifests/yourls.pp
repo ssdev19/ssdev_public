@@ -34,6 +34,9 @@ $yourls_version,
       line  => "define( 'YOURLS_DB_USER', 'yourls' );",
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
-
+file { '/etc/nginx/YOURLS':
+  ensure => 'link',
+  target => "/etc/nginx/YOURLS-${yourls_version}",
+}
 
 }
