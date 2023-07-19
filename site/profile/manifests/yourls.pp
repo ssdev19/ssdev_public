@@ -28,10 +28,8 @@ $yourls_version,
   }
   file { YOURLS:
     ensure => link,
-    target => "/etc/nginx/YOURLS-${yourls_version}"
-    owner  => user,
-    group  => group,
-    mode   => 'a=rx,u+w'
+    target => "/etc/nginx/YOURLS-${yourls_version}",
+    mode   => 'a=rx,u+w',
   }
   }
 }
