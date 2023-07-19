@@ -15,7 +15,7 @@ $yourls_version,
     extract_path => '/etc/nginx',
     extract      => true,
     provider     => 'wget',
-    cleanup      => false,
+    cleanup      => true,
   }
   file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
           ensure => present,
