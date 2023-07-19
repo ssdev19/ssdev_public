@@ -1,7 +1,7 @@
 # 
 class profile::yourls {
   include nginx
-  include mysql
+  include mysql::server
   include '::php'
 
   unless $::yourls_config  {
