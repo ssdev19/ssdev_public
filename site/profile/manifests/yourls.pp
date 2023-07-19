@@ -24,11 +24,11 @@ $yourls_version,
   # }
 
   }
-  file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
-            ensure => present,
-            source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
-  }
-  -> file_line{ 'Change db name to yourlstest':
+  # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+  #           ensure => present,
+  #           source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
+  # }
+  file_line{ 'Change db name to yourlstest':
       match => "define( 'YOURLS_DB_NAME', 'yourls' );",
       line  => "define( 'YOURLS_DB_NAME', 'yourlsTest2' );",
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
