@@ -26,10 +26,18 @@ $yourls_version,
             ensure => present,
             source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
   }
+  -> file_line{ 'change pf.provisioner.mode to STANDALONE':
+    match => "define( 'YOURLS_DB_NAME', 'yourls' );",
+    line  => "define( 'YOURLS_DB_NAME', 'yourlsTest' );",
+    path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
+  }
   file { YOURLS:
     ensure => link,
     target => "/etc/nginx/YOURLS-${yourls_version}",
     mode   => 'a=rx,u+w',
   }
   }
+
+
+
 }

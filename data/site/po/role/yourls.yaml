@@ -3,3 +3,4 @@ classes:
   - profile::base_linux
   - profile::yourls
 profile::yourls::yourls_version: '1.9.2'
+profile::yourls::yourls_site: 'https://ls2.st'
