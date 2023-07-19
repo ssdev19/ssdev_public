@@ -12,7 +12,7 @@ class profile::yourls {
     provider     => 'wget',
     cleanup      => false,
   }
-  directory { '/etc/nginx/YOURLS':
+  file { '/etc/nginx/YOURLS':
             ensure => present,
             source => '/etc/nginx/YOURLS-1.9.2',
   }
