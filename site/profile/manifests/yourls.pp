@@ -34,6 +34,11 @@ $yourls_version,
       line  => "define( 'YOURLS_DB_USER', 'yourls' );",
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
+  file_line { 'Change URL to':
+      match => 'YOURLS_SITE',
+      line  => "define( 'YOURLS_SITE', 'https://ls.st' );",
+      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
+  }
 file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
