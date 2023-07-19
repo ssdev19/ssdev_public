@@ -17,6 +17,11 @@ $yourls_version,
     provider     => 'wget',
     cleanup      => false,
   }
+  file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+          ensure => present,
+          source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
+  }
+
   # file { '/etc/nginx/YOURLS':
   #           ensure  => present,
   #           source  => "/etc/nginx/YOURLS-${yourls_version}",
@@ -24,10 +29,6 @@ $yourls_version,
   # }
 
   }
-  # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
-  #           ensure => present,
-  #           source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
-  # }
   file_line{ 'Change db name to yourlstest':
       match => "define( 'YOURLS_DB_NAME', 'yourls' );",
       line  => "define( 'YOURLS_DB_NAME', 'yourlsTest3' );",
