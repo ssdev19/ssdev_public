@@ -21,6 +21,11 @@ $yourls_version,
           ensure => present,
           source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
   }
+  ->file_line { 'Change db username to':
+      match => 'your db user name',
+      line  => "define( 'YOURLS_DB_USER', 'yourls' );",
+      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
+  }
 
   # file { '/etc/nginx/YOURLS':
   #           ensure  => present,
@@ -29,15 +34,6 @@ $yourls_version,
   # }
 
   }
-  file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
-    ensure => file,
-  }
-  ->file_line { 'Change db username to':
-      match => 'your db user name',
-      line  => "define( 'YOURLS_DB_USER', 'yourls' );",
-      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
-  }
-
 
 
 }
