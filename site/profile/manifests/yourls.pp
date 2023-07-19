@@ -12,6 +12,11 @@ class profile::yourls {
     provider     => 'wget',
     cleanup      => false,
   }
+  directory { '/etc/nginx/YOURLS':
+            ensure => present,
+            source => '/etc/nginx/YOURLS-1.9.2',
+  }
+  }
   file { '/etc/nginx/YOURLS-1.9.2/user/config.php':
             ensure => present,
             source => '/etc/nginx/YOURLS-1.9.2/user/config-sample.php',
