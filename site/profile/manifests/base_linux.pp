@@ -38,30 +38,7 @@ class profile::base_linux (
     version       => '1.5.0',
     extra_options => '--collector.systemd \--collector.processes \--collector.meminfo_numa',
   }
-  #   $fqdn = $::facts['networking']['fqdn']
-  # @@profile::prometheus::target { "${fqdn} - node_exporter":
-  #   job  => 'node',
-  #   host => "${fqdn}:9100",
-  # }
-  # Postfix -- test message: echo "My messagetd" | mail -s subject sym1@lsst.org
-  # mailx -- delete all messages: postsuper -d ALL
-  # postfix::config { 'relayhost':
-  #   ensure => present,
-  #   value  => '140.252.32.25',
-  # }
-  # class { 'postfix':
-  #   # inet_interfaces     => 'localhost',
-  #   # inet_protocols      => 'ipv4',
-  #   relayhost           => '140.252.32.25',
-  #   root_mail_recipient => 'shahram@lsst.org',
-  # }
 
-  # postfix::config { 'relay_domains':
-  #   ensure => present,
-  #   value  => 'mail.lsst.org',
-  #   root_mail_recipient => 'shahram@lsst.org',
-  # }
-  # if $ntp {
     class { 'chrony':
       servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
     }
