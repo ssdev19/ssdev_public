@@ -1,6 +1,7 @@
 # 
 class profile::yourls {
   include nginx
+  include mariadb::server
   include '::php'
 
   unless $::yourls_config  {
