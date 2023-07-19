@@ -13,14 +13,13 @@ class profile::yourls {
     cleanup      => false,
   }
   file { '/etc/nginx/YOURLS':
-            ensure => present,
-            source => '/etc/nginx/YOURLS-1.9.2',
+            ensure  => present,
+            source  => '/etc/nginx/YOURLS-1.9.2',
             recurse => 'remote',
   }
-
-  # file { '/etc/nginx/YOURLS-1.9.2/user/config.php':
-  #           ensure => present,
-  #           source => '/etc/nginx/YOURLS-1.9.2/user/config-sample.php',
-  # }
+  file { '/etc/nginx/YOURLS/user/config.php':
+            ensure => present,
+            source => '/etc/nginx/YOURLS/user/config-sample.php',
+  }
   }
 }
