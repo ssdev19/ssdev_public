@@ -1,13 +1,17 @@
 # 
-class profile::yourls {
+class profile::yourls ( String
+
+$yourls_version,
+
+){
   include nginx
   include mysql::server
   include '::php'
 
   unless $::yourls_config  {
-  archive { '/tmp/yourls-1.9.2.tar.gz':
+  archive { "/tmp/yourls-${yourls_version}.tar.gz":
     ensure       => present,
-    source       => 'https://github.com/YOURLS/YOURLS/archive/refs/tags/1.9.2.tar.gz',
+    source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
     extract_path => '/etc/nginx',
     extract      => true,
     provider     => 'wget',
@@ -15,7 +19,7 @@ class profile::yourls {
   }
   file { '/etc/nginx/YOURLS':
             ensure  => present,
-            source  => '/etc/nginx/YOURLS-1.9.2',
+            source  => "/etc/nginx/YOURLS-${yourls_version}"",
             recurse => 'remote',
   }
   file { '/etc/nginx/YOURLS/user/config.php':

@@ -1,0 +1,5 @@
+---
+classes:
+  - profile::base_linux
+  - profile::yourls
+profile::yourls::yourls_version: '1.9.2'
