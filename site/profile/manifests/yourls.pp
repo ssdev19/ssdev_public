@@ -4,7 +4,7 @@ class profile::yourls {
   include '::php'
 
   unless $::yourls_config  {
-  archive { '/tmp/yourls-1.9.2.zip':
+  archive { '/tmp/yourls-1.9.2.tar.gz':
     ensure       => present,
     source       => 'https://github.com/YOURLS/YOURLS/archive/refs/tags/1.9.2.tar.gz',
     extract_path => '/etc/nginx',
