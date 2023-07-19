@@ -31,7 +31,7 @@ $yourls_site,
 
   }
   file_line { 'Change db username to':
-      match => 'your db user name',
+      match => 'YOURLS_DB_USER',
       line  => "define( 'YOURLS_DB_USER', 'yourls' );",
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
