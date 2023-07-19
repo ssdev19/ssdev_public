@@ -17,14 +17,14 @@ $yourls_version,
     provider     => 'wget',
     cleanup      => false,
   }
-  file { '/etc/nginx/YOURLS':
-            ensure  => present,
-            source  => "/etc/nginx/YOURLS-${yourls_version}",
-            recurse => 'remote',
-  }
+  # file { '/etc/nginx/YOURLS':
+  #           ensure  => present,
+  #           source  => "/etc/nginx/YOURLS-${yourls_version}",
+  #           recurse => 'remote',
+  # }
   file { '/etc/nginx/YOURLS/user/config.php':
             ensure => present,
-            source => '/etc/nginx/YOURLS/user/config-sample.php',
+            source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
   }
   }
 }
