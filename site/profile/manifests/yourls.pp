@@ -31,11 +31,7 @@ $yourls_version,
     line  => "define( 'YOURLS_DB_NAME', 'yourlsTest' );",
     path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
-  file { YOURLS:
-    ensure => link,
-    target => "/etc/nginx/YOURLS-${yourls_version}",
-    mode   => 'a=rx,u+w',
-  }
+
   }
 
 
