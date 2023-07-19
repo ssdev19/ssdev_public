@@ -30,8 +30,8 @@ $yourls_version,
 
   }
   file_line{ 'Change db name to yourlstest':
-      match => "define( 'YOURLS_DB_NAME', 'yourls' );",
-      line  => "define( 'YOURLS_DB_NAME', 'yourlsTest3' );",
+      match => "your db user name",
+      line  => "yourls",
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
 
