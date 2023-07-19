@@ -42,7 +42,7 @@ $yourls_site,
   }
 $yourls_user_passwords = lookup('yourls_user_passwords')
   file_line { 'Add yourls users':
-      match => "'username' => 'password',",
+      match => 'username => password',
       line  => $yourls_user_passwords,
       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
   }
