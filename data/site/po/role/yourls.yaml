@@ -10,7 +10,7 @@ nginx::nginx_servers:
     www_root: '/etc/nginx/YOURLS'
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
-nginx::resource_server:
+nginx::resource::server:
   'yourlstest':
     ensure: present
     www_root: '/etc/nginx/YOURLS'
