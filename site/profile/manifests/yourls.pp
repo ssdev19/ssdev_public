@@ -60,5 +60,7 @@ file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
-
+nginx::resource::server { 'yourls':
+  ensure   => present,
+  www_root => '/etc/nginx/YOURLS',
 }
