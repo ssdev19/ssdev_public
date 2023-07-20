@@ -5,7 +5,7 @@ $yourls_version,
 $yourls_site,
 
 ){
-  # include nginx
+  include nginx
   include mysql::server
   include '::php'
 
@@ -60,8 +60,5 @@ file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
-  nginx::resource::server { 'yourls':
-    ensure   => present,
-    www_root => '/etc/nginx/YOURLS',
-  }
+
 }
