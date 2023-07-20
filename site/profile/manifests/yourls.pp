@@ -6,7 +6,7 @@ $yourls_site,
 
 ){
   include nginx
-  # include mysql::server
+  include mysql::server
   # include '::php'
 
   unless $::yourls_config  {
