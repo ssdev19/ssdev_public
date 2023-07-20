@@ -17,3 +17,6 @@ nginx::nginx_upstreams:
       'localhost:80':
         server: 'localhost'
         port: 80
+      'localhost:443':
+        server: 'localhost'
+        port: 443
