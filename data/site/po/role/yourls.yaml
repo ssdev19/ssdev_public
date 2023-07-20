@@ -18,7 +18,7 @@ nginx::nginx_locations:
   'static':
     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
     server: yourlslocation
-    www_root: /var/www/html
+    www_root: /etc/nginx/YOURLS
 nginx::resource_server:
   'yourlstest':
     # ensure: present
