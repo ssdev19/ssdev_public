@@ -5,6 +5,12 @@ classes:
 profile::base_linux::awscli: true
 profile::yourls::yourls_version: '1.9.2' # If you change this version, ensure to update file rubinobs_facts.rb
 profile::yourls::yourls_site: 'https://ls2.ls.st'
+php::manage_repos: true
+php::fpm: true
+php::fpm_user: 'nginx'
+php::fpm_group: 'nginx'
+php::dev: true
+php::composer: true
 # nginx::nginx_servers:
 #   'yourls':
 #     www_root: '/etc/nginx/YOURLS'
