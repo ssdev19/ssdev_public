@@ -6,8 +6,8 @@ $yourls_site,
 
 ){
   include nginx
-  include mysql::server
-  # include '::php'
+  # include mysql::server
+  include '::php'
 
   unless $::yourls_config  {
   archive { "/tmp/yourls-${yourls_version}.tar.gz":
