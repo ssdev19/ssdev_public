@@ -12,5 +12,6 @@ nginx::nginx_servers:
   #   proxy: 'https://ls2.ls.st'
 nginx::resource_server:
   'yourlstest':
+    ensure: present
     www_root: '/etc/nginx/YOURLS'
 
