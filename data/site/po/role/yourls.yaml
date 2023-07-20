@@ -11,6 +11,7 @@ php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
 php::dev: true
 php::composer: true
+php::json: true
 # nginx::nginx_servers:
 #   'yourls':
 #     www_root: '/etc/nginx/YOURLS'
