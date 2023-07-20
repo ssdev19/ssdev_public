@@ -7,5 +7,5 @@ profile::yourls::yourls_site: 'https://ls2.ls.st'
 nginx::nginx_servers:
   'yourls':
     www_root: '/etc/nginx/YOURLS'
-  'ls2.ls.st':
-    proxy: 'https://ls2.ls.st'
+  # 'ls2.ls.st':
+  #   proxy: 'https://ls2.ls.st'
