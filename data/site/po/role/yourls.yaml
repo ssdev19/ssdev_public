@@ -9,18 +9,16 @@ profile::yourls::yourls_site: 'https://ls2.ls.st'
 php::fpm: true
 php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
-# nginx::nginx_servers:
-#   'yourls':
-#     www_root: '/etc/nginx/YOURLS'
+nginx::nginx_servers:
+  'yourls':
+    www_root: '/etc/nginx/YOURLS'
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
-nginx::resource::upstream:
-  'puppet_rack_app':
-     members:
-      localhost: 3000
-      server: 'localhost'
-      port: 3000
-      weight: 1
+nginx::nginx_locations:
+  'static':
+    location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
+    server: yourlslocation
+    www_root: /var/www/html
 nginx::resource_server:
   'yourlstest':
     # ensure: present
