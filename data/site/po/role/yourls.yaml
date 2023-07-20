@@ -6,12 +6,14 @@ profile::base_linux::awscli: true
 profile::yourls::yourls_version: '1.9.2' # If you change this version, ensure to update file rubinobs_facts.rb
 profile::yourls::yourls_site: 'https://ls2.ls.st'
 php::manage_repos: true
+php::ensure: latest
 php::fpm: true
 php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
 php::dev: true
 php::composer: true
 php::packages: true
+php::pear: true
 # php::common: true
 # php::mysqlnd: true
 # php::zip: true
@@ -19,8 +21,6 @@ php::packages: true
 # php::mbstring: true
 # php::curl: true
 # php::xml: true
-php::pear: 
-  ensure: present
 # php::bcmath: true
 # nginx::nginx_servers:
 #   'yourls':
