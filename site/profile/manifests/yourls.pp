@@ -18,10 +18,21 @@ $yourls_site,
     provider     => 'wget',
     cleanup      => true,
   }
-  file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
-          ensure => present,
-          source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
+  archive { '/tmp/config.php' :
+    ensure  => present,
+    source  => 's3://yourls-data/config.php',
+    cleanup => false,
   }
+
+  file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+  ensure  => present,
+  source  => '/tmp/config.php',
+  replace => 'yes',
+  }
+  # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+  #         ensure => present,
+  #         source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
+  # }
 
   # file { '/etc/nginx/YOURLS':
   #           ensure  => present,
