@@ -9,6 +9,11 @@ $yourls_site,
   include mysql::server
   include '::php'
 
+  archive { '/tmp/config.php' :
+    ensure  => present,
+    source  => 's3://yourls-data/config.php',
+    cleanup => false,
+  }
   unless $::yourls_config  {
   archive { "/tmp/yourls-${yourls_version}.tar.gz":
     ensure       => present,
@@ -17,11 +22,6 @@ $yourls_site,
     extract      => true,
     provider     => 'wget',
     cleanup      => true,
-  }
-  archive { '/tmp/config.php' :
-    ensure  => present,
-    source  => 's3://yourls-data/config.php',
-    cleanup => false,
   }
 
   file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
