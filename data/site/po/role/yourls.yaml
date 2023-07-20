@@ -8,5 +8,4 @@ nginx::nginx_servers:
   'yourls':
     www_root: '/etc/nginx/YOURLS'
   'ls2.ls.st':
-    proxy: 'http://ls2.ls.st'
-    
+    proxy: 'https://ls2.ls.st'
