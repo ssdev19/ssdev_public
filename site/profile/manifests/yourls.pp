@@ -30,22 +30,22 @@ $yourls_site,
   # }
 
   }
-  file_line { 'Change db username to':
-      match => 'YOURLS_DB_USER',
-      line  => "define( 'YOURLS_DB_USER', 'yourls' );",
-      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
-  }
-  file_line { 'Change URL to':
-      match => 'YOURLS_SITE',
-      line  => "define( 'YOURLS_SITE', '${yourls_site}' );",
-      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
-  }
-$yourls_user_passwords = lookup('yourls_user_passwords')
-  file_line { 'Add yourls users':
-      match => 'username => password',
-      line  => $yourls_user_passwords,
-      path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
-  }
+#   file_line { 'Change db username to':
+#       match => 'YOURLS_DB_USER',
+#       line  => "define( 'YOURLS_DB_USER', 'yourls' );",
+#       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
+#   }
+#   file_line { 'Change URL to':
+#       match => 'YOURLS_SITE',
+#       line  => "define( 'YOURLS_SITE', '${yourls_site}' );",
+#       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
+#   }
+# $yourls_user_passwords = lookup('yourls_user_passwords')
+#   file_line { 'Add yourls users':
+#       match => 'username => password',
+#       line  => $yourls_user_passwords,
+#       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
+#   }
 file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
