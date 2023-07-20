@@ -14,11 +14,15 @@ php::fpm_group: 'nginx'
 #     www_root: '/etc/nginx/YOURLS'
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
+nginx::resource::upstream:
+  'puppet_rack_app':
+     members:
+      localhost: 3000
+      server: 'localhost'
+      port: 3000
+      weight: 1
 nginx::resource_server:
   'yourlstest':
     # ensure: present
     www_root: '/etc/nginx/YOURLS'
 
-nginx::config::auth_ldap_cache_enabled: 'on'
-nginx::config::auth_ldap_cache_expiration_time: '3600'
-nginx::config::auth_ldap_cache_size: '1000'
