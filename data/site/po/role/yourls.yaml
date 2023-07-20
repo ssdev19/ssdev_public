@@ -12,6 +12,15 @@ php::fpm_group: 'nginx'
 php::dev: true
 php::composer: true
 php::json: true
+php::common: true
+php::mysqlnd: true
+php::zip: true
+php::gd: true
+php::mbstring: true
+php::curl: true
+php::xml: true
+php::pear: true
+php::bcmath: true
 # nginx::nginx_servers:
 #   'yourls':
 #     www_root: '/etc/nginx/YOURLS'
