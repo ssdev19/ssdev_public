@@ -19,3 +19,6 @@ nginx::resource_server:
     # ensure: present
     www_root: '/etc/nginx/YOURLS'
 
+nginx::config::auth_ldap_cache_enabled: 'on'
+nginx::config::auth_ldap_cache_expiration_time: '3600'
+nginx::config::auth_ldap_cache_size: '1000'
