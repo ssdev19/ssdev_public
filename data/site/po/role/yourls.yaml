@@ -14,11 +14,7 @@ nginx::nginx_servers:
     www_root: '/etc/nginx/YOURLS'
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
-nginx::nginx_locations:
-  'static':
-    location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
-    server: yourlslocation
-    www_root: /etc/nginx/YOURLS
+
 nginx::resource_server:
   'yourlstest':
     # ensure: present
