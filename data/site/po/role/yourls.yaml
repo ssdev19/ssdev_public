@@ -11,7 +11,7 @@ php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
 php::dev: true
 php::composer: true
-php::packages: true
+# php::packages: true
 # php::pear: true
 # php::common: true
 # php::mysqlnd: true
