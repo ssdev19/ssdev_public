@@ -86,7 +86,7 @@ mod 'jlondon-phpmyadmin', '1.3.0'
 mod 'puppetlabs-apache', '10.1.1'
 mod 'puppet-zypprepo', '4.0.1' # dependency for PHP & elastic
 mod 'puppet-php', '8.2.0'
-mod 'puppet-nginx', '3.3.0'
+mod 'puppet-nginx', '5.0.0'
 # mod 'rubinobs/yourls'.
 #     git: 'https://github.com/YOURLS/YOURLS.git'
 #     ref: '1.8.2'
