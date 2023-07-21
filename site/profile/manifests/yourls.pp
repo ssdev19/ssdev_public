@@ -71,4 +71,11 @@ file { '/etc/nginx/YOURLS':
     # ssl_cert              => '/etc/pki/tls/certs/ls.st.current.crt',
     # ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
   }
+    nginx::resource::location { 'root':
+    location       => '~* ^/LSO[\ -]([0-9]+)$',
+    location_alias => '/etc/nginx/YOURLS',
+    index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
+    server         => 'yourls',
+  }
+
 }
