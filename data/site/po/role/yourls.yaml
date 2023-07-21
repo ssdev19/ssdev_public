@@ -15,7 +15,7 @@ nginx::nginx_servers:
     server_name: ['ls2.ls.st']
     listen_port: 80
     index_files: ['index', 'index.php', 'index.html', 'index.htm']
-    location_cfg_append: %{lookup('location_cfg_append')}
+    location_cfg_append: "%{lookup('location_cfg_append')}"
 #     ssl_port: 443
 #     ssl: true
 #     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
