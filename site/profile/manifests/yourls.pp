@@ -8,7 +8,9 @@ $yourls_site,
   include nginx
   include mysql::server
   include '::php'
-
+  Package { [ 'openldap-devel' ]:
+    ensure => installed,
+  }
   unless $::yourls_config  {
   archive { "/tmp/yourls-${yourls_version}.tar.gz":
     ensure       => present,
