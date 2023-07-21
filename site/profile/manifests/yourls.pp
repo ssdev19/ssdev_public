@@ -89,5 +89,7 @@ file { '/etc/nginx/YOURLS':
     provider     => 'wget',
     cleanup      => true,
   }
-
+exec {'compile':
+  command => '/tmp/nginx-auth-ldap-0.1/./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
+}
 }
