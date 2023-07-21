@@ -20,14 +20,6 @@ $yourls_site,
     provider     => 'wget',
     cleanup      => true,
   }
-  archive { '/tmp/nginx-auth-ldap.tar.gz':
-    ensure       => present,
-    source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
-    extract_path => '/tmp/nginx-auth-ldap',
-    extract      => true,
-    provider     => 'wget',
-    cleanup      => true,
-  }
   archive { '/tmp/config.php' :
     ensure  => present,
     source  => 's3://yourls-data/config.php',
@@ -88,5 +80,13 @@ file { '/etc/nginx/YOURLS':
   #     # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
   #     server         => 'yourls',
   # }
+  archive { '/tmp/nginx-auth-ldap.tar.gz':
+    ensure       => present,
+    source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
+    extract_path => '/tmp/nginx-auth-ldap',
+    extract      => true,
+    provider     => 'wget',
+    cleanup      => true,
+  }
 
 }
