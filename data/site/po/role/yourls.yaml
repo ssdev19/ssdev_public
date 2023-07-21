@@ -9,15 +9,15 @@ profile::yourls::yourls_site: 'https://ls2.ls.st'
 php::fpm: true
 php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
-nginx::nginx_servers:
-  'yourls':
-    www_root: '/etc/nginx/YOURLS'
-    server_name: ['ls2.ls.st']
-    listen_port: 80
-    ssl_port: 443
-    ssl: true
-    ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
-    ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
+# nginx::nginx_servers:
+#   'yourls':
+#     www_root: '/etc/nginx/YOURLS'
+#     server_name: ['ls2.ls.st']
+#     listen_port: 80
+#     ssl_port: 443
+#     ssl: true
+#     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
+#     ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
 
