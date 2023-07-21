@@ -9,12 +9,12 @@ profile::yourls::yourls_site: 'https://ls2.ls.st'
 php::fpm: true
 php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
-nginx::nginx_servers:
-  'yourls':
-    www_root: '/etc/nginx/YOURLS'
-    server_name: ['ls2.ls.st']
-    listen_port: 80
-    index_files: ['index', 'index.php', 'index.html', 'index.htm']
+# nginx::nginx_servers:
+#   'yourls':
+#     www_root: '/etc/nginx/YOURLS'
+#     server_name: ['ls2.ls.st']
+#     listen_port: 80
+#     index_files: ['index', 'index.php', 'index.html', 'index.htm']
     # location_cfg_append: 
     #   'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
     # location_cfg_append: 
