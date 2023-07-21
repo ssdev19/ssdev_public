@@ -14,10 +14,6 @@ nginx::nginx_servers:
     www_root: '/etc/nginx/YOURLS'
     server_name: ['ls2.ls.st']
     listen_port: 80
-  'yourls2':
-    www_root: '/etc/nginx/YOURLS'
-    server_name: ['ls2.ls.st']
-    listen_port: 443
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
 
