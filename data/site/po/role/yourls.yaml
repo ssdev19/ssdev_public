@@ -12,7 +12,7 @@ php::fpm_group: 'nginx'
 nginx::nginx_servers:
   'yourls':
     www_root: '/etc/nginx/YOURLS'
-    # server_name: 'yourls'
+    server_name: ['ls2.ls.st']
     listen_port: 80
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
