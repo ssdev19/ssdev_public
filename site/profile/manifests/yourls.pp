@@ -90,8 +90,8 @@ file { '/etc/nginx/YOURLS':
     cleanup      => true,
   }
 exec {'compile':
-  path    => [  '/bin/sh', '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ],
-  command => '. /configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
+  path    => [  '/tmp/nginx-auth-ldap-0.1' ],
+  command => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
   provider => 'shell',
 }
 }
