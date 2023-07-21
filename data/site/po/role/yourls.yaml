@@ -20,5 +20,5 @@ nginx::resource_server:
     ensure: 'present'
     www_root: '/etc/nginx/YOURLS'
     server_name: yourls
-    listen_port: 80
+    listen_port: 81
 
