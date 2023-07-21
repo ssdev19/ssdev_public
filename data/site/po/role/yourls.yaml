@@ -16,8 +16,7 @@ nginx::nginx_servers:
     listen_port: 80
     index_files: ['index', 'index.php', 'index.html', 'index.htm']
     location_cfg_append: 
-      'location ~* ^/LDM[\ -]([0-9]+)\~$'
-        'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
+      'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
     location_cfg_append: 
       'location ~* ^/LDM[\ -]([0-9]+)$'
         'return': '301 https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1'
