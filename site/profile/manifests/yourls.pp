@@ -80,14 +80,11 @@ file { '/etc/nginx/YOURLS':
   #     # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
   #     server         => 'yourls',
   # }
-file { '/tmp/nginx-auth-ldap':
-  ensure => directory,
-}
 
   archive { '/tmp/nginx-auth-ldap.tar.gz':
     ensure       => present,
     source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
-    extract_path => '/tmp/nginx-auth-ldap',
+    extract_path => '/tmp/',
     extract      => true,
     provider     => 'wget',
     cleanup      => true,
