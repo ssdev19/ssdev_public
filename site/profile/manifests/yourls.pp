@@ -60,5 +60,15 @@ file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
-
+  nginx::resource::server { "${name}.${::domain} ${name}":
+    ensure                => present,
+    listen_port           => 443,
+    www_root              => 'fake',
+    # proxy                 => $proxy,
+    # location_cfg_append   => $location_cfg_append,
+    index_files           => [ 'index.php' ],
+    ssl                   => true,
+    ssl_cert              => '/etc/pki/tls/certs/ls.st.current.crt',
+    ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
+  }
 }
