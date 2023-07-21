@@ -72,10 +72,11 @@ file { '/etc/nginx/YOURLS':
     # ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
   }
     nginx::resource::location { 'root':
-      location        => '~* ^/LSO[\ -]([0-9]+)$',
-      location_return => '301 https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
+      location       => '~* ^/LSO[\ -]([0-9]+)$',
+      location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
+      maintenance_value => 'return 301'
       # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
-      server          => 'yourls',
+      server         => 'yourls',
   }
 
 }
