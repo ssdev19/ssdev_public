@@ -16,6 +16,8 @@ nginx::nginx_servers:
     listen_port: 80
     ssl_port: 443
     ssl: true
+    ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
+    ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
 
