@@ -27,4 +27,8 @@ php::fpm_group: 'nginx'
 #     www_root: '/etc/nginx/YOURLS'
 #     server_name: yourls
 #     listen_port: 80
-
+nginx::nginx_locations:
+  'userContent':
+    # location: /userContent
+    server: ls2.ls.st
+    www_root: /etc/nginx/YOURLS
