@@ -74,7 +74,7 @@ file { '/etc/nginx/YOURLS':
     nginx::resource::location { 'root':
     location       => '~* ^/LSO[\ -]([0-9]+)$',
     location_alias => '/etc/nginx/YOURLS',
-    index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
+    # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
     server         => 'yourls',
   }
 
