@@ -60,23 +60,23 @@ file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
-  nginx::resource::server { 'yourls':
-    ensure                => present,
-    listen_port           => 80,
-    www_root              => '/etc/nginx/YOURLS',
-    # proxy                 => $proxy,
-    # location_cfg_append   => $location_cfg_append,
-    index_files           => [ 'index', 'index.php', 'index.html', 'index.htm' ],
-    # ssl                   => true,
-    # ssl_cert              => '/etc/pki/tls/certs/ls.st.current.crt',
-    # ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
-  }
-    nginx::resource::location { 'root':
-      location       => '~* ^/LSO[\ -]([0-9]+)$',
-      location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
-      maintenance_value => 'return 301',
-      # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
-      server         => 'yourls',
-  }
+  # nginx::resource::server { 'yourls':
+  #   ensure                => present,
+  #   listen_port           => 80,
+  #   www_root              => '/etc/nginx/YOURLS',
+  #   # proxy                 => $proxy,
+  #   # location_cfg_append   => $location_cfg_append,
+  #   index_files           => [ 'index', 'index.php', 'index.html', 'index.htm' ],
+  #   # ssl                   => true,
+  #   # ssl_cert              => '/etc/pki/tls/certs/ls.st.current.crt',
+  #   # ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
+  # }
+  #   nginx::resource::location { 'root':
+  #     location       => '~* ^/LSO[\ -]([0-9]+)$',
+  #     location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
+  #     maintenance_value => 'return 301',
+  #     # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
+  #     server         => 'yourls',
+  # }
 
 }
