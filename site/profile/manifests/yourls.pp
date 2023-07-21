@@ -60,7 +60,7 @@ file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
-  nginx::resource::server { 'yourls':
+  nginx::resource::server { 'yourls2':
     ensure                => present,
     listen_port           => 80,
     www_root              => '/etc/nginx/YOURLS',
