@@ -16,8 +16,10 @@ nginx::nginx_servers:
     listen_port: 80
     index_files: ['index', 'index.php', 'index.html', 'index.htm']
     location_cfg_append: 
-      'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
-      'return': '301 https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1'
+      'location ~* ^/LDM[\ -]([0-9]+)\~$'
+        'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
+      'location ~* ^/LDM[\ -]([0-9]+)$'
+        'return': '301 https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1'
 #     ssl_port: 443
 #     ssl: true
 #     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
