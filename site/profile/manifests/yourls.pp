@@ -74,7 +74,7 @@ file { '/etc/nginx/YOURLS':
     nginx::resource::location { 'root':
       location       => '~* ^/LSO[\ -]([0-9]+)$',
       location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
-      maintenance_value => 'return 301'
+      maintenance_value => 'return 301',
       # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
       server         => 'yourls',
   }
