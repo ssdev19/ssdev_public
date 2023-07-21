@@ -15,8 +15,10 @@ nginx::nginx_servers:
   # 'ls2.ls.st':
   #   proxy: 'https://ls2.ls.st'
 
-nginx::resource_server:
+nginx::resource::server:
   'yourlstest':
-    # ensure: present
+    ensure: 'present'
     www_root: '/etc/nginx/YOURLS'
+    server_name: yourls
+    listen_port: 80
 
