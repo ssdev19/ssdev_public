@@ -11,6 +11,11 @@ $yourls_site,
   Package { [ 'openldap-devel' ]:
     ensure => installed,
   }
+$yourls_user_passwords = lookup('yourls_user_passwords')
+$yourls_db_pass = lookup('yourls_db_pass')
+$yourls_db_user = lookup('yourls_db_user')
+$yourls_db_name = lookup('yourls_db_name')
+
   unless $::yourls_config  {
   archive { "/tmp/yourls-${yourls_version}.tar.gz":
     ensure       => present,
@@ -52,7 +57,6 @@ $yourls_site,
 #       line  => "define( 'YOURLS_SITE', '${yourls_site}' );",
 #       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
 #   }
-# $yourls_user_passwords = lookup('yourls_user_passwords')
 #   file_line { 'Add yourls users':
 #       match => 'username => password',
 #       line  => $yourls_user_passwords,
@@ -98,8 +102,16 @@ file { '/etc/nginx/YOURLS':
     ensure  => present,
     source  => 's3://yourls-data/20230304191601-mysql-db-yourls.gz',
     cleanup => false,
-    extract_path => '/tmp/',
-    extract      => true,
   }
 
+mysql::db { $yourls_db_name:
+  user            => $yourls_db_user,
+  password        => $yourls_db_pass,
+  host            => 'localhost',
+  grant           => ['SELECT', 'UPDATE'],
+  sql             => ['/path/to/sqlfile.gz'],
+  import_cat_cmd  => 'zcat',
+  import_timeout  => 900,
+  mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
+}
 }
