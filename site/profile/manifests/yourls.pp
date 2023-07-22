@@ -110,7 +110,7 @@ file { '/etc/nginx/YOURLS':
       password        => $yourls_db_pass,
       host            => 'localhost',
       grant           => ['SELECT', 'UPDATE'],
-      sql             => ['/tmp/mysql-db-yourls.gz'],
+      sql             => ['/srv/mysql-db-yourls.gz'],
       import_cat_cmd  => 'zcat',
       import_timeout  => 900,
       # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
