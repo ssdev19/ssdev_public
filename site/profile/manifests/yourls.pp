@@ -98,6 +98,8 @@ file { '/etc/nginx/YOURLS':
     ensure  => present,
     source  => 's3://yourls-data/20230304191601-mysql-db-yourls.gz',
     cleanup => false,
+    extract_path => '/tmp/',
+    extract      => true,
   }
 
 }
