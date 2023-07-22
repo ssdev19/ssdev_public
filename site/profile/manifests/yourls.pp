@@ -104,7 +104,7 @@ file { '/etc/nginx/YOURLS':
     cleanup => false,
   }
 
-  onlyif $::yourls_db  {
+  unless $::yourls_db  {
     mysql::db { $yourls_db_name:
       user            => $yourls_db_user,
       password        => $yourls_db_pass,
