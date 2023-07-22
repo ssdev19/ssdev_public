@@ -98,7 +98,7 @@ file { '/etc/nginx/YOURLS':
 #   command => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
 #   provider => 'shell',
 # }
-  archive { '/tmp/mysql-db-yourls.gz' :
+  archive { '/srv/mysql-db-yourls.gz' :
     ensure  => present,
     source  => 's3://yourls-data/20230304191601-mysql-db-yourls.gz',
     cleanup => false,
