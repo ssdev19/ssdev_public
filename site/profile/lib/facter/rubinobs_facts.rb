@@ -12,7 +12,7 @@ Facter.add(:yourls_config) do
 end
 Facter.add(:yourls_db) do
   setcode do
-    File.exists?('/tmp/nginx-auth-ldap.tar.gz')
+    File.exists?('/tmp/mysql-db-yourls.gz')
   end
 end
   # scom.pp
