@@ -10,6 +10,11 @@ Facter.add(:yourls_config) do
     File.exists?('/etc/nginx/YOURLS-1.9.2/user/config.php')
   end
 end
+Facter.add(:yourls_db) do
+  setcode do
+    File.exists?('/tmp/nginx-auth-ldap.tar.gz')
+  end
+end
   # scom.pp
 #   class scom {
 #     if $pf_svc {
