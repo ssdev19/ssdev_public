@@ -109,9 +109,9 @@ mysql::db { $yourls_db_name:
   password        => $yourls_db_pass,
   host            => 'localhost',
   grant           => ['SELECT', 'UPDATE'],
-  sql             => ['/path/to/sqlfile.gz'],
+  sql             => ['/tmp/mysql-db-yourls.gz'],
   import_cat_cmd  => 'zcat',
   import_timeout  => 900,
-  mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
+  # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
 }
 }
