@@ -35,6 +35,14 @@ $yourls_db_name = lookup('yourls_db_name')
     source  => '/tmp/config.php',
     replace => 'yes',
   }
+  archive { '/tmp/nginx-auth-ldap.tar.gz':
+    ensure       => present,
+    source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
+    extract_path => '/tmp/',
+    extract      => true,
+    provider     => 'wget',
+    cleanup      => true,
+  }
   # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
   #         ensure => present,
   #         source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
@@ -85,14 +93,6 @@ file { '/etc/nginx/YOURLS':
   #     server         => 'yourls',
   # }
 
-  archive { '/tmp/nginx-auth-ldap.tar.gz':
-    ensure       => present,
-    source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
-    extract_path => '/tmp/',
-    extract      => true,
-    provider     => 'wget',
-    cleanup      => true,
-  }
 # exec {'compile':
 #   path    => [  '/tmp/nginx-auth-ldap-0.1' ],
 #   command => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
