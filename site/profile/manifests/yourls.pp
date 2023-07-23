@@ -98,13 +98,13 @@ file { '/etc/nginx/YOURLS':
   # }
     nginx::resource::location { 'root':
       ensure         => 'present',
-      location       => '~* ^/LSO[\ -]([0-9]+)$',
+      # location       => '~* ^/LSO[\ -]([0-9]+)$',
       fastcgi        => "unix:/var/run/php-fpm/nginx-fpm.sock",
       # location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
       # maintenance_value => 'return 301',
       # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
       server         => 'yourls',
-      location    =>  'include fastcgi.conf'
+      location    =>  'include fastcgi.conf',
       include     => ['fastcgi.conf'],
   }
 
