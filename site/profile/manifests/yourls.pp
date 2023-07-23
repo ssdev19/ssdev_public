@@ -4,11 +4,20 @@ class profile::yourls ( String
 $yourls_version,
 $yourls_site,
 
+
 ){
   include nginx
   include mysql::server
   include '::php'
-  include '::php::globals'
+
+class { '::php::globals':
+  php_version => '7.3.27',
+  config_root => '/etc/php/',
+}
+-> class { '::php':
+    manage_repos => true
+}
+
   Package { [ 'openldap-devel' ]:
     ensure => installed,
   }
