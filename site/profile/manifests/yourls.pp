@@ -97,8 +97,8 @@ file { '/etc/nginx/YOURLS':
   #   # ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
   # }
     nginx::resource::location { 'root':
-      location       => '~* ^/LSO[\ -]([0-9]+)$',
       ensure         => 'present',
+      location       => '~* ^/LSO[\ -]([0-9]+)$',
       fastcgi        => "unix:/var/run/php-fpm/nginx-fpm.sock",
       # location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
       # maintenance_value => 'return 301',
