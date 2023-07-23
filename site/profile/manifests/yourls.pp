@@ -104,7 +104,7 @@ file { '/etc/nginx/YOURLS':
       # maintenance_value => 'return 301',
       # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
       server         => 'yourls',
-      location    =>  'include fastcgi.conf',
+      location    =>  '~ \.php$',
       include     => ['fastcgi.conf'],
   }
 
