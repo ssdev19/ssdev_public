@@ -19,10 +19,9 @@ php::fpm_group: 'nginx'
 #     listen: '/var/run/php-fpm/nginx-fpm.sock'
 nginx::nginx_servers:
   'yourls':
-    www_root: '/etc/nginx/YOURLS'
+    www_root: '/etc/nginx/YOURLS1'
     server_name: ['ls.st']
     listen_port: 80
-    root: '/etc/nginx/YOURLS'
     index_files: ['index', 'index.php', 'index.html', 'index.htm']
     try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
 
