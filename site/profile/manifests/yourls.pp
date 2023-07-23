@@ -10,14 +10,14 @@ $yourls_site,
   include mysql::server
   include '::php'
 
-# class { '::php::globals':
-#   php_version => '7.3',
-#   config_root => '/etc/php/',
-# }
-# -> class { '::php':
-#     manage_repos => true,
-#     ensure       => '7.3.27',
-# }
+class { '::php::globals':
+  php_version => '7.3',
+  config_root => '/etc/php/',
+}
+-> class { '::php':
+    manage_repos => true,
+    ensure       => '7.3.27',
+}
 
   Package { [ 'openldap-devel' ]:
     ensure => installed,
