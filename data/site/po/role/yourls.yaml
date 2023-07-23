@@ -23,6 +23,8 @@ nginx::nginx_servers:
     server_name: ['ls.st']
     listen_port: 80
     index_files: ['index', 'index.php', 'index.html', 'index.htm']
+    try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
+
     # location_cfg_append: 
     #   'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
     # location_cfg_append: 

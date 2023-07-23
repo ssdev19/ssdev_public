@@ -98,7 +98,6 @@ file { '/etc/nginx/YOURLS':
   # }
     nginx::resource::location { 'root':
       ensure         => 'present',
-      try_files  => ['$uri $uri/ /yourls-loader.php$is_args$args'],
       # location       => '~* ^/LSO[\ -]([0-9]+)$',
       fastcgi        => "unix:/var/run/php-fpm/nginx-fpm.sock",
       # location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
