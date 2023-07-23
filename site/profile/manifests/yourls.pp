@@ -11,11 +11,12 @@ $yourls_site,
   # include '::php'
 
 class { '::php::globals':
-  php_version => '7.3.27',
+  php_version => '7.3',
   config_root => '/etc/php/',
 }
 -> class { '::php':
-    manage_repos => true
+    manage_repos => true,
+    ensure       => '7.3.27',
 }
 
   Package { [ 'openldap-devel' ]:
