@@ -8,7 +8,7 @@ $yourls_site,
 ){
   include nginx
   include mysql::server
-  include '::php'
+  # include '::php'
 
 class { '::php::globals':
   php_version => '7.3',
