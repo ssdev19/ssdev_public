@@ -22,6 +22,7 @@ nginx::nginx_servers:
     www_root: '/etc/nginx/YOURLS'
     server_name: ['ls.st']
     listen_port: 80
+    root: '/etc/nginx/YOURLS'
     index_files: ['index', 'index.php', 'index.html', 'index.htm']
     try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
 
