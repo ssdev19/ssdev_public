@@ -123,7 +123,7 @@ file { '/etc/nginx/YOURLS':
 exec {'compile':
   path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
   cwd      => '/tmp/nginx-1.24.0/',
-  provider => shell
+  provider => shell,
   command  => "./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap",
   # provider => 'shell',
 }
