@@ -120,11 +120,11 @@ file { '/etc/nginx/YOURLS':
   #     include     => ['fastcgi.conf'],
   # }
 
-# exec {'compile':
-#   path    => [  '/tmp/nginx-auth-ldap-0.1' ],
-#   command => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
-#   provider => 'shell',
-# }
+exec {'compile':
+  path     => [  '/tmp/nginx-1.24.0' ],
+  command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
+  provider => 'shell',
+}
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
     source  => 's3://yourls-data/mysql-db-yourls-202303020300.gz',
