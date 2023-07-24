@@ -28,7 +28,11 @@ nginx::nginx_servers:
     ssl: true
     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
     ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
-
+nginx::nginx_locations:
+  'static':
+    location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
+    server: 'ls.st'
+    www_root: '/etc/nginx/YOURLS'
     # location_cfg_append: 
     #   'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
     # location_cfg_append: 
