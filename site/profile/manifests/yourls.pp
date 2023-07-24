@@ -160,7 +160,7 @@ file { '/etc/nginx/YOURLS':
 
   archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
     ensure  => present,
-    source  => 'https://lsst.org/Wht-Logo-web_0.png',
+    source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
   }
 
