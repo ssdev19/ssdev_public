@@ -100,17 +100,17 @@ file { '/etc/nginx/YOURLS':
   #   # ssl_cert              => '/etc/pki/tls/certs/ls.st.current.crt',
   #   # ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
   # }
-    nginx::resource::location { 'root':
-      ensure         => 'present',
-      # location       => '~* ^/LSO[\ -]([0-9]+)$',
-      fastcgi        => "unix:/var/run/php-fpm/nginx-fpm.sock",
-      # location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
-      # maintenance_value => 'return 301',
-      # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
-      server         => 'yourls',
-      # location    =>  '~ \.php$',
-      # include     => ['fastcgi.conf'],
-  }
+  #   nginx::resource::location { 'root':
+  #     ensure         => 'present',
+  #     # location       => '~* ^/LSO[\ -]([0-9]+)$',
+  #     fastcgi        => "unix:/var/run/php-fpm/nginx-fpm.sock",
+  #     # location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
+  #     # maintenance_value => 'return 301',
+  #     # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
+  #     server         => 'yourls',
+  #     location    =>  '~ \.php$',
+  #     include     => ['fastcgi.conf'],
+  # }
 
 # exec {'compile':
 #   path    => [  '/tmp/nginx-auth-ldap-0.1' ],
