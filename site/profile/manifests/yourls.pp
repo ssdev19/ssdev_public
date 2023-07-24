@@ -158,7 +158,7 @@ file { '/etc/nginx/YOURLS':
   #   cleanup => false,
   # }
 
-  archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
+  archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
     ensure  => present,
     source  => 'https://lsst.org/Wht-Logo-web_0.png',
     cleanup => false,
