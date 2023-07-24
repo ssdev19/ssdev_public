@@ -176,6 +176,14 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/ls.st.current.key',
     cleanup => false,
   }
+  file { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
+    ensure => present,
+    source => 's3://yourls-data/yourls-logo.png',
+  }
+  file { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
+    ensure => present,
+    source => 's3://yourls-data/Telescope_Front-470.jpg',
+  }
 
 
 
