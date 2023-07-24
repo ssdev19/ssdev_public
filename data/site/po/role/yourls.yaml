@@ -24,16 +24,16 @@ nginx::nginx_servers:
     listen_port: 80
     index_files: ['index', 'index.php', 'index.html', 'index.htm']
     try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
+    ssl_port: 443
+    ssl: true
+    ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
+    ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
 
     # location_cfg_append: 
     #   'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
     # location_cfg_append: 
     #   'location ~* ^/LDM[\ -]([0-9]+)$'
     #     'return': '301 https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1'
-#     ssl_port: 443
-#     ssl: true
-#     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
-#     ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
   # 'ls.st':
   #   proxy: 'https://ls.st'
 

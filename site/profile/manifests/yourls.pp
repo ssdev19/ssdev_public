@@ -152,5 +152,15 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/index.html',
     cleanup => false,
   }
+  archive { '/etc/pki/tls/certs/ls.st.current.crt' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.crt',
+    cleanup => false,
+  }
+  archive { '/etc/pki/tls/certs/ls.st.current.key' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.key',
+    cleanup => false,
+  }
 
 }
