@@ -50,27 +50,36 @@ $yourls_db_name = lookup('yourls_db_name')
     ensure => directory,
   }
     archive { '/tmp/nginx-1.24.0.tar.gz':
-    ensure       => present,
-    source       => 'http://nginx.org/download/nginx-1.24.0.tar.gz',
-    extract_path => '/tmp/',
-    extract      => true,
-    provider     => 'wget',
-    cleanup      => true,
+      ensure       => present,
+      source       => 'http://nginx.org/download/nginx-1.24.0.tar.gz',
+      extract_path => '/tmp/',
+      extract      => true,
+      provider     => 'wget',
+      cleanup      => true,
   }
-  # archive { '/tmp/nginx-auth-ldap.tar.gz':
-  #   ensure       => present,
-  #   source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
-  #   extract_path => '/tmp/nginx-1.24.0/',
-  #   extract      => true,
-  #   provider     => 'wget',
-  #   cleanup      => true,
-  # }
+
     vcsrepo { '/tmp/nginx-1.24.0/nginx-auth-ldap':
       ensure   => present,
       provider => git,
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
       user     => 'root',
     }
+file { '/etc/nginx/YOURLS':
+  ensure => 'link',
+  target => "/etc/nginx/YOURLS-${yourls_version}",
+}
+
+  exec {'compile':
+    path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    cwd      => '/tmp/nginx-1.24.0/',
+    provider => shell,
+    command  => "./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap",
+  }
+  archive { '/tmp/mysql-db-yourls.gz' :
+    ensure  => present,
+    source  => 's3://yourls-data/mysql-db-yourls-202303020300.gz',
+    cleanup => false,
+  }
   # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
   #         ensure => present,
   #         source => "/etc/nginx/YOURLS-${yourls_version}/user/config-sample.php",
@@ -98,22 +107,6 @@ $yourls_db_name = lookup('yourls_db_name')
 #       line  => $yourls_user_passwords,
 #       path  => "/etc/nginx/YOURLS-${yourls_version}/user/config.php",
 #   }
-file { '/etc/nginx/YOURLS':
-  ensure => 'link',
-  target => "/etc/nginx/YOURLS-${yourls_version}",
-}
-
-  exec {'compile':
-    path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    cwd      => '/tmp/nginx-1.24.0/',
-    provider => shell,
-    command  => "./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap",
-  }
-  archive { '/tmp/mysql-db-yourls.gz' :
-    ensure  => present,
-    source  => 's3://yourls-data/mysql-db-yourls-202303020300.gz',
-    cleanup => false,
-  }
   if $::yourls_db  {
     mysql::db { $yourls_db_name:
       user            => $yourls_db_user,
