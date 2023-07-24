@@ -49,6 +49,22 @@ $yourls_db_name = lookup('yourls_db_name')
     file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
     ensure => directory,
   }
+    archive { '/tmp/nginx-1.24.0.tar.gz':
+    ensure       => present,
+    source       => 'http://nginx.org/download/nginx-1.24.0.tar.gz',
+    extract_path => '/tmp/',
+    extract      => true,
+    provider     => 'wget',
+    cleanup      => true,
+  }
+  archive { '/tmp/nginx-auth-ldap.tar.gz':
+    ensure       => present,
+    source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
+    extract_path => '/tmp/nginx-1.24.0/',
+    extract      => true,
+    provider     => 'wget',
+    cleanup      => true,
+  }
 
   # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
   #         ensure => present,
@@ -125,22 +141,6 @@ file { '/etc/nginx/YOURLS':
       import_timeout  => 900,
       # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
     }
-    archive { '/tmp/nginx-1.24.0.tar.gz':
-    ensure       => present,
-    source       => 'http://nginx.org/download/nginx-1.24.0.tar.gz',
-    extract_path => '/tmp/',
-    extract      => true,
-    provider     => 'wget',
-    cleanup      => true,
-  }
-  archive { '/tmp/nginx-auth-ldap.tar.gz':
-    ensure       => present,
-    source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
-    extract_path => '/tmp/nginx-1.24.0/',
-    extract      => true,
-    provider     => 'wget',
-    cleanup      => true,
-  }
 }
   php::fpm::pool{'nginx':
     user         => 'nginx',
