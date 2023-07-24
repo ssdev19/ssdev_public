@@ -138,4 +138,8 @@ file { '/etc/nginx/YOURLS':
     listen_mode  => '0660',
     listen       => "/var/run/php-fpm/nginx-fpm.sock",
   }
+  file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
+    ensure => directory,
+  }
+
 }
