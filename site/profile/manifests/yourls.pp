@@ -46,6 +46,10 @@ $yourls_db_name = lookup('yourls_db_name')
     source  => '/tmp/config.php',
     replace => 'yes',
   }
+    file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
+    ensure => directory,
+  }
+
   archive { '/tmp/nginx-auth-ldap.tar.gz':
     ensure       => present,
     source       => 'https://github.com/kvspb/nginx-auth-ldap/archive/refs/tags/v0.1.tar.gz',
@@ -115,7 +119,7 @@ file { '/etc/nginx/YOURLS':
 # }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
-    source  => 's3://yourls-data/20230304191601-mysql-db-yourls.gz',
+    source  => 's3://yourls-data/mysql-db-yourls-202303020300.gz',
     cleanup => false,
   }
   if $::yourls_db  {
@@ -138,8 +142,15 @@ file { '/etc/nginx/YOURLS':
     listen_mode  => '0660',
     listen       => "/var/run/php-fpm/nginx-fpm.sock",
   }
-  file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
-    ensure => directory,
+  archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.php',
+    cleanup => false,
+  }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/index.html" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.html',
+    cleanup => false,
   }
 
 }
