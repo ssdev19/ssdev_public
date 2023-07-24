@@ -73,7 +73,7 @@ file { '/etc/nginx/YOURLS':
     path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
     cwd      => '/tmp/nginx-1.24.0/',
     provider => shell,
-    command  => "./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap",
+    command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
   }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
@@ -109,13 +109,13 @@ file { '/etc/nginx/YOURLS':
 #   }
   if $::yourls_db  {
     mysql::db { $yourls_db_name:
-      user            => $yourls_db_user,
-      password        => $yourls_db_pass,
-      host            => 'localhost',
-      grant           => ['SELECT', 'UPDATE'],
-      sql             => ['/tmp/mysql-db-yourls.gz'],
-      import_cat_cmd  => 'zcat',
-      import_timeout  => 900,
+      user           => $yourls_db_user,
+      password       => $yourls_db_pass,
+      host           => 'localhost',
+      grant          => ['SELECT', 'UPDATE'],
+      sql            => ['/tmp/mysql-db-yourls.gz'],
+      import_cat_cmd => 'zcat',
+      import_timeout => 900,
       # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
     }
 }
@@ -125,7 +125,7 @@ file { '/etc/nginx/YOURLS':
     listen_owner => 'nginx',
     listen_group => 'nginx',
     listen_mode  => '0660',
-    listen       => "/var/run/php-fpm/nginx-fpm.sock",
+    listen       => '/var/run/php-fpm/nginx-fpm.sock',
   }
   archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
     ensure  => present,
