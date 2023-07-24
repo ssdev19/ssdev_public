@@ -65,7 +65,7 @@ $yourls_db_name = lookup('yourls_db_name')
   #   provider     => 'wget',
   #   cleanup      => true,
   # }
-    vcsrepo { '/tmp/nginx-1.24.0/ngx_http_auth_ldap':
+    vcsrepo { '/tmp/nginx-1.24.0/nginx-auth-ldap':
       ensure   => present,
       provider => git,
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
@@ -102,28 +102,6 @@ file { '/etc/nginx/YOURLS':
   ensure => 'link',
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
-  # nginx::resource::server { 'yourls':
-  #   ensure                => present,
-  #   listen_port           => 80,
-  #   www_root              => '/etc/nginx/YOURLS',
-  #   # proxy                 => $proxy,
-  #   # location_cfg_append   => $location_cfg_append,
-  #   index_files           => [ 'index', 'index.php', 'index.html', 'index.htm' ],
-  #   # ssl                   => true,
-  #   # ssl_cert              => '/etc/pki/tls/certs/ls.st.current.crt',
-  #   # ssl_key               => '/etc/pki/tls/certs/ls.st.current.key',
-  # }
-  #   nginx::resource::location { 'root':
-  #     ensure         => 'present',
-  #     # location       => '~* ^/LSO[\ -]([0-9]+)$',
-  #     fastcgi        => "unix:/var/run/php-fpm/nginx-fpm.sock",
-  #     # location_alias => ' https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1',
-  #     # maintenance_value => 'return 301',
-  #     # index_files    => ['index', 'index.php', 'index.html', 'index.htm'],
-  #     server         => 'yourls',
-  #     location    =>  '~ \.php$',
-  #     include     => ['fastcgi.conf'],
-  # }
 
   exec {'compile':
     path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
