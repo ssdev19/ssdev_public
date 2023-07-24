@@ -12,11 +12,11 @@ profile::yourls::yourls_site: 'https://ls.st'
 php::fpm: true
 php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
-# php::fpm::pool:
-#   'nginx':
-#     user: 'nginx'
-#     group: 'nginx'
-#     listen: '/var/run/php-fpm/nginx-fpm.sock'
+php::fpm::pool:
+  'nginx':
+    user: 'nginx'
+    group: 'nginx'
+    listen: '/var/run/php-fpm/nginx-fpm.sock'
 nginx::nginx_servers:
   'yourls':
     server_name: ['ls.st']
