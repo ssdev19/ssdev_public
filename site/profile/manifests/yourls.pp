@@ -19,7 +19,7 @@ $yourls_site,
 #     ensure       => '7.3.27',
 # }
 
-  Package { [ 'openldap-devel' ]:
+  Package { [ 'openldap-devel', 'make' ]:
     ensure => installed,
   }
 $yourls_user_passwords = lookup('yourls_user_passwords')
