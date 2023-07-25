@@ -17,6 +17,7 @@ php::fpm_group: 'nginx'
 #     user: 'nginx'
 #     group: 'nginx'
 #     listen: '/var/run/php-fpm/nginx-fpm.sock'
+nginx::nginx_version: '1.19.6'
 nginx::nginx_servers:
   'yourls':
     server_name: ['ls.st']
