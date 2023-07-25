@@ -29,7 +29,7 @@ nginx::nginx_servers:
     ssl: true 
     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
     ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
-  nginx_version: '1.19.6'
+  nginx_version: 1.19.6
 # nginx::nginx_locations:
 #   'shorten':
 #     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
