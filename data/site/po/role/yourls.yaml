@@ -43,8 +43,8 @@ nginx::nginx_servers:
             # auth_ldap: 'LDAP authorization required.'
       # 'shorten2':
       #   location: '~* ^/LDM[\ -]([0-9]+)$'
-  nginx::location_custom_cfg:
-    'proxy_pass': 'test2'
+    nginx::location_custom_cfg:
+      'proxy_pass': 'test2'
     
 # nginx::nginx_locations:
 #   'shorten':
