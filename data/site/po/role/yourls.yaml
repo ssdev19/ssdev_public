@@ -38,7 +38,7 @@ nginx::nginx_servers:
     locations: 
       'shorten':
         location: '~* ^/LDM[\ -]([0-9]+)\~$'
-      'shorten':
+      'shorten2':
         location: '~* ^/LDM[\ -]([0-9]+)$'
 
 # nginx::nginx_locations:
