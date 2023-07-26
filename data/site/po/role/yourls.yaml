@@ -38,9 +38,9 @@ nginx::nginx_servers:
     locations: 
       'shorten':
         - location: '/shorten'
-          auth_ldap: 'LDAP authorization required.'
-      'shorten2':
-        location: '~* ^/LDM[\ -]([0-9]+)$'
+            - auth_ldap: 'LDAP authorization required.'
+      # 'shorten2':
+      #   location: '~* ^/LDM[\ -]([0-9]+)$'
 
 # nginx::nginx_locations:
 #   'shorten':
