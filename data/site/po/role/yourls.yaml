@@ -37,7 +37,8 @@ nginx::nginx_servers:
     fastcgi: '/etc/nginx/fastcgi.conf'
     locations: 
       'shorten':
-        location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
+        location: '~* ^/LDM[\ -]([0-9]+)\~$'
+        return: 'test'
 # nginx::nginx_locations:
 #   'shorten':
 #     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
