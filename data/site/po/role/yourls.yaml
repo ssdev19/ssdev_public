@@ -19,6 +19,10 @@ php::fpm_group: 'nginx'
 #     listen: '/var/run/php-fpm/nginx-fpm.sock'
 nginx::nginx_servers:
   'yourls':
+nginx::nginx_locations:
+  'shorten':
+    location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
+    server: 'yourls'
     server_name: ['ls.st']
     www_root: '/etc/nginx/YOURLS'
     listen_port: 443
@@ -29,10 +33,6 @@ nginx::nginx_servers:
     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
     ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
     use_default_location: false
-nginx::nginx_locations:
-  'shorten':
-    location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
-    server: 'yourls'
     # ssl: true 
 
 #     www_root: '/etc/nginx/YOURLS/shorten'
