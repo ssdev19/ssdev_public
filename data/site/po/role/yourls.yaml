@@ -36,7 +36,7 @@ nginx::nginx_servers:
     ssl_prefer_server_ciphers: 'on'
     fastcgi: '/etc/nginx/fastcgi.conf'
     locations: 
-      - 'shorten':
+      'shorten':
         location: '/shorten'
             # auth_ldap: 'LDAP authorization required.'
       # 'shorten2':
