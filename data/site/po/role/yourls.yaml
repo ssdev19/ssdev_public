@@ -35,7 +35,9 @@ nginx::nginx_servers:
     ssl_session_timeout: '10m'
     ssl_prefer_server_ciphers: 'on'
     fastcgi: '/etc/nginx/fastcgi.conf'
-    location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
+    locations: 
+      'shorten':
+        location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
 # nginx::nginx_locations:
 #   'shorten':
 #     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
