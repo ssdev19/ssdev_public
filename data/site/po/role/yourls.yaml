@@ -37,7 +37,8 @@ nginx::nginx_servers:
     fastcgi: '/etc/nginx/fastcgi.conf'
     locations: 
       'shorten':
-        location: '~* ^/LDM[\ -]([0-9]+)\~$'
+        location: '/shorten'
+        auth_ldap: '"LDAP authorization required."'
       'shorten2':
         location: '~* ^/LDM[\ -]([0-9]+)$'
 
