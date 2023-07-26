@@ -44,7 +44,7 @@ nginx::nginx_servers:
       # 'shorten2':
       #   location: '~* ^/LDM[\ -]([0-9]+)$'
   nginx::location_custom_cfg:
-    'return': 'test2'
+    'proxy_pass': 'test2'
     
 # nginx::nginx_locations:
 #   'shorten':
