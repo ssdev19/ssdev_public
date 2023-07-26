@@ -39,11 +39,13 @@ nginx::nginx_servers:
       'shorten':
         location: '/shorten'
         try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
-        "auth_ldap": ''
+        # "auth_ldap": ''
             # auth_ldap: 'LDAP authorization required.'
       # 'shorten2':
       #   location: '~* ^/LDM[\ -]([0-9]+)$'
-
+  nginx::location_custom_cfg:
+    'return': 'test2'
+    
 # nginx::nginx_locations:
 #   'shorten':
 #     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
