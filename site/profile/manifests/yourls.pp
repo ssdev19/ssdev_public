@@ -147,11 +147,11 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/ls.st.current.key',
     cleanup => false,
   }
-  archive { '/etc/nginx/fastcgi.conf' :
-    ensure  => present,
-    source  => 's3://yourls-data/fastcgi.conf',
-    cleanup => false,
-  }
+  # archive { '/etc/nginx/fastcgi.conf' :
+  #   ensure  => present,
+  #   source  => 's3://yourls-data/fastcgi.conf',
+  #   cleanup => false,
+  # }
   archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
     source  => 's3://yourls-data/yourls-logo.png',
