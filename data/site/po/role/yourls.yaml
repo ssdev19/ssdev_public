@@ -17,9 +17,9 @@ php::fpm_group: 'nginx'
 #     user: 'nginx'
 #     group: 'nginx'
 #     listen: '/var/run/php-fpm/nginx-fpm.sock'
-# nginx::nginx_servers:
-#   'yourls':
-#     server_name: ['ls.st']
+nginx::nginx_servers:
+  'yourls':
+    server_name: ['ls.st']
 #     www_root: '/etc/nginx/YOURLS'
 #     listen_port: 443
 #     index_files: ['index', 'index.php', 'index.html', 'index.htm']
