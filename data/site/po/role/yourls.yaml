@@ -20,7 +20,7 @@ php::fpm_group: 'nginx'
 nginx::nginx_servers:
   'yourls':
     server_name: ['ls.st']
-#     www_root: '/etc/nginx/YOURLS'
+    www_root: '/etc/nginx/YOURLS'
 #     listen_port: 443
 #     index_files: ['index', 'index.php', 'index.html', 'index.htm']
 #     try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
