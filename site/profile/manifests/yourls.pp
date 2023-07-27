@@ -27,28 +27,28 @@ $yourls_db_pass = lookup('yourls_db_pass')
 $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
 
-  # unless $::yourls_config  {
-  # archive { "/tmp/yourls-${yourls_version}.tar.gz":
-  #   ensure       => present,
-  #   source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
-  #   extract_path => '/etc/nginx',
-  #   extract      => true,
-  #   provider     => 'wget',
-  #   cleanup      => false,
-  # }
-  # archive { '/tmp/config.php' :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/config.php',
-  #   cleanup => false,
-  # }
-  # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
-  #   ensure  => present,
-  #   source  => '/tmp/config.php',
-  #   replace => 'yes',
-  # }
-  #   file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
-  #   ensure => directory,
-  # }
+  unless $::yourls_config  {
+  archive { "/tmp/yourls-${yourls_version}.tar.gz":
+    ensure       => present,
+    source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
+    extract_path => '/etc/nginx',
+    extract      => true,
+    provider     => 'wget',
+    cleanup      => false,
+  }
+  archive { '/tmp/config.php' :
+    ensure  => present,
+    source  => 's3://yourls-data/config.php',
+    cleanup => false,
+  }
+  file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+    ensure  => present,
+    source  => '/tmp/config.php',
+    replace => 'yes',
+  }
+    file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
+    ensure => directory,
+  }
     archive { '/tmp/nginx-1.24.0.tar.gz':
       ensure       => present,
       source       => 'http://nginx.org/download/nginx-1.24.0.tar.gz',
@@ -64,10 +64,10 @@ $yourls_db_name = lookup('yourls_db_name')
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
       user     => 'root',
     }
-# file { '/etc/nginx/YOURLS':
-#   ensure => 'link',
-#   target => "/etc/nginx/YOURLS-${yourls_version}",
-# }
+file { '/etc/nginx/YOURLS':
+  ensure => 'link',
+  target => "/etc/nginx/YOURLS-${yourls_version}",
+}
 
   # exec {'compile':
   #   path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
@@ -103,47 +103,47 @@ $yourls_db_name = lookup('yourls_db_name')
     listen_mode  => '0660',
     listen       => '/var/run/php-fpm/nginx-fpm.sock',
   }
-  # archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/index.php',
-  #   cleanup => false,
-  # }
-  # archive { "/etc/nginx/YOURLS-${yourls_version}/index.html" :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/index.html',
-  #   cleanup => false,
-  # }
-  # archive { '/etc/pki/tls/certs/ls.st.current.crt' :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/ls.st.current.crt',
-  #   cleanup => false,
-  # }
-  # archive { '/etc/pki/tls/certs/ls.st.current.key' :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/ls.st.current.key',
-  #   cleanup => false,
-  # }
-  # archive { '/etc/nginx/fastcgi.conf' :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/fastcgi.conf',
-  #   cleanup => false,
-  # }
-  # archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/yourls-logo.png',
-  #   cleanup => false,
-  # }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.php',
+    cleanup => false,
+  }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/index.html" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.html',
+    cleanup => false,
+  }
+  archive { '/etc/pki/tls/certs/ls.st.current.crt' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.crt',
+    cleanup => false,
+  }
+  archive { '/etc/pki/tls/certs/ls.st.current.key' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.key',
+    cleanup => false,
+  }
+  archive { '/etc/nginx/fastcgi.conf' :
+    ensure  => present,
+    source  => 's3://yourls-data/fastcgi.conf',
+    cleanup => false,
+  }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
+    ensure  => present,
+    source  => 's3://yourls-data/yourls-logo.png',
+    cleanup => false,
+  }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
   #   ensure  => present,
   #   source  => 's3://yourls-data/Telescope_Front-470.jpg',
   #   cleanup => false,
   # }
 
-  # archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
-  #   ensure  => present,
-  #   source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
-  #   cleanup => false,
-  # }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
+    ensure  => present,
+    source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
+    cleanup => false,
+  }
 
 
 }
