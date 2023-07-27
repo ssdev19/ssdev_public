@@ -43,14 +43,14 @@ nginx::nginx_servers:
             # auth_ldap: 'LDAP authorization required.'
       # 'shorten2':
       #   location: '~* ^/LDM[\ -]([0-9]+)$'
-  location_custom_cfgd:
-    'proxy_pass': 'test2'
+  location_custom_cfg:
+    proxy_pass: 'test2'
     
-# nginx::nginx_locations:
-#   'shorten':
-#     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
-#     server: 'yourls'
-    # ssl: true 
+nginx::nginx_locations:
+  'shorten3':
+    location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
+    server: 'yourls'
+    ssl: true 
 
 #     www_root: '/etc/nginx/YOURLS/shorten'
     # location_cfg_append: 
