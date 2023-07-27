@@ -64,10 +64,10 @@ $yourls_db_name = lookup('yourls_db_name')
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
       user     => 'root',
     }
-file { '/etc/nginx/YOURLS':
-  ensure => 'link',
-  target => "/etc/nginx/YOURLS-${yourls_version}",
-}
+# file { '/etc/nginx/YOURLS':
+#   ensure => 'link',
+#   target => "/etc/nginx/YOURLS-${yourls_version}",
+# }
 
   # exec {'compile':
   #   path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
