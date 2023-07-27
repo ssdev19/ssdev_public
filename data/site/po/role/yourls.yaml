@@ -9,8 +9,7 @@ profile::yourls::yourls_site: 'https://ls.st'
 # php::globals:
 #   php_version: '7.3.27'
 # php::globals::php_version: '7.3.27'
-php:
-  ensure: latest
+php::ensure: latest
 php::fpm: true
 php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
