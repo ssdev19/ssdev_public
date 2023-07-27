@@ -8,7 +8,7 @@ profile::yourls::yourls_site: 'https://ls.st'
 # php::manage_repos: true
 # php::globals:
 #   php_version: '7.3.27'
-php::globals::php_version: '7.3.27'
+php::ensure: '7.3.27'
 php::fpm: true
 php::fpm_user: 'nginx'
 php::fpm_group: 'nginx'
