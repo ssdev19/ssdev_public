@@ -50,7 +50,7 @@ nginx::nginx_locations:
   'shorten3':
     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
     server: 'yourls'
-  'shorten':
+  'shorten2':
     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)"'
     server: 'yourls'
 #     ssl: true 
