@@ -17,28 +17,28 @@ php::fpm_group: 'nginx'
 #     user: 'nginx'
 #     group: 'nginx'
 #     listen: '/var/run/php-fpm/nginx-fpm.sock'
-nginx::nginx_servers:
-  'yourls':
-    server_name: ['ls.st']
-    www_root: '/etc/nginx/YOURLS'
-    listen_port: 443
-    index_files: ['index', 'index.php', 'index.html', 'index.htm']
-    try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
-    ssl_port: 443
-    ssl: true 
-    ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
-    ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
-    use_default_location: false
-    ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
-    ssl_protocols: 'TLSv1.2'
-    # # ssl_session_cache: 'shared:SSL:1m'
-    ssl_session_timeout: '10m'
-    ssl_prefer_server_ciphers: 'on'
-    fastcgi: '/etc/nginx/fastcgi.conf'
-    locations: 
-      'shorten':
-        location: '/shorten'
-        try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
+# nginx::nginx_servers:
+#   'yourls':
+#     server_name: ['ls.st']
+#     www_root: '/etc/nginx/YOURLS'
+#     listen_port: 443
+#     index_files: ['index', 'index.php', 'index.html', 'index.htm']
+#     try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
+#     ssl_port: 443
+#     ssl: true 
+#     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
+#     ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
+#     use_default_location: false
+#     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+#     ssl_protocols: 'TLSv1.2'
+#     # # ssl_session_cache: 'shared:SSL:1m'
+#     ssl_session_timeout: '10m'
+#     ssl_prefer_server_ciphers: 'on'
+#     fastcgi: '/etc/nginx/fastcgi.conf'
+#     locations: 
+#       'shorten':
+#         location: '/shorten'
+#         try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
         # "auth_ldap": ''
             # auth_ldap: 'LDAP authorization required.'
       # 'shorten2':
