@@ -97,14 +97,14 @@ file { '/etc/nginx/YOURLS':
       # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
     }
 }
-  php::fpm::pool{'nginx':
-    user         => 'nginx',
-    group        => 'nginx',
-    listen_owner => 'nginx',
-    listen_group => 'nginx',
-    listen_mode  => '0660',
-    listen       => '/var/run/php-fpm/nginx-fpm.sock',
-  }
+  # php::fpm::pool{'nginx':
+  #   user         => 'nginx',
+  #   group        => 'nginx',
+  #   listen_owner => 'nginx',
+  #   listen_group => 'nginx',
+  #   listen_mode  => '0660',
+  #   listen       => '/var/run/php-fpm/nginx-fpm.sock',
+  # }
   archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
     ensure  => present,
     source  => 's3://yourls-data/index.php',
