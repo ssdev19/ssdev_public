@@ -51,13 +51,13 @@ accounts::user_list:
     sshkeys:
       - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCDkZVAss+6tdH/Mjb8lnTXy4arCjhP2hzvjbkmaRcdF5TMLsr57GcZcIXQyh44WToL5p7bbZWmkTaaaOPZ8/fNS2kkpj79/nzZL1tIKtAF6OkLPWPlyehyTPnzxN1cIA6vN1FAt8Alp3bs4qesYmYiYH+VS166VVSLY82f4TODnkOwT2DNl48Zdzfo6szSHmpDsLxUaLSx1S8zDrNR43UagmqSnNhoA+W/wAUjsbYRfeFv5j0DE5o3qOo0Dy0hinOSiZOhAAs2Q82Eq/ORrFLkgYvZmuVpLM3zx2PBm6HlOavPZpgBWqW/tpNxeR23mx+7QGv21wM07qubDx7fQJYt rsa@puppet'
     password: "%{lookup('root_pwd')}"
-  # jcockrum_local:
-  #   groups:
-  #     - 'wheel'
-  #   sshkeys:
-  #     - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcmWPwRfK88brldbbWvGxWAztQH/wIYHneSO7HXWS33JAOvObpQVjtoq7uXrhXuYK7iiDeAScMirLYtZoiG8F+yzxGz/7n/qUrnJNh3mCM+jBvyohFdQPECk2iHPvPd2aE1F+/yot2mCD0LtxGR/qZQsZN3tZWeAXfq1Etm4fKBLNW0/5DLTVpMGcG+/rXQAW6d9hWV8effV9/tesk6yN6qC3fhCAUlBmR4R/11AGKqovITtpzJlJP/HBrQN1sysKP8UqP7Tutt9/GP+nGB8bX0SkKTASpVlOOLVAbPZLDNS8l2bSN3pMAs1+zAqTcApk3PBzIYDC5u5DJmzqa2dU9 jcockrum@alcor'
-  #   password: ''
-  #   ignore_password_if_empty: true
+  jcockrum_local:
+    groups:
+      - 'wheel'
+    sshkeys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcmWPwRfK88brldbbWvGxWAztQH/wIYHneSO7HXWS33JAOvObpQVjtoq7uXrhXuYK7iiDeAScMirLYtZoiG8F+yzxGz/7n/qUrnJNh3mCM+jBvyohFdQPECk2iHPvPd2aE1F+/yot2mCD0LtxGR/qZQsZN3tZWeAXfq1Etm4fKBLNW0/5DLTVpMGcG+/rXQAW6d9hWV8effV9/tesk6yN6qC3fhCAUlBmR4R/11AGKqovITtpzJlJP/HBrQN1sysKP8UqP7Tutt9/GP+nGB8bX0SkKTASpVlOOLVAbPZLDNS8l2bSN3pMAs1+zAqTcApk3PBzIYDC5u5DJmzqa2dU9 jcockrum@alcor'
+    password: "%{lookup('jc_pwd')}"
+    ignore_password_if_empty: true
   # drathfelder_local:
   #   groups:
   #     - 'wheel'
