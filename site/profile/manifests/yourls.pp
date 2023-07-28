@@ -8,7 +8,7 @@ $yourls_site,
 ){
   # include nginx
   include mysql::server
-  include '::php'
+  # include '::php'
   # include '::php::globals'
 
 # class { '::php::globals':
