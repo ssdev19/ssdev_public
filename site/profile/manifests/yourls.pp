@@ -115,6 +115,11 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/index.html',
     cleanup => false,
   }
+  archive { '/etc/nginx/conf.d/yourls.conf' :
+    ensure  => present,
+    source  => 's3://yourls-data/yourls_config_new.txt',
+    cleanup => false,
+  }
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
     ensure  => present,
     source  => 's3://yourls-data/ls.st.current.crt',
