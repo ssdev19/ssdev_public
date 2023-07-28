@@ -79,7 +79,7 @@ file { '/etc/nginx/YOURLS':
   # }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
-    source  => 's3://yourls-data/mysql-db-yourls-202303020300.gz',
+    source  => 's3://yourls-data/yourls/20230728030002-mysql-db-yourls.gz',
     cleanup => false,
   }
 
