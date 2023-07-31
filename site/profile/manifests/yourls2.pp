@@ -63,4 +63,33 @@ $yourls_db_name = lookup('yourls_db_name')
       provider     => 'wget',
       cleanup      => false,
     }
+    file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
+    ensure => directory,
+    }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.php',
+    cleanup => false,
+  }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/index.html" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.html',
+    cleanup => false,
+  }
+  archive { '/etc/nginx/conf.d/yourls.conf' :
+    ensure  => present,
+    source  => 's3://yourls-data/yourls_config_new.txt',
+    cleanup => false,
+  }
+  archive { '/etc/pki/tls/certs/ls.st.current.crt' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.crt',
+    cleanup => false,
+  }
+  archive { '/etc/pki/tls/certs/ls.st.current.key' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.key',
+    cleanup => false,
+  }
+
 }
