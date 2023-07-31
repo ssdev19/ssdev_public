@@ -3,8 +3,8 @@ classes:
   - profile::base_linux
   - profile::yourls2
 profile::base_linux::awscli: true
-profile::yourls::yourls_version: '1.9.2' # If you change this version, ensure to update file rubinobs_facts.rb
-profile::yourls::yourls_site: 'https://ls.st'
+profile::yourls2::yourls_version: '1.9.2' # If you change this version, ensure to update file rubinobs_facts.rb
+profile::yourls2::yourls_site: 'https://ls.st'
 # php::manage_repos: true
 # php::globals:
 #   php_version: '7.3.27'
