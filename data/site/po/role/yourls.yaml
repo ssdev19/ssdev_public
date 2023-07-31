@@ -1,7 +1,7 @@
 ---
 classes:
   - profile::base_linux
-  - profile::yourls
+  # - profile::yourls
 profile::base_linux::awscli: true
 profile::yourls::yourls_version: '1.9.2' # If you change this version, ensure to update file rubinobs_facts.rb
 profile::yourls::yourls_site: 'https://ls.st'
