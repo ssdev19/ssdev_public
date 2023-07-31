@@ -55,4 +55,12 @@ $yourls_db_name = lookup('yourls_db_name')
     ensure => 'link',
     target => "/etc/nginx/YOURLS-${yourls_version}",
   }
+    archive { "/tmp/yourls-${yourls_version}.tar.gz":
+      ensure       => present,
+      source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
+      extract_path => '/etc/nginx',
+      extract      => true,
+      provider     => 'wget',
+      cleanup      => false,
+    }
 }
