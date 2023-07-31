@@ -36,16 +36,16 @@ $yourls_db_name = lookup('yourls_db_name')
 }
 
 
-    archive { '/tmp/nginx-1.24.0.tar.gz':
+    archive { '/tmp/nginx-1.14.1.tar.gz':
       ensure       => present,
-      source       => 'http://nginx.org/download/nginx-1.24.0.tar.gz',
+      source       => 'http://nginx.org/download/nginx-1.14.1.tar.gz',
       extract_path => '/tmp/',
       extract      => true,
       provider     => 'wget',
       cleanup      => true,
     }
 
-    vcsrepo { '/tmp/nginx-1.24.0/nginx-auth-ldap':
+    vcsrepo { '/tmp/nginx-1.14.1/nginx-auth-ldap':
       ensure   => present,
       provider => git,
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
