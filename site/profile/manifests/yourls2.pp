@@ -1,4 +1,4 @@
-class profile::yourls ( String
+class profile::yourls2 ( String
 
 $yourls_version,
 $yourls_site,
