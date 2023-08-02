@@ -9,6 +9,6 @@ class profile::php {
   }
   -> class { '::php':
       manage_repos => true,
-      yum_repo     => 'remi_php81'
+      # yum_repo     => 'remi_php81'
     }
 }
