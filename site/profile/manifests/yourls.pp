@@ -90,7 +90,7 @@ file { '/etc/nginx/YOURLS':
       user           => $yourls_db_user,
       password       => $yourls_db_pass,
       host           => 'localhost',
-      grant          => ['SELECT', 'UPDATE'],
+      grant          => ['ALL'],
       sql            => ['/tmp/mysql-db-yourls.gz'],
       import_cat_cmd => 'zcat',
       import_timeout => 900,
