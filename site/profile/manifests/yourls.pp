@@ -29,7 +29,7 @@ $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
 
   unless $::yourls_config  {
-    vcsrepo { '/var/www/html/YOURLS':
+    vcsrepo { "/var/www/html/YOURLS-${yourls_version}":
       ensure   => present,
       provider => git,
       source   => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
