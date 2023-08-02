@@ -32,7 +32,7 @@ $yourls_db_name = lookup('yourls_db_name')
     vcsrepo { "/var/www/html/YOURLS-${yourls_version}":
       ensure   => present,
       provider => git,
-      source   => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
+      source   => "https://github.com/YOURLS/YOURLS.git",
       user     => 'root',
     }
   # archive { "/tmp/yourls-${yourls_version}.tar.gz":
