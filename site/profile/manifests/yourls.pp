@@ -48,12 +48,12 @@ $yourls_db_name = lookup('yourls_db_name')
       source  => 's3://yourls-data/config.php',
       cleanup => false,
     }
-    file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+    file { "/var/www/html/YOURLS-${yourls_version}/user/config.php":
       ensure  => present,
       source  => '/tmp/config.php',
       replace => 'yes',
     }
-      file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
+      file { "/var/www/html/YOURLS-${yourls_version}/shorten":
       ensure => directory,
     }
     archive { '/tmp/nginx-1.24.0.tar.gz':
@@ -72,9 +72,9 @@ $yourls_db_name = lookup('yourls_db_name')
       user     => 'root',
     }
   }
-file { '/etc/nginx/YOURLS':
+file { '/var/www/html/YOURLS':
   ensure => 'link',
-  target => "/etc/nginx/YOURLS-${yourls_version}",
+  target => "/var/www/html/YOURLS-${yourls_version}",
 }
 
   # exec {'compile':
@@ -111,12 +111,12 @@ file { '/etc/nginx/YOURLS':
   #   listen_mode  => '0660',
   #   listen       => '/var/run/php-fpm/nginx-fpm.sock',
   # }
-  archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
+  archive { "/var/www/html/YOURLS-${yourls_version}/shorten/index.php" :
     ensure  => present,
     source  => 's3://yourls-data/index.php',
     cleanup => false,
   }
-  archive { "/etc/nginx/YOURLS-${yourls_version}/index.html" :
+  archive { "/var/www/html/YOURLS-${yourls_version}/index.html" :
     ensure  => present,
     source  => 's3://yourls-data/index.html',
     cleanup => false,
@@ -141,7 +141,7 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/fastcgi.conf',
     cleanup => false,
   }
-  archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
+  archive { "/var/www/html/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
     source  => 's3://yourls-data/yourls-logo.png',
     cleanup => false,
@@ -152,7 +152,7 @@ file { '/etc/nginx/YOURLS':
   #   cleanup => false,
   # }
 
-  archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
+  archive { "/var/www/html/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
     ensure  => present,
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
