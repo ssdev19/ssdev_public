@@ -157,6 +157,14 @@ file { '/var/www/html/YOURLS':
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
   }
+    archive { '/tmp/nginx-1.14.1.tar.gz':
+      ensure       => present,
+      source       => 'http://nginx.org/download/nginx-1.14.1.tar.gz',
+      extract_path => '/tmp/',
+      extract      => true,
+      provider     => 'wget',
+      cleanup      => true,
+    }
 
 
 }
