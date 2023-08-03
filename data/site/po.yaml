@@ -111,7 +111,7 @@ postfix::configs:
   #   ensure: absent
   # mynetworks: 
   #   ensure: absent
-puppet_agent::package_version: 7.24.0
+puppet_agent::package_version: 7.25.0
 puppet_agent::collection: 'puppet7'
 puppet_agent::service_names: ''
 puppet_agent::config:
