@@ -20,7 +20,7 @@ $yourls_site,
 #     ensure       => '7.3.27',
 # }
 
-  Package { [ 'openldap-devel', 'make', 'yum-utils' ]:
+  Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel' ]:
     ensure => installed,
   }
 $yourls_user_passwords = lookup('yourls_user_passwords')
@@ -157,7 +157,5 @@ file { '/var/www/html/YOURLS':
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
   }
-
-
 
 }
