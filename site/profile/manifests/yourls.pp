@@ -29,7 +29,12 @@ $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
 
   unless $::yourls_config  {
-
+    vcsrepo { "/var/www/html/YOURLS-${yourls_version}":
+      ensure   => present,
+      provider => git,
+      source   => "https://github.com/YOURLS/YOURLS.git",
+      user     => 'root',
+    }
   # archive { "/tmp/yourls-${yourls_version}.tar.gz":
   #     ensure       => present,
   #     source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
@@ -152,10 +157,5 @@ file { '/var/www/html/YOURLS':
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
   }
-    vcsrepo { "/var/www/html/YOURLS-${yourls_version}":
-      ensure   => present,
-      provider => git,
-      source   => "https://github.com/YOURLS/YOURLS.git",
-      user     => 'nginx',
-    }
+
 }
