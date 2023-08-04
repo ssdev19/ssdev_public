@@ -148,7 +148,7 @@ file { '/var/www/html/YOURLS':
   }
   archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
     ensure  => present,
-    source  => 's3://yourls-data/.htaccess',
+    source  => 's3://yourls-data/htaccess',
     cleanup => false,
   }
   archive { "/var/www/html/YOURLS-${yourls_version}/yourls-logo.png":
