@@ -33,7 +33,7 @@ $yourls_db_name = lookup('yourls_db_name')
       ensure   => present,
       provider => git,
       source   => "https://github.com/YOURLS/YOURLS.git",
-      user     => 'root',
+      user     => 'nginx',
     }
   # archive { "/tmp/yourls-${yourls_version}.tar.gz":
   #     ensure       => present,
