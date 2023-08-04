@@ -126,6 +126,11 @@ file { '/var/www/html/YOURLS':
     source  => 's3://yourls-data/yourls_config_new.txt',
     cleanup => false,
   }
+  archive { "/var/www/html/YOURLS-${yourls_version}/user/config.php" :
+    ensure  => present,
+    source  => 's3://yourls-data/config.php',
+    cleanup => false,
+  }
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
     ensure  => present,
     source  => 's3://yourls-data/ls.st.current.crt',
@@ -139,6 +144,11 @@ file { '/var/www/html/YOURLS':
   archive { '/etc/nginx/fastcgi.conf' :
     ensure  => present,
     source  => 's3://yourls-data/fastcgi.conf',
+    cleanup => false,
+  }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
+    ensure  => present,
+    source  => 's3://yourls-data/.htaccess',
     cleanup => false,
   }
   archive { "/var/www/html/YOURLS-${yourls_version}/yourls-logo.png":
@@ -156,6 +166,11 @@ file { '/var/www/html/YOURLS':
     ensure  => present,
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
+  }
+  $phpinfo = lookup ('phpinfo')
+  file { '/usr/share/nginx/html/phpinfo.php' :
+    ensure  => file,
+    content => $phpinfo,
   }
 
 }
