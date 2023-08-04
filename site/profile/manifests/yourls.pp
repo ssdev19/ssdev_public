@@ -146,7 +146,7 @@ file { '/var/www/html/YOURLS':
     source  => 's3://yourls-data/fastcgi.conf',
     cleanup => false,
   }
-  archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
+  archive { "/var/www/html/YOURLS-${yourls_version}/.htaccess" :
     ensure  => present,
     source  => 's3://yourls-data/htaccess',
     cleanup => false,
