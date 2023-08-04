@@ -65,7 +65,7 @@ $yourls_db_name = lookup('yourls_db_name')
       cleanup      => true,
     }
 
-    vcsrepo { '/tmp/nginx-1.20.1/nginx-auth-ldap':
+    vcsrepo { '/tmp/nginx-1.22.1/nginx-auth-ldap':
       ensure   => present,
       provider => git,
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
