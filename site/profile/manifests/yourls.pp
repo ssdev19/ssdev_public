@@ -168,7 +168,7 @@ file { '/var/www/html/YOURLS':
     cleanup => false,
   }
   $phpinfo = lookup ('phpinfo')
-  file { '/usr/share/nginx/html/phpinfo.php' :
+  file { "/var/www/html/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
   }
