@@ -151,6 +151,11 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/htaccess',
     cleanup => false,
   }
+  archive { '/etc/nginx/nginx.conf' :
+    ensure  => present,
+    source  => 's3://yourls-data/nginx_conf.txt',
+    cleanup => false,
+  }
   archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
     source  => 's3://yourls-data/yourls-logo.png',
