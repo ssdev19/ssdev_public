@@ -29,7 +29,7 @@ $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
 
   unless $::yourls_config  {
-    vcsrepo { "/var/www/html/YOURLS-${yourls_version}":
+    vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
       ensure   => present,
       provider => git,
       source   => "https://github.com/YOURLS/YOURLS.git",
@@ -48,12 +48,12 @@ $yourls_db_name = lookup('yourls_db_name')
       source  => 's3://yourls-data/config.php',
       cleanup => false,
     }
-    file { "/var/www/html/YOURLS-${yourls_version}/user/config.php":
+    file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
       ensure  => present,
       source  => '/tmp/config.php',
       replace => 'yes',
     }
-      file { "/var/www/html/YOURLS-${yourls_version}/shorten":
+      file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
       ensure => directory,
     }
     archive { '/tmp/nginx-1.22.1.tar.gz':
@@ -72,9 +72,9 @@ $yourls_db_name = lookup('yourls_db_name')
       user     => 'root',
     }
   }
-file { '/var/www/html/YOURLS':
+file { '/etc/nginx/YOURLS':
   ensure => 'link',
-  target => "/var/www/html/YOURLS-${yourls_version}",
+  target => "/etc/nginx/YOURLS-${yourls_version}",
 }
 
   # exec {'compile':
@@ -111,12 +111,12 @@ file { '/var/www/html/YOURLS':
   #   listen_mode  => '0660',
   #   listen       => '/var/run/php-fpm/nginx-fpm.sock',
   # }
-  archive { "/var/www/html/YOURLS-${yourls_version}/shorten/index.php" :
+  archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
     ensure  => present,
     source  => 's3://yourls-data/index.php',
     cleanup => false,
   }
-  archive { "/var/www/html/YOURLS-${yourls_version}/index.html" :
+  archive { "/etc/nginx/YOURLS-${yourls_version}/index.html" :
     ensure  => present,
     source  => 's3://yourls-data/index.html',
     cleanup => false,
@@ -126,7 +126,7 @@ file { '/var/www/html/YOURLS':
     source  => 's3://yourls-data/yourls_config_new.txt',
     cleanup => false,
   }
-  archive { "/var/www/html/YOURLS-${yourls_version}/user/config.php" :
+  archive { "/etc/nginx/YOURLS-${yourls_version}/user/config.php" :
     ensure  => present,
     source  => 's3://yourls-data/config.php',
     cleanup => false,
@@ -146,12 +146,12 @@ file { '/var/www/html/YOURLS':
     source  => 's3://yourls-data/fastcgi.conf',
     cleanup => false,
   }
-  archive { "/var/www/html/YOURLS-${yourls_version}/.htaccess" :
+  archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
     ensure  => present,
     source  => 's3://yourls-data/htaccess',
     cleanup => false,
   }
-  archive { "/var/www/html/YOURLS-${yourls_version}/yourls-logo.png":
+  archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
     source  => 's3://yourls-data/yourls-logo.png',
     cleanup => false,
@@ -162,13 +162,13 @@ file { '/var/www/html/YOURLS':
   #   cleanup => false,
   # }
 
-  archive { "/var/www/html/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
+  archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
     ensure  => present,
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
   }
   $phpinfo = lookup ('phpinfo')
-  file { "/var/www/html/YOURLS-${yourls_version}/phpinfo.php" :
+  file { "/etc/nginx/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
   }
