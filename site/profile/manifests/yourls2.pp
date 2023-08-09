@@ -51,6 +51,11 @@ $yourls_db_name = lookup('yourls_db_name')
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
       user     => 'root',
     }
-
+    exec {'compile':
+      path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
+      cwd      => '/tmp/nginx-1.22.1/',
+      provider => shell,
+      command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
+    }
 
 }
