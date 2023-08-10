@@ -60,7 +60,7 @@ unless $::nginx_conf  {
 
 }
 # Creates nginx service in  /etc/systemd/system/nginx.service
-$mainpid = lookup('mainpid')
+$mainpid = '$MAINPID' #lookup('mainpid')
   $nginx_service = @("EOT")
     [Unit]
     Description=The nginx HTTP and reverse proxy server
