@@ -1,5 +1,8 @@
 class profile::yourls2 ( String
-
+# $ sudo yum module reset nginx
+# $ sudo yum module enable nginx:1.16
+# ## verify it version set to 1.22 ##
+# $ sudo yum module list nginx
 $yourls_version,
 $yourls_site,
 
