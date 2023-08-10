@@ -94,14 +94,14 @@ $mainpid = '$MAINPID' #lookup('mainpid')
   enable    => true,
   ensure    => 'running',
   }
-  # archive { '/tmp/nginx.conf' :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/nginx_conf.txt',
-  #   cleanup => false,
-  # }
-  #   file { '/usr/local/nginx/conf/nginx.conf':
-  #   ensure  => present,
-  #   source  => '/tmp/nginx.conf',
-  #   replace => 'yes',
-  # }
+  archive { '/tmp/nginx.conf' :
+    ensure  => present,
+    source  => 's3://yourls-data/nginx_conf.txt',
+    cleanup => false,
+  }
+    file { '/usr/local/nginx/conf/nginx.conf':
+    ensure  => present,
+    source  => '/tmp/nginx.conf',
+    replace => 'yes',
+  }
 }
