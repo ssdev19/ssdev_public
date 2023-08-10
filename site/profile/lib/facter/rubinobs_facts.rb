@@ -7,7 +7,7 @@ end
   
 Facter.add(:yourls_config) do
   setcode do
-    File.exists?('/usr/local/nginx/html/YOURLS/user/config.php')
+    File.exists?('/usr/local/nginx/YOURLS/user/config.php')
   end
 end
 Facter.add(:yourls_db) do

@@ -98,17 +98,17 @@ $mainpid = '$MAINPID' #lookup('mainpid')
   enable    => true,
   ensure    => 'running',
   }
-  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/shorten/index.php" :
+  archive { "/usr/local/nginx/YOURLS-${yourls_version}/shorten/index.php" :
     ensure  => present,
     source  => 's3://yourls-data/index.php',
     cleanup => false,
   }
-  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/user/config.php" :
+  archive { "/usr/local/nginx/YOURLS-${yourls_version}/user/config.php" :
     ensure  => present,
     source  => 's3://yourls-data/config.php',
     cleanup => false,
   }
-  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/index.html" :
+  archive { "/usr/local/nginx/YOURLS-${yourls_version}/index.html" :
     ensure  => present,
     source  => 's3://yourls-data/index.html',
     cleanup => false,
@@ -144,20 +144,20 @@ $mainpid = '$MAINPID' #lookup('mainpid')
     source  => 's3://yourls-data/www_conf_new',
     cleanup => false,
   }
-file { '/usr/local/nginx/html/YOURLS':
+file { '/usr/local/nginx/YOURLS':
   ensure => 'link',
-  target => "/usr/local/nginx/html/YOURLS-${yourls_version}",
+  target => "/usr/local/nginx/YOURLS-${yourls_version}",
 }
-  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/.htaccess" :
+  archive { "/usr/local/nginx/YOURLS-${yourls_version}/.htaccess" :
     ensure  => present,
     source  => 's3://yourls-data/htaccess',
     cleanup => false,
   }
-  file { "/usr/local/nginx/html/YOURLS-${yourls_version}/phpinfo.php" :
+  file { "/usr/local/nginx/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
   }
-  file { '/usr/local/nginx/html/phpinfo2.php' :
+  file { '/usr/local/nginx/phpinfo2.php' :
     ensure  => file,
     content => $phpinfo2,
   }
