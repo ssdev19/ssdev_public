@@ -57,7 +57,7 @@ $yourls_db_name = lookup('yourls_db_name')
       provider => shell,
       command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
     }
-Creates nginx service in  /usr/lib/systemd/system/nginx.service
+# Creates nginx service in  /usr/lib/systemd/system/nginx.service
   $nginx_service = @("EOT")
     [Unit]
     Description=The nginx HTTP and reverse proxy server
