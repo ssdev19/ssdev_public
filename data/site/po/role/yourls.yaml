@@ -12,6 +12,8 @@ accounts::user_list:
   nginx:
     groups:
       - 'nginx'
+    managehome: false
+    system: true
 
 # php::manage_repos: true
 # php::globals:
