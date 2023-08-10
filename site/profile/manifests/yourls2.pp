@@ -148,6 +148,11 @@ file { '/usr/local/nginx/html/YOURLS':
   ensure => 'link',
   target => "/usr/local/nginx/html/YOURLS-${yourls_version}",
 }
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/.htaccess" :
+    ensure  => present,
+    source  => 's3://yourls-data/htaccess',
+    cleanup => false,
+  }
   file { "/usr/local/nginx/html/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
