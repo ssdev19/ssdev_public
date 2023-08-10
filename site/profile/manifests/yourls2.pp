@@ -157,7 +157,7 @@ file { '/usr/local/nginx/YOURLS':
     ensure  => file,
     content => $phpinfo,
   }
-  file { '/usr/local/nginx/phpinfo2.php' :
+  file { '/usr/local/nginx/html/phpinfo2.php' :
     ensure  => file,
     content => $phpinfo2,
   }
