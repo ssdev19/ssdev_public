@@ -20,6 +20,11 @@ Facter.add(:nginx_conf) do
     File.exists?('/usr/local/nginx/html/index.html')
   end
 end
+Facter.add(:nginx_pid) do
+  setcode do
+    File.exists?('/etc/systemd/system/nginx.service.d/override.conf')
+  end
+end
 # scom.pp
 #   class scom {
 #     if $pf_svc {
