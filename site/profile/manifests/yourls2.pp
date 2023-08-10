@@ -58,7 +58,7 @@ $yourls_db_name = lookup('yourls_db_name')
       command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
     }
 # Creates nginx service in  /etc/systemd/system/nginx.service
-$maipid = lookup('mainpid')
+$mainpid = lookup('mainpid')
   $nginx_service = @("EOT")
     [Unit]
     Description=The nginx HTTP and reverse proxy server
