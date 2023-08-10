@@ -134,6 +134,10 @@ $mainpid = '$MAINPID' #lookup('mainpid')
       command  => 'printf "[Service]\\nExecStartPost=/bin/sleep 0.1\\n" > /etc/systemd/system/nginx.service.d/override.conf; systemctl daemon-reload; systemctl restart nginx ',
     }
   }
+file { '/usr/local/nginx/html/YOURLS':
+  ensure => 'link',
+  target => "/usr/local/nginx/html/YOURLS-${yourls_version}",
+}
   file { "/usr/local/nginx/html/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
