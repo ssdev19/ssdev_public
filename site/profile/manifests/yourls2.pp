@@ -89,8 +89,8 @@ $mainpid = lookup('mainpid')
   }
   -> service { 'nginx':
   # subscribe => nginx::Instance['default'],
-  ensure    => 'running',
   enable    => true,
+  ensure    => 'running',
   }
 }
   archive { '/tmp/nginx.conf' :
