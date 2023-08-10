@@ -103,6 +103,11 @@ $mainpid = '$MAINPID' #lookup('mainpid')
     source  => 's3://yourls-data/index.php',
     cleanup => false,
   }
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/user/config.php" :
+    ensure  => present,
+    source  => 's3://yourls-data/config.php',
+    cleanup => false,
+  }
   archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/index.html" :
     ensure  => present,
     source  => 's3://yourls-data/index.html',
