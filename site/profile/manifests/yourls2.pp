@@ -63,7 +63,7 @@ unless $::nginx_conf  {
 
 }
 # Creates nginx service in  /etc/systemd/system/nginx.service
-# Server needs to be rebooted after the service creation.
+# Sometimes the server needs to be rebooted after the service creation.
 $mainpid = '$MAINPID' #lookup('mainpid')
   $nginx_service = @("EOT")
     [Unit]
@@ -79,7 +79,7 @@ $mainpid = '$MAINPID' #lookup('mainpid')
     ExecStartPre=/usr/bin/rm -f /run/nginx.pid
     ExecStartPre=/usr/local/nginx/sbin/nginx -t
     ExecStart=/usr/local/nginx/sbin/nginx
-    ExecReload=/bin/kill -s HUP "${mainpid}"
+    ExecReload=/bin/kill -s HUP ${mainpid}
     KillSignal=SIGQUIT
     TimeoutStopSec=5
     KillMode=process
