@@ -91,4 +91,4 @@ $yourls_db_name = lookup('yourls_db_name')
 #   ensure    => 'running',
 #   enable    => true,
 #   }
-# }
+}
