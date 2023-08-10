@@ -134,6 +134,11 @@ $mainpid = '$MAINPID' #lookup('mainpid')
       command  => 'printf "[Service]\\nExecStartPost=/bin/sleep 0.1\\n" > /etc/systemd/system/nginx.service.d/override.conf; systemctl daemon-reload; systemctl restart nginx ',
     }
   }
+  archive { '/etc/php-fpm.d/www.conf' :
+    ensure  => present,
+    source  => 's3://yourls-data/www_conf_new',
+    cleanup => false,
+  }
 file { '/usr/local/nginx/html/YOURLS':
   ensure => 'link',
   target => "/usr/local/nginx/html/YOURLS-${yourls_version}",
