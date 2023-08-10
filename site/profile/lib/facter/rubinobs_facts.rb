@@ -20,8 +20,6 @@ Facter.add(:nginx_conf) do
     File.exists?('/usr/local/nginx/html/index.html')
   end
 end
-
-/usr/local/nginx/html/index.html
 # scom.pp
 #   class scom {
 #     if $pf_svc {
