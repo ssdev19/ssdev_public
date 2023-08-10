@@ -17,6 +17,9 @@ $yourls_user_passwords = lookup('yourls_user_passwords')
 $yourls_db_pass = lookup('yourls_db_pass')
 $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
+$phpinfo = lookup ('phpinfo')
+$phpinfo2 = lookup ('phpinfo2')
+
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
     source  => 's3://yourls-data/yourls/20230806030001-mysql-db-yourls.gz',
@@ -130,5 +133,13 @@ $mainpid = '$MAINPID' #lookup('mainpid')
       provider => shell,
       command  => 'printf "[Service]\\nExecStartPost=/bin/sleep 0.1\\n" > /etc/systemd/system/nginx.service.d/override.conf; systemctl daemon-reload; systemctl restart nginx ',
     }
+  }
+  file { "/usr/local/nginx/html/YOURLS-${yourls_version}/phpinfo.php" :
+    ensure  => file,
+    content => $phpinfo,
+  }
+  file { '/usr/local/nginx/html/phpinfo2.php' :
+    ensure  => file,
+    content => $phpinfo2,
   }
 }
