@@ -60,6 +60,7 @@ unless $::nginx_conf  {
 
 }
 # Creates nginx service in  /etc/systemd/system/nginx.service
+# Server needs to be rebooted after the service creation.
 $mainpid = '$MAINPID' #lookup('mainpid')
   $nginx_service = @("EOT")
     [Unit]
@@ -94,6 +95,21 @@ $mainpid = '$MAINPID' #lookup('mainpid')
   enable    => true,
   ensure    => 'running',
   }
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/shorten/index.php" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.php',
+    cleanup => false,
+  }
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/index.html" :
+    ensure  => present,
+    source  => 's3://yourls-data/index.html',
+    cleanup => false,
+  }
+  # archive { '/etc/nginx/conf.d/yourls.conf' :
+  #   ensure  => present,
+  #   source  => 's3://yourls-data/yourls_config_new.txt',
+  #   cleanup => false,
+  # }
   archive { '/tmp/nginx.conf' :
     ensure  => present,
     source  => 's3://yourls-data/nginx_conf.txt',
