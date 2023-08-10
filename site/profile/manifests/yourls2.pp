@@ -58,6 +58,7 @@ $yourls_db_name = lookup('yourls_db_name')
       command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
     }
 # Creates nginx service in  /etc/systemd/system/nginx.service
+$maipid = lookup('mainpid')
   $nginx_service = @("EOT")
     [Unit]
     Description=The nginx HTTP and reverse proxy server
@@ -72,7 +73,7 @@ $yourls_db_name = lookup('yourls_db_name')
     ExecStartPre=/usr/bin/rm -f /run/nginx.pid
     ExecStartPre=/usr/local/nginx/sbin/nginx -t
     ExecStart=/usr/local/nginx/sbin/nginx
-    ExecReload=/bin/kill -s HUP \$""MAINPID""
+    ExecReload=/bin/kill -s HUP ${mainpid}
     KillSignal=SIGQUIT
     TimeoutStopSec=5
     KillMode=process
