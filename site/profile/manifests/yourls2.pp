@@ -55,7 +55,7 @@ $yourls_db_name = lookup('yourls_db_name')
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => '/tmp/nginx-1.22.1/',
       provider => shell,
-      command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
+      command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
     }
 # Creates nginx service in  /usr/lib/systemd/system/nginx.service
 #   $nginx_service = @("EOT")
