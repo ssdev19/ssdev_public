@@ -92,7 +92,7 @@ $mainpid = lookup('mainpid')
   ensure    => 'running',
   enable    => true,
   }
-  archive { '/etc/nginx/nginx.conf' :
+  archive { '/usr/local/nginx/conf/nginx.conf' :
     ensure  => present,
     source  => 's3://yourls-data/nginx_conf.txt',
     cleanup => false,
