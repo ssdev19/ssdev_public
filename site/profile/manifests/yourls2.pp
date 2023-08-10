@@ -57,6 +57,8 @@ unless $::nginx_conf  {
       provider => shell,
       command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
     }
+
+}
 # Creates nginx service in  /etc/systemd/system/nginx.service
 $mainpid = lookup('mainpid')
   $nginx_service = @("EOT")
@@ -92,7 +94,6 @@ $mainpid = lookup('mainpid')
   enable    => true,
   ensure    => 'running',
   }
-}
   # archive { '/tmp/nginx.conf' :
   #   ensure  => present,
   #   source  => 's3://yourls-data/nginx_conf.txt',
