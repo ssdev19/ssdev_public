@@ -35,7 +35,7 @@ $yourls_db_name = lookup('yourls_db_name')
     }
 }
 
-
+unless $::nginx_conf  {
     archive { '/tmp/nginx-1.22.1.tar.gz':
       ensure       => present,
       source       => 'http://nginx.org/download/nginx-1.22.1.tar.gz',
@@ -97,4 +97,5 @@ $mainpid = lookup('mainpid')
     source  => 's3://yourls-data/nginx_conf.txt',
     cleanup => false,
   }
+}
 }
