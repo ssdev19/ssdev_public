@@ -156,7 +156,7 @@ file { '/usr/local/nginx/html/YOURLS':
     source  => 's3://yourls-data/htaccess',
     cleanup => false,
   }
-  file { "/usr/local/nginx/YOURLS-${yourls_version}/phpinfo.php" :
+  file { "/usr/local/nginx/html/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
   }
