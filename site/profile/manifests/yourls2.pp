@@ -61,7 +61,7 @@ unless $::nginx_conf  {
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => '/tmp/nginx-1.22.1/',
       provider => shell,
-      command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
+      command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install; export PATH=/usr/local/nginx/sbin/:$PATH',
     }
 
 }
@@ -101,17 +101,17 @@ $mainpid = '$MAINPID' #lookup('mainpid')
   enable    => true,
   ensure    => 'running',
   }
-  archive { "/usr/local/nginx/YOURLS-${yourls_version}/shorten/index.php" :
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/shorten/index.php" :
     ensure  => present,
     source  => 's3://yourls-data/index.php',
     cleanup => false,
   }
-  archive { "/usr/local/nginx/YOURLS-${yourls_version}/user/config.php" :
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/user/config.php" :
     ensure  => present,
     source  => 's3://yourls-data/config.php',
     cleanup => false,
   }
-  archive { "/usr/local/nginx/YOURLS-${yourls_version}/index.html" :
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/index.html" :
     ensure  => present,
     source  => 's3://yourls-data/index.html',
     cleanup => false,
@@ -147,11 +147,11 @@ $mainpid = '$MAINPID' #lookup('mainpid')
     source  => 's3://yourls-data/www_conf_new',
     cleanup => false,
   }
-file { '/usr/local/nginx/YOURLS':
+file { '/usr/local/nginx/html/YOURLS':
   ensure => 'link',
-  target => "/usr/local/nginx/YOURLS-${yourls_version}",
+  target => "/usr/local/nginx/html/YOURLS-${yourls_version}",
 }
-  archive { "/usr/local/nginx/YOURLS-${yourls_version}/.htaccess" :
+  archive { "/usr/local/nginx/html/YOURLS-${yourls_version}/.htaccess" :
     ensure  => present,
     source  => 's3://yourls-data/htaccess',
     cleanup => false,
