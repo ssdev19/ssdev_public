@@ -77,12 +77,12 @@ file { '/etc/nginx/YOURLS':
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
 
-  # exec {'compile':
-  #   path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
-  #   cwd      => '/tmp/nginx-1.24.0/',
-  #   provider => shell,
-  #   command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --add-module=./nginx-auth-ldap',
-  # }
+  exec {'compile':
+    path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    cwd      => '/tmp/nginx-1.24.0/',
+    provider => shell,
+    command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-select_module --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
+  }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
     source  => 's3://yourls-data/yourls/20230806030001-mysql-db-yourls.gz',

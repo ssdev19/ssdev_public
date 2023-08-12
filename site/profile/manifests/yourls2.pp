@@ -57,12 +57,12 @@ unless $::nginx_conf  {
       source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
       user     => 'root',
     }
-    exec {'compile':
-      path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
-      cwd      => '/tmp/nginx-1.22.1/',
-      provider => shell,
-      command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-select_module --with-threads --with-http_ssl_module --with-http_v2_module --with-http_geoip_module=dynamic --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
-    }
+    # exec {'compile':
+    #   path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    #   cwd      => '/tmp/nginx-1.22.1/',
+    #   provider => shell,
+    #   command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-select_module --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
+    # }
 
 }
 # Creates nginx service in  /etc/systemd/system/nginx.service
@@ -75,13 +75,13 @@ $mainpid = '$MAINPID' #lookup('mainpid')
 
     [Service]
     Type=forking
-    PIDFile=/run/nginx.pid
+    PIDFile=/var/run/nginx.pid
     # Nginx will fail to start if /run/nginx.pid already exists but has the wrong
     # SELinux context. This might happen when running `nginx -t` from the cmdline.
     # https://bugzilla.redhat.com/show_bug.cgi?id=1268621
-    ExecStartPre=/usr/bin/rm -f /run/nginx.pid
-    ExecStartPre=/usr/local/nginx/sbin/nginx -t
-    ExecStart=/usr/local/nginx/sbin/nginx
+    ExecStartPre=/usr/bin/rm -f /var/run/nginx.pid
+    ExecStartPre=/usr/sbin/nginx -t
+    ExecStart=/usr/sbin/nginx
     ExecReload=/bin/kill -s HUP ${mainpid}
     KillSignal=SIGQUIT
     TimeoutStopSec=5
