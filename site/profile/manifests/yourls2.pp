@@ -61,7 +61,7 @@ unless $::nginx_conf  {
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => '/tmp/nginx-1.22.1/',
       provider => shell,
-      command  => './configure  --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install; export PATH=/usr/local/nginx/sbin/:$PATH',
+      command  => './configure --prefix=/etc/nginx --with-http_ssl_module --with-threads --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
     }
 
 }
