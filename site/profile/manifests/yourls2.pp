@@ -61,7 +61,7 @@ unless $::nginx_conf  {
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => '/tmp/nginx-1.22.1/',
       provider => shell,
-      command  => './configure --prefix=/etc/nginx --with-http_ssl_module --with-threads --user=nginx --group=nginx --add-module=./nginx-auth-ldap; make install',
+      command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-select_module --with-threads --with-http_ssl_module --with-http_v2_module --with-http_geoip_module=dynamic --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
     }
 
 }
