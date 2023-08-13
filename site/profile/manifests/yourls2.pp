@@ -128,7 +128,7 @@ $mainpid = '$MAINPID' #lookup('mainpid')
     source  => 's3://yourls-data/index.html',
     cleanup => false,
   }
-  archive { '/etc/nginx/conf/yourls.conf' :
+  archive { '/etc/nginx/conf.d/yourls.conf' :
     ensure  => present,
     source  => 's3://yourls-data/yourls_config_new.txt',
     cleanup => false,
