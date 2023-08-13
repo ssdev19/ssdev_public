@@ -116,7 +116,7 @@ $mainpid = '$MAINPID' #lookup('mainpid')
     source  => 's3://yourls-data/index.html',
     cleanup => false,
   }
-  archive { '/usr/local/nginx/conf/yourls.conf' :
+  archive { '/etc/nginx/conf/yourls.conf' :
     ensure  => present,
     source  => 's3://yourls-data/yourls_config_new.txt',
     cleanup => false,
@@ -126,7 +126,7 @@ $mainpid = '$MAINPID' #lookup('mainpid')
     source  => 's3://yourls-data/nginx_conf.txt',
     cleanup => false,
   }
-    file { '/usr/local/nginx/conf/nginx.conf':
+    file { '/etc/nginx/conf/nginx.conf':
     ensure  => present,
     source  => '/tmp/nginx.conf',
     replace => 'yes',
@@ -160,7 +160,7 @@ file { '/etc/nginx/html/YOURLS':
     ensure  => file,
     content => $phpinfo,
   }
-  file { '/usr/local/nginx/html/phpinfo2.php' :
+  file { '/etc/nginx/html/phpinfo2.php' :
     ensure  => file,
     content => $phpinfo2,
   }
