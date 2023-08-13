@@ -176,4 +176,20 @@ file { '/etc/nginx/YOURLS':
     ensure  => file,
     content => $phpinfo2,
   }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
+    ensure  => present,
+    source  => 's3://yourls-data/yourls-logo.png',
+    cleanup => false,
+  }
+  # archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
+  #   ensure  => present,
+  #   source  => 's3://yourls-data/Telescope_Front-470.jpg',
+  #   cleanup => false,
+  # }
+
+  archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
+    ensure  => present,
+    source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
+    cleanup => false,
+  }
 }
