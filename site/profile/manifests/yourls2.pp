@@ -66,6 +66,17 @@ unless $::nginx_conf  {
     }
 
 }
+  archive { '/etc/pki/tls/certs/ls.st.current.crt' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.crt',
+    cleanup => false,
+  }
+  archive { '/etc/pki/tls/certs/ls.st.current.key' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.key',
+    cleanup => false,
+  }
+
 # Creates nginx service in  /etc/systemd/system/nginx.service
 # Sometimes the server needs to be rebooted after the service creation.
 $mainpid = '$MAINPID' #lookup('mainpid')
