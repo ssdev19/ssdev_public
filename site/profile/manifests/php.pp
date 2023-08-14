@@ -4,7 +4,7 @@ class profile::php {
   #   ensure => installed,
   # }
     # include '::php'
-  class { 'php::repo::redhat':
+  class { 'php::repo::redhatdf':
     yum_repo => 'remi_php81'
   }
   class { '::php::globals':
