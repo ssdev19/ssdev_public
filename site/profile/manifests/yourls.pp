@@ -187,40 +187,40 @@ file { '/etc/nginx/YOURLS':
 
 # Creates nginx service in  /etc/systemd/system/nginx.service
 # Sometimes the server needs to be rebooted after the service creation.
-$mainpid = '$MAINPID' #lookup('mainpid')
-  $nginx_service = @("EOT")
-    [Unit]
-    Description=The nginx HTTP and reverse proxy server
-    After=network.target remote-fs.target nss-lookup.target
+# $mainpid = '$MAINPID' #lookup('mainpid')
+#   $nginx_service = @("EOT")
+#     [Unit]
+#     Description=The nginx HTTP and reverse proxy server
+#     After=network.target remote-fs.target nss-lookup.target
 
-    [Service]
-    Type=forking
-    PIDFile=/var/run/nginx.pid
-    # Nginx will fail to start if /run/nginx.pid already exists but has the wrong
-    # SELinux context. This might happen when running `nginx -t` from the cmdline.
-    # https://bugzilla.redhat.com/show_bug.cgi?id=1268621
-    ExecStartPre=/usr/bin/rm -f /var/run/nginx.pid
-    ExecStartPre=/usr/sbin/nginx -t
-    ExecStart=/usr/sbin/nginx
-    ExecReload=/bin/kill -s HUP ${mainpid}
-    KillSignal=SIGQUIT
-    TimeoutStopSec=5
-    KillMode=process
-    PrivateTmp=true
+#     [Service]
+#     Type=forking
+#     PIDFile=/var/run/nginx.pid
+#     # Nginx will fail to start if /run/nginx.pid already exists but has the wrong
+#     # SELinux context. This might happen when running `nginx -t` from the cmdline.
+#     # https://bugzilla.redhat.com/show_bug.cgi?id=1268621
+#     ExecStartPre=/usr/bin/rm -f /var/run/nginx.pid
+#     ExecStartPre=/usr/sbin/nginx -t
+#     ExecStart=/usr/sbin/nginx
+#     ExecReload=/bin/kill -s HUP ${mainpid}
+#     KillSignal=SIGQUIT
+#     TimeoutStopSec=5
+#     KillMode=process
+#     PrivateTmp=true
 
-    [Install]
-    WantedBy=multi-user.target
-    | EOT
-# 
-  systemd::unit_file { 'nginx.service':
-    content => "${nginx_service}",
-    mode => '0664',
-  }
-  -> service { 'nginx':
-  # subscribe => nginx::Instance['default'],
-  enable    => true,
-  ensure    => 'running',
-  }
+#     [Install]
+#     WantedBy=multi-user.target
+#     | EOT
+# # 
+#   systemd::unit_file { 'nginx.service':
+#     content => "${nginx_service}",
+#     mode => '0664',
+#   }
+#   -> service { 'nginx':
+#   # subscribe => nginx::Instance['default'],
+#   enable    => true,
+#   ensure    => 'running',
+#   }
   file {
     '/etc/systemd/system/nginx.service.d':
       ensure => directory,
