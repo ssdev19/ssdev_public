@@ -5,6 +5,7 @@ class profile::php {
   }
   class { 'php::packages':
     ensure => '8.1',
+    manage_repos => true,
     # config_root => '/etc/php/8.1',
   }
   -> class { '::php':
