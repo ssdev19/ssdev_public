@@ -3,7 +3,7 @@ class profile::php {
   # Package { [ 'openldap-devel', 'make', 'yum-utils', 'epel-release' ]:
   #   ensure => installed,
   # }
-    # include '::php'
+    include '::php'
   # class { 'php::repo::redhat':
   #   yum_repo => 'remi_php81'
   # }
