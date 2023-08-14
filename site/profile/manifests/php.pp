@@ -4,7 +4,7 @@ class profile::php {
   #   ensure => installed,
   # }
   class { 'php::packages':
-    ensure => '8.1',
+    ensure => '8',
     manage_repos => true,
     # config_root => '/etc/php/8.1',
   }
