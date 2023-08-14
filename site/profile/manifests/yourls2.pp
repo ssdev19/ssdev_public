@@ -10,7 +10,7 @@ $yourls_site,
 ){
   include nginx
   include mysql::server
-  # include '::php'
+  include '::php'
   # include '::php::globals'
 
   Package { [ 'openldap-devel', 'make', 'yum-utils' ]:
