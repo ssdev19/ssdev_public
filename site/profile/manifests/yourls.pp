@@ -58,6 +58,16 @@ $yourls_db_name = lookup('yourls_db_name')
       source   => "https://github.com/YOURLS/YOURLS.git",
       user     => 'root',
     }
+    mysql::db { $yourls_db_name:
+      user           => $yourls_db_user,
+      password       => $yourls_db_pass,
+      host           => 'localhost',
+      grant          => ['ALL'],
+      sql            => ['/tmp/mysql-db-yourls.gz'],
+      import_cat_cmd => 'zcat',
+      import_timeout => 900,
+      # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
+    }
   # archive { "/tmp/yourls-${yourls_version}.tar.gz":
   #     ensure       => present,
   #     source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
@@ -93,17 +103,17 @@ file { '/etc/nginx/YOURLS':
 
 
 
-  if $::yourls_db  {
-    mysql::db { $yourls_db_name:
-      user           => $yourls_db_user,
-      password       => $yourls_db_pass,
-      host           => 'localhost',
-      grant          => ['ALL'],
-      sql            => ['/tmp/mysql-db-yourls.gz'],
-      import_cat_cmd => 'zcat',
-      import_timeout => 900,
-      # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
-    }
+  # if $::yourls_db  {
+  #   mysql::db { $yourls_db_name:
+  #     user           => $yourls_db_user,
+  #     password       => $yourls_db_pass,
+  #     host           => 'localhost',
+  #     grant          => ['ALL'],
+  #     sql            => ['/tmp/mysql-db-yourls.gz'],
+  #     import_cat_cmd => 'zcat',
+  #     import_timeout => 900,
+  #     # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
+  #   }
 }
   # php::fpm::pool{'nginx':
   #   user         => 'nginx',
