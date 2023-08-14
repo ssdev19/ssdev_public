@@ -27,7 +27,30 @@ $yourls_user_passwords = lookup('yourls_user_passwords')
 $yourls_db_pass = lookup('yourls_db_pass')
 $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
+  unless $::nginx_conf  {
+      archive { '/tmp/nginx-1.22.1.tar.gz':
+        ensure       => present,
+        source       => 'http://nginx.org/download/nginx-1.22.1.tar.gz',
+        extract_path => '/tmp/',
+        extract      => true,
+        provider     => 'wget',
+        cleanup      => true,
+      }
 
+      vcsrepo { '/tmp/nginx-1.22.1/nginx-auth-ldap':
+        ensure   => present,
+        provider => git,
+        source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
+        user     => 'root',
+      }
+
+    exec {'compile':
+      path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
+      cwd      => '/tmp/nginx-1.22.1/',
+      provider => shell,
+      command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
+    }
+  }
   unless $::yourls_config  {
     vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
       ensure   => present,
@@ -77,12 +100,6 @@ file { '/etc/nginx/YOURLS':
   target => "/etc/nginx/YOURLS-${yourls_version}",
 }
 
-  exec {'compile':
-    path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    cwd      => '/tmp/nginx-1.22.1/',
-    provider => shell,
-    command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
-  }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
     source  => 's3://yourls-data/yourls/20230806030001-mysql-db-yourls.gz',
