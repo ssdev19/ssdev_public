@@ -4,9 +4,9 @@ class profile::php {
   #   ensure => installed,
   # }
     # include '::php'
-  # class { 'php::repo::redhat':
-  #   yum_repo => 'remi_php81'
-  # }
+  class { 'php::repo::redhat':
+    yum_repo => 'remi_php81'
+  }
   class { '::php::globals':
     php_version => '8.0',
     # config_root => '/etc/php/8.0',
