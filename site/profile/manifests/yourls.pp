@@ -44,13 +44,13 @@ $yourls_db_name = lookup('yourls_db_name')
         user     => 'root',
       }
 
-    exec {'compile':
-      path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
-      cwd      => '/usr/src/nginx-1.22.1/',
-      provider => shell,
-      # command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=/usr/src/nginx-1.22.1/nginx-auth-ldap; make install',
-      command  => './configure --add-module=/usr/src/nginx-1.22.1/nginx-auth-ldap; make install',
-    }
+    # exec {'compile':
+    #   path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    #   cwd      => '/usr/src/nginx-1.22.1/',
+    #   provider => shell,
+    #   # command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=/usr/src/nginx-1.22.1/nginx-auth-ldap; make install',
+    #   command  => './configure --add-module=/usr/src/nginx-1.22.1/nginx-auth-ldap; make install',
+    # }
   }
   unless $::yourls_config  {
     vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
