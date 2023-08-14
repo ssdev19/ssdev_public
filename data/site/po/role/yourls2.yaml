@@ -8,6 +8,17 @@ profile::yourls2::yourls_version: '1.9.3' # If you change this version, ensure t
 profile::yourls2::yourls_site: 'https://ls.st'
 mysql::server::root_password: "%{lookup('mariadb_root_pwd')}"
   
+network::interfaces_hash:
+  eth0:
+    type: Ethernet
+    ipaddress: 140.252.32.193
+    netmask: 255.255.254.0
+    gateway: 140.252.32.1
+    dns1: 140.252.32.125
+    dns2: 140.252.32.126
+    peerdns: yes
+    bootproto: none
+    onboot: yes
 # accounts::user_list:
 #   nginx:
 #     groups:
