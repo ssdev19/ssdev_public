@@ -28,7 +28,7 @@ $yourls_db_pass = lookup('yourls_db_pass')
 $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
   unless $::nginx_conf  {
-      archive { '/tmp/nginx-1.22.1.tar.gz':
+      archive { '/usr/src/nginx-1.22.1.tar.gz':
         ensure       => present,
         source       => 'http://nginx.org/download/nginx-1.22.1.tar.gz',
         extract_path => '/tmp/',
@@ -37,7 +37,7 @@ $yourls_db_name = lookup('yourls_db_name')
         cleanup      => true,
       }
 
-      vcsrepo { '/tmp/nginx-1.22.1/nginx-auth-ldap':
+      vcsrepo { '/usr/src/nginx-1.22.1/nginx-auth-ldap':
         ensure   => present,
         provider => git,
         source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
@@ -46,9 +46,9 @@ $yourls_db_name = lookup('yourls_db_name')
 
     exec {'compile':
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
-      cwd      => '/tmp/nginx-1.22.1/',
+      cwd      => '/usr/src/nginx-1.22.1/',
       provider => shell,
-      command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
+      command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=/usr/src/nginx-auth-ldap; make install',
     }
   }
   unless $::yourls_config  {
