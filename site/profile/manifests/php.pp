@@ -9,7 +9,7 @@ class profile::php {
     # config_root => '/etc/php/8.1',
   }
   -> class { '::php':
-      manage_repos => true,
+      # manage_repos => true,
       # yum_repo     => 'remi_php81'
     }
 }
