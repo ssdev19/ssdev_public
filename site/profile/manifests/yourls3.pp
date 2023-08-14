@@ -1,4 +1,4 @@
-class profile::yourls2 ( String
+class profile::yourls3 ( String
 # $ sudo yum module reset nginx
 # $ sudo yum module enable nginx:1.16
 # ## verify it version set to 1.22 ##
