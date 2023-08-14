@@ -31,10 +31,10 @@ network::interfaces_hash:
 #   php_version: '7.3.27'
 php::repo::redhat:
   yum_repo: 'remi_php81'
-php::ensure: 
-php::fpm: true
-php::fpm_user: 'nginx'
-php::fpm_group: 'nginx'
+# php::ensure: 
+# php::fpm: true
+# php::fpm_user: 'nginx'
+# php::fpm_group: 'nginx'
 # php::fpm::pool:
 #   'nginx':
 #     user: 'nginx'
