@@ -6,7 +6,7 @@ class profile::base_linux (
   Boolean $nsswitch = false,
   Boolean $ntp      = false,
 ) {
-  # include network
+  include network
   # include archive
   include firewalld
   include ssh
