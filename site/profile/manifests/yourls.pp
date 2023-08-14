@@ -179,6 +179,12 @@ file { '/etc/nginx/YOURLS':
     ensure  => file,
     content => $phpinfo,
   }
+  archive { '/etc/php-fpm.d/www.conf' :
+    ensure  => present,
+    source  => 's3://yourls-data/www_conf_new',
+    cleanup => false,
+  }
+
 # Creates nginx service in  /etc/systemd/system/nginx.service
 # Sometimes the server needs to be rebooted after the service creation.
 $mainpid = '$MAINPID' #lookup('mainpid')

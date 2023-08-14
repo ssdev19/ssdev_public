@@ -8,12 +8,12 @@ profile::yourls::yourls_version: '1.9.3' # If you change this version, ensure to
 profile::yourls::yourls_site: 'https://ls.st'
 mysql::server::root_password: "%{lookup('mariadb_root_pwd')}"
   
-# accounts::user_list:
-#   nginx:
-#     groups:
-#       - 'nginx'
-#     managehome: false
-#     system: true
+accounts::user_list:
+  nginx:
+    groups:
+      - 'nginx'
+    managehome: false
+    system: true
 
 # php::manage_repos: true
 # php::globals:
