@@ -114,7 +114,7 @@ file { '/etc/nginx/YOURLS':
   #     import_timeout => 900,
   #     # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
   #   }
-}
+# }
   # php::fpm::pool{'nginx':
   #   user         => 'nginx',
   #   group        => 'nginx',
