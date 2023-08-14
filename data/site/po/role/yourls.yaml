@@ -2,10 +2,10 @@
 classes:
   - profile::base_linux
   # - profile::php
-  - profile::yourls2
+  - profile::yourls
 profile::base_linux::awscli: true
-profile::yourls2::yourls_version: '1.9.3' # If you change this version, ensure to update file rubinobs_facts.rb
-profile::yourls2::yourls_site: 'https://ls.st'
+profile::yourls::yourls_version: '1.9.3' # If you change this version, ensure to update file rubinobs_facts.rb
+profile::yourls::yourls_site: 'https://ls.st'
 mysql::server::root_password: "%{lookup('mariadb_root_pwd')}"
   
 # accounts::user_list:

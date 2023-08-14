@@ -81,7 +81,7 @@ file { '/etc/nginx/YOURLS':
     path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
     cwd      => '/tmp/nginx-1.24.0/',
     provider => shell,
-    command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-select_module --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
+    command  => './configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib64/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=nginx --group=nginx --with-threads --with-http_ssl_module --with-http_v2_module --http-log-path=/var/log/nginx/access.log --add-module=./nginx-auth-ldap; make install',
   }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
@@ -176,6 +176,53 @@ file { '/etc/nginx/YOURLS':
   file { "/etc/nginx/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
+  }
+# Creates nginx service in  /etc/systemd/system/nginx.service
+# Sometimes the server needs to be rebooted after the service creation.
+$mainpid = '$MAINPID' #lookup('mainpid')
+  $nginx_service = @("EOT")
+    [Unit]
+    Description=The nginx HTTP and reverse proxy server
+    After=network.target remote-fs.target nss-lookup.target
+
+    [Service]
+    Type=forking
+    PIDFile=/var/run/nginx.pid
+    # Nginx will fail to start if /run/nginx.pid already exists but has the wrong
+    # SELinux context. This might happen when running `nginx -t` from the cmdline.
+    # https://bugzilla.redhat.com/show_bug.cgi?id=1268621
+    ExecStartPre=/usr/bin/rm -f /var/run/nginx.pid
+    ExecStartPre=/usr/sbin/nginx -t
+    ExecStart=/usr/sbin/nginx
+    ExecReload=/bin/kill -s HUP ${mainpid}
+    KillSignal=SIGQUIT
+    TimeoutStopSec=5
+    KillMode=process
+    PrivateTmp=true
+
+    [Install]
+    WantedBy=multi-user.target
+    | EOT
+# 
+  systemd::unit_file { 'nginx.service':
+    content => "${nginx_service}",
+    mode => '0664',
+  }
+  -> service { 'nginx':
+  # subscribe => nginx::Instance['default'],
+  enable    => true,
+  ensure    => 'running',
+  }
+  file {
+    '/etc/systemd/system/nginx.service.d':
+      ensure => directory,
+  }
+  unless $::nginx_pid  {
+    exec {'fix_nginx.pid_error':
+      path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
+      provider => shell,
+      command  => 'printf "[Service]\\nExecStartPost=/bin/sleep 0.1\\n" > /etc/systemd/system/nginx.service.d/override.conf; systemctl daemon-reload; systemctl restart nginx ',
+    }
   }
 
 }
