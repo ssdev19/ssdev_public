@@ -12,6 +12,7 @@ $yourls_site,
   include mysql::server
   # include '::php'
   # include '::php::globals'
+  include network
 
   Package { [ 'openldap-devel', 'make', 'yum-utils' ]:
     ensure => installed,
