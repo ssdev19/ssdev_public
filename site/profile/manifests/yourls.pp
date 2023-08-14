@@ -31,7 +31,7 @@ $yourls_db_name = lookup('yourls_db_name')
       archive { '/usr/src/nginx-1.22.1.tar.gz':
         ensure       => present,
         source       => 'http://nginx.org/download/nginx-1.22.1.tar.gz',
-        extract_path => '/tmp/',
+        extract_path => '/usr/src',
         extract      => true,
         provider     => 'wget',
         cleanup      => true,
