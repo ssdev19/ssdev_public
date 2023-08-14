@@ -34,7 +34,7 @@ $yourls_db_name = lookup('yourls_db_name')
         extract_path => '/usr/src',
         extract      => true,
         provider     => 'wget',
-        cleanup      => true,
+        cleanup      => false,
       }
 
       vcsrepo { '/usr/src/nginx-1.22.1/nginx-auth-ldap':
