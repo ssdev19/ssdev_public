@@ -79,21 +79,6 @@ $yourls_db_name = lookup('yourls_db_name')
       file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
       ensure => directory,
     }
-    archive { '/tmp/nginx-1.22.1.tar.gz':
-      ensure       => present,
-      source       => 'http://nginx.org/download/nginx-1.22.1.tar.gz',
-      extract_path => '/tmp/',
-      extract      => true,
-      provider     => 'wget',
-      cleanup      => true,
-    }
-
-    vcsrepo { '/tmp/nginx-1.22.1/nginx-auth-ldap':
-      ensure   => present,
-      provider => git,
-      source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
-      user     => 'root',
-    }
   }
 file { '/etc/nginx/YOURLS':
   ensure => 'link',
