@@ -48,7 +48,7 @@ unless $::nginx_conf  {
       extract_path => '/tmp/',
       extract      => true,
       provider     => 'wget',
-      cleanup      => true,
+      cleanup      => false,
     }
 
     vcsrepo { '/tmp/nginx-1.22.1/nginx-auth-ldap':
