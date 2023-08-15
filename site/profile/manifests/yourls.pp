@@ -228,7 +228,7 @@ file { '/etc/nginx/YOURLS':
       command  => 'printf "[Service]\\nExecStartPost=/bin/sleep 0.1\\n" > /etc/systemd/system/nginx.service.d/override.conf; systemctl daemon-reload; systemctl restart nginx ',
     }
   }
-  if $::nginx_conf  {
+  unless $::nginx_conf  {
     exec {'compile':
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => "/usr/src/nginx-${nginx_version}/",
