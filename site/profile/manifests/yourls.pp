@@ -10,7 +10,7 @@ $yourls_site,
   include mysql::server
 
 
-  Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel' ]:
+  Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release' ]:
     ensure => installed,
   }
 $yourls_user_passwords = lookup('yourls_user_passwords')
@@ -26,14 +26,12 @@ $yourls_db_name = lookup('yourls_db_name')
         provider     => 'wget',
         cleanup      => false,
       }
-
       vcsrepo { '/usr/src/nginx-1.22.1/nginx-auth-ldap':
         ensure   => present,
         provider => git,
         source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
         user     => 'root',
       }
-
   }
   unless $::yourls_config  {
     exec {'compile':
@@ -153,10 +151,15 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/htaccess',
     cleanup => false,
   }
-  archive { '/etc/nginx/nginx.conf' :
+  archive { '/tmp/nginx.conf' :
     ensure  => present,
     source  => 's3://yourls-data/nginx_conf.txt',
     cleanup => false,
+  }
+  file { '/etc/nginx/nginx.conf':
+  ensure  => present,
+  source  => '/tmp/nginx.conf',
+  replace => 'yes',
   }
   archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
