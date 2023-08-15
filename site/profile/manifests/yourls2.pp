@@ -40,5 +40,22 @@ $phpinfo2 = lookup ('phpinfo2')
       # mysql_exec_path => '/opt/rh/rh-myql57/root/bin',
     }
 # }
+  unless $::nginx_conf  {
+      archive { '/usr/src/nginx-1.24.0.tar.gz':
+        ensure       => present,
+        source       => 'http://nginx.org/download/nginx-1.24.0.tar.gz',
+        extract_path => '/usr/src',
+        extract      => true,
+        provider     => 'wget',
+        cleanup      => false,
+      }
 
+      vcsrepo { '/usr/src/nginx-1.24.0/nginx-auth-ldap':
+        ensure   => present,
+        provider => git,
+        source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
+        user     => 'root',
+      }
+
+  }
 }
