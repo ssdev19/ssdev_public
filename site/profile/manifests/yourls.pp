@@ -44,7 +44,7 @@ $yourls_db_name = lookup('yourls_db_name')
     vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
       ensure   => present,
       provider => git,
-      source   => "https://github.com/YOURLS/YOURLS.git",
+      source   => 'https://github.com/YOURLS/YOURLS.git',
       user     => 'root',
     }
     mysql::db { $yourls_db_name:
