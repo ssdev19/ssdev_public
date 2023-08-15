@@ -228,7 +228,7 @@ file { '/etc/nginx/YOURLS':
       command  => 'printf "[Service]\\nExecStartPost=/bin/sleep 0.1\\n" > /etc/systemd/system/nginx.service.d/override.conf; systemctl daemon-reload; systemctl restart nginx ',
     }
   }
-  if $::nginx_conf  {
+  # if $::nginx_conf  {
     exec {'compile':
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => "/usr/src/nginx-${nginx_version}/",
@@ -237,5 +237,5 @@ file { '/etc/nginx/YOURLS':
       timeout  => 900,
       # onlyif   => 'test -e /usr/src/nginx-1.22.1/configure'
     }
-  }
+  # }
 }
