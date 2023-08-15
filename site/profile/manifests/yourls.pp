@@ -8,17 +8,7 @@ $yourls_site,
 ){
   # include nginx
   include mysql::server
-  # include '::php'
-  # include '::php::globals'
 
-# class { '::php::globals':
-#   php_version => '7.3',
-#   config_root => '/etc/php/',
-# }
-# -> class { '::php':
-#     manage_repos => true,
-#     ensure       => '7.3.27',
-# }
 
   Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel' ]:
     ensure => installed,
