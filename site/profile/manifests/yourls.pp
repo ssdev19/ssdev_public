@@ -17,7 +17,7 @@ $yourls_user_passwords = lookup('yourls_user_passwords')
 $yourls_db_pass = lookup('yourls_db_pass')
 $yourls_db_user = lookup('yourls_db_user')
 $yourls_db_name = lookup('yourls_db_name')
-  unless $::nginx_conf  {
+  if $::nginx_conf  {
     exec {'compile':
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => "/usr/src/nginx-${nginx_version}/",
