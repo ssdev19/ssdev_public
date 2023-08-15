@@ -142,7 +142,6 @@ file { '/etc/nginx/YOURLS':
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
   }
-  $phpinfo = lookup ('phpinfo')
   file { "/etc/nginx/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
     content => $phpinfo,
