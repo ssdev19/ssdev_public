@@ -25,6 +25,11 @@ Facter.add(:nginx_pid) do
     File.exists?('/etc/systemd/system/nginx.service.d/override.conf')
   end
 end
+Facter.add(:phpingo) do
+  setcode do
+    File.exists?('/etc/nginx/YOURLS/phpinfo.php')
+  end
+end
 # scom.pp
 #   class scom {
 #     if $pf_svc {
