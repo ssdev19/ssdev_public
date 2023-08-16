@@ -17,7 +17,7 @@ Facter.add(:yourls_db) do
 end
 Facter.add(:nginx_conf) do
   setcode do
-    File.exists?('/etc/nginx/html/index.html')
+    File.exists?('/etc/nginx/conf.d/yourls.conf')
   end
 end
 Facter.add(:nginx_pid) do
