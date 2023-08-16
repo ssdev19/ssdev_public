@@ -147,6 +147,11 @@ file { '/etc/nginx/YOURLS':
       timeout  => 900,
       # onlyif   => 'test -e /usr/src/nginx-1.22.1/configure'
     }
+    file { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php":
+    ensure  => present,
+    source  => '/tmp/index.php',
+    replace => 'yes',
+    }
   }
 }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
