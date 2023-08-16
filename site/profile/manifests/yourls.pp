@@ -89,22 +89,17 @@ file { '/etc/nginx/YOURLS':
     extract_path => '/tmp',
   }
 
+  archive { '/etc/pki/tls/certs/ls.st.current.crt' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.crt',
+    cleanup => false,
+  }
+  archive { '/etc/pki/tls/certs/ls.st.current.key' :
+    ensure  => present,
+    source  => 's3://yourls-data/ls.st.current.key',
+    cleanup => false,
+  }
 
-  archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
-    ensure  => present,
-    source  => 's3://yourls-data/htaccess',
-    cleanup => false,
-  }
-  archive { '/tmp/nginx.conf' :
-    ensure  => present,
-    source  => 's3://yourls-data/nginx_conf.txt',
-    cleanup => false,
-  }
-  file { '/etc/nginx/nginx.conf':
-  ensure  => present,
-  source  => '/tmp/nginx.conf',
-  replace => 'yes',
-  }
   archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
     source  => 's3://yourls-data/yourls-logo.png',
@@ -152,8 +147,43 @@ file { '/etc/nginx/YOURLS':
     source  => '/tmp/index.php',
     replace => 'yes',
     }
+    file { "/etc/nginx/YOURLS-${yourls_version}/index.html":
+    ensure  => present,
+    source  => '/tmp/index.html',
+    replace => 'yes',
+    }
+    file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+    ensure  => present,
+    source  => '/tmp/config.php',
+    replace => 'yes',
+    }
+    file { "/etc/nginx/YOURLS-${yourls_version}/.htaccess":
+    ensure  => present,
+    source  => '/tmp/htaccess',
+    replace => 'yes',
+    }
+    file { '/etc/nginx/conf.d/yourls.conf':
+    ensure  => present,
+    source  => '/tmp/yourls_config_new.txt',
+    replace => 'yes',
+    }
   }
 }
+  # archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
+  #   ensure  => present,
+  #   source  => 's3://yourls-data/htaccess',
+  #   cleanup => false,
+  # }
+  # archive { '/tmp/nginx.conf' :
+  #   ensure  => present,
+  #   source  => 's3://yourls-data/nginx_conf.txt',
+  #   cleanup => false,
+  # }
+  # file { '/etc/nginx/nginx.conf':
+  # ensure  => present,
+  # source  => '/tmp/nginx.conf',
+  # replace => 'yes',
+  # }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php" :
   #   ensure  => present,
   #   source  => 's3://yourls-data/index.php',
@@ -172,16 +202,6 @@ file { '/etc/nginx/YOURLS':
   # archive { "/etc/nginx/YOURLS-${yourls_version}/user/config.php" :
   #   ensure  => present,
   #   source  => 's3://yourls-data/config.php',
-  #   cleanup => false,
-  # }
-  # archive { '/etc/pki/tls/certs/ls.st.current.crt' :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/ls.st.current.crt',
-  #   cleanup => false,
-  # }
-  # archive { '/etc/pki/tls/certs/ls.st.current.key' :
-  #   ensure  => present,
-  #   source  => 's3://yourls-data/ls.st.current.key',
   #   cleanup => false,
   # }
 
