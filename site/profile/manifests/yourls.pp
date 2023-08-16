@@ -167,6 +167,11 @@ file { '/etc/nginx/YOURLS':
     source  => '/tmp/yourls_config_new.txt',
     replace => 'yes',
     }
+    file { '/etc/nginx/nginx.conf':
+    ensure  => present,
+    source  => '/tmp/nginx_conf.txt',
+    replace => 'yes',
+    }
   }
 }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
