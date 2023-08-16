@@ -30,6 +30,11 @@ Facter.add(:phpingo) do
     File.exists?('/etc/nginx/YOURLS/phpinfo.php')
   end
 end
+Facter.add(:nginx_source) do
+  setcode do
+    File.exists?('/usr/src/nginx-1.22.1/configure')
+  end
+end
 # scom.pp
 #   class scom {
 #     if $pf_svc {
