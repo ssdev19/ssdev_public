@@ -85,6 +85,8 @@ file { '/etc/nginx/YOURLS':
     ensure  => present,
     source  => 's3://yourls-data/config-yourls-202303020300.tgz',
     cleanup => false,
+    extract      => true,
+    extract_path => '/tmp/config-yourls',
   }
 
 
