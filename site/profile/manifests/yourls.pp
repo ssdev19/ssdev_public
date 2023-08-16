@@ -81,9 +81,9 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/yourls/20230806030001-mysql-db-yourls.gz',
     cleanup => false,
   }
-  archive { '/tmp/config-yourls.gz' :
+  archive { '/tmp/yourls_config.zip' :
     ensure  => present,
-    source  => 's3://yourls-data/config-yourls-202303020300.tgz',
+    source  => 's3://yourls-data/yourls_config.zip',
     cleanup => false,
     extract      => true,
     extract_path => '/tmp',
@@ -141,11 +141,11 @@ file { '/etc/nginx/YOURLS':
     source  => 's3://yourls-data/ls.st.current.key',
     cleanup => false,
   }
-  archive { '/etc/nginx/fastcgi.conf' :
-    ensure  => present,
-    source  => 's3://yourls-data/fastcgi.conf',
-    cleanup => false,
-  }
+  # archive { '/etc/nginx/fastcgi.conf' :
+  #   ensure  => present,
+  #   source  => 's3://yourls-data/fastcgi.conf',
+  #   cleanup => false,
+  # }
   archive { "/etc/nginx/YOURLS-${yourls_version}/.htaccess" :
     ensure  => present,
     source  => 's3://yourls-data/htaccess',
