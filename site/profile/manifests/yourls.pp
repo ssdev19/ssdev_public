@@ -83,7 +83,7 @@ file { '/etc/nginx/YOURLS':
   }
   archive { '/tmp/config-yourls.gz' :
     ensure  => present,
-    source  => 's3://yourls-data/yourls/config-yourls-202303020300.tgz',
+    source  => 's3://yourls-data/config-yourls-202303020300.tgz',
     cleanup => false,
   }
 
