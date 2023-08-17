@@ -48,9 +48,9 @@ include mysql::server
     source  => 's3://yourls-data/yourls/20230816030002-mysql-db-yourls.gz',
     cleanup => false,
   }
-    # file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
-    #   ensure => directory,
-    # }
+    file { "/etc/nginx/YOURLS-${yourls_version}/shorten":
+      ensure => directory,
+    }
 
 file { '/etc/nginx/YOURLS':
   ensure => 'link',
@@ -119,35 +119,35 @@ file { '/etc/nginx/YOURLS':
       timeout  => 900,
       # onlyif   => 'test -e /usr/src/nginx-1.22.1/configure'
     }
-    # file { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php":
-    # ensure  => present,
-    # source  => '/tmp/index.php',
-    # replace => 'yes',
-    # }
-    # file { "/etc/nginx/YOURLS-${yourls_version}/index.html":
-    # ensure  => present,
-    # source  => '/tmp/index.html',
-    # replace => 'yes',
-    # }
-    # file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
-    # ensure  => present,
-    # source  => '/tmp/config.php',
-    # replace => 'yes',
-    # }
-    # file { "/etc/nginx/YOURLS-${yourls_version}/.htaccess":
-    # ensure  => present,
-    # source  => '/tmp/htaccess',
-    # replace => 'yes',
-    # }
-    # file { '/etc/nginx/conf.d/yourls.conf':
-    # ensure  => present,
-    # source  => '/tmp/yourls_config_new.txt',
-    # replace => 'yes',
-    # }
-    # file { '/etc/nginx/nginx.conf':
-    # ensure  => present,
-    # source  => '/tmp/nginx_conf.txt',
-    # replace => 'yes',
-    # }
+    file { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php":
+    ensure  => present,
+    source  => '/tmp/index.php',
+    replace => 'yes',
+    }
+    file { "/etc/nginx/YOURLS-${yourls_version}/index.html":
+    ensure  => present,
+    source  => '/tmp/index.html',
+    replace => 'yes',
+    }
+    file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
+    ensure  => present,
+    source  => '/tmp/config.php',
+    replace => 'yes',
+    }
+    file { "/etc/nginx/YOURLS-${yourls_version}/.htaccess":
+    ensure  => present,
+    source  => '/tmp/htaccess',
+    replace => 'yes',
+    }
+    file { '/etc/nginx/conf.d/yourls.conf':
+    ensure  => present,
+    source  => '/tmp/yourls_config_new.txt',
+    replace => 'yes',
+    }
+    file { '/etc/nginx/nginx.conf':
+    ensure  => present,
+    source  => '/tmp/nginx_conf.txt',
+    replace => 'yes',
+    }
   }
 }
