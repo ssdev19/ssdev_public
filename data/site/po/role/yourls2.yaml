@@ -25,10 +25,10 @@ network::interfaces_hash:
 mysql::server::backup:
   backupuser: root
   backuppassword: "%{lookup('mariadb_root_pwd')}"
-  provider: 'xtrabackup',
-  backupmethod: 'mariabackup',
-  backupmethod_package: 'mariadb-backup',
-  backupdir: '/tmp/backups',
-  backuprotate: 15,
-  execpath: '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time: ['19', '56']
+  provider: 'xtrabackup'
+  backupmethod: 'mariabackup'
+  backupmethod_package: 'mariadb-backup'
+  backupdir: '/tmp/backups'
+  backuprotate: 15
+  execpath: '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin'
+  time: ['19', '58']
