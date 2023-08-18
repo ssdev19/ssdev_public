@@ -184,15 +184,5 @@ include mysql::server
     replace => 'yes',
     }
   }
-class { 'mysql::server::backup':
-  backupuser              => $yourls_db_user_hide.unwrap,
-  backuppassword          => $yourls_db_pass_hide.unwrap,
-  provider                => 'xtrabackup',
-  backupmethod            => 'mariabackup',
-  backupmethod_package    => 'mariadb-backup',
-  backupdir               => '/tmp/backups',
-  backuprotate            => 15,
-  execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                    => ['19', '35'],
-}
+
 }
