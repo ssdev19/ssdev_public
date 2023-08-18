@@ -57,15 +57,23 @@ include mysql::server
         ensure => file,
         source => '/tmp/mass-remove-links-plugin.php',
         ;
+
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url":
         ensure => directory,
         ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url/plugin.php":
+        ensure => file,
+        source => '/tmp/preview-url-plugin.php'
+        ;
+
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin":
         ensure => directory,
         ;
+
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode":
         ensure => directory,
         ;
+
       "/etc/nginx/YOURLS-${yourls_version}/shorten":
         ensure => directory,
         ;
