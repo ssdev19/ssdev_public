@@ -184,6 +184,7 @@ include mysql::server
     replace => 'yes',
     }
   }
+  }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
 class { 'mysql::server::backup':
   backupuser              => $yourls_db_user_hide.unwrap,
@@ -199,7 +200,6 @@ class { 'mysql::server::backup':
 }
 
 
-  }
   $yourls_db_name = lookup('yourls_db_name')
   mysql::db { $yourls_db_name:
     user           => $yourls_db_user_hide.unwrap,
