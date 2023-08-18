@@ -32,17 +32,17 @@ include mysql::server
         source   => 'https://github.com/YOURLS/YOURLS.git',
         user     => 'root',
       }
-  #     $yourls_db_name = lookup('yourls_db_name')
-  #     mysql::db { $yourls_db_name:
-  #       user           => $yourls_db_user_hide.unwrap,
-  #       password       => $yourls_db_pass_hide.unwrap,
-  #       host           => 'localhost',
-  #       grant          => ['ALL'],
-  #       sql            => ['/tmp/mysql-db-yourls.gz'],
-  #       import_cat_cmd => 'zcat',
-  #       import_timeout => 900,
-  #     }
-  # }
+      $yourls_db_name = lookup('yourls_db_name')
+      mysql::db { $yourls_db_name:
+        user           => $yourls_db_user_hide.unwrap,
+        password       => $yourls_db_pass_hide.unwrap,
+        host           => 'localhost',
+        grant          => ['ALL'],
+        sql            => ['/tmp/mysql-db-yourls.gz'],
+        import_cat_cmd => 'zcat',
+        import_timeout => 900,
+      }
+  }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
     source  => 's3://yourls-data/yourls/20230816030002-mysql-db-yourls.gz',
@@ -184,7 +184,6 @@ include mysql::server
     replace => 'yes',
     }
   }
-  }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
 class { 'mysql::server::backup':
   backupuser              => $yourls_db_user_hide.unwrap,
@@ -200,14 +199,4 @@ class { 'mysql::server::backup':
 }
 
 
-  $yourls_db_name = lookup('yourls_db_name')
-  mysql::db { $yourls_db_name:
-    user           => $yourls_db_user_hide.unwrap,
-    password       => $yourls_db_pass_hide.unwrap,
-    host           => 'localhost',
-    grant          => ['ALL'],
-    sql            => ['/tmp/backups/mysql_backup_20230818-233501.sql.gz'],
-    import_cat_cmd => 'zcat',
-    import_timeout => 900,
-  }
 }
