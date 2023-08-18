@@ -191,7 +191,7 @@ class { 'mysql::server::backup':
   provider                => 'xtrabackup',
   incremental_backups     => false,
 # backupmethod            => 'mariabackup',
-  backupmethod_package    => 'mariadb-backup',
+  # backupmethod_package    => 'mariadb-backup',
   backupdir               => '/tmp/backups',
   backuprotate            => 5,
   execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
