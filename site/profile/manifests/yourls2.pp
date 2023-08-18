@@ -188,7 +188,7 @@ include mysql::server
 class { 'mysql::server::backup':
   backupuser              => 'root',
   backuppassword          => $mariadb_root_pwd,
-  provider                => 'xtrabackup',
+  provider                => 'mysqldump',
   incremental_backups     => false,
 # backupmethod            => 'mariabackup',
   # backupmethod_package    => 'mariadb-backup',
