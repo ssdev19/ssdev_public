@@ -53,6 +53,10 @@ include mysql::server
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
         ensure => directory,
         ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links/plugin.php":
+        ensure => file,
+        source => '/tmp/mass-remove-links-plugin.php',
+        ;
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url":
         ensure => directory,
         ;
