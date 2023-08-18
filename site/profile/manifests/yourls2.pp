@@ -185,6 +185,13 @@ include mysql::server
     }
   }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
+yumrepo { 'percona':
+  descr    => 'CentOS $releasever - Percona',
+  baseurl  => 'http://repo.percona.com/release/$releasever/RPMS/$basearch',
+  gpgkey   => 'https://www.percona.com/downloads/RPM-GPG-KEY-percona https://repo.percona.com/yum/PERCONA-PACKAGING-KEY',
+  enabled  => 1,
+  gpgcheck => 1,
+}
 class { 'mysql::server::backup':
   backupuser              => 'root',
   backuppassword          => $mariadb_root_pwd,
