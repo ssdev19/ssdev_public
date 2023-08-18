@@ -199,14 +199,14 @@ class { 'mysql::server::backup':
 }
 
 
-      mysql::db { $yourls_db_name:
-        user           => $yourls_db_user_hide.unwrap,
-        password       => $yourls_db_pass_hide.unwrap,
-        host           => 'localhost',
-        grant          => ['ALL'],
-        sql            => ['/tmp/mysql_backup_20230818-204801.sql.bz2'],
-        import_cat_cmd => 'zcat',
-        import_timeout => 900,
-      }
+  mysql::db { $yourls_db_name:
+    user           => $yourls_db_user_hide.unwrap,
+    password       => $yourls_db_pass_hide.unwrap,
+    host           => 'localhost',
+    grant          => ['ALL'],
+    sql            => ['/tmp/mysql_backup_20230818-204801.sql.bz2'],
+    import_cat_cmd => 'zcat',
+    import_timeout => 900,
+  }
 
 }
