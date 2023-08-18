@@ -185,15 +185,15 @@ include mysql::server
     }
   }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
-# class { 'mysql::server::backup':
-#   backupuser              => 'root',
-#   backuppassword          => $mariadb_root_pwd,
-#   provider                => 'xtrabackup',
-#   backupmethod            => 'mariabackup',
-#   backupmethod_package    => 'mariadb-backup',
-#   backupdir               => '/tmp/backups',
-#   backuprotate            => 15,
-#   execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-#   time                    => ['19', '59'],
-# }
+class { 'mysql::server::backup':
+  backupuser              => 'root',
+  backuppassword          => $mariadb_root_pwd,
+  provider                => 'xtrabackup',
+  backupmethod            => 'mariabackup',
+  backupmethod_package    => 'mariadb-backup',
+  backupdir               => '/tmp/backups',
+  backuprotate            => 15,
+  execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
+  time                    => ['20', '10'],
+}
 }
