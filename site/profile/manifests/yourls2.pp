@@ -186,8 +186,8 @@ include mysql::server
   }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
 class { 'mysql::server::backup':
-  # backupuser              => 'root',
-  backuppassword          => $mariadb_root_pwd,
+  backupuser              => $yourls_db_user_hide.unwrap,
+  backuppassword          => $yourls_db_pass_hide.unwrap,
   provider                => 'mysqldump',
   incremental_backups     => false,
 # backupmethod            => 'mariabackup',
