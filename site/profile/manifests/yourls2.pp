@@ -185,8 +185,8 @@ include mysql::server
     }
   }
 class { 'mysql::server::backup':
-  backupuser              => $yourls_db_user_hide,
-  backuppassword          => $yourls_db_pass_hide,
+  backupuser              => $yourls_db_user_hide.unwrap,
+  backuppassword          => $yourls_db_pass_hide.unwrap,
   provider                => 'xtrabackup',
   backupmethod            => 'mariabackup',
   backupmethod_package    => 'mariadb-backup',
