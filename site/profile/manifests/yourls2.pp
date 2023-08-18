@@ -53,10 +53,10 @@ include mysql::server
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
         ensure => directory,
         ;
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/plugins/preview-url":
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url":
         ensure => directory,
         ;
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/plugins/show-plugin":
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin":
         ensure => directory,
         ;
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode":
