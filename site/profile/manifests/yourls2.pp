@@ -1,4 +1,4 @@
-# URL Shortener
+# URL Shortener.  Use dnf install nginx instead of the module as it needs to be recompiled.
 class profile::yourls2 (Sensitive[String]
 $yourls_db_pass_hide,
 $yourls_db_user_hide,
@@ -26,29 +26,29 @@ include mysql::server
         source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
         user     => 'root',
       }
-    vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
-      ensure   => present,
-      provider => git,
-      source   => 'https://github.com/YOURLS/YOURLS.git',
-      user     => 'root',
-    }
-    $yourls_db_name = lookup('yourls_db_name')
-    mysql::db { $yourls_db_name:
-      user           => $yourls_db_user_hide.unwrap,
-      password       => $yourls_db_pass_hide.unwrap,
-      host           => 'localhost',
-      grant          => ['ALL'],
-      sql            => ['/tmp/mysql-db-yourls.gz'],
-      import_cat_cmd => 'zcat',
-      import_timeout => 900,
-    }
+      vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
+        ensure   => present,
+        provider => git,
+        source   => 'https://github.com/YOURLS/YOURLS.git',
+        user     => 'root',
+      }
+      $yourls_db_name = lookup('yourls_db_name')
+      mysql::db { $yourls_db_name:
+        user           => $yourls_db_user_hide.unwrap,
+        password       => $yourls_db_pass_hide.unwrap,
+        host           => 'localhost',
+        grant          => ['ALL'],
+        sql            => ['/tmp/mysql-db-yourls.gz'],
+        import_cat_cmd => 'zcat',
+        import_timeout => 900,
+      }
   }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
     source  => 's3://yourls-data/yourls/20230816030002-mysql-db-yourls.gz',
     cleanup => false,
   }
-
+# Installs plugins.  Need to be activated in GUI
     file {
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
         ensure => directory,
@@ -81,15 +81,15 @@ include mysql::server
         ensure => file,
         source => '/tmp/yourls-preview-url-with-qrcode-plugin.php'
         ;
-
+# Shorten directory
       "/etc/nginx/YOURLS-${yourls_version}/shorten":
         ensure => directory,
         ;
     }
-file { '/etc/nginx/YOURLS':
-  ensure => 'link',
-  target => "/etc/nginx/YOURLS-${yourls_version}",
-}
+  file { '/etc/nginx/YOURLS':
+    ensure => 'link',
+    target => "/etc/nginx/YOURLS-${yourls_version}",
+  }
 
   archive { '/tmp/yourls_config.zip' :
     ensure       => present,
@@ -184,4 +184,15 @@ file { '/etc/nginx/YOURLS':
     replace => 'yes',
     }
   }
+class { 'mysql::server::backup':
+  backupuser              => $yourls_db_user_hide,
+  backuppassword          => $yourls_db_pass_hide,
+  provider                => 'xtrabackup',
+  backupmethod            => 'mariabackup',
+  backupmethod_package    => 'mariadb-backup',
+  backupdir               => '/tmp/backups',
+  backuprotate            => 15,
+  execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
+  time                    => ['23', '15'],
+}
 }
