@@ -69,9 +69,17 @@ include mysql::server
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin":
         ensure => directory,
         ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin/plugin.php":
+        ensure => file,
+        source => '/tmp/show-plugin-plugin.php'
+        ;
 
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode":
         ensure => directory,
+        ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode/plugin.php":
+        ensure => file,
+        source => '/tmp/yourls-preview-url-with-qrcode-plugin.php'
         ;
 
       "/etc/nginx/YOURLS-${yourls_version}/shorten":
