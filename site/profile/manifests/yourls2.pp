@@ -184,7 +184,7 @@ include mysql::server
     replace => 'yes',
     }
   }
-  $mariadb_root_pwd = lookup('mariadb_root_pwd')
+  # $mariadb_root_pwd = lookup('mariadb_root_pwd')
 class { 'mysql::server::backup':
   backupuser              => 'root',
   backuppassword          => $mariadb_root_pwd,
