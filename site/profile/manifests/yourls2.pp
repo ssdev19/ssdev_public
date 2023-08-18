@@ -195,7 +195,7 @@ class { 'mysql::server::backup':
   backupdir               => '/tmp/backups',
   backuprotate            => 5,
   execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                    => ['21', '26'],
+  time                    => ['21', '33'],
 }
 
 
@@ -205,7 +205,7 @@ class { 'mysql::server::backup':
     password       => $yourls_db_pass_hide.unwrap,
     host           => 'localhost',
     grant          => ['ALL'],
-    sql            => ['/tmp/backups/mysql_backup_20230818-212602.sql.bz2'],
+    sql            => ['/tmp/backups/mysql_backup_20230818-210801.sql.bz2'],
     import_cat_cmd => 'zcat',
     import_timeout => 900,
   }
