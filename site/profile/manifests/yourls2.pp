@@ -195,7 +195,7 @@ class { 'mysql::server::backup':
   backupdir               => '/tmp/backups',
   backuprotate            => 5,
   execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                    => ['20', '35'],
+  time                    => ['20', '36'],
 }
 
 #       $yourls_db_name = lookup('yourls_db_name')
@@ -208,4 +208,4 @@ class { 'mysql::server::backup':
 #         # import_cat_cmd => 'zcat',
 #         import_timeout => 900,
 #       }
-# }
+}
