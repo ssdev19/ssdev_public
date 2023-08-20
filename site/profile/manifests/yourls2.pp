@@ -205,8 +205,8 @@ class { 'mysql::server::backup':
     password       => $yourls_db_pass_hide.unwrap,
     host           => 'localhost',
     grant          => ['ALL'],
-    sql            => ['/tmp/backups/mysql_backup_20230820-212601.sql.gz'],
-    import_cat_cmd => 'zcat',
+    sql            => ['/tmp/backups/mysql_backup_20230820-205401.sql.bz2'],
+    import_cat_cmd => 'bzcat',
     import_timeout => 900,
   }
 }
