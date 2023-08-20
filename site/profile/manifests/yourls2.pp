@@ -190,13 +190,13 @@ class { 'mysql::server::backup':
   backuppassword          => $yourls_db_pass_hide.unwrap,
   provider                => 'mysqldump',
   incremental_backups     => false,
-  compression_extension   => 'gz'
+  compression_extension   => 'gz',
 # backupmethod            => 'mariabackup',
   # backupmethod_package    => 'mariadb-backup',
   backupdir               => '/tmp/backups',
   backuprotate            => 5,
   execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                    => ['21', '12'],
+  time                    => ['21', '14'],
 }
 
   # $yourls_db_name = lookup('yourls_db_name')
