@@ -190,7 +190,7 @@ class { 'mysql::server::backup':
   backuppassword          => $yourls_db_pass_hide.unwrap,
   provider                => 'mysqldump',
   incremental_backups     => false,
-  compression_extension   => '.gz',
+  # compression_extension   => '.gz',
 # backupmethod            => 'mariabackup',
   # backupmethod_package    => 'mariadb-backup',
   backupdir               => '/tmp/backups',
