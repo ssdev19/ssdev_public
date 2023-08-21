@@ -102,7 +102,7 @@ include mysql::server
     }
   }
   # Compile nginx
-  unless $::yourls_plugin  {
+  unless $::yourls_config  {
     exec {'compile':
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => "/usr/src/nginx-${nginx_version}/",

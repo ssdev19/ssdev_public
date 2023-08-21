@@ -35,11 +35,6 @@ Facter.add(:nginx_source) do
     File.exists?('/usr/src/nginx-1.22.1/configure')
   end
 end
-Facter.add(:yourls_plugin) do
-  setcode do
-    File.exists?('/etc/nginx/YOURLS/user/plugins/preview-url')
-  end
-end
 # scom.pp
 #   class scom {
 #     if $pf_svc {
