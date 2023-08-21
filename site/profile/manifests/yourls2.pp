@@ -20,28 +20,28 @@ include mysql::server
         provider     => 'wget',
         cleanup      => false,
       }
-      vcsrepo { "/usr/src/nginx-${nginx_version}/nginx-auth-ldap":
-        ensure   => present,
-        provider => git,
-        source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
-        user     => 'root',
-      }
-      vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
-        ensure   => present,
-        provider => git,
-        source   => 'https://github.com/YOURLS/YOURLS.git',
-        user     => 'root',
-      }
-      $yourls_db_name = lookup('yourls_db_name')
-      mysql::db { $yourls_db_name:
-        user           => $yourls_db_user_hide.unwrap,
-        password       => $yourls_db_pass_hide.unwrap,
-        host           => 'localhost',
-        grant          => ['ALL'],
-        sql            => ['/tmp/mysql-db-yourls.gz'],
-        import_cat_cmd => 'zcat',
-        import_timeout => 900,
-      }
+    vcsrepo { "/usr/src/nginx-${nginx_version}/nginx-auth-ldap":
+      ensure   => present,
+      provider => git,
+      source   => 'https://github.com/kvspb/nginx-auth-ldap.git',
+      user     => 'root',
+    }
+    vcsrepo { "/etc/nginx/YOURLS-${yourls_version}":
+      ensure   => present,
+      provider => git,
+      source   => 'https://github.com/YOURLS/YOURLS.git',
+      user     => 'root',
+    }
+    $yourls_db_name = lookup('yourls_db_name')
+    mysql::db { $yourls_db_name:
+      user           => $yourls_db_user_hide.unwrap,
+      password       => $yourls_db_pass_hide.unwrap,
+      host           => 'localhost',
+      grant          => ['ALL'],
+      sql            => ['/tmp/mysql-db-yourls.gz'],
+      import_cat_cmd => 'zcat',
+      import_timeout => 900,
+    }
   }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
@@ -142,7 +142,6 @@ include mysql::server
     replace => 'yes',
     }
 # Installs plugins.  Need to be activated in GUI
-
     file {
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
         ensure => directory,

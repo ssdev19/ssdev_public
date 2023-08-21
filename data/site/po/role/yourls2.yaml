@@ -34,7 +34,7 @@ cron::job:
     environment:
       - 'MAILTO=root'
       - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
-    description: 'pwm backup'
+    description: 'mysql-db backup'
 # mysql::server::backup:
 #   backupuser: 'root'
 #   backuppassword: "%{lookup('mariadb_root_pwd')}"
