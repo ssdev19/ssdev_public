@@ -111,6 +111,20 @@ include mysql::server
       timeout  => 900,
       # onlyif   => 'test -e /usr/src/nginx-1.22.1/configure'
     }
+  }
+  # $mariadb_root_pwd = lookup('mariadb_root_pwd')
+class { 'mysql::server::backup':
+  backupuser              => $yourls_db_user_hide.unwrap,
+  backuppassword          => $yourls_db_pass_hide.unwrap,
+  provider                => 'mysqldump',
+  incremental_backups     => false,
+  backupdir               => '/tmp/backups',
+  backuprotate            => 5,
+  execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
+  time                    => ['18', '15'],
+}
+
+  if $::yourls_config  {
     file { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php":
     ensure  => present,
     source  => '/tmp/index.php',
@@ -184,18 +198,6 @@ include mysql::server
       target => "/etc/nginx/YOURLS-${yourls_version}",
     }
   }
-  # $mariadb_root_pwd = lookup('mariadb_root_pwd')
-class { 'mysql::server::backup':
-  backupuser              => $yourls_db_user_hide.unwrap,
-  backuppassword          => $yourls_db_pass_hide.unwrap,
-  provider                => 'mysqldump',
-  incremental_backups     => false,
-  backupdir               => '/tmp/backups',
-  backuprotate            => 5,
-  execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                    => ['18', '15'],
-}
-
   # $yourls_db_name = lookup('yourls_db_name')
   # mysql::db { $yourls_db_name:
   #   user           => $yourls_db_user_hide.unwrap,
