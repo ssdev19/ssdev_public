@@ -45,7 +45,7 @@ include mysql::server
   }
   archive { '/tmp/mysql-db-yourls.gz' :
     ensure  => present,
-    source  => 's3://yourls-data/yourls/20230816030002-mysql-db-yourls.gz',
+    source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
     cleanup => false,
   }
 # Installs plugins.  Need to be activated in GUI
@@ -93,7 +93,7 @@ include mysql::server
 
   archive { '/tmp/yourls_config.zip' :
     ensure       => present,
-    source       => 's3://yourls-data/yourls_config.zip',
+    source       => 's3://urlshortener-data/yourls_config.zip',
     cleanup      => false,
     extract      => true,
     extract_path => '/tmp',
@@ -101,23 +101,23 @@ include mysql::server
 
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
     ensure  => present,
-    source  => 's3://yourls-data/ls.st.current.crt',
+    source  => 's3://urlshortener-data/ls.st.current.crt',
     cleanup => false,
   }
   archive { '/etc/pki/tls/certs/ls.st.current.key' :
     ensure  => present,
-    source  => 's3://yourls-data/ls.st.current.key',
+    source  => 's3://urlshortener-data/ls.st.current.key',
     cleanup => false,
   }
 
   archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
-    source  => 's3://yourls-data/yourls-logo.png',
+    source  => 's3://urlshortener-data/yourls-logo.png',
     cleanup => false,
   }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
   #   ensure  => present,
-  #   source  => 's3://yourls-data/Telescope_Front-470.jpg',
+  #   source  => 's3://urlshortener-data/Telescope_Front-470.jpg',
   #   cleanup => false,
   # }
 
@@ -196,17 +196,17 @@ class { 'mysql::server::backup':
   backupdir               => '/tmp/backups',
   backuprotate            => 5,
   execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                    => ['21', '26'],
+  time                    => ['15', '26'],
 }
 
-  $yourls_db_name = lookup('yourls_db_name')
-  mysql::db { $yourls_db_name:
-    user           => $yourls_db_user_hide.unwrap,
-    password       => $yourls_db_pass_hide.unwrap,
-    host           => 'localhost',
-    grant          => ['ALL'],
-    sql            => ['/tmp/backups/mysql_backup_20230820-205401.sql.bz2'],
-    import_cat_cmd => 'bzcat',
-    import_timeout => 900,
-  }
+  # $yourls_db_name = lookup('yourls_db_name')
+  # mysql::db { $yourls_db_name:
+  #   user           => $yourls_db_user_hide.unwrap,
+  #   password       => $yourls_db_pass_hide.unwrap,
+  #   host           => 'localhost',
+  #   grant          => ['ALL'],
+  #   sql            => ['/tmp/backups/mysql_backup_20230820-205401.sql.bz2'],
+  #   import_cat_cmd => 'bzcat',
+  #   import_timeout => 900,
+  # }
 }
