@@ -49,6 +49,7 @@ include mysql::server
     cleanup => false,
   }
 # Installs plugins.  Need to be activated in GUI
+
     file {
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
         ensure => directory,
@@ -196,7 +197,7 @@ class { 'mysql::server::backup':
   backupdir               => '/tmp/backups',
   backuprotate            => 5,
   execpath                => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                    => ['15', '26'],
+  time                    => ['15', '38'],
 }
 
   # $yourls_db_name = lookup('yourls_db_name')
