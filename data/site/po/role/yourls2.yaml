@@ -22,6 +22,19 @@ network::interfaces_hash:
     bootproto: none
     onboot: yes
 
+cron::job:
+  'urlshortnerbackup':
+    command: "aws s3 cp %{lookup('yourlsdb')} --recursive s3://urlshortener/ "
+    minute: 22
+    hour: 17
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
+    description: 'pwm backup'
 # mysql::server::backup:
 #   backupuser: 'root'
 #   backuppassword: "%{lookup('mariadb_root_pwd')}"
