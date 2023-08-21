@@ -48,49 +48,6 @@ include mysql::server
     source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
     cleanup => false,
   }
-# Installs plugins.  Need to be activated in GUI
-
-    file {
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
-        ensure => directory,
-        ;
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links/plugin.php":
-        ensure => file,
-        source => '/tmp/mass-remove-links-plugin.php',
-        ;
-
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url":
-        ensure => directory,
-        ;
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url/plugin.php":
-        ensure => file,
-        source => '/tmp/preview-url-plugin.php'
-        ;
-
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin":
-        ensure => directory,
-        ;
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin/plugin.php":
-        ensure => file,
-        source => '/tmp/show-plugin-plugin.php'
-        ;
-
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode":
-        ensure => directory,
-        ;
-      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode/plugin.php":
-        ensure => file,
-        source => '/tmp/yourls-preview-url-with-qrcode-plugin.php'
-        ;
-# Shorten directory
-      "/etc/nginx/YOURLS-${yourls_version}/shorten":
-        ensure => directory,
-        ;
-    }
-  file { '/etc/nginx/YOURLS':
-    ensure => 'link',
-    target => "/etc/nginx/YOURLS-${yourls_version}",
-  }
 
   archive { '/tmp/yourls_config.zip' :
     ensure       => present,
@@ -183,6 +140,49 @@ include mysql::server
     ensure  => present,
     source  => '/tmp/nginx_conf.txt',
     replace => 'yes',
+    }
+# Installs plugins.  Need to be activated in GUI
+
+    file {
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
+        ensure => directory,
+        ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links/plugin.php":
+        ensure => file,
+        source => '/tmp/mass-remove-links-plugin.php',
+        ;
+
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url":
+        ensure => directory,
+        ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/preview-url/plugin.php":
+        ensure => file,
+        source => '/tmp/preview-url-plugin.php'
+        ;
+
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin":
+        ensure => directory,
+        ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/show-plugin/plugin.php":
+        ensure => file,
+        source => '/tmp/show-plugin-plugin.php'
+        ;
+
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode":
+        ensure => directory,
+        ;
+      "/etc/nginx/YOURLS-${yourls_version}/user/plugins/yourls-preview-url-with-qrcode/plugin.php":
+        ensure => file,
+        source => '/tmp/yourls-preview-url-with-qrcode-plugin.php'
+        ;
+# Shorten directory
+      "/etc/nginx/YOURLS-${yourls_version}/shorten":
+        ensure => directory,
+        ;
+    }
+    file { '/etc/nginx/YOURLS':
+      ensure => 'link',
+      target => "/etc/nginx/YOURLS-${yourls_version}",
     }
   }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
