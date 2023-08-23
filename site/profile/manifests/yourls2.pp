@@ -43,19 +43,6 @@ include mysql::server
       import_timeout => 900,
     }
   }
-  archive { '/tmp/mysql-db-yourls.bz2' :
-    ensure  => present,
-    source  => 's3://urlshortener-data/mysql-db-yourls-latest.bz2',
-    cleanup => true,
-  }
-
-  archive { '/tmp/yourls_config.zip' :
-    ensure       => present,
-    source       => 's3://urlshortener-data/yourls_config.zip',
-    cleanup      => false,
-    extract      => true,
-    extract_path => '/tmp',
-  }
 
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
     ensure  => present,
@@ -103,6 +90,19 @@ include mysql::server
   }
   # Compile nginx
   unless $::yourls_config  {
+    archive { '/tmp/mysql-db-yourls.bz2' :
+      ensure  => present,
+      source  => 's3://urlshortener-data/mysql-db-yourls-latest.bz2',
+      cleanup => true,
+    }
+
+    archive { '/tmp/yourls_config.zip' :
+      ensure       => present,
+      source       => 's3://urlshortener-data/yourls_config.zip',
+      cleanup      => false,
+      extract      => true,
+      extract_path => '/tmp',
+    }
     exec {'compile':
       path     => [ '/usr/bin', '/bin', '/usr/sbin' ],
       cwd      => "/usr/src/nginx-${nginx_version}/",
