@@ -32,6 +32,11 @@ include mysql::server
       source   => 'https://github.com/YOURLS/YOURLS.git',
       user     => 'root',
     }
+    archive { '/tmp/mysql-db-yourls.bz2' :
+      ensure  => present,
+      source  => 's3://urlshortener-data/mysql-db-yourls-latest.bz2',
+      cleanup => true,
+    }
     $yourls_db_name = lookup('yourls_db_name')
     mysql::db { $yourls_db_name:
       user           => $yourls_db_user_hide.unwrap,
@@ -90,11 +95,6 @@ include mysql::server
   }
   # Compile nginx
   unless $::yourls_config  {
-    archive { '/tmp/mysql-db-yourls.bz2' :
-      ensure  => present,
-      source  => 's3://urlshortener-data/mysql-db-yourls-latest.bz2',
-      cleanup => true,
-    }
 
     archive { '/tmp/yourls_config.zip' :
       ensure       => present,
