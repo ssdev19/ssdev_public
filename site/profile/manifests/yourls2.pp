@@ -46,7 +46,7 @@ include mysql::server
   archive { '/tmp/mysql-db-yourls.bz2' :
     ensure  => present,
     source  => 's3://urlshortener-data/mysql-db-yourls-latest.bz2',
-    cleanup => false,
+    cleanup => true,
   }
 
   archive { '/tmp/yourls_config.zip' :
