@@ -110,7 +110,7 @@ include mysql::server
     }
   }
   # Compile nginx
-  # unless $::yourls_config  {
+  unless $::yourls_config  {
     file { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php":
     ensure  => present,
     source  => '/tmp/index.php',
