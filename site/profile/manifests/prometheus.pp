@@ -9,7 +9,7 @@ $cluster_hide,
   include prometheus
   include prometheus::snmp_exporter
   class { 'prometheus::blackbox_exporter':
-    version => '0.23.0',
+    version => '0.24.0',
     modules => {
       'http_2xx'    => {
         'prober'  => 'http',
