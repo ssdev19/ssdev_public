@@ -35,7 +35,7 @@ class profile::base_linux (
 
 # config: /etc/systemd/system/node_exporter.service
   class { 'prometheus::node_exporter':
-    version       => '1.5.0',
+    version       => '1.6.1',
     extra_options => '--collector.systemd \--collector.processes \--collector.meminfo_numa',
   }
 
