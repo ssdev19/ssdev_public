@@ -82,9 +82,9 @@ file { '/etc/nginx/YOURLS':
     cleanup => false,
   }
   archive { '/tmp/yourls_config.zip' :
-    ensure  => present,
-    source  => 's3://yourls-data/yourls_config.zip',
-    cleanup => false,
+    ensure       => present,
+    source       => 's3://yourls-data/yourls_config.zip',
+    cleanup      => false,
     extract      => true,
     extract_path => '/tmp',
   }
@@ -112,6 +112,11 @@ file { '/etc/nginx/YOURLS':
   # }
 
   archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
+    ensure  => present,
+    source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
+    cleanup => false,
+  }
+  archive { "/etc/nginx/YOURLS-${yourls_version}/images/yourls-logo.svg":
     ensure  => present,
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
