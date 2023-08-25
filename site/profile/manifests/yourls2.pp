@@ -74,7 +74,6 @@ include mysql::server
     ensure  => present,
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
-    replace => 'yes',
   }
 
   archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
