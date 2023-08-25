@@ -70,7 +70,7 @@ include mysql::server
   #   source  => 's3://urlshortener-data/Telescope_Front-470.jpg',
   #   cleanup => false,
   # }
-  archive { "/etc/nginx/YOURLS-${yourls_version}/images/yourls-logo.svg2":
+  archive { "/etc/nginx/YOURLS-${yourls_version}/images/yourls-logo.svg":
     ensure  => present,
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
