@@ -78,7 +78,7 @@ include mysql::server
 
   archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
     ensure  => present,
-    source  => 'https://www.lsst.org/sites/default/files/Rubin-O-Logo.png',
+    source  => 'https://cdn2.webdamdb.com/1280_c3PXjCZbPM23.png',
     cleanup => false,
   }
   $phpinfo = lookup ('phpinfo')
