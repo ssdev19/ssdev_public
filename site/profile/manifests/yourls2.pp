@@ -78,7 +78,7 @@ include mysql::server
 
   archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
     ensure  => present,
-    source  => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY1IYVnzXBxZiG_eIDby1A8boVxvnu3ORcI4BOUN_2Ew&s',
+    source  => 's3://urlshortener-data/url-shortener.jpg',  #'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY1IYVnzXBxZiG_eIDby1A8boVxvnu3ORcI4BOUN_2Ew&s',
     cleanup => false,
   }
   $phpinfo = lookup ('phpinfo')
