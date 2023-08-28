@@ -78,7 +78,7 @@ include mysql::server
 
   archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
     ensure  => present,
-    source  => 'https://noirlab.edu/public/media/archives/images/thumb700x/ann20019a.jpg',
+    source  => 'https://www.aura-astronomy.org/wp-content/uploads/2019/10/Funding-logos-bk-1024x163.png',
     cleanup => false,
   }
   $phpinfo = lookup ('phpinfo')
