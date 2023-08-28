@@ -59,7 +59,11 @@ include mysql::server
     source  => 's3://urlshortener-data/ls.st.current.key',
     cleanup => false,
   }
-
+  archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
+    ensure  => present,
+    source  => 's3://yourls-data/yourls-logo.png',
+    cleanup => false,
+  }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
   #   ensure  => present,
   #   source  => 's3://urlshortener-data/Telescope_Front-470.jpg',
