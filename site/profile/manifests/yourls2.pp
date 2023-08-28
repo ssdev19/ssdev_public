@@ -61,7 +61,7 @@ include mysql::server
   }
   archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
     ensure  => present,
-    source  => 's3://yourls-data/yourls-logo.png',
+    source  => 's3://urlshortener-data/yourls-logo.png',
     cleanup => false,
   }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
