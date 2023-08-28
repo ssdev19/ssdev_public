@@ -60,11 +60,11 @@ include mysql::server
     cleanup => false,
   }
 
-  archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
-    ensure  => present,
-    source  => 's3://urlshortener-data/Telescope_Front-470.jpg',
-    cleanup => false,
-  }
+  # archive { "/etc/nginx/YOURLS-${yourls_version}/yourls-logo.png":
+  #   ensure  => present,
+  #   source  => 's3://urlshortener-data/Telescope_Front-470.jpg',
+  #   cleanup => false,
+  # }
   # archive { "/etc/nginx/YOURLS-${yourls_version}/Telescope_Front-470.jpg":
   #   ensure  => present,
   #   source  => 's3://urlshortener-data/Telescope_Front-470.jpg',
