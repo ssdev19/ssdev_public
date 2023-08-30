@@ -1,7 +1,7 @@
 # ots
 class profile::ots {
 include ::scl
-
+include ::redis
 
 $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
