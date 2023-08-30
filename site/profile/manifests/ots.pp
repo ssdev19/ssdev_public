@@ -1,5 +1,6 @@
 # ots
 class profile::ots {
+include ::scl
 
 $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
@@ -8,4 +9,9 @@ $redis_pwd = lookup('redis_pwd')
       secret         => $secret,
       redis_password => $redis_pwd,
     }
+
+::scl::collection { 'libyaml-devel':
+  enable => true,
+}
+
 }
