@@ -10,7 +10,7 @@ $redis_pwd = lookup('redis_pwd')
       redis_password => $redis_pwd,
     }
 
-::scl::collection { 'powertools':
+::scl::collection { 'Powertools':
   enable => true,
 }
 
