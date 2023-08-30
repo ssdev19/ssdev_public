@@ -46,7 +46,7 @@ class profile::base_linux (
   class { 'timezone':
       timezone => 'UTC',
   }
-  Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'gcc', 'xinetd',
+  Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'xinetd',
   'bash-completion', 'sudo', 'vim', 'openssl', 'openssl-devel',
   'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute',
   'gzip', 'tar', 'unzip', 'net-tools', 'tmux' ]:
