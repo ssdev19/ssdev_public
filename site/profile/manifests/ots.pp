@@ -2,6 +2,11 @@
 class profile::ots {
 include ::scl
 
+    Package { [
+    'devtoolset-8',
+    'rh-ruby26-ruby-devel' ]:
+    ensure => installed,
+    }
 $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
     class { 'onetimesecret':
