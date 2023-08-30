@@ -3,7 +3,7 @@ class profile::ots {
 include ::scl
 
     Package { [
-    'devtoolset-8',
+    # 'devtoolset-8',
     'rh-ruby26-ruby-devel' ]:
     ensure => installed,
     }
