@@ -56,7 +56,7 @@ mod 'puppet-systemd', '4.2.0'
 mod 'bodgit/scl', '1.0.1'
 mod 'puppetlabs-postgresql', '9.0.3' # Foreman dependency
 mod 'puppet-extlib', '6.2.0'
-mod 'puppet-redis', '8.8.0'
+mod 'puppet-redis', '9.1.0'
 mod 'theforeman-puppetserver_foreman', '2.2.0'
 mod 'theforeman-puppet', '17.0.0'
 mod 'theforeman-foreman', '23.0.0'
