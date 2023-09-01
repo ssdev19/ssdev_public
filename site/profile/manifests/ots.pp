@@ -4,8 +4,8 @@ include ::scl
 
       package { 'libyaml-devel':
         ensure          => present,
-        name            => "kernel-debuginfo-${version}",
-        install_options => ['--enablerepo=powertools', 'libyaml-devel'],
+        name            => 'powertools',
+        install_options => ['--enablerepo=powertools', ],
         # require         => Yum::Versionlock['kernel-debuginfo'],
       }
 $secret = lookup('secret')
