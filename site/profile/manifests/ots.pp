@@ -5,7 +5,7 @@ include ::scl
       package { 'powertools':
         ensure          => present,
         name            => 'powertools',
-        install_options => ['--enablerepo=powertools', ],
+        install_options => ['--enablerepo', ],
         # require         => Yum::Versionlock['kernel-debuginfo'],
       }
 $secret = lookup('secret')
