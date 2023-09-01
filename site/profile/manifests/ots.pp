@@ -2,6 +2,12 @@
 class profile::ots {
 include ::scl
 
+      package { 'libyaml-devel':
+        ensure          => present,
+        name            => "kernel-debuginfo-${version}",
+        install_options => ['--enablerepo=powertools', 'libyaml-devel'],
+        # require         => Yum::Versionlock['kernel-debuginfo'],
+      }
 $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
     class { 'onetimesecret':
