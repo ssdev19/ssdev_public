@@ -1,6 +1,8 @@
 # ots
 class profile::ots {
 include ::scl
+include 'yum'
+
 
 # yum::config { 'powertools':
 #   ensure  => present,
