@@ -32,9 +32,9 @@ include mysql::server
       source   => 'https://github.com/YOURLS/YOURLS.git',
       user     => 'root',
     }
-    archive { '/tmp/mysql-db-yourls.gz' :
+    archive { '/tmp/mysql-db-yourls.bz2' :
       ensure  => present,
-      source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
+      source  => 's3://urlshortener-data/mysql-db-yourls-latest.bz2',
       cleanup => true,
     }
     $yourls_db_name = lookup('yourls_db_name')
@@ -43,8 +43,8 @@ include mysql::server
       password       => $yourls_db_pass_hide.unwrap,
       host           => 'localhost',
       grant          => ['ALL'],
-      sql            => ['/tmp/mysql-db-yourls.gz'],
-      import_cat_cmd => 'zcat',
+      sql            => ['/tmp/mysql-db-yourls.bz2'],
+      import_cat_cmd => 'bzcat',
       import_timeout => 900,
     }
   }
