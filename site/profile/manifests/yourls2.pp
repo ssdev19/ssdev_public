@@ -32,7 +32,7 @@ include mysql::server
       source   => 'https://github.com/YOURLS/YOURLS.git',
       user     => 'root',
     }
-    archive { '/tmp/mysql-db-yourls.bz2' :
+    archive { '/tmp/mysql-db-yourls.gz' :
       ensure  => present,
       source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
       cleanup => true,
