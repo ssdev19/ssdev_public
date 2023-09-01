@@ -1,6 +1,5 @@
 ---
 yum::managed_repos:
-  - "extras"
   - 'powertools'
 yum::repos:
   extras:  # provides container-selinux
