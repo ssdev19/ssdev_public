@@ -37,17 +37,6 @@ include mysql::server
       source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
       cleanup => true,
     }
-    # $yourls_db_name = lookup('yourls_db_name')
-    # mysql::db { $yourls_db_name:
-    #   user           => $yourls_db_user_hide.unwrap,
-    #   password       => $yourls_db_pass_hide.unwrap,
-    #   host           => 'localhost',
-    #   grant          => ['ALL'],
-    #   sql            => ['/tmp/mysql-db-yourls.gz'],
-    #   import_cat_cmd => 'zcat',
-    #   import_timeout => 900,
-    # }
-  }
     $yourls_db_name = lookup('yourls_db_name')
     mysql::db { $yourls_db_name:
       user           => $yourls_db_user_hide.unwrap,
@@ -58,6 +47,8 @@ include mysql::server
       import_cat_cmd => 'zcat',
       import_timeout => 900,
     }
+  }
+
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
     ensure  => present,
     source  => 's3://urlshortener-data/ls.st.current.crt',
