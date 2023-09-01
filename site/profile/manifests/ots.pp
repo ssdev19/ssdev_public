@@ -2,10 +2,10 @@
 class profile::ots {
 include ::scl
 
-yum::config { 'powertools':
-  ensure  => present,
-  enabled => true,
-}
+# yum::config { 'powertools':
+#   ensure  => present,
+#   enabled => true,
+# }
 $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
     class { 'onetimesecret':

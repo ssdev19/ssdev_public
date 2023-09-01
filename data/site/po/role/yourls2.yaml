@@ -35,6 +35,15 @@ cron::job:
       - 'MAILTO=root'
       - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
     description: 'mysql-db backup'
+
+yum::repos:
+    powertool_repo:
+        ensure: 'present'
+        enabled: true
+        # descr: 'Example Repo'
+        # baseurl: 'https://repos.example.com/example/'
+        # gpgcheck: true
+        # gpgkey: 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Example'
 # mysql::server::backup:
 #   backupuser: 'root'
 #   backuppassword: "%{lookup('mariadb_root_pwd')}"
