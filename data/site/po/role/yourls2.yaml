@@ -36,10 +36,16 @@ cron::job:
       - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
     description: 'mysql-db backup'
 
+yum::managed_repos:
+  - "extras"
 yum::repos:
-    powertool:
-        ensure: 'present'
-        enabled: true
+  extras:  # provides container-selinux
+    enabled: true
+
+# yum::repos:
+#     powertool:
+#         ensure: 'present'
+#         enabled: true
         # descr: 'Example Repo'
         # baseurl: 'https://repos.example.com/example/'
         # gpgcheck: true
