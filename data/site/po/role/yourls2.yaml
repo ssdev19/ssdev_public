@@ -37,7 +37,7 @@ cron::job:
     description: 'mysql-db backup'
 
 yum::repos:
-    powertool_repo:
+    powertool:
         ensure: 'present'
         enabled: true
         # descr: 'Example Repo'
