@@ -2,7 +2,7 @@
 class profile::ots {
 include ::scl
 
-      package { 'libyaml-devel':
+      package { 'powertools':
         ensure          => present,
         name            => 'powertools',
         install_options => ['--enablerepo=powertools', ],
