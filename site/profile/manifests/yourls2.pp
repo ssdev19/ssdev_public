@@ -202,7 +202,7 @@ class { 'mysql::server::backup':
   backupdir           => '/tmp/backups',
   backuprotate        => 5,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['16', '54'],
+  time                => ['17', '01'],
 }
 
   # $yourls_db_name = lookup('yourls_db_name')
