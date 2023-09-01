@@ -44,7 +44,7 @@ include mysql::server
       host           => 'localhost',
       grant          => ['ALL'],
       sql            => ['/tmp/mysql-db-yourls.gz'],
-      import_cat_cmd => 'bzcat',
+      import_cat_cmd => 'zcat',
       import_timeout => 900,
     }
   }
