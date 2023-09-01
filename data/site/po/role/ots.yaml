@@ -1,0 +1,6 @@
+---
+yum::managed_repos:
+  - "extras"
+yum::repos:
+  extras:  # provides container-selinux
+    enabled: true
