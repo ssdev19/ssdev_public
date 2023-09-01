@@ -22,19 +22,19 @@ network::interfaces_hash:
     bootproto: none
     onboot: yes
 
-# cron::job:
-#   'urlshortnerbackup':
-#     command: 'aws s3 cp /tmp/backups/  s3://urlshortener-data/ --recursive --include "*".bz2; rm -rf /tmp/backups'
-#     minute: 38
-#     hour: 15
-#     date: '*'
-#     month: '*'
-#     weekday: '*'
-#     user: root
-#     environment:
-#       - 'MAILTO=root'
-#       - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
-#     description: 'mysql-db backup'
+cron::job:
+  'urlshortnerbackup':
+    command: 'aws s3 cp /tmp/backups/  s3://urlshortener-data/ --recursive --include "*".bz2; rm -rf /tmp/backups'
+    minute: 53
+    hour: 16
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
+    description: 'mysql-db backup'
 # mysql::server::backup:
 #   backupuser: 'root'
 #   backuppassword: "%{lookup('mariadb_root_pwd')}"
