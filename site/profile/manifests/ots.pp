@@ -2,12 +2,9 @@
 class profile::ots {
 include ::scl
 
-      # package { 'powertools':
-      #   ensure          => present,
-      #   name            => 'powertools',
-      #   install_options => ['--enablerepo', ],
-      #   # require         => Yum::Versionlock['kernel-debuginfo'],
-      # }
+yum::config { 'powertools':
+  ensure => present,
+}
 $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
     class { 'onetimesecret':
