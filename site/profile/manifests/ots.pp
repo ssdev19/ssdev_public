@@ -5,7 +5,7 @@ include ::scl
 $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
     class { 'onetimesecret':
-      version        => 'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5',
+      version        => 'fc355c1c2931de0aaca3a99290a33f776bbcd257',
       install_dir    => '/opt',
       symlink_name   => '/opt/onetimesecret',
       secret         => $secret,
