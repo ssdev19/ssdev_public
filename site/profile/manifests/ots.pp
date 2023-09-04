@@ -1,8 +1,8 @@
 # ots
 class profile::ots {
+include rvm
 include ::scl
 include 'yum'
-include rvm
 
 # yum::config { 'powertools':
 #   ensure  => present,
