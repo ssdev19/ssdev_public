@@ -12,7 +12,7 @@ $secret = lookup('secret')
 $redis_pwd = lookup('redis_pwd')
 
   rvm_system_ruby {
-    'ruby-2.6':
+    'ruby-2.7':
       ensure      => 'present',
       default_use => true;
   }
