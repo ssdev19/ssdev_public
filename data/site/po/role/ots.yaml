@@ -6,3 +6,6 @@ yum::repos:
     enabled: true
   powertools:
     enabled: true
+rvm::system_rubies:
+  'ruby-2.6':
+    default_use: true
