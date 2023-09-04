@@ -15,13 +15,3 @@ yum::repos:
   powertools:
     enabled: true
 
-onetimesecret::use_default_options: false
-onetimesecret::options:
-  site:
-    host: 'localhost:7143'
-    domain: %{facts.networking.domain}
-    ssl: false
-    secret: 'CHANGEME'
-  redis:
-    uri: '''redis://user:CHANGEME@127.0.0.1:7179/0?timeout=10&thread_safe=false&logging=false'''
-    config: $redis_config_file
