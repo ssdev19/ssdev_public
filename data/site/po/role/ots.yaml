@@ -9,3 +9,8 @@ yum::repos:
 rvm::system_rubies:
   'ruby-2.6':
     default_use: true
+rvm::rvm_gems:
+  'bundler':
+    name: 'bundler'
+    ruby_version: 'ruby-2.6'
+    ensure: latest
