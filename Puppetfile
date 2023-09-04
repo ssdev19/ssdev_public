@@ -52,11 +52,11 @@ mod 'puppet-postfix', '2.0.0'
 mod 'camptocamp-augeas', '1.9.0'
 mod 'puppet-alternatives', '4.0.0' # postfix dependency
 mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
-mod 'puppet-systemd', '5.2.0'
+mod 'puppet-systemd', '4.2.0'
 mod 'bodgit/scl', '1.0.1'
 mod 'puppetlabs-postgresql', '9.0.3' # Foreman dependency
 mod 'puppet-extlib', '6.2.0'
-mod 'puppet-redis', '9.1.0'
+mod 'puppet-redis', '8.8.0'
 mod 'theforeman-puppetserver_foreman', '2.2.0'
 mod 'theforeman-puppet', '17.0.0'
 mod 'theforeman-foreman', '23.0.0'
@@ -68,7 +68,7 @@ mod 'puppetlabs-concat', '6.4.0'
 mod 'puppetlabs-inifile', '5.2.0'
 mod 'puppetlabs-java', '9.0.1'
 mod 'puppetlabs-java_ks', '4.2.0' # Kestore management
-mod 'puppetlabs-stdlib', '8.1.0'
+mod 'puppetlabs-stdlib', '8.6.0'
 mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
@@ -88,7 +88,7 @@ mod 'puppet-zypprepo', '4.0.1' # dependency for PHP & elastic
 mod 'puppet-php', '8.2.0'
 mod 'puppet-nginx', '5.0.0'
 # mod 'rubinobs/yourls'.
-#     git: 'https://github.com/YOURLS/YOURLS.gitarchi'
+#     git: 'https://github.com/YOURLS/YOURLS.git'
 #     ref: '1.8.2'
 mod 'puppetlabs-docker', '4.1.2'
 mod 'trlinkin-nsswitch', '2.2.0'
