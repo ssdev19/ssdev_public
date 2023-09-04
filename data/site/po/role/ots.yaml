@@ -1,11 +1,4 @@
 ---
-yum::managed_repos:
-  - 'powertools'
-yum::repos:
-  extras:  # provides container-selinux
-    enabled: true
-  powertools:
-    enabled: true
 rvm::system_rubies:
   'ruby-2.6':
     default_use: true
@@ -14,3 +7,10 @@ rvm::rvm_gems:
     name: 'bundler'
     ruby_version: 'ruby-2.6'
     ensure: latest
+yum::managed_repos:
+  - 'powertools'
+yum::repos:
+  extras:  # provides container-selinux
+    enabled: true
+  powertools:
+    enabled: true
