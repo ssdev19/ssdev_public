@@ -2,7 +2,7 @@
 class profile::ots {
 include ::scl
 include 'yum'
-
+include rvm
 
 # yum::config { 'powertools':
 #   ensure  => present,
