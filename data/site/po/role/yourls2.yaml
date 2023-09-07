@@ -23,21 +23,21 @@ network::interfaces_hash:
     onboot: yes
 
 cron::job:
-  'urlshortnerbackup':
-    command: 'aws s3 cp /backups/dumps  s3://urlshortener-data/ --recursive --include "*".bz2'
-    minute: 11
-    hour: 19
-    date: '*'
-    month: '*'
-    weekday: '*'
-    user: root
-    environment:
-      - 'MAILTO=root'
-      - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
-    description: 'mysql-db backup'
+  # 'urlshortnerbackup':
+  #   command: 'aws s3 cp /backups/dumps  s3://urlshortener-data/ --recursive --include "*".bz2'
+  #   minute: 11
+  #   hour: 19
+  #   date: '*'
+  #   month: '*'
+  #   weekday: '*'
+  #   user: root
+  #   environment:
+  #     - 'MAILTO=root'
+  #     - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
+  #   description: 'mysql-db backup'
   'nginx':
     command: "tar -czvf  /backups/dumps/$(date +'%Y%m%d')_nginx.gz /etc/nginx"
-    minute: 53
+    minute: 57
     hour: 22
     date: '*'
     month: '*'
