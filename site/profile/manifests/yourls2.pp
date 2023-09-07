@@ -199,10 +199,10 @@ class { 'mysql::server::backup':
   backuppassword      => $yourls_db_pass_hide.unwrap,
   provider            => 'mysqldump',
   incremental_backups => false,
-  backupdir           => '/backups',
+  backupdir           => '/backups/dumps',
   backuprotate        => 15,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['19', '06'],
+  time                => ['19', '08'],
 }
 
   # $yourls_db_name = lookup('yourls_db_name')
