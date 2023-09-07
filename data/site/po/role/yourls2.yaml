@@ -25,7 +25,7 @@ network::interfaces_hash:
 cron::job:
   'urlshortnerbackup':
     command: 'aws s3 cp /backups/  s3://urlshortener-data/ --recursive --include "*".bz2'
-    minute: 03
+    minute: 07
     hour: 19
     date: '*'
     month: '*'
