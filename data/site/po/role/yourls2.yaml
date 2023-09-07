@@ -35,6 +35,18 @@ cron::job:
       - 'MAILTO=root'
       - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
     description: 'mysql-db backup'
+  'nginx':
+    command: 'zip -r /backup/dumps/$(date +"%Y%m%d").zip /etc/nginx'
+    minute: 26
+    hour: 22
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
+    description: 'nginx_backup'
 
 
 # yum::repos:
