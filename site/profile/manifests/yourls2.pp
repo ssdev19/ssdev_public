@@ -200,7 +200,7 @@ class { 'mysql::server::backup':
   provider            => 'mysqldump',
   incremental_backups => false,
   backupdir           => '/tmp/backups',
-  backuprotate        => 5,
+  backuprotate        => 15,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
   time                => ['17', '01'],
 }
