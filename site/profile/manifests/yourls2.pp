@@ -7,6 +7,7 @@ $nginx_version,
 
 ){
 include mysql::server
+include rsync
 
   Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release' ]:
     ensure => installed,
@@ -194,13 +195,13 @@ include mysql::server
     }
   }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
-yumrepo { 'percona':
-  descr    => 'CentOS $releasever - Percona',
-  baseurl  => 'http://repo.percona.com/release/$releasever/RPMS/$basearch',
-  gpgkey   => 'https://www.percona.com/downloads/RPM-GPG-KEY-percona https://repo.percona.com/yum/PERCONA-PACKAGING-KEY',
-  enabled  => 1,
-  gpgcheck => 1,
-}
+# yumrepo { 'percona':
+#   descr    => 'CentOS $releasever - Percona',
+#   baseurl  => 'http://repo.percona.com/release/$releasever/RPMS/$basearch',
+#   gpgkey   => 'https://www.percona.com/downloads/RPM-GPG-KEY-percona https://repo.percona.com/yum/PERCONA-PACKAGING-KEY',
+#   enabled  => 1,
+#   gpgcheck => 1,
+# }
 class { 'mysql::server::backup':
   backupuser          => $yourls_db_user_hide.unwrap,
   backuppassword      => $yourls_db_pass_hide.unwrap,
