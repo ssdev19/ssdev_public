@@ -7,9 +7,7 @@ $nginx_version,
 
 ){
 include mysql::server
-class { 'rsync':
-  package_ensure => 'latest'
-}
+
 
 
 
@@ -216,7 +214,10 @@ class { 'mysql::server::backup':
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
   time                => ['16', '45'],
 }
-
+rsync::put { '/etc/nginx':
+  user    => 'root',
+  source  => '/backups/nginxfiles',
+}
   # $yourls_db_name = lookup('yourls_db_name')
   # mysql::db { $yourls_db_name:
   #   user           => $yourls_db_user_hide.unwrap,
