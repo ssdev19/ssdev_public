@@ -215,7 +215,7 @@ class { 'mysql::server::backup':
   time                => ['16', '45'],
 }
 rsync::put { '/backups/':
-  user    => 'root',
+  # user    => 'root',
   source  => '/etc/nginx',
 }
   # $yourls_db_name = lookup('yourls_db_name')
