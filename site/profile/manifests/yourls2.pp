@@ -7,8 +7,8 @@ $nginx_version,
 
 ){
 include mysql::server
-class { 'rsync': 
-  package_ensure => 'latest' 
+class { 'rsync':
+  package_ensure => 'latest'
 }
 
 
