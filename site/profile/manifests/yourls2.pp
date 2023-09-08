@@ -194,6 +194,13 @@ include mysql::server
     }
   }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
+yumrepo { 'percona':
+  descr    => 'CentOS $releasever - Percona',
+  baseurl  => 'http://repo.percona.com/release/$releasever/RPMS/$basearch',
+  gpgkey   => 'https://www.percona.com/downloads/RPM-GPG-KEY-percona https://repo.percona.com/yum/PERCONA-PACKAGING-KEY',
+  enabled  => 1,
+  gpgcheck => 1,
+}
 class { 'mysql::server::backup':
   backupuser          => $yourls_db_user_hide.unwrap,
   backuppassword      => $yourls_db_pass_hide.unwrap,
@@ -202,7 +209,7 @@ class { 'mysql::server::backup':
   backupdir           => '/backups/dumps',
   backuprotate        => 10,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['16', '39'],
+  time                => ['16', '45'],
 }
 
   # $yourls_db_name = lookup('yourls_db_name')
