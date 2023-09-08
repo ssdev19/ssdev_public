@@ -7,7 +7,10 @@ $nginx_version,
 
 ){
 include mysql::server
-include rsync
+class { 'rsync': 
+  package_ensure => 'latest' 
+}
+
 
 
   Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release' ]:
