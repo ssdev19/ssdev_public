@@ -1,4 +1,7 @@
 ---
+classes:
+  - profile::base_linux
+  - profile::yourls2
 network::interfaces_hash:
   eth0:
     type: Ethernet
