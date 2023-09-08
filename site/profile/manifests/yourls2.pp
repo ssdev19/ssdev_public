@@ -197,12 +197,12 @@ include mysql::server
 class { 'mysql::server::backup':
   backupuser          => $yourls_db_user_hide.unwrap,
   backuppassword      => $yourls_db_pass_hide.unwrap,
-  provider            => 'mysqldump',
+  provider            => 'xtrabackup',
   incremental_backups => false,
   backupdir           => '/backups/dumps',
-  backuprotate        => 15,
+  backuprotate        => 10,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['16', '34'],
+  time                => ['16', '39'],
 }
 
   # $yourls_db_name = lookup('yourls_db_name')
