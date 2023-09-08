@@ -204,7 +204,7 @@ yumrepo { 'percona':
 class { 'mysql::server::backup':
   backupuser          => $yourls_db_user_hide.unwrap,
   backuppassword      => $yourls_db_pass_hide.unwrap,
-  provider            => 'xtrabackup',
+  provider            => 'mysqldump',
   incremental_backups => false,
   backupdir           => '/backups/dumps',
   backuprotate        => 10,
