@@ -214,9 +214,9 @@ class { 'mysql::server::backup':
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
   time                => ['16', '45'],
 }
-rsync::put { '/etc/nginx':
+rsync::put { '/backups/nginxfiles':
   user    => 'root',
-  source  => '/backups/nginxfiles',
+  source  => '/etc/nginx',
 }
   # $yourls_db_name = lookup('yourls_db_name')
   # mysql::db { $yourls_db_name:
