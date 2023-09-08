@@ -37,7 +37,7 @@ cron::job:
   #   description: 'mysql-db backup'
   'nginx':
     command: 'tar -czf  /backups/dumps/nginx2_$(date +\%F).bz2 /etc/nginx'
-    minute: 12
+    minute: 15
     hour: 16
     date: '*'
     month: '*'
