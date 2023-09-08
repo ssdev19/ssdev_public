@@ -36,9 +36,9 @@ cron::job:
   #     - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
   #   description: 'mysql-db backup'
   'nginx':
-    command: "tar -czvf  /backups/dumps/$(date +'%Y%m%d')_nginx.gz /etc/nginx"
-    minute: 56
-    hour: 01
+    command: "tar -czvf  /backups/dumps/nginx.gz /etc/nginx"
+    minute: 03
+    hour: 02
     date: '*'
     month: '*'
     weekday: '*'
