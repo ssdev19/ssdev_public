@@ -8,6 +8,7 @@ $nginx_version,
 ){
 include mysql::server
 include rsync
+include doenslentz
 
   Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release' ]:
     ensure => installed,
