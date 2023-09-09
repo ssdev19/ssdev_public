@@ -16,7 +16,7 @@ include mysql::server
   }
   archive { "/tmp/YOURLS-${nginx_version}.tar.gz":
     ensure       => present,
-    source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${nginx_version}.tar.gz",
+    source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
     extract_path => '/etc/nginx',
     extract      => true,
     provider     => 'wget',
