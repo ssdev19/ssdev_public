@@ -14,15 +14,15 @@ include mysql::server
   Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release' ]:
     ensure => installed,
   }
+  archive { "/usr/src/YOURLS-${yourls_version}.tar.gz":
+    ensure       => present,
+    source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
+    extract_path => '/etc/nginx',
+    extract      => true,
+    provider     => 'wget',
+    cleanup      => false,
+  }
   unless $::nginx_source  {
-    archive { "/tmp/YOURLS-${yourls_version}.tar.gz":
-      ensure       => present,
-      source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
-      extract_path => '/etc/nginx',
-      extract      => true,
-      provider     => 'wget',
-      cleanup      => true,
-    }
     archive { "/usr/src/nginx-${nginx_version}.tar.gz":
         ensure       => present,
         source       => "http://nginx.org/download/nginx-${nginx_version}.tar.gz",
