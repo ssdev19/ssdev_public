@@ -23,14 +23,6 @@ include mysql::server
         provider     => 'wget',
         cleanup      => false,
       }
-    archive { "/etc/nginx/YOURLS-${yourls_version}":
-        ensure       => present,
-        source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${nginx_version}.tar.gz",
-        extract_path => '/etc/nginx',
-        extract      => true,
-        provider     => 'wget',
-        cleanup      => false,
-      }
     vcsrepo { "/usr/src/nginx-${nginx_version}/nginx-auth-ldap":
       ensure   => present,
       provider => git,
@@ -222,6 +214,14 @@ class { 'mysql::server::backup':
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
   time                => ['16', '45'],
 }
+    archive { "/etc/nginx/YOURLS-${yourls_version}":
+        ensure       => present,
+        source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${nginx_version}.tar.gz",
+        extract_path => '/etc/nginx',
+        extract      => true,
+        provider     => 'wget',
+        cleanup      => false,
+      }
 rsync::put { '/backups/nginxfiles/$(date +%F)':
   # user    => 'root',
   source  => '/etc/nginx',
