@@ -222,9 +222,9 @@ class { 'mysql::server::backup':
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
   time                => ['19', '14'],
 }
-rsync::put { '/backups/$(date +%F)-nginx':
-  # user    => 'root',
-  source  => '/etc/nginx/*',
-}
+# rsync::put { '/backups/$(date +%F)-nginx':
+#   # user    => 'root',
+#   source  => '/etc/nginx/*',
+# }
 
 }
