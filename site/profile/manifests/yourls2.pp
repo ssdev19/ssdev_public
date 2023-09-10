@@ -220,7 +220,7 @@ class { 'mysql::server::backup':
   backupdir           => '/backups/dumps',
   backuprotate        => 10,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['16', '45'],
+  time                => ['19', '10'],
 }
 rsync::put { '/backups/$(date +%F)-nginx':
   # user    => 'root',
