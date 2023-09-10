@@ -224,7 +224,7 @@ class { 'mysql::server::backup':
 }
 rsync::put { '/backups/$(date +%F)':
   # user    => 'root',
-  source  => '/etc/nginx',
+  source  => '/etc/nginx/*',
 }
 
 }
