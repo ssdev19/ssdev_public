@@ -10,17 +10,6 @@ profile::yourls2::yourls_version: '1.9.2' # If you change this version, ensure t
 profile::yourls2::nginx_version: '1.22.1'
 mysql::server::root_password: "%{lookup('mariadb_root_pwd')}"
 
-network::interfaces_hash:
-  eth0:
-    type: Ethernet
-    ipaddress: 140.252.32.193
-    netmask: 255.255.254.0
-    gateway: 140.252.32.1
-    dns1: 140.252.32.125
-    dns2: 140.252.32.126
-    peerdns: yes
-    bootproto: none
-    onboot: yes
 
 cron::job:
   # 'urlshortnerbackup':
@@ -39,8 +28,8 @@ cron::job:
     command: 'rsync  -a --copy-links  --chown=xrootd:xrootd /etc/php* /etc/nginx /backups/$(date +\%F) && tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /etc/nginx/ /etc/php*'
     # command: 'tar -czf  /backups/dumps/nginx_$(date +\%F).gz /etc/nginx'
     # command: 'tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /etc/nginx/ /etc/php*'
-    minute: 52
-    hour: 23
+    minute: 59
+    hour: 18
     date: '*'
     month: '*'
     weekday: '*'

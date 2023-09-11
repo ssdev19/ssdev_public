@@ -43,9 +43,9 @@ include mysql::server
     #   source   => 'https://github.com/YOURLS/YOURLS.git',
     #   user     => 'root',
     # }
-    archive { '/tmp/mysql-db-yourls.bz2' :
+    archive { '/tmp/mysql-db-yourls.gz' :
       ensure  => present,
-      source  => 's3://urlshortener-data/mysql-db-yourls-latest.bz2',
+      source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
       cleanup => true,
     }
     $yourls_db_name = lookup('yourls_db_name')
@@ -54,7 +54,7 @@ include mysql::server
       password       => $yourls_db_pass_hide.unwrap,
       host           => 'localhost',
       grant          => ['ALL'],
-      sql            => ['/tmp/mysql-db-yourls.bz2'],
+      sql            => ['/tmp/mysql-db-yourls.gz'],
       import_cat_cmd => 'bzcat',
       import_timeout => 900,
     }
@@ -220,7 +220,7 @@ class { 'mysql::server::backup':
   backupdir           => '/backups/dumps',
   backuprotate        => 10,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['23', '52'],
+  time                => ['18', '58'],
 }
 # rsync::put { '/backups/$(date +%F)-nginx':
 #   # user    => 'root',
