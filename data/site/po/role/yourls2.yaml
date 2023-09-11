@@ -28,7 +28,7 @@ cron::job:
     command: 'rsync  -a --copy-links  --chown=xrootd:xrootd /etc/php* /etc/nginx /backups/$(date +\%F) && tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /etc/nginx/ /etc/php*'
     # command: 'tar -czf  /backups/dumps/nginx_$(date +\%F).gz /etc/nginx'
     # command: 'tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /etc/nginx/ /etc/php*'
-    minute: 10
+    minute: 13
     hour: 19
     date: '*'
     month: '*'
