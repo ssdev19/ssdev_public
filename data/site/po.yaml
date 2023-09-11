@@ -43,7 +43,7 @@ accounts::user_list:
       - 'wheel'
     sshkeys:
       - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRjClJiTdbQNIUFW6zzoBUmdqDi7iGJQoW6oWQe/tk+0EaoZef2+Qz0jcwxKItbN/QPmBjCtyFghEzlAGfOcyiG57D8ZDSNBGuyMpNcHBglKrAlWCQIgLm1UIbQ5xeIco4Sg5QDikRLjGVTYMeupiZCGaFqeKqMRKvbVcNaQf1auDX9rQPrqL4Hxz3wG6JQitUSAmYONIxR1K98MBq0kfvU79FPt+Rgd3Qy8mJU3Pgn0en9WqEpmWSnQPGnpOvYLpNvbW1QDFUK/9q4SPAUK0VHGgG5jmV20zX5GelhyqbCAfkhWZYuSA6RJ7Ju4W4G122KL+eLXUsJNkAKuJIgx9D rsa@puppet'
-    password: "%{lookup('jc_pwd')}"
+    password: "%{lookup('ig_pwd')}"
     ignore_password_if_empty: true
   # spiceworks:
   #   groups:
