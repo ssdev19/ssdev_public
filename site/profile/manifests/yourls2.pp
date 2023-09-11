@@ -48,16 +48,6 @@ include mysql::server
       source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
       cleanup => true,
     }
-    $yourls_db_name = lookup('yourls_db_name')
-    mysql::db { $yourls_db_name:
-      user           => $yourls_db_user_hide.unwrap,
-      password       => $yourls_db_pass_hide.unwrap,
-      host           => 'localhost',
-      grant          => ['ALL'],
-      sql            => ['/tmp/mysql-db-yourls.gz'],
-      import_cat_cmd => 'bzcat',
-      import_timeout => 900,
-    }
   }
 
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
@@ -226,5 +216,15 @@ class { 'mysql::server::backup':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
 # }
+    $yourls_db_name = lookup('yourls_db_name')
+    mysql::db { $yourls_db_name:
+      user           => $yourls_db_user_hide.unwrap,
+      password       => $yourls_db_pass_hide.unwrap,
+      host           => 'localhost',
+      grant          => ['ALL'],
+      sql            => ['/tmp/mysql-db-yourls.gz'],
+      import_cat_cmd => 'zcat',
+      import_timeout => 900,
+    }
 
 }
