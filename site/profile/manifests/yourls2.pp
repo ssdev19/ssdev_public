@@ -43,11 +43,6 @@ include mysql::server
     #   source   => 'https://github.com/YOURLS/YOURLS.git',
     #   user     => 'root',
     # }
-    archive { '/tmp/mysql-db-yourls.gz' :
-      ensure  => present,
-      source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
-      cleanup => true,
-    }
   }
 
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
@@ -216,6 +211,11 @@ class { 'mysql::server::backup':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
 # }
+    archive { '/tmp/mysql-db-yourls.gz' :
+      ensure  => present,
+      source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
+      cleanup => true,
+    }
     $yourls_db_name = lookup('yourls_db_name')
     mysql::db { $yourls_db_name:
       user           => $yourls_db_user_hide.unwrap,
