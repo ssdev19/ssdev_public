@@ -229,7 +229,7 @@ class { 'mysql::server::backup':
 $timestamp = generate('/bin/date', '%Y-%m-%dT%H:%M:%S')
   file { '/backups/latest':
       ensure => 'link',
-      target => "/backups/${timestamp}",
+      target => '/backups/"$(date +%F)"',
     }
 
 }
