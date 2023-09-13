@@ -224,7 +224,7 @@ class { 'mysql::server::backup':
   backupdir           => '/backups/dumps',
   backuprotate        => 10,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['19', '13'],
+  time                => ['21', '12'],
 }
 # rsync::put { '/backups/$(date +%F)-nginx':
 #   # user    => 'root',
@@ -232,9 +232,9 @@ class { 'mysql::server::backup':
 # }
 # Generates today's date in format "2023-09-13" which matches the folder
 $year_month_day = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
-  file { '/backups/latest':
+  file { '/backups/nginx/latest':
       ensure => 'link',
-      target => "/backups/${year_month_day}",
+      target => "/backups/nginx/${year_month_day}",
     }
 
 }
