@@ -229,7 +229,7 @@ class { 'mysql::server::backup':
 $latest = '/backups/$(date)'
   file { '/backups/latest':
       ensure => 'link',
-      target => $latest,
+      target => "/backups/$(date)",
     }
 
 }
