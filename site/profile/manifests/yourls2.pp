@@ -226,7 +226,7 @@ class { 'mysql::server::backup':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
 # }
-$year_month = inline_template('<%= Time.now.strftime("%Y-%m") -%>')
+$year_month = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
   file { '/backups/latest':
       ensure => 'link',
       target => "/backups/${year_month}",
