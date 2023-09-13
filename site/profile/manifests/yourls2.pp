@@ -226,10 +226,11 @@ class { 'mysql::server::backup':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
 # }
-$year_month = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
+# Generates today's date in format "2023-09-13" which matches the folder
+$year_month_day = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
   file { '/backups/latest':
       ensure => 'link',
-      target => "/backups/${year_month}",
+      target => "/backups/${year_month_day}",
     }
 
 }
