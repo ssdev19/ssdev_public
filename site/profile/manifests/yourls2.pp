@@ -226,10 +226,10 @@ class { 'mysql::server::backup':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
 # }
-$latest = '$(date +%F)'
+$timestamp = generate('/bin/date', '%Y-%m-%dT%H:%M:%S')
   file { '/backups/latest':
       ensure => 'link',
-      target => '"/backups/$(date +%F)"',
+      target => "/backups/${timestamp}",
     }
 
 }
