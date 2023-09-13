@@ -228,7 +228,7 @@ class { 'mysql::server::backup':
 # }
   file { '/backups/latest':
       ensure => 'link',
-      target => "/backups/2023-09-13",
+      target => '/backups/"$(date +%F)"',
     }
 
 }
