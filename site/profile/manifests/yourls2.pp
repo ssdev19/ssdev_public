@@ -103,6 +103,10 @@ include mysql::server
   }
 
   file {
+    '/backups/nginx':
+      ensure => directory,
+  }
+  file {
     '/etc/systemd/system/nginx.service.d':
       ensure => directory,
   }
