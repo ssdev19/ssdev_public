@@ -226,5 +226,9 @@ class { 'mysql::server::backup':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
 # }
+  file { '/backups/latest':
+      ensure => 'link',
+      target => '/backups/$(date +\%F)',
+    }
 
 }
