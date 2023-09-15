@@ -223,12 +223,12 @@ class { 'mysql::server::backup':
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
   time                => ['0', '2'],
 }
-file { '/backups/nginx/oldest':
-  ensure  => directory,
-  recurse => true,
-  replace => false,
-  source  => ['/etc/nginx', '/etc/php'],
-}
+# file { '/backups/nginx/oldest':
+#   ensure  => directory,
+#   recurse => true,
+#   replace => false,
+#   source  => ['/etc/nginx', '/etc/php'],
+# }
 rsync::get { '/backups/nginx/test':
   source  => "/etc/nginx",
   copylinks => true,
