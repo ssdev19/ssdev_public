@@ -229,7 +229,7 @@ file { '/backups/nginx/oldest':
   replace => false,
   source  => ['/etc/nginx', '/etc/php'],
 }
-rsync::get { '/backups/nginx':
+rsync::get { '/backups/nginx/test':
   source  => "/etc/nginx",
   require => File['/nginx'],
 }
