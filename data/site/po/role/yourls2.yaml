@@ -17,7 +17,7 @@ cron::job:
   'urlshortnerbackup':
     command: 'aws s3 sync /backups/dumps  s3://urlshortener-data/ --no-progress'
     minute: 54
-    hour: 22
+    hour: 3
     date: '*'
     month: '*'
     weekday: '*'
