@@ -226,7 +226,7 @@ class { 'mysql::server::backup':
 file { '/backups/nginx/oldest':
   ensure  => directory,
   recurse => true,
-  replace => true,
+  replace => false,
   source  => '/etc/nginx',
 }
 # rsync::put { '/backups/$(date +%F)-nginx':
