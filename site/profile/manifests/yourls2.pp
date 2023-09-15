@@ -227,7 +227,7 @@ file { '/backups/nginx/oldest':
   ensure  => directory,
   recurse => true,
   replace => false,
-  source  => ['/etc/nginx /etc/php*'],
+  source  => ['/etc/nginx', '/etc/php'],
 }
 # rsync::put { '/backups/$(date +%F)-nginx':
 #   # user    => 'root',
