@@ -35,6 +35,11 @@ Facter.add(:nginx_source) do
     File.exists?('/usr/src/nginx-1.22.1/configure')
   end
 end
+Facter.add(:nginx_bk) do
+  setcode do
+    File.exists?('/backups/nginx/earliest')
+  end
+end
 # scom.pp
 #   class scom {
 #     if $pf_svc {

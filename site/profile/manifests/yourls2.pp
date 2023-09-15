@@ -229,10 +229,12 @@ class { 'mysql::server::backup':
 #   replace => false,
 #   source  => ['/etc/nginx', '/etc/php'],
 # }
-rsync::get { '/backups/nginx/test':
-  source  => "/etc/nginx",
+unless $::nginx_bk {
+rsync::get { '/backups/nginx/earliest':
+  source    => "/etc/nginx",
   copylinks => true,
   # require => File['/nginx'],
+}
 }
 # rsync::put { '/backups/$(date +%F)-nginx':
 #   # user    => 'root',
