@@ -1,6 +1,8 @@
 # Base profile for Linux OS
 class profile::base_linux (
+  $service1,
   Boolean $awscli   = false,
+  Boolean $backups  = false,
   Boolean $postfix  = false,
   Boolean $graylog  = false,
   Boolean $nsswitch = false,
@@ -111,6 +113,14 @@ if $awscli {
   file { '/etc/hosts.allow' :
     ensure  => file,
     content => $allowhosts,
+  }
+
+  if $backups {
+    $year_month_day = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
+    file { "/backups/${service1}/latest":
+        ensure => 'link',
+        target => "/backups/${service1}/${year_month_day}",
+    }
   }
   # Changes root's prompt color to cyan (36)
   # file { '/root/.bashrc':

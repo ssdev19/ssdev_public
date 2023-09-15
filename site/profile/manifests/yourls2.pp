@@ -8,9 +8,6 @@ $nginx_version,
 ){
 include mysql::server
 
-
-
-
   Package { [ 'openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release' ]:
     ensure => installed,
   }
@@ -231,10 +228,5 @@ class { 'mysql::server::backup':
 #   source  => '/etc/nginx/*',
 # }
 # Generates today's date in format "2023-09-13" which matches the folder
-$year_month_day = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
-  file { '/backups/nginx/latest':
-      ensure => 'link',
-      target => "/backups/nginx/${year_month_day}",
-    }
 
 }
