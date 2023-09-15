@@ -221,7 +221,7 @@ class { 'mysql::server::backup':
   backupdir           => '/backups/dumps',
   backuprotate        => 10,
   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['0', '2'],
+  time                => ['21', '6'],
 }
 # file { '/backups/nginx/oldest':
 #   ensure  => directory,
