@@ -27,10 +27,10 @@ cron::job:
   #     - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
   #   description: 'mysql-db backup'
   'nginx':
-    command: 'rsync  -a --copy-links  --chown=xrootd:xrootd --link-dest /backups/nginx/earliest /etc/nginx/* /backups/nginx/$(date +\%F) && tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /backups/nginx/* '
+    command: 'rsync  -a --copy-links  --chown=xrootd:xrootd --link-dest /backups/nginx/latest /etc/nginx/* /backups/nginx/$(date +\%F) && tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /backups/nginx/* '
     # command: 'tar -czf  /backups/dumps/nginx_$(date +\%F).gz /etc/nginx'
     # command: 'tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /etc/nginx/ /etc/php*'
-    minute: 40
+    minute: 46
     hour: 19
     date: '*'
     month: '*'
