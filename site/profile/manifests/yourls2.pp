@@ -229,8 +229,8 @@ class { 'mysql::server::backup':
 #   replace => false,
 #   source  => ['/etc/nginx', '/etc/php'],
 # }
-unless $::nginx_bk {
-  if $::phpinfo {
+if $::phpinfo {
+  unless $::nginx_bk {
     rsync::get { '/backups/nginx/earliest':
       source    => '/etc/nginx/*',
       copylinks => true,
