@@ -229,6 +229,10 @@ file { '/backups/nginx/oldest':
   replace => false,
   source  => ['/etc/nginx', '/etc/php'],
 }
+rsync::get { '/backups/nginx':
+  source  => "/etc/nginx",
+  require => File['/nginx'],
+}
 # rsync::put { '/backups/$(date +%F)-nginx':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
