@@ -213,31 +213,31 @@ include mysql::server
 #   enabled  => 1,
 #   gpgcheck => 1,
 # }
-class { 'mysql::server::backup':
-  backupuser          => $yourls_db_user_hide.unwrap,
-  backuppassword      => $yourls_db_pass_hide.unwrap,
-  provider            => 'mysqldump',
-  incremental_backups => false,
-  backupdir           => '/backups/dumps',
-  backuprotate        => 10,
-  execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
-  time                => ['0', '4'],
-}
+# class { 'mysql::server::backup':
+#   backupuser          => $yourls_db_user_hide.unwrap,
+#   backuppassword      => $yourls_db_pass_hide.unwrap,
+#   provider            => 'mysqldump',
+#   incremental_backups => false,
+#   backupdir           => '/backups/dumps',
+#   backuprotate        => 10,
+#   execpath            => '/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin',
+#   time                => ['0', '4'],
+# }
 # file { '/backups/nginx/oldest':
 #   ensure  => directory,
 #   recurse => true,
 #   replace => false,
 #   source  => ['/etc/nginx', '/etc/php'],
 # }
-if $::phpinfo {
-  unless $::nginx_bk {
-    rsync::get { '/backups/nginx/earliest':
-      source    => '/etc/nginx/*',
-      copylinks => true,
-      # require => File['/nginx'],
-    }
-  }
-}
+# if $::phpinfo {
+#   unless $::nginx_bk {
+#     rsync::get { '/backups/nginx/earliest':
+#       source    => '/etc/nginx/*',
+#       copylinks => true,
+#       # require => File['/nginx'],
+#     }
+#   }
+# }
 # rsync::put { '/backups/$(date +%F)-nginx':
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
