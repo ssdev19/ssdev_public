@@ -115,20 +115,20 @@ if $awscli {
     content => $allowhosts,
   }
 
-  if $backups {
-    # $year_month_day = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
-    file { "/backups/${service1}":
-        ensure => 'directory',
-        # target => "/backups/${service1}/${year_month_day}",
-        ;
-      '/backups/dumps/':
-        ensure => directory,
-        ;
-      '/backups/scripts/':
-        ensure => directory,
-        ;
+  # if $backups {
+  #   # $year_month_day = inline_template('<%= Time.now.strftime("%Y-%m-%d") -%>')
+  #   file { "/backups/${service1}":
+  #       ensure => 'directory',
+  #       # target => "/backups/${service1}/${year_month_day}",
+  #       ;
+  #     '/backups/dumps/':
+  #       ensure => directory,
+  #       ;
+  #     '/backups/scripts/':
+  #       ensure => directory,
+  #       ;
 
-  }
+  # }
   # Changes root's prompt color to cyan (36)
   # file { '/root/.bashrc':
   #   ensure => present,
