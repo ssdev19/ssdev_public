@@ -4,7 +4,7 @@ class profile::backups ( String
   $bucketlocation,
   $service_dump,
   $find_days_old,
-  $listlocations,
+  $listlocation,
   $source_dir,
 ){
   file { "/backups/${service1}":
