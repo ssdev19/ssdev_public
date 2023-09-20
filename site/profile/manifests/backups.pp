@@ -6,6 +6,7 @@ class profile::backups ( String
   $find_days_old,
   $listlocations,
   $source_dir,
+  $listofdbs,
 ){
   file { "/backups/${service1}":
     ensure => 'directory',
@@ -59,6 +60,14 @@ class profile::backups ( String
     content => epp('profile/backup_scripts/backup-tar.epp',
     {
       'listlocations' => $listlocations,
+    }
+    )
+    ;
+  '/backups/scripts/backup-db.sh':
+    ensure  => present,
+    content => epp('profile/backup_scripts/backup-db.epp',
+    {
+      'listofdbs' => $listofdbs,
     }
     )
     ;
