@@ -12,9 +12,9 @@ class profile::backups ( String
   '/backups/scripts/':
     ensure => directory,
     ;
-  '/backups/scripts/library.':
+  '/backups/scripts/library.sh':
     ensure  => present,
-    content => epp('profile/it/graylog_ssl_cfg.epp',
+    content => epp('profile/backups_scripts/library.epp',
     )
     ;
 
