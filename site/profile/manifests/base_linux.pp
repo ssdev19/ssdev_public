@@ -1,6 +1,6 @@
 # Base profile for Linux OS
 class profile::base_linux (
-  $service1,
+  # $service1,
   Boolean $awscli   = false,
   Boolean $backups  = false,
   Boolean $postfix  = false,
