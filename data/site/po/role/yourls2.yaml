@@ -7,7 +7,7 @@ classes:
 profile::base_linux::postfix: true
 profile::base_linux::awscli: true
 profile::backups::service1: 'backup-files-yourls'
-profile::backups::bucketlocation: 'test-bucket'
+profile::backups::bucketlocation: 'urlshortener-data'
 profile::backups::service_dump: 'yourls'
 profile::backups::listlocations: 'nginx'
 profile::backups::source_dir: '/etc/nginx'
