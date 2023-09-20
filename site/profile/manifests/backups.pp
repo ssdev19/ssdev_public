@@ -39,6 +39,14 @@ class profile::backups ( String
     }
     )
     ;
+  '/backups/scripts/backup-files.sh':
+    ensure  => present,
+    content => epp('profile/backup_scripts/backup-files.epp',
+    {
+      'source_dir' => $source_dir,
+    }
+    )
+    ;
   '/backups/scripts/backup-tar.sh':
     ensure  => present,
     content => epp('profile/backup_scripts/backup-tar.epp',
