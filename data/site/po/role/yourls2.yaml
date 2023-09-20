@@ -2,6 +2,7 @@
 classes:
   - profile::base_linux
   - profile::yourls2
+  - profile::backups
 # profile::base_linux::backups: true
 profile::base_linux::postfix: true
 profile::base_linux::awscli: true
