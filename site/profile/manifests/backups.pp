@@ -14,7 +14,7 @@ class profile::backups ( String
     ;
   '/backups/scripts/library.sh':
     ensure  => present,
-    content => epp('profile/backups_scripts/library.epp',
+    content => epp('profile/backup_scripts/library.epp',
     )
     ;
 
