@@ -28,6 +28,9 @@ class profile::backups ( String
   '/backups/scripts/library.sh':
     ensure  => present,
     content => epp('profile/backup_scripts/library.epp',
+    {
+      'bucketlocation' => $bucketlocation
+    }
     )
     ;
   '/backups/scripts/backups-daily.sh':
