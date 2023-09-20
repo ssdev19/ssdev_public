@@ -19,7 +19,7 @@ class profile::backups ( String
   '/backups/dumps/':
     ensure => directory,
     ;
-  "/backups/dumps/${listlocations}":
+  "/backups/dumps/${service_dump}":
     ensure => directory,
     ;
   '/backups/scripts/':
