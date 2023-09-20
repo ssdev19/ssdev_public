@@ -19,6 +19,7 @@ class profile::backups {
   }
 
 $library = @("EOT")
+
   function GetHello() {
   echo "Hello World"
   }
