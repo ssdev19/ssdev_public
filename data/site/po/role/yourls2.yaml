@@ -19,19 +19,19 @@ profile::yourls2::nginx_version: '1.22.1'
 mysql::server::root_password: "%{lookup('mariadb_root_pwd')}"
 
 
-# cron::job:
-  # 'urlshortnerbackup':
-  #   command: 'aws s3 sync /backups/dumps  s3://urlshortener-data/ --no-progress'
-  #   minute: 54
-  #   hour: 3
-  #   date: '*'
-  #   month: '*'
-  #   weekday: '*'
-  #   user: root
-  #   environment:
-  #     - 'MAILTO=root'
-  #     - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
-  #   description: 'mysql-db backup'
+cron::job:
+  'urlshortnerbackup':
+    command: 'sh /backups/scripts/backups-daily.sh' # 'aws s3 sync /backups/dumps  s3://urlshortener-data/ --no-progress'
+    minute: 13
+    hour: 22
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
+    description: 'mysql-db backup'
   # 'nginx':
   #   command: 'find /backups/nginx/20* -maxdepth 0 -ctime +20 -exec rm -fr {} + && rsync  -a --copy-links  --chown=xrootd:xrootd --link-dest /backups/nginx/earliest /etc/nginx/* /backups/nginx/$(date +\%F) && tar zcf /backups/dumps/config-yourls-$(date +\%F).tgz /backups/nginx/* '
   #   # command: 'tar -czf  /backups/dumps/nginx_$(date +\%F).gz /etc/nginx'
