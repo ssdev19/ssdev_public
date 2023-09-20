@@ -1,6 +1,7 @@
 # Backups of files and DBs per Iain's scripts
-class profile::backups {
-
+class profile::backups ( String
+  $service1,
+){
   file { "/backups/${service1}":
     ensure => 'directory',
     # target => "/backups/${service1}/${year_month_day}",
@@ -16,7 +17,8 @@ class profile::backups {
     content => $library,
 
     ;
-  }
+
+}
 
 $library = @("EOT")
 
