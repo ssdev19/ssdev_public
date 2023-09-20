@@ -13,7 +13,7 @@ source ${ScriptsHome}/library.sh
 
 # List of Locations to rsync diff
 # See SOURCE_DIR used in case
-ListofLocations=("nginx" "php-info")
+ListofLocations=(<%= $listlocations %>)
 
 # Declare SOURCE_DIR in the case evaluation
 # YOU NEED TO DO THIS CHANGE SOURCE_DIR
