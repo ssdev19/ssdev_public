@@ -11,6 +11,10 @@ class profile::backups ( String
     ensure => 'directory',
     # target => "/backups/${service1}/${year_month_day}",
     ;
+  file { "/backups/${service1}/${listlocations}":
+    ensure => 'directory',
+    # target => "/backups/${service1}/${year_month_day}",
+    ;
   '/backups/dumps/':
     ensure => directory,
     ;
