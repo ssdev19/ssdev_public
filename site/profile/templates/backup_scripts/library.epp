@@ -54,5 +54,5 @@
   echo ${Report2Send}
   echo ${Subject2Send}
   echo ${Recipient2Send}
-  cat ${Report2Send}|mail igoodenow@lsst.org
+  cat ${Report2Send}|mail shahram@lsst.org
   }
