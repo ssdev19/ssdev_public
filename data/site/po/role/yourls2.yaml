@@ -9,7 +9,7 @@ profile::base_linux::awscli: true
 profile::backups::service1: 'backup-files-yourls'
 profile::backups::bucketlocation: '"urlshortener-data-test"'
 profile::backups::service_dump: 'yourls'
-profile::backups::listlocations: 'nginx'
+profile::backups::listlocations: '"nginx"'
 profile::backups::listofdbs: '"mysql" "yourls"'
 profile::backups::source_dir: '/etc/nginx'
 profile::backups::find_days_old: 12
