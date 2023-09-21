@@ -27,7 +27,7 @@ export ReportofBackups="${BASE_ROOT_dump}/${StartTime}-report-backup.txt"
 ListScripts='FirstService.sh'
 
 # Declare bucket path to the cloud destination
-export BucketLocation= <%= $bucketlocation %>
+export BucketLocation=<%= $bucketlocation %>
 
 ## The body of the script
 
