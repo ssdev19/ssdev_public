@@ -66,6 +66,14 @@ class profile::backups ( String
     }
     )
     ;
+  '/backups/scripts/backup-files.sh':
+    ensure  => present,
+    content => epp('profile/backup_scripts/backup-files.epp',
+    {
+      'listlocations' => $listlocations,
+    }
+    )
+    ;
   '/backups/scripts/backup-db.sh':
     ensure  => present,
     content => epp('profile/backup_scripts/backup-db.epp',
