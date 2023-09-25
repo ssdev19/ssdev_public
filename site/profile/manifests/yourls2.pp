@@ -98,11 +98,6 @@ include mysql::server
     ensure  => file,
     content => $phpinfo,
   }
-
-  file {
-    '/backups/nginx':
-      ensure => directory,
-  }
   file {
     '/etc/systemd/system/nginx.service.d':
       ensure => directory,
