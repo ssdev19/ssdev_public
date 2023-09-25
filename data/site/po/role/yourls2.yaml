@@ -6,7 +6,7 @@ classes:
 # profile::base_linux::backups: true
 profile::base_linux::postfix: true
 profile::base_linux::awscli: true
-profile::backups::service1: 'backup-files-yourls'
+profile::backups::service1: 'yourls'
 profile::backups::bucketlocation: '"urlshortener-data"'
 profile::backups::service_dump: 'yourls'
 profile::backups::listlocations: '"nginx" "php-info"'
@@ -24,7 +24,7 @@ cron::job:
   'urlshortnerbackup':
     command: 'sh /backups/scripts/backups-daily.sh' # 'aws s3 sync /backups/dumps  s3://urlshortener-data/ --no-progress'
     minute: 48
-    hour: 22
+    hour: 3
     date: '*'
     month: '*'
     weekday: '*'

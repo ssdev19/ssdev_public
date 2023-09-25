@@ -8,7 +8,7 @@ class profile::backups ( String
   $source_dir,
   $listofdbs,
 ){
-  file { "/backups/${service1}":
+  file { "/backups/backup-files-${service1}":
     ensure => 'directory',
     # target => "/backups/${service1}/${year_month_day}",
     ;
@@ -71,10 +71,5 @@ class profile::backups ( String
     }
     )
     ;
-
-}
-
-$library = @("EOT")
-
-    | EOT
+  }
 }
