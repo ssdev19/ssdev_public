@@ -195,11 +195,11 @@ include mysql::server
         ensure => directory,
         ;
     }
+  }
     file { '/etc/nginx/YOURLS':
       ensure => 'link',
       target => "/etc/nginx/YOURLS-${yourls_version}",
     }
-  }
   # $mariadb_root_pwd = lookup('mariadb_root_pwd')
 # yumrepo { 'percona':
 #   descr    => 'CentOS $releasever - Percona',
