@@ -12,14 +12,6 @@ include mysql::server
     ensure => installed,
   }
   unless $::nginx_source  {
-    archive { "/usr/src/YOURLS-${yourls_version}.tar.gz":
-      ensure       => present,
-      source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
-      extract_path => '/etc/nginx',
-      extract      => true,
-      provider     => 'wget',
-      cleanup      => false,
-    }
     archive { "/usr/src/nginx-${nginx_version}.tar.gz":
       ensure       => present,
       source       => "http://nginx.org/download/nginx-${nginx_version}.tar.gz",
@@ -55,6 +47,14 @@ include mysql::server
       import_cat_cmd => 'zcat',
       import_timeout => 900,
     }
+  }
+  archive { "/usr/src/YOURLS-${yourls_version}.tar.gz":
+    ensure       => present,
+    source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
+    extract_path => '/etc/nginx',
+    extract      => true,
+    provider     => 'wget',
+    cleanup      => false,
   }
 
   archive { '/etc/pki/tls/certs/ls.st.current.crt' :
