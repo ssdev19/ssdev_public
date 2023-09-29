@@ -17,7 +17,7 @@ include mysql::server
     extract_path => '/etc/nginx',
     extract      => true,
     provider     => 'wget',
-    cleanup      => true,
+    cleanup      => false,
   }
   unless $::nginx_source  {
     archive { "/usr/src/nginx-${nginx_version}.tar.gz":
