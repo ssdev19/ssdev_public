@@ -7,9 +7,9 @@
 #  Accepts yourls_version
 # @param nginx_version
 #  Accepts nginx_version
-class profile::yourls2 (Sensitive[String]
-  $yourls_db_pass_hide,
-  $yourls_db_user_hide,
+class profile::yourls2 (
+  Sensitive[String] $yourls_db_pass_hide,
+  Sensitive[String] $yourls_db_user_hide,
   String $yourls_version,
   String $nginx_version,
 ) {
