@@ -1,9 +1,14 @@
 # 
-class profile::yourls ( String
-
-$yourls_version,
-$yourls_site,
-$nginx_version
+# @param yourls_site
+#  String yourls_site
+# @param yourls_version
+#  Accepts yourls_version
+# @param nginx_version
+#  String specify nginx version
+class profile::yourls (
+  String $yourls_version,
+  String $yourls_site,
+  String $nginx_version
 
 ){
   # include nginx
