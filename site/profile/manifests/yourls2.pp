@@ -162,7 +162,7 @@ class profile::yourls2 (
       ensure  => file,
       source  => '/tmp/nginx_conf.txt',
       replace => 'yes',
-      }
+    }
 # Installs plugins.  Need to be activated in GUI
     file {
       "/etc/nginx/YOURLS-${yourls_version}/user/plugins/mass-remove-links":
@@ -243,6 +243,4 @@ class profile::yourls2 (
 #   # user    => 'root',
 #   source  => '/etc/nginx/*',
 # }
-# Generates today's date in format "2023-09-13" which matches the folder
-
 }

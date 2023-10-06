@@ -1,9 +1,17 @@
-# Prometheus monitoring URL: http://prometheus.us.lsst.org:9090/ 
-class profile::prometheus (Sensitive[String]
-$slackapi_hide,
-$slackuser_hide,
-$advertise_ip,
-$cluster_hide,
+# Prometheus monitoring URL: http://prometheus.us.lsst.org:9090/ # @param slackapi_hide
+# @param slackapi_hide
+#  Accept Slack API
+# @param slackuser_hide
+#  Accept Slack user
+# @param cluster_hide
+#  Cluster config
+# @param advertise_ip
+#  IP for cluster
+class profile::prometheus (
+  Sensitive[String] $slackapi_hide,
+  Sensitive[String] $slackuser_hide,
+  Sensitive[String] $cluster_hide,
+  String $advertise_ip,
 ) {
 # Firewall rules are in private repo
   include prometheus
@@ -35,11 +43,11 @@ $cluster_hide,
   }
 # Alertmanager config
   file { '/etc/alertmanager/notifications.tmpl':
-  ensure  => file,
-  content => epp('profile/alertmanager_custom.epp'),
+    ensure  => file,
+    content => epp('profile/alertmanager_custom.epp'),
   }
-$gmail_auth_token = lookup('gmail_auth_token')
-$gmail_account = lookup('gmail_account')
+  $gmail_auth_token = lookup('gmail_auth_token')
+  $gmail_account = lookup('gmail_account')
   class { 'prometheus::alertmanager':
     # extra_options => '--cluster.listen-address=',
     extra_options => "--cluster.advertise-address=${advertise_ip} \--cluster.listen-address=:9797 \--cluster.peer=${unwrap($cluster_hide)}",

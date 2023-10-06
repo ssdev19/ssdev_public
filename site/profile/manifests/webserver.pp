@@ -11,8 +11,8 @@ class profile::webserver {
     host     => 'localhost',
     grant    => ['SELECT', 'UPDATE'],
   }
-include nginx
-include selinux
+  include nginx
+  include selinux
 # include mysql::server
 
 # Below this line they only need to run once.  They can be commented out after first run.
@@ -50,18 +50,18 @@ include selinux
 # nginx conf files: 
 # /etc/nginx/nginx.conf
 
-  file{ '/etc/nginx/YOURLS':
-  ensure => directory
+  file { '/etc/nginx/YOURLS':
+    ensure => directory
   }
   $ls_st_crt = lookup('ls_st_crt')
-  file{ '/etc/pki/tls/certs/ls.st.crt':
-  ensure  => present,
-  content => $ls_st_crt,
+  file { '/etc/pki/tls/certs/ls.st.crt':
+    ensure  => file,
+    content => $ls_st_crt,
   }
   $ls_st_key = lookup('ls_st_key')
   file{ '/etc/pki/tls/certs/ls.st.key':
-  ensure  => present,
-  content => $ls_st_key,
+    ensure  => present,
+    content => $ls_st_key,
   }
   vcsrepo { '/etc/nginx/YOURLS':
     ensure             => present,
@@ -71,14 +71,14 @@ include selinux
     keep_local_changes => true,
   }
   $yourls_config_php = lookup('yourls_config_php')
-  file{ '/etc/nginx/YOURLS/user/config.php':
-  ensure  => present,
-  content => $yourls_config_php
+  file { '/etc/nginx/YOURLS/user/config.php':
+    ensure  => present,
+    content => $yourls_config_php
   }
   $yourls_conf = lookup('yourls_conf')
-  file{ '/etc/nginx/conf.d/yourls.conf':
-  ensure  => present,
-  content => $yourls_conf
+  file { '/etc/nginx/conf.d/yourls.conf':
+    ensure  => present,
+    content => $yourls_conf
   }
   exec { 'chown /etc/nginx/YOURLS':
     command => 'chown -R nginx: /etc/nginx/YOURLS',
@@ -86,8 +86,8 @@ include selinux
   }
 # /etc/nginx/YOURLS/index.html
   $index_html = lookup('index_html')
-  file{ '/etc/nginx/YOURLS/index.html':
-  ensure  => present,
-  content => $index_html
+  file { '/etc/nginx/YOURLS/index.html':
+    ensure  => file,
+    content => $index_html
   }
 }

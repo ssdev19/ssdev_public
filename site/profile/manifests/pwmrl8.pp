@@ -65,25 +65,25 @@ $applicationpath = lookup('application_path')
     ensure => present,
   }
   -> file_line { 'Append line to ROOT/WEB-INF/web.xml':
-      path  => $webpath,
-      line  => "<param-value>${applicationpath}</param-value>",
-      match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
-    }
-    $lsst_theme = lookup('lsst_theme')
-    file {
-      '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
-        ensure => directory,
-    }
-    archive { '/tmp/lsst.zip' :
-      # path => '/tmp/lsst.zip',
-      # ensure  => present,
-      source       => $lsst_theme,
-      cleanup      => false,
-      extract      => true,
-      extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
-      # creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
-      # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
-    }
+    path  => $webpath,
+    line  => "<param-value>${applicationpath}</param-value>",
+    match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
+  }
+  $lsst_theme = lookup('lsst_theme')
+  file {
+    '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
+      ensure => directory,
+  }
+  archive { '/tmp/lsst.zip' :
+    # path => '/tmp/lsst.zip',
+    # ensure  => present,
+    source       => $lsst_theme,
+    cleanup      => false,
+    extract      => true,
+    extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+    # creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+    # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
+  }
   $favicon = lookup('favicon')
   file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
     ensure => present,

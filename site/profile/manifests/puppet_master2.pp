@@ -20,10 +20,10 @@ class profile::puppet_master2 {
 # class { '::puppet': server => true }
   # The toml gem is required for grafana ldap.
   # Be sure puppetserver service is restarted after the first run.
-    package { 'toml':
-      ensure   => present,
-      provider => 'puppetserver_gem',
-    }
+  package { 'toml':
+    ensure   => present,
+    provider => 'puppetserver_gem',
+  }
   # java_ks { 'puppetca:truststore':
   #   ensure       => latest,
   #   certificate  => '/etc/puppet/ssl/certs/ca.pem',

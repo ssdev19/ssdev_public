@@ -11,9 +11,9 @@ class profile::puppet_master3 {
   # include foreman_proxy
   # include foreman_proxy::plugin::remote_execution::script
   # include puppet
-    file { '/etc/puppetlabs/puppet/eyaml' :
-      ensure  => directory,
-    }
+  file { '/etc/puppetlabs/puppet/eyaml' :
+    ensure  => directory,
+  }
 
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',

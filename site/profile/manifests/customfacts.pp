@@ -1,11 +1,11 @@
 # Base profile for Windows OS
 class profile::customfacts {
-$os = $facts['os']['family']
-if $facts['os']['family'] == 'RedHat' {
-      notify{"It is ${os}":}
-    } else {
-      notify{"This is not centos":}
-}
+  $os = $facts['os']['family']
+  if $facts['os']['family'] == 'RedHat' {
+    notify { "It is ${os}": }
+  } else {
+    notify { "This is not Centos but ${os}": }
+  }
 
 # if $::pf_svc  {
 #   notify{"It does exist ${::pf_svc}":}
@@ -22,7 +22,7 @@ if $facts['os']['family'] == 'RedHat' {
 #   } else {
 #     notify{"System has been up for under ${::uptime_hours} hours ":}
 # }
-notify{"Hardware platform is ${::hardware_platform} . ":}
-notify{"os family is ${::osfamily} . ":}
-notify { "${::users} users logged in": }
+  notify { "Hardware platform is ${::hardware_platform} . ": }
+  notify { "os family is ${::osfamily} . ": }
+  notify { "${::users} users logged in": }
 }

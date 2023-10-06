@@ -1,7 +1,7 @@
 ## Reboot will be required following the installation of this
 class profile::pwm {
-include 'archive'
-include java_ks::config
+  include 'archive'
+  include java_ks::config
   $pwmconfig_dest = lookup('pwmconfig_dest')
   $pwmconfig_source = lookup('pwmconfig_source')
   archive { '/tmp/pwm-1.9.2.war':
@@ -11,7 +11,7 @@ include java_ks::config
     cleanup  => false,
   }
   file { '/opt/tomcat/webapps/ROOT.war':
-    ensure => present,
+    ensure => file,
     source => '/tmp/pwm-1.9.2.war',
   }
   # using archive directly to destination breaks tomcat installation
@@ -45,13 +45,13 @@ include java_ks::config
   }
   $domaincert2 = lookup('domaincert2')
   archive { '/tmp/lsstcertlatest.key' :
-    ensure  => present,
+    ensure  => file,
     source  => $domaincert2,
     cleanup => false,
   }
   $chain = lookup('chain')
   archive { '/tmp/lsstcertlatestintermediate.pem' :
-    ensure  => present,
+    ensure  => file,
     source  => $chain,
     cleanup => false,
   }
@@ -66,36 +66,36 @@ include java_ks::config
   }
 
   file { $pwmconfig_dest:
-    ensure  => present,
+    ensure  => file,
     source  => '/tmp/PwmConfiguration.xml',
     replace => 'no',
   }
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
   file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
-    ensure => present,
+    ensure => file,
   }
   -> file_line { 'Append line to ROOT/WEB-INF/web.xml':
-      path  => $webpath,
-      line  => "<param-value>${applicationpath}</param-value>",
-      match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
-    }
+    path  => $webpath,
+    line  => "<param-value>${applicationpath}</param-value>",
+    match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
+  }
 
-    $lsst_theme = lookup('lsst_theme')
-    file {
-      '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
-        ensure => directory,
-    }
-    archive { '/tmp/lsst.zip' :
-      # path => '/tmp/lsst.zip',
-      # ensure  => present,
-      source       => $lsst_theme,
-      cleanup      => false,
-      extract      => true,
-      extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
-      # creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
-      # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
-    }
+  $lsst_theme = lookup('lsst_theme')
+  file {
+    '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
+      ensure => directory,
+  }
+  archive { '/tmp/lsst.zip' :
+    # path => '/tmp/lsst.zip',
+    # ensure  => present,
+    source       => $lsst_theme,
+    cleanup      => false,
+    extract      => true,
+    extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+    # creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+    # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
+  }
   $favicon = lookup('favicon')
   file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
     ensure => present,
@@ -106,7 +106,6 @@ include java_ks::config
     source  => $pwmconfig_source,
     cleanup => false,
   }
-
 
   # # Manage certs
   java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':

@@ -1,23 +1,33 @@
 # Grafana url: http://grafana-x.lsst.org:3000
-# Keys containg dots should be within quotes.
-class profile::grafana ( String
-$pname1,
-$url1,
+# Grafana url: http://grafana-x.lsst.org:3000
+# @param pname1
+#  Prometheus Server name 'mr-tuc-1.lsst.org'
+# @param pname2
+#  Prometheus 2nd Server name 'mr-tuc-2.lsst.org'
+# @param url1
+#  Prometheus URL 'http://mr-tuc-1.lsst.org:9090'
+# @param url2
+#  Prometheus URL 'http://mr-tuc-2.lsst.org:9090'
+class profile::grafana (
+  String $pname1,
+  String $url1,
+  String $pname2,
+  String $url2,
 ) {
   $grafana_pwd = lookup('grafana_pwd')
   class { 'grafana':
     version                  => '9.3.6',
     provisioning_datasources => {
-    apiVersion  => 1,
-    datasources => [
-      {
-        name      => $name,
-        type      => 'prometheus',
-        access    => 'proxy',
-        url       => $url1,
-        isDefault => true,
-      },
-    ],
+      apiVersion  => 1,
+      datasources => [
+        {
+          name      => $name,
+          type      => 'prometheus',
+          access    => 'proxy',
+          url       => $url1,
+          isDefault => true,
+        },
+      ],
     },
     cfg                      => {
       'auth.ldap' => {
