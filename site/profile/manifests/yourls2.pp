@@ -134,32 +134,32 @@ class profile::yourls2 (
       # onlyif   => 'test -e /usr/src/nginx-1.22.1/configure'
     }
     file { "/etc/nginx/YOURLS-${yourls_version}/shorten/index.php":
-      ensure  => present,
+      ensure  => file,
       source  => '/tmp/index.php',
       replace => 'yes',
     }
     file { "/etc/nginx/YOURLS-${yourls_version}/index.html":
-      ensure  => present,
+      ensure  => file,
       source  => '/tmp/index.html',
       replace => 'yes',
     }
     file { "/etc/nginx/YOURLS-${yourls_version}/user/config.php":
-      ensure  => present,
+      ensure  => file,
       source  => '/tmp/config.php',
       replace => 'yes',
     }
     file { "/etc/nginx/YOURLS-${yourls_version}/.htaccess":
-      ensure  => present,
+      ensure  => file,
       source  => '/tmp/htaccess',
       replace => 'yes',
     }
     file { '/etc/nginx/conf.d/yourls.conf':
-      ensure  => present,
+      ensure  => file,
       source  => '/tmp/yourls_config_new.txt',
       replace => 'yes',
     }
     file { '/etc/nginx/nginx.conf':
-      ensure  => present,
+      ensure  => file,
       source  => '/tmp/nginx_conf.txt',
       replace => 'yes',
       }
