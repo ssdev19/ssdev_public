@@ -1,8 +1,11 @@
 # Base profile for Windows OS
 # @param ipmi
 #  If `true`, include ipmi
+# @param packages
+#  If `true`, include ipmi
 class profile::base_windows (
   Boolean $ipmi  = false,
+  Optional[Array[String]]     $packages = undef,
 ) {
   include chocolatey # Needed for just about most things for Windows.
   package { 'windows_exporter':
