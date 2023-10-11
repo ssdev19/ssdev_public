@@ -6,3 +6,6 @@ $packages = lookup(
   merge         => 'unique',
   default_value => undef,
 )
+if ($packages) {
+  ensure_packages($packages)
+}
