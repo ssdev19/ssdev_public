@@ -1,4 +1,6 @@
 ---
+profile::base_linux:
+  - "screen"
 ssh::server_options:
   Port: 22
   Protocol: 2

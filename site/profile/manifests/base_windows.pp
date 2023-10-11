@@ -1,4 +1,6 @@
 # Base profile for Windows OS
+# @param ipmi
+#  If `true`, include ipmi
 class profile::base_windows (
   Boolean $ipmi  = false,
 ) {
