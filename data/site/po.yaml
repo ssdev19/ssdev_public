@@ -1,5 +1,5 @@
 ---
-profile::base_linux::packages:
+packages:
   - 'screen'
   - 'telnet'
 ssh::server_options:
