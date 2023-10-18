@@ -1,6 +1,6 @@
 lookup('classes').include
 
-if $OperatingSystem != 'Linux' {
+if $facts['os']['family'] == 'RedHat' {
   $packages = lookup(
     name          => 'packages',
     value_type    => Variant[Array[String], Undef],
