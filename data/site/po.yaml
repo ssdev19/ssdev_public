@@ -116,7 +116,7 @@ postfix::configs:
   #   ensure: absent
 puppet_agent::package_version: 7.26.0
 puppet_agent::collection: 'puppet7'
-puppet_agent::service_names: ''
+puppet_agent::service_names: ['']
 puppet_agent::config:
   - {section: 'agent', setting: 'show_diff', value: 'true'}
   # - {section: 'agent', setting: 'server', value: 'foreman2-ssdev.us.lsst.org'}
