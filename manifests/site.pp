@@ -8,6 +8,6 @@ if $facts['os']['family'] == 'RedHat' {
     default_value => undef,
   )
   if ($packages) {
-    stdlib::ensure_packages($packages)
+    ensure_packages($packages)
   }
 }
