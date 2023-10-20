@@ -46,7 +46,7 @@ mod 'puppet-cron', '4.1.0'
 mod 'puppet-r10k', '10.3.0'
 # mod 'camptocamp-systemd', '3.0.0'
 mod 'puppet-collectd', '13.0.0'
-mod 'puppet-epel', '4.0.0' # collectd dependency
+mod 'puppet-epel', '3.1.0' # collectd dependency
 mod 'puppetlabs-python_task_helper', '0.5.0' # collectd dependency
 mod 'puppet-postfix', '2.0.0'
 mod 'camptocamp-augeas', '1.9.0'
