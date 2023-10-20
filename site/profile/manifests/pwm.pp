@@ -98,7 +98,7 @@ class profile::pwm {
   }
   $favicon = lookup('favicon')
   file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
-    ensure => present,
+    ensure => file,
     source => $favicon,
   }
   archive { '/tmp/PwmConfiguration.xml' :
