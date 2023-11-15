@@ -3,7 +3,10 @@
 #  If `true`, include ipmi
 # @param packages
 #  If `true`, include ipmi
+# @param timezone
+#  configure timezone
 class profile::base_windows (
+  String $timezone,
   Boolean $ipmi  = false,
   Optional[Array[String]]     $packages = undef,
 ) {
@@ -17,6 +20,10 @@ class profile::base_windows (
     source          => 'http://wsus.lsst.org/puppetfiles/notepad/Notepad7.9.1.msi',
     install_options => '/quiet',
   }
+  class { 'timezone_win':
+    timezone => $timezone,
+  }
+
 # Install ipmi
   # if $ipmi {
   #   package { 'IPMIView':
