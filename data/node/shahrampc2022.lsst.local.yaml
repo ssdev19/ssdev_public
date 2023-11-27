@@ -3,4 +3,5 @@ classes:
   - profile::base_windows
   # - profile::monitoring_graylog
 profile::base_windows::ipmi: true
-profile::base_windows::timezone: "US Mountain Standard Time"
+# profile::base_windows::timezone: "US Mountain Standard Time"
+profile::base_windows::timezone: "Pacific SA Standard Time"
