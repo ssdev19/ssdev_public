@@ -1,6 +1,6 @@
 ---
 packages:
-  - 'screen'
+  # - 'screen'
   - 'telnet'
 ssh::server_options:
   Port: 22
