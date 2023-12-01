@@ -37,7 +37,6 @@ $ciphers,
     port                  => '8443',
     protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
     purge_connectors      => true,
-    httpHeaderSecurity    => true,
     additional_attributes => {
       # 'httpHeaderSecurity'         => 'true',
       # 'hstsEnabled'                => 'true',
