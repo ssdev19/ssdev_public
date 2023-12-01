@@ -17,12 +17,12 @@ class profile::pwm {
   # using archive directly to destination breaks tomcat installation
   # So it must first go to the tmp folder then compied over to destination.
 
-  $dc2cert = lookup('dc2cert')
-  archive { '/tmp/DC2Cert.cer' :
-    ensure  => present,
-    source  => $dc2cert,
-    cleanup => false,
-  }
+  # $dc2cert = lookup('dc2cert')
+  # archive { '/tmp/DC2Cert.cer' :
+  #   ensure  => present,
+  #   source  => $dc2cert,
+  #   cleanup => false,
+  # }
   $dc3cert = lookup('dc3cert')
   archive { '/tmp/DC3Cert.cer' :
     ensure  => present,
