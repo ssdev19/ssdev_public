@@ -17,12 +17,12 @@ class profile::pwm {
   # using archive directly to destination breaks tomcat installation
   # So it must first go to the tmp folder then compied over to destination.
 
-  # $dc2cert = lookup('dc2cert')
-  # archive { '/tmp/DC2Cert.cer' :
-  #   ensure  => present,
-  #   source  => $dc2cert,
-  #   cleanup => false,
-  # }
+  $dc2cert = lookup('dc2cert')
+  archive { '/tmp/DC2Cert.cer' :
+    ensure  => present,
+    source  => $dc2cert,
+    cleanup => false,
+  }
   $dc3cert = lookup('dc3cert')
   archive { '/tmp/DC3Cert.cer' :
     ensure  => present,
@@ -108,14 +108,14 @@ class profile::pwm {
   }
 
   # # Manage certs
-  java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
-    ensure       => latest,
-    certificate  => '/tmp/DC2Cert.cer',
-    # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
-    password     => $keystorepwd, # Must be at least 6 characters
-    trustcacerts => true,
-    # password_fail_reset => true,
-  }
+  # java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+  #   ensure       => latest,
+  #   certificate  => '/tmp/DC2Cert.cer',
+  #   # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
+  #   password     => $keystorepwd, # Must be at least 6 characters
+  #   trustcacerts => true,
+  #   # password_fail_reset => true,
+  # }
   java_ks { 'dc3.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
     ensure       => latest,
     certificate  => '/tmp/DC3Cert.cer',
