@@ -39,6 +39,7 @@ $ciphers,
     purge_connectors      => true,
     additional_attributes => {
       'hstsEnabled'                => 'true',
+      'hstsMaxAgeSeconds'          => 0,
       'SSLEnabled'                 => $https_enabled,
       'maxThreads'                 => 150,
       'scheme'                     => https,
