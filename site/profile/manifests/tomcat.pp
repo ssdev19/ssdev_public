@@ -38,6 +38,7 @@ $ciphers,
     protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
     purge_connectors      => true,
     additional_attributes => {
+      'httpHeaderSecurity'         => 'true',
       'hstsEnabled'                => 'true',
       'hstsMaxAgeSeconds'          => 0,
       'SSLEnabled'                 => $https_enabled,
