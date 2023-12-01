@@ -11,7 +11,7 @@ class profile::pwm {
     cleanup  => false,
   }
   file { '/opt/tomcat/webapps/ROOT.war':
-    ensure => file,
+    ensure => present,
     source => '/tmp/pwm-1.9.2.war',
   }
   # using archive directly to destination breaks tomcat installation
@@ -45,13 +45,13 @@ class profile::pwm {
   }
   $domaincert2 = lookup('domaincert2')
   archive { '/tmp/lsstcertlatest.key' :
-    ensure  => file,
+    ensure  => present,
     source  => $domaincert2,
     cleanup => false,
   }
   $chain = lookup('chain')
   archive { '/tmp/lsstcertlatestintermediate.pem' :
-    ensure  => file,
+    ensure  => present,
     source  => $chain,
     cleanup => false,
   }
@@ -66,14 +66,14 @@ class profile::pwm {
   }
 
   file { $pwmconfig_dest:
-    ensure  => file,
+    ensure  => present,
     source  => '/tmp/PwmConfiguration.xml',
     replace => 'no',
   }
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
   file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
-    ensure => file,
+    ensure => present,
   }
   -> file_line { 'Append line to ROOT/WEB-INF/web.xml':
     path  => $webpath,
@@ -98,7 +98,7 @@ class profile::pwm {
   }
   $favicon = lookup('favicon')
   file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
-    ensure => file,
+    ensure => present,
     source => $favicon,
   }
   archive { '/tmp/PwmConfiguration.xml' :
