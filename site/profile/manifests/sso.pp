@@ -43,9 +43,9 @@ $line,
   }
     # zoom connector /opt/pingfederate-11.0.7/pingfederate/server/default/deploy/
   archive { '/tmp/pf-zoom-connector-1.0.zip':
-    ensure   => present,
+    # ensure   => present,
     source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-connector-1.0.zip',
-    provider => 'wget',
+    # provider => 'wget',
     cleanup  => false,
     extract  => true,
     extract_path => '/tmp',
