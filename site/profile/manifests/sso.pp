@@ -47,6 +47,7 @@ $line,
     source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
     provider => 'wget',
     cleanup  => false,
+    extract  => true,
   }
 
   file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar":
