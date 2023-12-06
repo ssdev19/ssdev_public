@@ -22,6 +22,14 @@ $line,
       extract      => true,
       extract_path => '/tmp/',
     }
+    # zoom connector
+  archive { '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar':
+    ensure   => present,
+    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
+    provider => 'wget',
+    cleanup  => false,
+  }
+
     archive { '/tmp/jirapingfed.zip':
       # ensure   => present,
       source       => 'https://project.lsst.org/zpuppet/pingfederate/pf-atlassian-cloud-connector-1.0.zip',
