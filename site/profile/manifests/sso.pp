@@ -52,7 +52,7 @@ $line,
   }
   file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jarr":
     ensure => present,
-    source => '/tmp/pf-zoom-connector-1.0/dist/pf-zoom-quickconnection-1.0.jar',
+    source => '/tmp/pf-zoom-connector/dist/pf-zoom-quickconnection-1.0.jar',
   }
 
   file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar":
