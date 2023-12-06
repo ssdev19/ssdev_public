@@ -41,14 +41,18 @@ $line,
       group     => $pf_user,
     }
   }
-    # zoom connector
-  archive { '/tmp/pf-zoom-quickconnection-1.0.jar':
+    # zoom connector /opt/pingfederate-11.0.7/pingfederate/server/default/deploy/
+  archive { '/tmp/pf-zoom-connector-1.0.zip':
     ensure   => present,
-    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
+    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-connector-1.0.zip',
     provider => 'wget',
     cleanup  => false,
     extract  => true,
-    extract_path => '//opt/pingfederate-11.0.7/pingfederate/server/default/deploy/',
+    extract_path => '/tmp',
+  }
+  file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jarr":
+    ensure => present,
+    source => '/tmp/pf-zoom-connector-1.0/dist/pf-zoom-quickconnection-1.0.jar',
   }
 
   file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-atlassian-cloud-quickconnection-1.0.jar":
