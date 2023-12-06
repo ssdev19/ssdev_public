@@ -50,7 +50,7 @@ $line,
     extract  => true,
     extract_path => '/tmp',
   }
-  file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jarr":
+  file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar":
     ensure => present,
     source => '/tmp/pf-zoom-connector/dist/pf-zoom-quickconnection-1.0.jar',
   }
