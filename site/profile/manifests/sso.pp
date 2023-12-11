@@ -34,11 +34,11 @@ $line,
       extract_path => '/tmp/',
       # creates      => '/tmp/atlassianconnector' 
     }
-    # zoom connector /opt/pingfederate-11.0.7/pingfederate/server/default/deploy/
-  archive { '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar':
-    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
-    cleanup  => false,
-  }
+    # zoom provisioner /opt/pingfederate-11.0.7/pingfederate/server/default/deploy/
+    archive { '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar':
+      source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
+      cleanup  => false,
+    }
     recursive_file_permissions { $pf_home:
       file_mode => '0775',
       dir_mode  => '0775',
