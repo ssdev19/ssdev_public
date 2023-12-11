@@ -34,21 +34,17 @@ $line,
       extract_path => '/tmp/',
       # creates      => '/tmp/atlassianconnector' 
     }
-    # recursive_file_permissions { $pf_home:
-    #   file_mode => '0775',
-    #   dir_mode  => '0775',
-    #   owner     => $pf_user,
-    #   group     => $pf_user,
-    # }
-  }
     # zoom connector /opt/pingfederate-11.0.7/pingfederate/server/default/deploy/
-  archive { '/tmp/pf-zoom-connector-1.0.zip':
-    # ensure   => present,
-    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-connector-1.0.zip',
-    # provider => 'wget',
+  archive { '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar':
+    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
     cleanup  => false,
-    extract  => true,
-    extract_path => '/tmp',
+  }
+    recursive_file_permissions { $pf_home:
+      file_mode => '0775',
+      dir_mode  => '0775',
+      owner     => $pf_user,
+      group     => $pf_user,
+    }
   }
   file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar":
     ensure => present,
@@ -139,18 +135,6 @@ $line,
   #   extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   # }
 
-  archive { '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0-delete.jar':
-    # ensure   => present,
-    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
-    # provider => 'wget',
-    cleanup  => false,
-    # extract  => true,
-    # extract_path => '/tmp',
-  }
-    recursive_file_permissions { $pf_home:
-      file_mode => '0775',
-      dir_mode  => '0775',
-      owner     => $pf_user,
-      group     => $pf_user,
-    }
+
+
 }
