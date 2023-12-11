@@ -139,5 +139,13 @@ $line,
   #   extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   # }
 
+  archive { '/tmp/pf-zoom-connector/dist/pf-zoom-quickconnection-1.0-delete.jar':
+    # ensure   => present,
+    source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
+    # provider => 'wget',
+    cleanup  => false,
+    # extract  => true,
+    # extract_path => '/tmp',
+  }
 
 }
