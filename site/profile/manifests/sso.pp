@@ -34,12 +34,12 @@ $line,
       extract_path => '/tmp/',
       # creates      => '/tmp/atlassianconnector' 
     }
-    recursive_file_permissions { $pf_home:
-      file_mode => '0775',
-      dir_mode  => '0775',
-      owner     => $pf_user,
-      group     => $pf_user,
-    }
+    # recursive_file_permissions { $pf_home:
+    #   file_mode => '0775',
+    #   dir_mode  => '0775',
+    #   owner     => $pf_user,
+    #   group     => $pf_user,
+    # }
   }
     # zoom connector /opt/pingfederate-11.0.7/pingfederate/server/default/deploy/
   archive { '/tmp/pf-zoom-connector-1.0.zip':
@@ -147,5 +147,10 @@ $line,
     # extract  => true,
     # extract_path => '/tmp',
   }
-
+    recursive_file_permissions { $pf_home:
+      file_mode => '0775',
+      dir_mode  => '0775',
+      owner     => $pf_user,
+      group     => $pf_user,
+    }
 }
