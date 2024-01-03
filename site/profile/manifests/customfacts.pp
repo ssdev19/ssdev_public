@@ -22,7 +22,7 @@ class profile::customfacts {
 #   } else {
 #     notify{"System has been up for under ${::uptime_hours} hours ":}
 # }
-  notify { "Hardware platform is ${::hardware_platform} . ": }
+  # notify { "Hardware platform is ${::hardware_platform} . ": }
   notify { "os family is ${::osfamily} . ": }
   notify { "${::users} users logged in": }
 }
