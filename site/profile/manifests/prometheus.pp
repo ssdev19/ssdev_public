@@ -39,7 +39,7 @@ class profile::prometheus (
           'ip_protocol_fallback'  => true,
         },
       },
-    }
+    },
   }
 # Alertmanager config
   file { '/etc/alertmanager/notifications.tmpl':
