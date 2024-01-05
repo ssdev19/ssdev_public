@@ -1,10 +1,10 @@
 # web-rl8 node
 ---
 classes:
-  - profile::tomcat
+  # - profile::tomcat
   - profile::base_linux
-  - profile::java
-  - profile::pwmrl8
+  # - profile::java
+  # - profile::pwmrl8
 profile::base_linux::postfix: true
 profile::base_linux::nsswitch: false
 # profile::base_linux::ntp: true
