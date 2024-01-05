@@ -7,6 +7,7 @@ classes:
   # - profile::pwmrl8
 profile::base_linux::postfix: true
 profile::base_linux::nsswitch: false
+profile::base_linux::awscli: true
 # profile::base_linux::ntp: true
 network::interfaces_hash:
   eth0:
