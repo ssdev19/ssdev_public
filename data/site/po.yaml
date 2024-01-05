@@ -7,7 +7,7 @@ ssh::server_options:
   Protocol: 2
   SyslogFacility: "AUTHPRIV"
   # LogLevel: "INFO"
-  LoginGraceTime: 195
+  LoginGraceTime: 196
   PermitRootLogin: "no"
   PubkeyAuthentication: "yes"
   AuthorizedKeysFile: ".ssh/authorized_keys"
