@@ -12,7 +12,7 @@ profile::base_linux::awscli: true
 network::interfaces_hash:
   eth0:
     type: Ethernet
-    ipaddress: 140.252.32.195
+    ipaddress: 140.252.32.183
     netmask: 255.255.254.0
     gateway: 140.252.32.1
     dns1: 140.252.32.125
