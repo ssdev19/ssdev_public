@@ -1,41 +1,127 @@
 ## Reboot will be required following the installation of this
-#
-# @summary
-#   A Puppet module for managing Pwm:
-#
-#   https://github.com/pwm-project/pwm
-#
-#   Note that the module expects to find pwm.war at the root of the Puppet 
-#   fileserver. This could be avoided if Pwm was packaged for Debian.
-#
-# @param pwm_download_url
-#   The URL from which to download the PWM WAR file
-# @param pwm_context
-#   Context (path) of Pwm on the Tomcat installation
-# @param manage
-#   Whether to manage Pwm or not
-# @param manage_config
-#   Whether to manage Pwm configuration or not
-# @param manage_tomcat
-#   Whether to manage Tomcat or not
-# @param tomcat_webapps_path
-#   Webapps directory for Tomcat
-# @param tomcat_catalina_host
-#   Name of the Pwm host for Tomcat  
-# @param tomcat_manager_allow_cidr
-#   CIDR blocks to allow traffic from to Tomcat Manager webapp
-# @param tomcat_manager_user
-#   Username for accessing Tomcat Manager
-# @param tomcat_manager_user_password
-#   Password for Tomcat Manager user
-# @param tomcat_java_opts
-#   Tomcat's JAVA_OPTS setting
-#
 class profile::pwm2 {
-  class { 'pwm':
-    tomcat_manager_allow_cidr    => '192.168.59.0/24',
-    tomcat_manager_user          => 'admin',
-    tomcat_manager_user_password => 'vagrant',
-    pwm_download_url             => 'https://github.com/pwm-project/pwm/releases/download/v2_0_1/pwm-2.0.1.war',
+  include 'archive'
+  include java_ks::config
+  $pwmconfig_dest = lookup('pwmconfig_dest')
+  $pwmconfig_source = lookup('pwmconfig_source')
+  archive { '/tmp/pwm-1.9.2.war':
+    ensure   => present,
+    source   => 'https://github.com/pwm-project/pwm/releases/download/v1_9_2/pwm-1.9.2.war',
+    provider => 'wget',
+    cleanup  => false,
+  }
+  file { '/opt/tomcat/webapps/ROOT.war':
+    ensure => present,
+    source => '/tmp/pwm-1.9.2.war',
+  }
+  # using archive directly to destination breaks tomcat installation
+  # So it must first go to the tmp folder then compied over to destination.
+
+  $dc2cert = lookup('dc2cert')
+  archive { '/tmp/DC2Cert.cer' :
+    ensure  => present,
+    source  => $dc2cert,
+    cleanup => false,
+  }
+  $dc3cert = lookup('dc3cert')
+  archive { '/tmp/DC3Cert.cer' :
+    ensure  => present,
+    source  => $dc3cert,
+    cleanup => false,
+  }
+  # keytool -import -keystore /usr/java/jdk-11.0.2+9-jre/lib/security/cacerts -file /tmp/dc3April22.cer -alias dc3.lsst.local
+  # keytool -delete -noprompt -alias lsst.org  -keystore /etc/pki/keystore -storepass ${keystore.pass}
+  $pwmkeystore = lookup('pwmkeystore')
+  archive { '/etc/pki/keystore' :
+    ensure  => present,
+    source  => $pwmkeystore,
+    cleanup => false,
+  }
+  $domaincert = lookup('domaincert')
+  archive { '/tmp/lsstcertlatest.crt' :
+    ensure  => present,
+    source  => $domaincert,
+    cleanup => false,
+  }
+  $domaincert2 = lookup('domaincert2')
+  archive { '/tmp/lsstcertlatest.key' :
+    ensure  => present,
+    source  => $domaincert2,
+    cleanup => false,
+  }
+  $chain = lookup('chain')
+  archive { '/tmp/lsstcertlatestintermediate.pem' :
+    ensure  => present,
+    source  => $chain,
+    cleanup => false,
+  }
+  $keystorepwd = lookup('keystorepwd')
+  java_ks { 'lsst.org:/etc/pki/keystore':
+    ensure              => latest,
+    certificate         => '/tmp/lsstcertlatest.crt',
+    private_key         => '/tmp/lsstcertlatest.key',
+    chain               => '/tmp/lsstcertlatestintermediate.pem',
+    password            => $keystorepwd,
+    password_fail_reset => true,
+  }
+
+  file { $pwmconfig_dest:
+    ensure  => present,
+    source  => '/tmp/PwmConfiguration.xml',
+    replace => 'no',
+  }
+  $applicationpath = lookup('application_path')
+  $webpath = lookup('web_path')
+  file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
+    ensure => present,
+  }
+  -> file_line { 'Append line to ROOT/WEB-INF/web.xml':
+    path  => $webpath,
+    line  => "<param-value>${applicationpath}</param-value>",
+    match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
+  }
+
+  $lsst_theme = lookup('lsst_theme')
+  file {
+    '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst':
+      ensure => directory,
+  }
+  archive { '/tmp/lsst.zip' :
+    # path => '/tmp/lsst.zip',
+    # ensure  => present,
+    source       => $lsst_theme,
+    cleanup      => false,
+    extract      => true,
+    extract_path => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+    # creates      => '/opt/tomcat/webapps/ROOT/public/resources/themes/lsst',
+    # require      => File['/opt/tomcat/webapps/ROOT/public/resources/themes/lsst'],
+  }
+  $favicon = lookup('favicon')
+  file { '/opt/tomcat/webapps/ROOT/public/resources/favicon.png':
+    ensure => present,
+    source => $favicon,
+  }
+  archive { '/tmp/PwmConfiguration.xml' :
+    ensure  => present,
+    source  => $pwmconfig_source,
+    cleanup => false,
+  }
+
+  # # Manage certs
+  java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+    ensure       => latest,
+    certificate  => '/tmp/DC2Cert.cer',
+    # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
+    password     => $keystorepwd, # Must be at least 6 characters
+    trustcacerts => true,
+    # password_fail_reset => true,
+  }
+  java_ks { 'dc3.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
+    ensure       => latest,
+    certificate  => '/tmp/DC3Cert.cer',
+    # target       => '/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts',
+    password     => $keystorepwd, # Must be at least 6 characters
+    trustcacerts => true,
+    # password_fail_reset => true,
   }
 }
