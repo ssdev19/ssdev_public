@@ -114,6 +114,7 @@ postfix::configs:
   #   ensure: absent
   # mynetworks: 
   #   ensure: absent
+# If getting dependency conflict for Puppet run: yum remove  puppet6-release
 puppet_agent::package_version: 7.27.0
 puppet_agent::collection: 'puppet7'
 puppet_agent::service_names: ''
