@@ -31,7 +31,7 @@
 # @param tomcat_java_opts
 #   Tomcat's JAVA_OPTS setting
 #
-class pwm2 (
+class profile::pwm2 (
   Stdlib::HttpsUrl     $pwm_download_url,
   String               $pwm_context = 'pwm',
   Boolean              $manage = true,
