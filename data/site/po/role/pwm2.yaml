@@ -7,3 +7,14 @@ classes:
 profile::base_linux::awscli: true
 profile::base_linux::postfix: true
 # profile::base_linux::graylog: true
+profile::pwm2::pwm_download_url: 'https://github.com/pwm-project/pwm/releases/download/v2_0_1/pwm-2.0.1.war'
+profile::pwm2::pwm_context:
+profile::pwm2::manage:
+profile::pwm2::manage_config:
+profile::pwm2::manage_tomcat:
+profile::pwm2::tomcat_webapps_path:
+profile::pwm2::tomcat_catalina_host:
+profile::pwm2::tomcat_manager_allow_cidr:
+profile::pwm2::tomcat_manager_user:
+profile::pwm2::tomcat_manager_user_password:
+profile::pwm2::JAVA_OPTS:

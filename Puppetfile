@@ -27,7 +27,7 @@ mod 'jdowning-awscli', '2.2.0'
 # required for grafana ldap
 mod 'puppetlabs-puppetserver_gem', '1.1.1'
 mod 'puppet-grafana', '11.1.0'
-mod 'puppet-prometheus', '12.4.0'
+mod 'puppet-prometheus', '13.4.0'
 mod 'puppet-prometheus_reporter', '1.1.0'
 mod 'saz/timezone', '6.1.0'
 # mod 'puppet-rsyslog', '5.2.0'
@@ -44,7 +44,7 @@ mod 'saz/sudo', '6.0.0'
 mod 'puppetlabs-puppet_agent', '4.14.0'
 mod 'saz/resolv_conf', '4.1.0'
 mod 'puppet-cron', '4.1.0'
-mod 'puppet-r10k', '10.3.0'
+mod 'puppet-r10k', '12.2.0'
 # mod 'camptocamp-systemd', '3.0.0'
 mod 'puppet-collectd', '13.0.0'
 mod 'puppet-epel', '3.1.0' # collectd dependency
@@ -53,7 +53,7 @@ mod 'puppet-postfix', '2.0.0'
 mod 'camptocamp-augeas', '1.9.0'
 mod 'puppet-alternatives', '4.0.0' # postfix dependency
 mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
-mod 'puppet-systemd', '4.2.0'
+mod 'puppet-systemd', '6.0.0'
 mod 'bodgit/scl', '1.0.1'
 mod 'puppetlabs-postgresql', '9.0.3' # Foreman dependency
 mod 'puppet-extlib', '6.2.0'
