@@ -31,33 +31,11 @@
 # @param tomcat_java_opts
 #   Tomcat's JAVA_OPTS setting
 #
-class profile::pwm2 (
-  Stdlib::HttpsUrl     $pwm_download_url,
-  String               $pwm_context = 'pwm',
-  Boolean              $manage = true,
-  Boolean              $manage_config = true,
-  Boolean              $manage_tomcat = true,
-  Stdlib::Absolutepath $tomcat_webapps_path = '/var/lib/tomcat9/webapps',
-  String               $tomcat_catalina_host = 'localhost',
-  String               $tomcat_manager_allow_cidr = '127.0.0.1',
-  Optional[String]     $tomcat_manager_user = 'admin',
-  Optional[String]     $tomcat_manager_user_password = 'password',
-  Array[String]        $tomcat_java_opts = ['-Djava.awt.headless=true'],
-) {
-  if $manage {
-    if $manage_tomcat {
-      class { 'pwm::tomcat':
-        catalina_host         => $tomcat_catalina_host,
-        manager_user          => $tomcat_manager_user,
-        manager_user_password => $tomcat_manager_user_password,
-        manager_allow_cidr    => $tomcat_manager_allow_cidr,
-        java_opts             => $tomcat_java_opts,
-      }
-    }
-
-    class { 'pwm::install':
-      context      => $pwm_context,
-      download_url => $pwm_download_url,
-      webapps_path => $tomcat_webapps_path,
-    }
+class profile::pwm2 {
+  class { 'pwm':
+    tomcat_manager_allow_cidr    => '192.168.59.0/24',
+    tomcat_manager_user          => 'admin',
+    tomcat_manager_user_password => 'vagrant',
+    pwm_download_url             => 'https://github.com/pwm-project/pwm/releases/download/v2_0_1/pwm-2.0.1.war',
   }
+}
