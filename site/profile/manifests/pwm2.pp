@@ -40,8 +40,8 @@ class pwm2 (
   Stdlib::Absolutepath $tomcat_webapps_path = '/var/lib/tomcat9/webapps',
   String               $tomcat_catalina_host = 'localhost',
   String               $tomcat_manager_allow_cidr = '127.0.0.1',
-  Optional[String]     $tomcat_manager_user = undef,
-  Optional[String]     $tomcat_manager_user_password = undef,
+  Optional[String]     $tomcat_manager_user = 'admin',
+  Optional[String]     $tomcat_manager_user_password = 'password',
   Array[String]        $tomcat_java_opts = ['-Djava.awt.headless=true'],
 ) {
   if $manage {
