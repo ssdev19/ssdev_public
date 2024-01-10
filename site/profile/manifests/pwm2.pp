@@ -65,21 +65,21 @@ class profile::pwm2 {
     password_fail_reset => true,
   }
 
-  file { $pwmconfig_dest:
-    ensure  => present,
-    source  => '/tmp/PwmConfiguration.xml',
-    replace => 'no',
-  }
-  $applicationpath = lookup('application_path')
-  $webpath = lookup('web_path')
-  file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
-    ensure => present,
-  }
-  -> file_line { 'Append line to ROOT/WEB-INF/web.xml':
-    path  => $webpath,
-    line  => "<param-value>${applicationpath}</param-value>",
-    match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
-  }
+  # file { $pwmconfig_dest:
+  #   ensure  => present,
+  #   source  => '/tmp/PwmConfiguration.xml',
+  #   replace => 'no',
+  # }
+  # $applicationpath = lookup('application_path')
+  # $webpath = lookup('web_path')
+  # file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
+  #   ensure => present,
+  # }
+  # -> file_line { 'Append line to ROOT/WEB-INF/web.xml':
+  #   path  => $webpath,
+  #   line  => "<param-value>${applicationpath}</param-value>",
+  #   match => '<param-value>unspecified</param-value>', # "^unspecified.*$" can be used for string
+  # }
 
   $lsst_theme = lookup('lsst_theme')
   file {
@@ -101,11 +101,11 @@ class profile::pwm2 {
     ensure => present,
     source => $favicon,
   }
-  archive { '/tmp/PwmConfiguration.xml' :
-    ensure  => present,
-    source  => $pwmconfig_source,
-    cleanup => false,
-  }
+  # archive { '/tmp/PwmConfiguration.xml' :
+  #   ensure  => present,
+  #   source  => $pwmconfig_source,
+  #   cleanup => false,
+  # }
 
   # # Manage certs
   java_ks { 'dc2.lsst.local:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
