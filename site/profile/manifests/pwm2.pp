@@ -1,18 +1,21 @@
 ## Reboot will be required following the installation of this
-class profile::pwm2 {
+class profile::pwm2 ( String
+$war_version,
+$pwm_version,
+) {
   include 'archive'
   include java_ks::config
   $pwmconfig_dest = lookup('pwmconfig_dest')
   $pwmconfig_source = lookup('pwmconfig_source')
-  archive { '/tmp/pwm-2.0.6.war':
+  archive { "/tmp/pwm-${war_version}.war":
     ensure   => present,
-    source   => 'https://github.com/pwm-project/pwm/releases/download/v2_0_6/pwm-2.0.6.war',
+    source   => "https://github.com/pwm-project/pwm/releases/download/v${pwm_version}/pwm-${war_version}.war",
     provider => 'wget',
     cleanup  => false,
   }
   file { '/opt/tomcat/webapps/ROOT.war':
     ensure => file,
-    source => '/tmp/pwm-2.0.6.war',
+    source => "/tmp/pwm-${war_version}.war",
   }
   # using archive directly to destination breaks tomcat installation
   # So it must first go to the tmp folder then compied over to destination.
@@ -65,11 +68,11 @@ class profile::pwm2 {
     password_fail_reset => true,
   }
 
-  file { $pwmconfig_dest:
-    ensure  => file,
-    source  => '/tmp/PwmConfiguration.xml',
-    replace => 'no',
-  }
+  # file { $pwmconfig_dest:
+  #   ensure  => file,
+  #   source  => '/tmp/PwmConfiguration.xml',
+  #   replace => 'no',
+  # }
   $applicationpath = lookup('application_path')
   $webpath = lookup('web_path')
   file { '/opt/tomcat/webapps/ROOT/WEB-INF/web.xml':
