@@ -38,21 +38,21 @@ profile::tomcat::ciphers: |
   TLS_AES_128_GCM_SHA256
   TLS_AES_128_CCM_8_SHA256
   TLS_AES_128_CCM_SHA256
-# cron::job:
-#   'pwmbackup':
-#     command: "aws s3 cp %{lookup('pwmconfig_dest')} s3://pwm/%{facts.fqdn}-PwmConfiguration ;
-#               aws s3 cp /etc/pki/keystore s3://pwm/%{facts.fqdn}.keystore;
-#               # aws s3 cp /tmp/lsst2023.pfx s3://pwm/%{facts.fqdn}.lsst2023.pfx"
-#     minute: 58
-#     hour: 14
-#     date: '*'
-#     month: '*'
-#     weekday: '*'
-#     user: root
-#     environment:
-#       - 'MAILTO=root'
-#       - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
-#     description: 'pwm backup'
+cron::job:
+  'pwmbackup':
+    command: "aws s3 cp %{lookup('pwmconfig_dest')} s3://pwm/%{facts.fqdn}-PwmConfiguration_bak ;
+              aws s3 cp /etc/pki/keystore s3://pwm/%{facts.fqdn}.keystore_bak;
+              # aws s3 cp /tmp/lsst2023.pfx s3://pwm/%{facts.fqdn}.lsst2023.pfx"
+    minute: 01
+    hour: 19
+    date: '*'
+    month: '*'
+    weekday: '*'
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
+    description: 'pwm backup'
 
 # java_ks::config::params:
 #   'dc3:/usr/java/jdk-11.0.2+9-jre/lib/security/cacerts':
