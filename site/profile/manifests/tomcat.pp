@@ -52,7 +52,6 @@ $ciphers,
       'ciphers'                    => $ciphers,
       'keystorePass'               => $keystorepass_hide.unwrap,
       'keystoreFile'               => '/etc/pki/keystore',
-      'redirectPort'               => '443'
     },
   }
 # Getting tomcat::service to work was too painful
