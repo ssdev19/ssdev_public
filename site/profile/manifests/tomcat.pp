@@ -34,7 +34,7 @@ $ciphers,
   }
   tomcat::config::server::connector { 'default-https':
     catalina_base         => $catalina_base,
-    port                  => '8081',
+    port                  => '8443',
     protocol              =>'org.apache.coyote.http11.Http11NioProtocol', # $http_version,
     purge_connectors      => true,
     additional_attributes => {
@@ -52,7 +52,7 @@ $ciphers,
       'ciphers'                    => $ciphers,
       'keystorePass'               => $keystorepass_hide.unwrap,
       'keystoreFile'               => '/etc/pki/keystore',
-      'redirectPort'               => '8443'
+      'redirectPort'               => '443'
     },
   }
 # Getting tomcat::service to work was too painful
