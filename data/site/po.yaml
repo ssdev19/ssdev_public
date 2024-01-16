@@ -95,7 +95,7 @@ cron::job:
   'shutdown':
     command: 'shutdown'
     minute: 30 
-    hour: 2 # every day at 1 AM UTC, 6 PM tucson time
+    hour: 2 # every day at 1 AM UTC, 7:30 PM tucson time
     user: root
     environment:
       - 'MAILTO=root'
