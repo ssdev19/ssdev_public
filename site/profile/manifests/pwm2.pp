@@ -1,7 +1,10 @@
 ## Reboot will be required following the installation of this
-class profile::pwm2 ( String
-$war_version,
-$pwm_version,
+# @param war_version 
+# @param pwm_version 
+#  Accepts pwm_version
+class profile::pwm2 (
+  String $war_version,
+  String $pwm_version,
 ) {
   include 'archive'
   include java_ks::config
