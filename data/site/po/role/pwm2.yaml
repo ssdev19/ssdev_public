@@ -4,9 +4,17 @@ classes:
   - profile::java
   - profile::tomcat
   - profile::pwm2
+  # - profile::backups
 profile::base_linux::awscli: true
 profile::base_linux::postfix: true
 # profile::base_linux::graylog: true
+# profile::backups::service1: 'pwm'
+# profile::backups::bucketlocation: '"pwm-config"'
+# profile::backups::service_dump: 'pwm'
+# profile::backups::listlocations: '"nginx"'
+# profile::backups::listofdbs: '"mysql" "yourls"'
+# profile::backups::source_dir: '/opt/tomcat/webapps/ROOT/WEB-INF'
+# profile::backups::find_days_old: '10'
 profile::pwm2::pwm_version: '2_0_6'
 profile::pwm2::war_version: '2.0.6'
 profile::java::version: 'latest'
