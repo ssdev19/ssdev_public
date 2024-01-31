@@ -21,6 +21,6 @@ class profile::puppet_master3 {
   }
   include puppetdb
   class { 'puppet::server::puppetdb':
-    server => 'mypuppetdb.example.com',
+    server => 'foreman-rl8.us.lsst.org',
   }
 }
