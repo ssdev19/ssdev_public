@@ -20,6 +20,7 @@ class profile::puppet_master3 {
   }
 
   package { 'hiera-eyaml':
+    ensure   => present,
     provider => 'puppetserver_gem',
   }
   # yumrepo { 'pc_repo':
