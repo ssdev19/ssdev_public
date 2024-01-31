@@ -14,76 +14,9 @@ class profile::puppet_master3 {
   file { '/etc/puppetlabs/puppet/eyaml' :
     ensure  => directory,
   }
-  package { 'mygem':
-    ensure          => '3.1.6',
-    install_options => ['--clear-sources', '--no-document'],
-    provider        => 'puppetserver_gem',
-    source          => "https://rubygems.org/rubygems/rubygems-3.1.6.tgz",
+  class { 'puppet':
+    server              => true,
+    server_reports      => 'puppetdb,foreman',
+    server_storeconfigs => true,
   }
-  package { 'toml-rb':
-    ensure   => present,
-    provider => 'puppetserver_gem',
-  }
-
-  package { 'hiera-eyaml':
-    ensure   => present,
-    provider => 'puppetserver_gem',
-  }
-  # yumrepo { 'pc_repo':
-  #   ensure   => 'present',
-  #   baseurl  => 'http://yum.puppet.com/puppet7-release-el-8.noarch.rpm',
-  #   descr    => 'Puppet Labs puppet 7 Repository',
-  #   enabled  => true,
-  #   gpgcheck => '1',
-  #   gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
-  #   before   => Class['puppet'],
-  # }
-
-  # file { '/var/lib/tftpboot/boot/udev_fact.zip':
-  #   ensure => file,
-  #   owner  => 'foreman-proxy',
-  #   group  => 'foreman-proxy',
-  #   mode   => '0644',
-  #   source => "puppet:///modules/${module_name}/foreman/udev_fact.zip",
-  # }
-
-  #   Package { [
-  #   'devtoolset-8',
-  #   'rh-ruby27-ruby-devel' ]:
-  #   ensure => installed,
-  #   }
-# Agent and puppetmaster:
-# class { '::puppet': server => true }
-  # The toml gem is required for grafana ldap.
-  # Be sure puppetserver service is restarted after the first run.
-    # package { 'toml':
-    #   ensure   => present,
-    #   provider => 'puppetserver_gem',
-    # }
-  # java_ks { 'puppetca:truststore':
-  #   ensure       => latest,
-  #   certificate  => '/etc/puppet/ssl/certs/ca.pem',
-  #   target       => '/etc/activemq/broker.ts',
-  #   password     => 'puppet',
-  #   trustcacerts => true,
-  # }
-  #   package { 'foreman-release':
-  #   ensure  => absent,
-  #   require => Class['foreman'],
-  # }
-
-  # Class['scl'] -> Class['foreman']
-
-  # XXX theforeman/puppet does not manage the yumrepo.  puppetlabs/puppet_agent is hardwired
-  # to manage the puppet package and conflicts with theforeman/puppet.  We should try to
-  # submit support to puppetlabs/puppet_agent for managing only the yumrepo.
-  # yumrepo { 'pc_repo':
-  #   ensure   => 'present',
-  #   baseurl  => 'https://yum.puppet.com/puppet7/el/7/x86_64',
-  #   descr    => 'Puppet Labs puppet7 Repository',
-  #   enabled  => true,
-  #   gpgcheck => '1',
-  #   gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
-  #   # before   => Class['puppet'],
-  # }
 }
