@@ -19,4 +19,8 @@ class profile::puppet_master3 {
     server_reports      => 'puppetdb,foreman',
     server_storeconfigs => true,
   }
+  include puppetdb
+  class { 'puppet::server::puppetdb':
+    server => 'mypuppetdb.example.com',
+  }
 }
