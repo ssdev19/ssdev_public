@@ -18,7 +18,7 @@ class profile::puppet_master3 {
     ensure          => '3.1.6',
     install_options => ['--clear-sources', '--no-document'],
     provider        => puppetserver_gem,
-    source          => "https://rubygems.org/",
+    source          => "https://rubygems.org/rubygems/rubygems-3.1.6.tgz",
   }
   package { 'toml-rb':
     ensure   => present,
