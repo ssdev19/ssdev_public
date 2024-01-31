@@ -14,6 +14,12 @@ class profile::puppet_master3 {
   file { '/etc/puppetlabs/puppet/eyaml' :
     ensure  => directory,
   }
+  package { 'mygem':
+    ensure          => '3.1.6',
+    install_options => ['--clear-sources', '--no-document'],
+    provider        => puppetserver_gem,
+    source          => "https://rubygems.org/",
+  }
   package { 'toml-rb':
     ensure   => present,
     provider => 'puppetserver_gem',
