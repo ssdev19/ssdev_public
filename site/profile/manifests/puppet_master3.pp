@@ -14,7 +14,13 @@ class profile::puppet_master3 {
   file { '/etc/puppetlabs/puppet/eyaml' :
     ensure  => directory,
   }
+  package { 'toml-rb':
+    provider => 'puppetserver_gem',
+  }
 
+  package { 'hiera-eyaml':
+    provider => 'puppetserver_gem',
+  }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
   #   baseurl  => 'http://yum.puppet.com/puppet7-release-el-8.noarch.rpm',
