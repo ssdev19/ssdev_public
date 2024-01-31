@@ -14,7 +14,8 @@ class profile::puppet_master3 {
   file { '/etc/puppetlabs/puppet/eyaml' :
     ensure  => directory,
   }
-  package { 'toml':
+  package { 'toml-rb':
+    ensure   => present,
     provider => 'puppetserver_gem',
   }
 
