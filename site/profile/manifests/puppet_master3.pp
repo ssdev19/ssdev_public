@@ -18,7 +18,7 @@ class profile::puppet_master3 {
     enabled  => true,
     gpgcheck => '1',
     gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
-    before   => Class['puppet'],
+    # before   => Class['puppet'],
   }
   # file { '/etc/puppetlabs/puppet/eyaml' :
   #   ensure  => directory,
