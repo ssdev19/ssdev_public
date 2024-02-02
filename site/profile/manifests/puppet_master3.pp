@@ -11,16 +11,16 @@ class profile::puppet_master3 {
   # include foreman_proxy
   # include foreman_proxy::plugin::remote_execution::script
   # include puppet
-  file { '/etc/puppetlabs/puppet/eyaml' :
-    ensure  => directory,
-  }
-  class { 'puppet':
-    server              => true,
-    server_reports      => 'puppetdb,foreman',
-    server_storeconfigs => true,
-  }
-  include puppetdb
-  class { 'puppet::server::puppetdb':
-    server => 'foreman-rl8.us.lsst.org',
-  }
+  # file { '/etc/puppetlabs/puppet/eyaml' :
+  #   ensure  => directory,
+  # }
+  # class { 'puppet':
+  #   server              => true,
+  #   server_reports      => 'puppetdb,foreman',
+  #   server_storeconfigs => true,
+  # }
+  # include puppetdb
+  # class { 'puppet::server::puppetdb':
+  #   server => 'foreman-rl8.us.lsst.org',
+  # }
 }
