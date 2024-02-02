@@ -44,7 +44,7 @@ mod 'saz/sudo', '6.0.0'
 mod 'puppetlabs-puppet_agent', '4.14.0'
 mod 'saz/resolv_conf', '4.1.0'
 mod 'puppet-cron', '4.1.0'
-mod 'puppet-r10k', '12.2.0'
+mod 'puppet/r10k', '10.3.0'
 # mod 'camptocamp-systemd', '3.0.0'
 mod 'puppet-collectd', '13.0.0'
 mod 'puppet-epel', '3.1.0' # collectd dependency
