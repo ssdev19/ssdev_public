@@ -1,6 +1,6 @@
 # puppet master config
 class profile::puppet_master3 {
-  include r10k
+  # include r10k
   # include foreman
   # include foreman::repo
   # include foreman::plugin::puppet
@@ -19,6 +19,10 @@ class profile::puppet_master3 {
     gpgcheck => '1',
     gpgkey   => "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet\n  file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-20250406",
     before   => Class['puppet'],
+  }
+  class { 'r10k':
+    remote   => 'git@github.com:AnonSS/ssdev_public',
+    provider => 'puppet_gem',
   }
   # file { '/etc/puppetlabs/puppet/eyaml' :
   #   ensure  => directory,
