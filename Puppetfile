@@ -56,13 +56,13 @@ mod 'puppet-alternatives', '4.0.0' # postfix dependency
 mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
 mod 'puppet-systemd', '6.0.0'
 mod 'bodgit/scl', '1.0.1'
-mod 'puppetlabs-postgresql', '9.0.3' # Foreman dependency
+mod 'puppetlabs-postgresql', '10.0.3' # Foreman dependency
 mod 'puppet-extlib', '6.2.0'
 mod 'puppet-redis', '8.8.0'
 mod 'theforeman-tftp', '9.0.0'
-mod 'theforeman-puppetserver_foreman', '2.2.0'
+mod 'theforeman-puppetserver_foreman', '3.0.0'
 mod 'theforeman-puppet', '19.0.0'
-mod 'theforeman-foreman', '23.0.0'
+mod 'theforeman-foreman', '24.1.0'
 mod 'theforeman-foreman_proxy', '25.2.0'
 mod 'theforeman-dhcp', '9.1.0'
 mod 'theforeman-dns', '10.2.0'
