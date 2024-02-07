@@ -1,7 +1,7 @@
 # puppet master config
 class profile::puppet_master3 {
-  include r10k
-  # include foreman
+  # include r10k
+  include foreman
   # include foreman::repo
   # include foreman::plugin::puppet
   # include foreman::plugin::remote_execution
