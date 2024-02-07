@@ -55,12 +55,12 @@ mod 'puppet-alternatives', '4.0.0' # postfix dependency
 mod 'puppetlabs-mailalias_core', '1.1.0' # postfix dependency
 mod 'puppet-systemd', '6.0.0'
 mod 'bodgit/scl', '1.0.1'
-mod 'puppetlabs-postgresql', '9.0.3' # Foreman dependency
+mod 'puppetlabs-postgresql', '10.0.3' # Foreman dependency
 mod 'puppet-extlib', '6.2.0'
 mod 'puppet-redis', '8.8.0'
 mod 'theforeman-puppetserver_foreman', '2.2.0'
 mod 'theforeman-puppet', '17.0.0'
-mod 'theforeman-foreman', '23.0.0'
+mod 'theforeman-foreman', '24.1.0'
 mod 'theforeman-foreman_proxy', '21.0.0'
 mod 'theforeman/dhcp', '6.1.0'
 mod 'theforeman/dns', '8.0.0'
@@ -69,7 +69,7 @@ mod 'puppetlabs-concat', '6.4.0'
 mod 'puppetlabs-inifile', '5.2.0'
 mod 'puppetlabs-java', '9.0.1'
 mod 'puppetlabs-java_ks', '4.2.0' # Kestore management
-mod 'puppetlabs-stdlib', '8.4.0'
+mod 'puppetlabs-stdlib', '9.4.1'
 mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
@@ -84,7 +84,7 @@ mod 'puppetlabs-puppet_authorization', '0.5.1'
 mod 'binford2k-node_encrypt', '0.4.1'
 # web server
 mod 'jlondon-phpmyadmin', '1.3.0'
-mod 'puppetlabs-apache', '7.0.0'
+mod 'puppetlabs-apache', '10.1.1'
 mod 'puppet-zypprepo', '4.0.1' # dependency for PHP & elastic
 mod 'puppet-php', '8.2.0'
 mod 'puppet-nginx', '5.0.0'
