@@ -29,7 +29,7 @@ class profile::base_linux (
   include cron
   # include facter
   # include ::collectd
-  # include puppet_agent
+  include puppet_agent
   # include snmp::client
 
   # include nsswitch
