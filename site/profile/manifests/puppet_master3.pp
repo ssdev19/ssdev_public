@@ -10,6 +10,10 @@ class profile::puppet_master3 {
   # include foreman::plugin::templates
   # include foreman_proxy
   # include puppet
+  package { 'toml':
+    ensure   => present,
+    provider => 'puppetserver_gem',
+  }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
   #   baseurl  => "http://yum.puppet.com/puppet7/el/${fact('os.release.major')}/x86_64",
