@@ -10,12 +10,12 @@ class profile::puppet_master3 {
   # include foreman::plugin::templates
   # include foreman_proxy
   # include puppet
+  Package {['make']:
+    ensure => installed,
+  }
   package { 'toml':
     ensure   => present,
     provider => 'puppetserver_gem',
-  }
-  Package {['make']:
-    ensure => installed,
   }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
