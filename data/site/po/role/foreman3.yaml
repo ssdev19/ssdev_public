@@ -36,7 +36,7 @@ r10k::sources:
     invalid_branches: "correct"
     # private_key: "/root/.ssh/id_rsa"
     # ignore_branch_prefixes: &ignore_branch
-r10k::version: '3.15.4'
+r10k::version: '3.16.0'
 r10k::postrun: ['/bin/hammer', 'proxy', 'import-classes', '--id=1']
 # r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
 # r10k::webhook::config::use_mcollective: false
