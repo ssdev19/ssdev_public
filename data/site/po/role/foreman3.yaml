@@ -21,6 +21,8 @@
 #     weekday: "*"
 #     user: "root"
 #     description: "restart foreman to control memory bloat"
+r10k::version: '3.16.0'
+r10k::postrun: ['/bin/hammer', 'proxy', 'import-classes', '--id=1']
 r10k::mcollective: false
 r10k::cachedir: "/var/cache/r10k"
 r10k::sources:
@@ -36,9 +38,6 @@ r10k::sources:
     invalid_branches: "correct"
     # private_key: "/root/.ssh/id_rsa"
     # ignore_branch_prefixes: &ignore_branch
-r10k::version: '3.16.0'
-r10k::postrun: ['/bin/hammer', 'proxy', 'import-classes', '--id=1']
-# r10k::postrun: ["/bin/hammer", "proxy", "import-classes", "--id=1"]
 # r10k::webhook::config::use_mcollective: false
 # r10k::webhook::config::enable_ssl: false
 # r10k::webhook::config::protected: false
