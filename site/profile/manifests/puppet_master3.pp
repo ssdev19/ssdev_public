@@ -27,6 +27,14 @@ class profile::puppet_master3 {
   file { '/etc/puppetlabs/puppet/eyamldelete':
     ensure  => directory,
   }
+  $cont = lookup('cont')
+  file {
+    '/etc/puppetlabs/puppet/eyaml/testfile':
+      ensure  => file,
+      mode    => '0600',
+      content => $cont,
+      ;
+  }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
   #   baseurl  => "http://yum.puppet.com/puppet7/el/${fact('os.release.major')}/x86_64",
