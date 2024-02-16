@@ -17,6 +17,10 @@ class profile::puppet_master3 {
     ensure   => present,
     provider => 'puppetserver_gem',
   }
+  package { 'hiera-eyaml':
+    ensure   => present,
+    provider => 'puppetserver_gem',
+  }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
   #   baseurl  => "http://yum.puppet.com/puppet7/el/${fact('os.release.major')}/x86_64",
