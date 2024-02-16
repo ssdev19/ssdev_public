@@ -21,22 +21,23 @@ class profile::puppet_master3 {
     ensure   => present,
     provider => 'puppetserver_gem',
   }
-  file { '/etc/puppetlabs/puppet/eyaml':
-    ensure  => directory,
-    owner   => 'puppet',
-    group   => 'puppet',
-    mode    => '0500',
-  }
-  file { '/etc/puppetlabs/puppet/eyamldelete':
-    ensure  => directory,
-  }
-  $cont = lookup('cont')
+
+  $prkpem = lookup('prkpem')
+  $pukpem = lookup('pukpem')
   file {
-    '/etc/puppetlabs/puppet/eyaml/testfile':
-      ensure  => file,
-      mode    => '0600',
-      content => $cont,
+    '/etc/puppetlabs/puppet/eyaml':
+      ensure => directory,
+      mode   => '0500',
       ;
+    '/etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem':
+      ensure  => file,
+      mode    => '0400',
+      content => $prkpem,
+      ;
+    '/etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem':
+      ensure  => file,
+      mode    => '0400',
+      content => $pukpem,
   }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
