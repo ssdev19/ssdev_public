@@ -21,6 +21,9 @@ class profile::puppet_master3 {
     ensure   => present,
     provider => 'puppetserver_gem',
   }
+  file { '/etc/puppetlabs/puppet/eyaml':
+    ensure  => directory,
+  }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
   #   baseurl  => "http://yum.puppet.com/puppet7/el/${fact('os.release.major')}/x86_64",
