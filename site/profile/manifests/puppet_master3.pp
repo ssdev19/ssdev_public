@@ -23,6 +23,9 @@ class profile::puppet_master3 {
   }
   file { '/etc/puppetlabs/puppet/eyaml':
     ensure  => directory,
+    owner   => 'puppet',
+    group   => 'puppet',
+    mode    => '0500',
   }
   file { '/etc/puppetlabs/puppet/eyamldelete':
     ensure  => directory,
