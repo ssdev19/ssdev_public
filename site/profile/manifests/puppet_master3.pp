@@ -45,12 +45,6 @@ class profile::puppet_master3 {
       mode    => '0400',
       content => $pukpem,
       ;
-    '/etc/puppetlabs/puppet/eyaml/testdel.pem':
-      ensure  => file,
-      owner   => 'puppet',
-      group   => 'puppet',
-      mode    => '0400',
-      content => $pukpem,
   }
   # yumrepo { 'pc_repo':
   #   ensure   => 'present',
