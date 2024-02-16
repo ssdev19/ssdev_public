@@ -27,15 +27,21 @@ class profile::puppet_master3 {
   file {
     '/etc/puppetlabs/puppet/eyaml':
       ensure => directory,
+      owner   => 'puppet',
+      group   => 'puppet',
       mode   => '0500',
       ;
     '/etc/puppetlabs/puppet/eyaml/private_key.pkcs7.pem':
       ensure  => file,
+      owner   => 'puppet',
+      group   => 'puppet',
       mode    => '0400',
       content => $prkpem,
       ;
     '/etc/puppetlabs/puppet/eyaml/public_key.pkcs7.pem':
       ensure  => file,
+      owner   => 'puppet',
+      group   => 'puppet',
       mode    => '0400',
       content => $pukpem,
   }
