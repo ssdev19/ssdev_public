@@ -58,7 +58,7 @@ accounts::user_list:
     groups:
       - 'wheel'
     sshkeys:
-      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCcmWPwRfK88brldbbWvGxWAztQH/wIYHneSO7HXWS33JAOvObpQVjtoq7uXrhXuYK7iiDeAScMirLYtZoiG8F+yzxGz/7n/qUrnJNh3mCM+jBvyohFdQPECk2iHPvPd2aE1F+/yot2mCD0LtxGR/qZQsZN3tZWeAXfq1Etm4fKBLNW0/5DLTVpMGcG+/rXQAW6d9hWV8effV9/tesk6yN6qC3fhCAUlBmR4R/11AGKqovITtpzJlJP/HBrQN1sysKP8UqP7Tutt9/GP+nGB8bX0SkKTASpVlOOLVAbPZLDNS8l2bSN3pMAs1+zAqTcApk3PBzIYDC5u5DJmzqa2dU9 jcockrum@alcor'
+      - 'ssh-rsa sAAAAB3NzaC1yc2EAAAADAQABAAABAQCcmWPwRfK88brldbbWvGxWAztQH/wIYHneSO7HXWS33JAOvObpQVjtoq7uXrhXuYK7iiDeAScMirLYtZoiG8F+yzxGz/7n/qUrnJNh3mCM+jBvyohFdQPECk2iHPvPd2aE1F+/yot2mCD0LtxGR/qZQsZN3tZWeAXfq1Etm4fKBLNW0/5DLTVpMGcG+/rXQAW6d9hWV8effV9/tesk6yN6qC3fhCAUlBmR4R/11AGKqovITtpzJlJP/HBrQN1sysKP8UqP7Tutt9/GP+nGB8bX0SkKTASpVlOOLVAbPZLDNS8l2bSN3pMAs1+zAqTcApk3PBzIYDC5u5DJmzqa2dU9 jcockrum@alcor'
     password: "%{lookup('jc_pwd')}"
     ignore_password_if_empty: true
   # drathfelder_local:
