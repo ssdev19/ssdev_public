@@ -56,7 +56,7 @@ class profile::puppet_master3 {
   #   before   => Class['puppet'],
   # }
   # class { 'r10k':
-  #   remote   => 'git@github.com:AnonSS/ssdev_public',
+  #   remote   => 'git@github.com:ssdev19/ssdev_public',
   #   provider => 'puppet_gem',
   # }
   # file { '/etc/puppetlabs/puppet/eyaml' :
