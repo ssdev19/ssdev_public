@@ -17,5 +17,5 @@ class profile::puppet_master {
     notify { "It is Centos": }
   } else {
     notify { "This is not centos": }
-}
+  }
 }
