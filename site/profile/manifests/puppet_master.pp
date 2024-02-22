@@ -8,14 +8,14 @@ class profile::puppet_master {
     provider => 'puppetserver_gem',
   }
 
-  if ($facts['test_fact'] == true ) {
-    notify { "Path exist": }
-  } else {
-    notify{ "File does not existss": }
-  }
-  if $facts['os']['family'] == 'RedHat' {
-    notify { "It is Centos": }
-  } else {
-    notify { "This is not centos": }
-  }
+#   if ($facts['test_fact'] == true ) {
+#     notify { "Path exist": }
+#   } else {
+#     notify{ "File does not existss": }
+#   }
+#   if $facts['os']['family'] == 'RedHat' {
+#     notify { "It is Centos": }
+#   } else {
+#     notify { "This is not centos": }
+#   }
 }
