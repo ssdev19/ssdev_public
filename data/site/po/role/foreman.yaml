@@ -32,7 +32,7 @@
 #     weekday: "*"
 #     user: "root"
 #     description: "restart foreman to control memory bloat"
-# r10k::version: '3.15.4'
+r10k::version: '4.0.1'
 r10k::mcollective: false
 r10k::cachedir: "/var/cache/r10k"
 r10k::sources:
