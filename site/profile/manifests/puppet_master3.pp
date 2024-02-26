@@ -21,10 +21,6 @@ class profile::puppet_master3 {
     ensure   => present,
     provider => 'puppetserver_gem',
   }
-  package { 'eyaml':
-    ensure   => present,
-    provider => 'gem',
-  }
 
   $prkpem = lookup('prkpem')
   $pukpem = lookup('pukpem')
