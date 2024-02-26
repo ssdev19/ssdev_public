@@ -18,6 +18,7 @@ class profile::puppet_master3 {
     provider => 'puppetserver_gem',
   }
   package { 'hiera-eyaml':
+    version  => '3.2.0',
     ensure   => present,
     provider => 'puppetserver_gem',
   }
