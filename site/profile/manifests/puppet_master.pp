@@ -7,6 +7,10 @@ class profile::puppet_master {
     ensure   => present,
     provider => 'puppetserver_gem',
   }
+  package { 'hiera-eyaml':
+    ensure   => '3.2.0',
+    provider => 'puppetserver_gem',
+  }
 
 #   if ($facts['test_fact'] == true ) {
 #     notify { "Path exist": }
