@@ -18,9 +18,9 @@ class profile::puppet_master3 {
     provider => 'puppetserver_gem',
   }
   package { 'hiera-eyaml':
-    ensure   => present,
+    ensure   => '3.2.0',
     provider => 'puppetserver_gem',
-    version  => '3.2.0',
+    # version  => '3.2.0',
   }
 
   $prkpem = lookup('prkpem')
