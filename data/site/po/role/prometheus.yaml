@@ -57,7 +57,7 @@ prometheus::alerts:
             summary: Windows Server disk Space Usage (instance {{ $labels.instance }})
             description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows memory usage
-        - alert: HighMemoryUsage
+        - alert: WindowsHighMemoryUsage
           expr: windows_cs_physical_memory_bytes / windows_os_physical_memory_free_bytes * 100 < 30
           for: 5m
           labels:
