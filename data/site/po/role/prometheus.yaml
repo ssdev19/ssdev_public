@@ -58,7 +58,7 @@ prometheus::alerts:
             description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows memory usage
         - alert: WindowsHighMemoryUsage
-          expr: windows_cs_physical_memory_bytes / windows_os_physical_memory_free_bytes * 100 < 50
+          expr: windows_os_physical_memory_free_bytes / windows_cs_physical_memory_bytes * 100 < 50
           for: 5m
           labels:
             severity: warning
