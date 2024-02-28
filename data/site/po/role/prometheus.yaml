@@ -58,7 +58,7 @@ prometheus::alerts:
             description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows memory usage
         - alert: HighMemoryUsage
-          expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 30
+          expr: windows_memory_available_bytes / windows_memory_MemTotal_bytes * 100 < 30
           for: 5m
           labels:
             severity: warning
@@ -553,6 +553,15 @@ prometheus::alerts:
           annotations:
             summary: Host high CPU load (instance {{ $labels.instance }})
             description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Linux memory usage
+        - alert: HighMemoryUsage
+          expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 30
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High memory usage on Windows server"
+            description: "Memory usage is above 70% on Linux server {{ $labels.instance }}"
 prometheus::alertmanager::route:
   group_by:
     - 'alertname'
