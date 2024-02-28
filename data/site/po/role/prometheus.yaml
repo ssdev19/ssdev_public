@@ -57,18 +57,14 @@ prometheus::alerts:
             summary: Windows Server disk Space Usage (instance {{ $labels.instance }})
             description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows memory usage
-        - alert: HighMemoryPressure
-          expr: 100 * (1 - ((avg_over_time(node_memory_MemFree[2h]) + avg_over_time(node_memory_Cached[2h]) + avg_over_time(node_memory_Buffers[2h])) / avg_over_time(node_memory_MemTotal[2h])))
-          for: 1m
+        - alert: HighMemoryUsage
+          expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 20
+          for: 5m
           labels:
-            severity: s4
-            alert_type: cause
+            severity: warning
           annotations:
-            description: The node is under heavy memory pressure.  The available memory is under 5% and
-              there is a high rate of major page faults.
-            runbook: docs/monitoring/node_memory_alerts.md
-            value: 'Available memory {{ $value | printf "%.2f" }}%'
-            title: Node is under heavy memory pressure
+            summary: "High memory usage on Windows server"
+            description: "Memory usage is above 80% on Windows server {{ $labels.instance }}"
 # Windows Defender Firewall service
         - alert: WindowsFirewallServiceStatus
           expr: windows_service_state{name="mpssvc", state="running"} == 0
