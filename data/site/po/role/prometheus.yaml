@@ -58,8 +58,8 @@ prometheus::alerts:
             description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows memory usage
         - alert: HighMemoryPressure
-          expr: instance:node_memory_available:ratio * 100 < 85 and rate(node_vmstat_pgmajfault[1m]) > 1000
-          for: 15m
+          expr: 100 * (1 - ((avg_over_time(node_memory_MemFree[2h]) + avg_over_time(node_memory_Cached[2h]) + avg_over_time(node_memory_Buffers[2h])) / avg_over_time(node_memory_MemTotal[2h])))
+          for: 1m
           labels:
             severity: s4
             alert_type: cause
