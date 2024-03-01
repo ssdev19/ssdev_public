@@ -547,6 +547,15 @@ prometheus::alerts:
           annotations:
             summary: pingfederate.service down (instance {{ $labels.instance }})
             description: "pingfederate.service service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# node_exporter service
+        - alert: node_exporterServiceStatus
+          expr: node_systemd_unit_state{name="node_exporter.service", state="active"} != 1
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: node_Exporter service down (instance {{ $labels.instance }})
+            description: "node_exporter state is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Alert for any cluster that has average CPU idle < 50%
         - alert: HighUsageCPU
           expr: avg(irate(node_cpu_seconds_total{mode="idle"}[1m]) * 100) < 99
