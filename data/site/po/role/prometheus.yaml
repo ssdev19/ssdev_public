@@ -48,14 +48,24 @@ prometheus::alerts:
             summary: Prometheus job missing (instance {{ $labels.instance }})
             description: "A Prometheus job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows Disk space usage
+        # - alert: WindowsServerDiskSpaceUsage
+        #   expr: 100.0 - 100 * (((windows_logical_disk_free_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024 ) / ((windows_logical_disk_size_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024)) > 90
+        #   for: 25m
+        #   labels:
+        #     severity: critical
+        #   annotations:
+        #     summary: Windows Server disk Space Usage (instance {{ $labels.instance }})
+        #     description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Windows Disk space usage
         - alert: WindowsServerDiskSpaceUsage
-          expr: 100.0 - 100 * (((windows_logical_disk_free_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024 ) / ((windows_logical_disk_size_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024)) > 90
+          expr: 100.0 - 100 * (((windows_logical_disk_free_bytes{volume=~"(^[A-Z]:$)"}) / 1024 / 1024 ) / ((windows_logical_disk_size_bytes{volume=~"(^[A-Z]:$)"}) / 1024 / 1024)) > 85
           for: 25m
           labels:
             severity: critical
           annotations:
             summary: Windows Server disk Space Usage (instance {{ $labels.instance }})
-            description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            identifier: '{{ $labels.instance }}'
+            description: "Disk usage is more than 85%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows memory usage
         - alert: WindowsHighMemoryUsage
           expr: windows_os_physical_memory_free_bytes / windows_cs_physical_memory_bytes * 100 < 20
