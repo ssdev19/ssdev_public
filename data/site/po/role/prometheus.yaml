@@ -60,7 +60,7 @@ prometheus::alerts:
 # Windows memory usage
         - alert: WindowsHighMemoryUsage
           # expr: windows_os_physical_memory_free_bytes / windows_cs_physical_memory_bytes * 100 < 5
-          expr: 100 - (avg by(instance) (rate(windows_os_physical_memory_free_bytes[5m])) * 100) > 80
+          expr: 100 - (avg by(instance) (rate(windows_os_physical_memory_free_bytes[15m])) * 100) > 80
           for: 5m
           labels:
             severity: warning
