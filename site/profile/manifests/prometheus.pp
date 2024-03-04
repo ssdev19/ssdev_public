@@ -48,6 +48,7 @@ class profile::prometheus (
   }
   $gmail_auth_token = lookup('gmail_auth_token')
   $gmail_account = lookup('gmail_account')
+  $to_account = lookup('to_account')
   class { 'prometheus::alertmanager':
     # extra_options => '--cluster.listen-address=',
     extra_options => "--cluster.advertise-address=${advertise_ip} \--cluster.listen-address=:9797 \--cluster.peer=${unwrap($cluster_hide)}",
@@ -72,7 +73,7 @@ class profile::prometheus (
       { 'name'          => 'email',
         'email_configs' => [
           {
-            'to'            => $gmail_account,
+            'to'            => $to_account,
             'from'          => $gmail_account,
             'smarthost'     => 'smtp.gmail.com:587',
             'auth_username' => $gmail_account,
