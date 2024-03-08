@@ -51,7 +51,7 @@ class profile::prometheus (
   $to_account = lookup('to_account')
   class { 'prometheus::alertmanager':
     # extra_options => '--cluster.listen-address=',
-    # extra_options => "--cluster.advertise-address=${advertise_ip} \--cluster.listen-address=:9797 \--cluster.peer=${unwrap($cluster_hide)}",
+    extra_options => "--cluster.advertise-address=${advertise_ip} \--cluster.listen-address=:9797 \--cluster.peer=${unwrap($cluster_hide)}",
     version       => '0.27.0',
     # global    => {
     #   'resolve_timeout' => '1m',
