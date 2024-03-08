@@ -574,13 +574,13 @@ prometheus::alerts:
             description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Linux memory usage
         - alert: HighMemoryUsage
-          expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
+          expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 > 80
           for: 5m
           labels:
             severity: warning
           annotations:
             summary: "High memory usage on Windows server"
-            description: "Memory usage is above 90% on Linux server {{ $labels.instance }}"
+            description: "Memory usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 prometheus::alertmanager::route:
   group_by:
     - 'alertname'
