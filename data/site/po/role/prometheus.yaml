@@ -564,23 +564,23 @@ prometheus::alerts:
             summary: High usage on (instance {{ $labels.instance }})
             description: "(instance {{ $labels.instance }}) has a average CPU idle (current value: {{ $value }}s)"       
 # Linux high cpu usage
-        - alert: HostHighCpuLoad
-          expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 90
-          for: 1m
-          labels:
-            severity: warning
-          annotations:
-            summary: Host high CPU load (instance {{ $labels.instance }})
-            description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+        # - alert: HostHighCpuLoad
+        #   expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 90
+        #   for: 1m
+        #   labels:
+        #     severity: warning
+        #   annotations:
+        #     summary: Host high CPU load (instance {{ $labels.instance }})
+        #     description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Linux memory usage
-        - alert: HighMemoryUsage
-          expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
-          for: 5m
-          labels:
-            severity: warning
-          annotations:
-            summary: "High memory usage on Windows server"
-            description: "Memory usage is above 90% on Linux server {{ $labels.instance }}"
+        # - alert: HighMemoryUsage
+        #   expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100 < 10
+        #   for: 5m
+        #   labels:
+        #     severity: warning
+        #   annotations:
+        #     summary: "High memory usage on Windows server"
+        #     description: "Memory usage is above 90% on Linux server {{ $labels.instance }}"
 prometheus::alertmanager::route:
   group_by:
     - 'alertname'
