@@ -70,20 +70,20 @@ class profile::prometheus (
     #   'receiver'        => 'slack',
     # },
     receivers     => [
-      { 'name'          => 'email',
-        'email_configs' => [
-          {
-            'to'            => $to_account,
-            'from'          => $gmail_account,
-            'smarthost'     => 'smtp.gmail.com:587',
-            'auth_username' => $gmail_account,
-            'auth_identity' => $gmail_account,
-            'auth_password' => $gmail_auth_token,
-            'require_tls'   => true,
-            'send_resolved' => true,
-          },
-        ],
-      },
+      # { 'name'          => 'email',
+      #   'email_configs' => [
+      #     {
+      #       'to'            => $to_account,
+      #       'from'          => $gmail_account,
+      #       'smarthost'     => 'smtp.gmail.com:587',
+      #       'auth_username' => $gmail_account,
+      #       'auth_identity' => $gmail_account,
+      #       'auth_password' => $gmail_auth_token,
+      #       'require_tls'   => true,
+      #       'send_resolved' => true,
+      #     },
+      #   ],
+      # },
       { 'name'          => 'slack',
         'slack_configs' => [
           {
