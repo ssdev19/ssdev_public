@@ -11,7 +11,6 @@ class profile::base_windows (
   Optional[Array[String]]     $packages = undef,
 ) {
   include chocolatey # Needed for just about most things for Windows.
-  include prometheus::rabbitmq_exporter
 
   package { 'windows_exporter':
     ensure => '0.24.0',

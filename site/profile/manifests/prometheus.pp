@@ -16,6 +16,7 @@ class profile::prometheus (
 # Firewall rules are in private repo
   include prometheus
   include prometheus::snmp_exporter
+  include prometheus::rabbitmq_exporter
   class { 'prometheus::blackbox_exporter':
     version => '0.24.0',
     modules => {
