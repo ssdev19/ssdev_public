@@ -3,7 +3,7 @@ class profile::graylog {
   $pass_secret = lookup('pass_secret')
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
-
+  include opensearch
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
@@ -11,9 +11,9 @@ class profile::graylog {
     bind_ip => ['127.0.0.1'],
   }
 
-  class { 'opensearch':
-    version => '2.9.0',
-  }
+  # class { 'opensearch':
+  #   version => '2.9.0',
+  # }
 
   class { 'graylog::repository':
     version => '5.1',
