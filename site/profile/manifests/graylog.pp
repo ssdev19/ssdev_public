@@ -11,9 +11,9 @@ class profile::graylog {
     bind_ip => ['127.0.0.1'],
   }
 
-  # class { 'opensearch':
-  #   version => '2.9.0',
-  # }
+  class { 'opensearch':
+    version => '2.9.0',
+  }
 
   class { 'graylog::repository':
     version => '5.1',
