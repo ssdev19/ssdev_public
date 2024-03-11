@@ -10,12 +10,12 @@ class profile::graylog {
     bind_ip => ['127.0.0.1'],
   }
 
-  class { 'opensearch':
-    version => '2.9.0',
-  }
+  # class { 'opensearch':
+  #   version => '2.9.0',
+  # }
 
   class { 'graylog::repository':
-    version => '5.1'
+    version => '5.1',
   }
   ->class { 'graylog::server':
     package_version => '5.1.0-6',
