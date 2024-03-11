@@ -3,7 +3,7 @@ class profile::graylog {
   $pass_secret = lookup('pass_secret')
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
-  include opensearch
+  # include opensearch
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
@@ -12,11 +12,9 @@ class profile::graylog {
   }
 
 # Install OpenSearch repository and packages
-  # class { 'opensearch':
-  #   package_ensure => 'latest',
-  #   service_ensure => 'running',
-  #   service_enable => true,
-  # }
+  class { 'opensearch':
+    version => '2.9.0',
+  }
 
   class { 'graylog::repository':
     version => '5.1',
