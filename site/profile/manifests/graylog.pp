@@ -11,9 +11,12 @@ class profile::graylog {
     bind_ip => ['127.0.0.1'],
   }
 
-  # class { 'opensearch':
-  #   version => '2.9.0',
-  # }
+# Install OpenSearch repository and packages
+  class { 'opensearch':
+    package_ensure => 'latest',
+    service_ensure => 'running',
+    service_enable => true,
+  }
 
   class { 'graylog::repository':
     version => '5.2',
