@@ -22,7 +22,7 @@ class profile::graylog {
     package_version => '5.1.0-6',
     config          => {
       'password_secret'    => $pass_secret,    # Fill in your password secret
-      'root_password_sha2' => $glog_pwd, # Fill in your root password hash
+      'root_password_sha2' => $root_password_sha2, # Fill in your root password hash
     },
   }
 }
