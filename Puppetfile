@@ -85,7 +85,7 @@ mod 'binford2k-node_encrypt', '0.4.1'
 # web server
 mod 'jlondon-phpmyadmin', '1.3.0'
 mod 'puppetlabs-apache', '10.1.1'
-mod 'puppet-zypprepo', '4.0.1' # dependency for PHP & elastic
+mod 'puppet-zypprepo', '5.0.0' # dependency for PHP & elastic
 mod 'puppet-php', '8.2.0'
 mod 'puppet-nginx', '5.0.0'
 # mod 'rubinobs/yourls'.
@@ -96,6 +96,7 @@ mod 'trlinkin-nsswitch', '2.2.0'
 mod 'puppet-chrony', '2.1.0'
 mod 'graylog-graylog', '2.0.0'
 mod 'puppet-mongodb', '4.2.0'
+mod 'puppet-opensearch', '1.1.0'
 mod 'puppet-elasticsearch', '8.1.0'
 mod 'puppet-elastic_stack', '8.0.2' #dependency for elastic
 mod 'puppet-yum', '6.0.0'
