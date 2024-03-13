@@ -395,7 +395,7 @@ prometheus::alerts:
 # Disk space free
         - alert: DiskSpace>10%Free
           expr: 100 - (100 * node_filesystem_avail_bytes / node_filesystem_size_bytes) > 90
-          for: 1m
+          for: 15m
           labels:
             severity: moderate
           annotations:
