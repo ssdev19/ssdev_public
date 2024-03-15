@@ -40,9 +40,9 @@ class profile::graylog {
   }
 
 # Install OpenSearch repository and packages
-  # class { 'opensearch':
-  #   version => '2.9.0',
-  # }
+  class { 'opensearch':
+    version => '2.9.0',
+  }
 
   class { 'graylog::repository':
     version => '5.1',
