@@ -13,25 +13,25 @@ class profile::graylog {
     oss     => true,
   }
   #  /usr/lib/sysctl.d/elasticsearch.conf; config file: /etc/elasticsearch/elasticsearch.yml
-  class { 'elasticsearch':
-    version           => '7.10.2', #Currently 7.11 and above not supported in Graylog
-    oss               => true,
-    # ensure => 'absent',
-    manage_repo       => true,
-    restart_on_change => true,
-    config            => {
-      'cluster.name' => 'graylog',
-      'network.host' => '127.0.0.1',
-    },
-    jvm_options       => [
-      '-Xms1g',
-      '-Xmx1g'
-    ],
-  }
-  -> es_instance_conn_validator { 'graylog' :
-    server => '127.0.0.1', #graylog-ssdev.us.lsst.org',
-    port   => '9200',
-  }
+  # class { 'elasticsearch':
+  #   version           => '7.10.2', #Currently 7.11 and above not supported in Graylog
+  #   oss               => true,
+  #   # ensure => 'absent',
+  #   manage_repo       => true,
+  #   restart_on_change => true,
+  #   config            => {
+  #     'cluster.name' => 'graylog',
+  #     'network.host' => '127.0.0.1',
+  #   },
+  #   jvm_options       => [
+  #     '-Xms1g',
+  #     '-Xmx1g'
+  #   ],
+  # }
+  # -> es_instance_conn_validator { 'graylog' :
+  #   server => '127.0.0.1', #graylog-ssdev.us.lsst.org',
+  #   port   => '9200',
+  # }
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
