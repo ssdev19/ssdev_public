@@ -50,7 +50,7 @@ class profile::graylog {
   ->class { 'graylog::server':
     package_version => '5.1.0-6',
     config          => {
-      is_leader                           => true,
+      # is_leader                           => true,
       node_id_file                        => '/etc/graylog/server/node-id',
       password_secret                     => $pass_secret,
       root_username                       => 'admin',
