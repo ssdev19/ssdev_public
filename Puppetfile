@@ -67,7 +67,7 @@ mod 'theforeman/dns', '8.0.0'
 mod 'puppet-archive', '7.0.0'
 mod 'puppetlabs-concat', '6.4.0'
 mod 'puppetlabs-inifile', '5.2.0'
-mod 'puppetlabs-java', '9.0.1'
+mod 'puppetlabs-java', '10.1.2'
 mod 'puppetlabs-java_ks', '4.2.0' # Kestore management
 mod 'puppetlabs-stdlib', '8.6.0'
 mod 'puppetlabs-vcsrepo', '5.0.0'
