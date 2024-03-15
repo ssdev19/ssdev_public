@@ -28,16 +28,10 @@ class profile::graylog {
       '-Xmx2g',
     ],
   }
-  elasticsearch::instance { 'graylog':
-    config => {
-      'cluster.name' => 'graylog',
-      'network.host' => '127.0.0.1',
-    },
+  -> es_instance_conn_validator { 'graylog' :
+    server => 'graylog-ssdev.us.lsst.org', #graylog-ssdev.us.lsst.org',
+    port   => '9200',
   }
-  # -> es_instance_conn_validator { 'graylog' :
-  #   server => '127.0.0.1', #graylog-ssdev.us.lsst.org',
-  #   port   => '9200',
-  # }
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
