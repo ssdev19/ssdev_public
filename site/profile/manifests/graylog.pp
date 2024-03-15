@@ -75,7 +75,7 @@ class profile::graylog {
       mongodb_uri                         => 'mongodb://127.0.0.1/graylog',
     },
     require         => Class[
-      '::java',
+      "graylog::server",
     ],
   }
 }
