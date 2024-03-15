@@ -4,9 +4,9 @@ class profile::graylog {
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
   # include opensearch
-  # class { 'java' :
-  #   package => 'java-17-openjdk-devel',
-  # }
+  class { 'java' :
+    package => 'java-17-openjdk-devel',
+  }
 
   class { 'elastic_stack::repo':
     version => 7,
