@@ -28,10 +28,10 @@ class profile::graylog {
       '-Xmx2g',
     ],
   }
-  -> es_instance_conn_validator { 'graylog' :
-    server => '127.0.0.1', #graylog-ssdev.us.lsst.org',
-    port   => '9200',
-  }
+  # -> es_instance_conn_validator { 'graylog' :
+  #   server => '127.0.0.1', #graylog-ssdev.us.lsst.org',
+  #   port   => '9200',
+  # }
   class { 'mongodb::globals':
     manage_package_repo => true,
   }
@@ -40,9 +40,9 @@ class profile::graylog {
   }
 
 # Install OpenSearch repository and packages
-  class { 'opensearch':
-    version => '2.9.0',
-  }
+  # class { 'opensearch':
+  #   version => '2.9.0',
+  # }
 
   class { 'graylog::repository':
     version => '5.1',
