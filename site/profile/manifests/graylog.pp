@@ -71,8 +71,8 @@ class profile::graylog {
       elasticsearch_shards                => '4',
       elasticsearch_replicas              => '1',
       elasticsearch_index_prefix          => 'graylog',
-      elasticsearch_hosts                 => 'http://localhost:9200',
-      mongodb_uri                         => 'mongodb://localhost/graylog',
+      elasticsearch_hosts                 => 'http://graylog-ssdev.us.lsst.org:9200',
+      mongodb_uri                         => 'mongodb://graylog-ssdev.us.lsst.org/graylog',
     },
   }
 }
