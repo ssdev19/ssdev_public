@@ -24,8 +24,8 @@ class profile::graylog {
       'network.host' => '127.0.0.1',
     },
     jvm_options       => [
-      '-Xms1g',
-      '-Xmx1g'
+      '-Xms2g',
+      '-Xmx2g',
     ],
   }
   -> es_instance_conn_validator { 'graylog' :
