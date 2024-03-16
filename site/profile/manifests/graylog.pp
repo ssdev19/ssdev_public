@@ -43,6 +43,16 @@ class profile::graylog {
   # class { 'opensearch':
   #   version => '2.9.0',
   # }
+  $tlskey = lookup('tlskey')
+  $tlscert = lookup('tlscert')
+  file { '/etc/ssl/graylog/graylog_key_pkcs8.pem' :
+    ensure  => file,
+    content => $tlskey,
+  }
+  file { '/etc/ssl/graylog/graylog_cert_chain.crt' :
+    ensure  => file,
+    content => $tlscert,
+  }
 
   class { 'graylog::repository':
     version => '5.1',
@@ -60,9 +70,9 @@ class profile::graylog {
       allow_highlighting                  => true,
       http_bind_address                   => '0.0.0.0:9000',
       http_external_uri                   => 'http://graylog-ssdev.us.lsst.org:9000/',
-      # http_enable_tls                     => true,
-      # http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
-      # http_tls_key_file                   => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
+      http_enable_tls                     => true,
+      http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
+      http_tls_key_file                   => '/etc/ssl/graylog/graylog_key_pkcs8.pem',
       # http_tls_key_password               => 'sslkey-password',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
