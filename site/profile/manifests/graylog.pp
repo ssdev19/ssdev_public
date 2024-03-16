@@ -68,7 +68,7 @@ class profile::graylog {
       root_timezone                       => 'Europe/Berlin',
       allow_leading_wildcard_searches     => true,
       allow_highlighting                  => true,
-      http_bind_address                   => '0.0.0.0:9000',
+      http_bind_address                   => '127.0.0.1:9000',
       http_external_uri                   => 'https://graylog-ssdev.us.lsst.org:9000/',
       http_enable_tls                     => true,
       http_tls_cert_file                  => '/etc/ssl/graylog/graylog_cert_chain.crt',
