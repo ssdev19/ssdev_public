@@ -17,7 +17,6 @@ class profile::graylog {
     version           => '7.10.2', #Currently 7.11 and above not supported in Graylog
     oss               => true,
     # ensure => 'absent',
-    api_protocol      => 'http',
     manage_repo       => true,
     restart_on_change => true,
     config            => {
