@@ -47,7 +47,9 @@ class profile::graylog {
   $tlskey = lookup('tlskey')
   $tlscert = lookup('tlscert')
   file { '/etc/ssl/graylog/' :
-    ensure  => directory,
+    ensure => directory,
+    mode   => '0700',
+    owner  => 'mongod:mondod',
   }
   file { '/etc/ssl/graylog/graylog_key_pkcs8.pem' :
     ensure  => file,
