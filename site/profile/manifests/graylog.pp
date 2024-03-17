@@ -46,6 +46,9 @@ class profile::graylog {
   # }
   $tlskey = lookup('tlskey')
   $tlscert = lookup('tlscert')
+  file { '/etc/ssl/graylog/' :
+    ensure  => directory,
+  }
   file { '/etc/ssl/graylog/graylog_key_pkcs8.pem' :
     ensure  => file,
     content => $tlskey,
