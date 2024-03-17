@@ -49,7 +49,8 @@ class profile::graylog {
   file { '/etc/ssl/graylog/' :
     ensure => directory,
     mode   => '0700',
-    owner  => 'mongod:mondod',
+    owner  => 'mongod',
+    group  => 'mongod',
   }
   file { '/etc/ssl/graylog/graylog_key_pkcs8.pem' :
     ensure  => file,
