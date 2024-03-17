@@ -34,6 +34,7 @@ class profile::graylog {
   # }
   class { 'mongodb::globals':
     manage_package_repo => true,
+    version             => '7.0.6',
   }
   ->class { 'mongodb::server':
     bind_ip => ['127.0.0.1'],
