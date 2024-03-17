@@ -86,7 +86,7 @@ class profile::graylog {
       elasticsearch_replicas              => '1',
       elasticsearch_index_prefix          => 'graylog',
       elasticsearch_hosts                 => 'https://graylog-ssdev.us.lsst.org:9200',
-      mongodb_uri                         => 'mongodb://graylog-ssdev.us.lsst.org/graylog',
+      mongodb_uri                         => 'mongodb://graylog-ssdev.us.lsst.org:27017/graylog',
     },
   }
 }
