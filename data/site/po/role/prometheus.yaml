@@ -616,7 +616,7 @@ prometheus::alerts:
           labels:
             severity: warning
           annotations:
-            summary: "High memory usage on Windows server"
+            summary: "High memory usage Linux server"
             description: "Memory usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 prometheus::alertmanager::route:
   group_by:
