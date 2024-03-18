@@ -35,18 +35,18 @@ class profile::graylog {
   $private_key_path = lookup('private_key_path')
 
   # Generate the keystore
-  exec { 'generate_keystore':
-    command => "openssl pkcs12 -export -out ${keystore_location} -in ${certificate_path} -inkey ${private_key_path} -name ${keystore_alias} -password pass:${keystore_password}",
-    creates => $keystore_location,
-  }
+  # exec { 'generate_keystore':
+  #   command => "openssl pkcs12 -export -out ${keystore_location} -in ${certificate_path} -inkey ${private_key_path} -name ${keystore_alias} -password pass:${keystore_password}",
+  #   creates => $keystore_location,
+  # }
 
-  # Ensure correct permissions on the keystore file
-  file { $keystore_location:
-    owner   => 'graylog',
-    group   => 'graylog',
-    mode    => '0644',
-    require => Exec['generate_keystore'],
-  }
+  # # Ensure correct permissions on the keystore file
+  # file { $keystore_location:
+  #   owner   => 'graylog',
+  #   group   => 'graylog',
+  #   mode    => '0644',
+  #   require => Exec['generate_keystore'],
+  # }
   $keystorepwd = lookup('keystorepwd')
   # java_ks { 'lsst.org:/etc/pki/keystore':
   #   ensure              => latest,
