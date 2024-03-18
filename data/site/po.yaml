@@ -96,6 +96,16 @@ rsyslog::config::actions:
     facility: "*.info;mail.none;authpriv.none;cron.none;local6.none"
     config:
       file: "/var/log/messages"
+  secure:
+    type: "omfile"
+    facility: "authpriv.*"
+    config:
+      file: "/var/log/secure"
+  maillog:
+    type: "omfile"
+    facility: "mail.*"
+    config:
+      file: "-/var/log/maillog"
 cron::job:
   'shutdown':
     command: 'shutdown'
