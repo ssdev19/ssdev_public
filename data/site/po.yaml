@@ -91,7 +91,11 @@ rsyslog::config::actions:
       Target: "graylog-tuc.lsst.org"
       Port: 5514
       Protocol: "udp"
-cron::job:
+  messages:
+    type: "omfile"
+    facility: "*.info;mail.none;authpriv.none;cron.none;local6.none"
+    config:
+      file: "/var/log/messages"cron::job:
   'shutdown':
     command: 'shutdown'
     minute: 30 
