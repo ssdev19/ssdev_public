@@ -610,7 +610,8 @@ prometheus::alerts:
             description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Linux memory usage
         - alert: HighMemoryUsage
-          expr: 100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[2m]) + avg_over_time(node_memory_SwapFree_bytes[2m])) / avg_over_time(node_memory_MemTotal_bytes[2m]))) > 80
+          expr: 100 * ((node_memory_MemTotal_bytes - node_memory_MemFree_bytes) / (node_memory_MemTotal_bytes + node_memory_SwapTotal_bytes))  > 80
+          # expr: 100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[5m]) + avg_over_time(node_memory_SwapFree_bytes[5m])) / (avg_over_time(node_memory_MemTotal_bytes[5m]) + avg_over_time(node_memory_SwapTotal_bytes[5m])))) > 80
           for: 5m
           labels:
             severity: warning
