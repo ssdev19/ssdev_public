@@ -82,7 +82,7 @@ class profile::graylog {
   # }
   class { 'mongodb::globals':
     manage_package_repo => true,
-    version             => '5.2.5',
+    version             => '5.0.25',
   }
   ->class { 'mongodb::server':
     bind_ip => ['127.0.0.1'],
@@ -110,10 +110,10 @@ class profile::graylog {
   }
 
   class { 'graylog::repository':
-    version => '5.1',
+    version => '5.2',
   }
   ->class { 'graylog::server':
-    package_version => '5.1.12-1',
+    package_version => '5.2.5',
     config          => {
       is_leader                           => true,
       node_id_file                        => '/etc/graylog/server/node-id',
