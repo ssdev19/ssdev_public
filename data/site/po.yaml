@@ -125,7 +125,7 @@ postfix::inet_protocols: "ipv4"
 postfix::manage_root_alias: true
 postfix::inet_interfaces: "localhost"
 postfix::mydestination: "$myhostname, localhost.$mydomain, localhost"
-postfix::relayhost: 'atlantis.lsst.org'
+postfix::relayhost: 'mail.lsst.org'
 postfix::root_mail_recipient: 'mysticguy9@yahoo.com'
 postfix::configs:
   # virtual_alias_maps: 
