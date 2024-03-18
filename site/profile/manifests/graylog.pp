@@ -25,6 +25,12 @@ class profile::graylog {
     source  => $chain,
     cleanup => false,
   }
+  $keystore = lookup('keystore')
+  archive { '/etc/pki/keystore' :
+    ensure  => present,
+    source  => $keystore,
+    cleanup => false,
+  }
 
   $keystore_location = '/etc/pki/keystore'
 
