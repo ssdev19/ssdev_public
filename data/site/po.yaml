@@ -91,7 +91,6 @@ rsyslog::config::actions:
       Target: "graylog-tuc.lsst.org"
       Port: 5514
       Protocol: "udp"
-  messages:
     type: "omfile"
     facility: "*.info;mail.none;authpriv.none;cron.none;local6.none"
     config:
