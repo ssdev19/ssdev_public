@@ -3,7 +3,7 @@ class profile::graylog {
   $pass_secret = lookup('pass_secret')
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
-  # include opensearch
+  include java_ks::config  # include opensearch
   # class { 'java' :
   #   package => 'java-17-openjdk-devel',
   # }
