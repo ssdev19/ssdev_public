@@ -6,7 +6,7 @@ class profile::certs {
 ####################
 ####################
   class { 'openssl':
-    package_ensure         => latest,
+    package_ensure         => '3.2.1',
     ca_certificates_ensure => latest,
   }
   # class { 'openssl::certificates':
