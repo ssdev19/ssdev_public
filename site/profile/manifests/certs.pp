@@ -11,9 +11,9 @@ class profile::certs {
   }
   openssl::export::pkcs12 { 'foo':
     ensure   => 'present',
-    basedir  => '/etc/pki/tls/graylog',
-    pkey     => '/etc/pki/tls/graylog/private.key',
-    cert     => '/etc/pki/tls/graylog/cert.crt',
+    basedir  => '/etc/pki/tls',
+    pkey     => '/etc/pki/tls/private.key',
+    cert     => '/etc/pki/tls/cert.crt',
     in_pass  => 'my_pkey_password',
     out_pass => 'my_pkcs12_password',
   }  # class { 'openssl::certificates':
