@@ -38,12 +38,6 @@ class profile::gcert {
 #   $certificate_path = lookup('certificate_path')
 #   $private_key_path = lookup('private_key_path')
 
-#   # Generate the keystore
-#   # exec { 'generate_keystore':
-#   #   command => "openssl pkcs12 -export -out ${keystore_location} -in ${certificate_path} -inkey ${private_key_path} -name ${keystore_alias} -password pass:${keystore_password}",
-#   #   creates => $keystore_location,
-#   # }
-
 #   # # Ensure correct permissions on the keystore file
 #   # file { $keystore_location:
 #   #   owner   => 'graylog',
