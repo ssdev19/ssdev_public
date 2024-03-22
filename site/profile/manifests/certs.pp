@@ -9,14 +9,16 @@ class profile::certs {
     package_ensure         => latest,
     ca_certificates_ensure => latest,
   }
-  openssl::export::pkcs12 { 'foo':
-    ensure   => 'present',
-    basedir  => '/etc/pki/tls',
-    pkey     => '/etc/pki/tls/private.key',
-    cert     => '/etc/pki/tls/cert.crt',
-    in_pass  => 'my_pkey_password',
-    out_pass => 'my_pkcs12_password',
-  }  # class { 'openssl::certificates':
+  
+  # openssl::export::pkcs12 { 'foo':
+  #   ensure   => 'present',
+  #   basedir  => '/etc/pki/tls',
+  #   pkey     => '/etc/pki/tls/private.key',
+  #   cert     => '/etc/pki/tls/cert.crt',
+  #   in_pass  => 'my_pkey_password',
+  #   out_pass => 'my_pkcs12_password',
+  # }
+  # class { 'openssl::certificates':
   #   x509_certs => { '/path/to/certificate.crt' => {
   #       ensure      => 'present',
   #       password    => 'j(D$',
