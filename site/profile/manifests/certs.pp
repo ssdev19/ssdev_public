@@ -9,7 +9,25 @@ class profile::certs {
     package_ensure         => latest,
     ca_certificates_ensure => latest,
   }
-  
+  openssl::certificate::x509 { 'foo':
+    ensure       => present,
+    country      => 'CH',
+    organization => 'Example.com',
+    commonname   => $fqdn,
+    state        => 'Here',
+    locality     => 'Myplace',
+    unit         => 'MyUnit',
+    altnames     => ['a.com', 'b.com', 'c.com'],
+    extkeyusage  => ['serverAuth', 'clientAuth', 'any_other_option_per_openssl'],
+    email        => 'contact@foo.com',
+    days         => 3456,
+    base_dir     => '/var/www/ssl',
+    owner        => 'www-data',
+    group        => 'www-data',
+    password     => 'j(D$',
+    force        => false,
+    cnf_tpl      => 'my_module/cert.cnf.erb'
+  }
   # openssl::export::pkcs12 { 'foo':
   #   ensure   => 'present',
   #   basedir  => '/etc/pki/tls',
