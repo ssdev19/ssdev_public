@@ -2,7 +2,7 @@
 distinguished_name = req_distinguished_name
 x509_extensions = v3_req
 prompt = no
-days = 1825
+days = 1826
 
 # Details about the issuer of the certificate
 [req_distinguished_name]
