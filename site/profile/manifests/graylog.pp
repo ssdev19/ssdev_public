@@ -61,11 +61,11 @@ class profile::graylog {
   #   content => $tlscert,
   # }
   java_ks { 'graylog.lsst.org:/usr/java/jdk8u202-b08/jre/lib/security/cacerts':
-    ensure              => latest,
+    ensure              => present,
     certificate         => '/etc/ssl/graylog/graylog.crt',
     private_key         => '/etc/ssl/graylog/graylog.key',
-    chain               => '/etc/ssl/graylog/graylog.csr',
-    password            => 'changeitt',
+    # chain               => '/etc/ssl/graylog/graylog.csr',
+    password            => 'changeit',
     password_fail_reset => true,
   }
 
