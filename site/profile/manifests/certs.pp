@@ -27,7 +27,7 @@ class profile::certs (
   }
   openssl::certificate::x509 { 'test1':
     ensure       => present,
-    country      => 'us',
+    country      => $country,
     organization => 'test.com',
     commonname   => $fqdn,
     state        => 'ax',
@@ -36,7 +36,7 @@ class profile::certs (
     altnames     => ['a.com', 'b.com', 'c.com'],
     extkeyusage  => ['serverAuth', 'clientAuth', 'any_other_option_per_openssl'],
     email        => 'contact@foo.com',
-    # days         => 3456,
+    days         => $days,
     base_dir     => '/etc/ssl/graylog',
     owner        => 'graylog',
     group        => 'graylog',
