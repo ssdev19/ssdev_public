@@ -1,5 +1,6 @@
 # Graylog cert
 class profile::certs {
+  $fqdn = $facts['networking']['fqdn']
 ####################
 ####################
 ####################
@@ -12,7 +13,7 @@ class profile::certs {
   openssl::certificate::x509 { 'foo':
     ensure       => present,
     country      => 'CH',
-    organization => 'Example.com',
+    organization => 'test.com',
     commonname   => $fqdn,
     state        => 'Here',
     locality     => 'Myplace',
@@ -26,7 +27,7 @@ class profile::certs {
     group        => 'www-data',
     password     => 'j(D$',
     force        => false,
-    cnf_tpl      => 'my_module/cert.cnf.erb'
+    cnf_tpl      => 'profile/certs.epp',
   }
   # openssl::export::pkcs12 { 'foo':
   #   ensure   => 'present',
