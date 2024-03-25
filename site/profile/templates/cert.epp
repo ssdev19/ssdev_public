@@ -22,5 +22,6 @@ subjectAltName = @sans
 # Use IP.### for IP addresses and DNS.### for DNS names,
 # with "###" being a consecutive number.
 [sans]
-IP.1 = <%= $server_ip %>
+# IP.1 = <%= $server_ip %>
+IP.1 = 140.252.32.189
 DNS.1 = <%= $alternative_dns_1 %>
