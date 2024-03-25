@@ -1,5 +1,20 @@
 # Graylog cert
-class profile::certs {
+# @param country
+# @param state
+# @param locality
+# @param organization
+# @param canonical_name
+# @param days
+# @param server_ip
+class profile::certs (
+  String $country,
+  String $state,
+  String $locality,
+  String $organization,
+  String $canonical_name,
+  String $days,
+  String $server_ip,
+) {
   $fqdn = $facts['networking']['fqdn']
 ####################
 ####################
