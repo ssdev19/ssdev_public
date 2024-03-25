@@ -12,7 +12,7 @@ ST = <%= $state %>
 L = <%= $locality %>
 O = <%= $organization %>
 OU = <%= $division %>
-CN = <%= $facts[fqdn] %>
+CN = <%= $canonical_name %>
 
 [v3_req]
 basicConstraints       = CA:false
