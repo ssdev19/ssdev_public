@@ -25,7 +25,7 @@ class profile::certs (
     package_ensure         => latest,
     ca_certificates_ensure => latest,
   }
-  openssl::certificate::x509 { 'test':
+  openssl::certificate::x509 { 'test1':
     ensure       => present,
     country      => 'us',
     organization => 'test.com',
