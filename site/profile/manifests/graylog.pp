@@ -52,14 +52,14 @@ class profile::graylog {
     owner  => 'graylog',
     group  => 'graylog',
   }
-  file { '/etc/ssl/graylog/graylog_key_pkcs8.pem' :
-    ensure  => file,
-    content => $tlskey,
-  }
-  file { '/etc/ssl/graylog/graylog_cert_chain.crt' :
-    ensure  => file,
-    content => $tlscert,
-  }
+  # file { '/etc/ssl/graylog/graylog_key_pkcs8.pem' :
+  #   ensure  => file,
+  #   content => $tlskey,
+  # }
+  # file { '/etc/ssl/graylog/graylog_cert_chain.crt' :
+  #   ensure  => file,
+  #   content => $tlscert,
+  # }
 
   class { 'graylog::repository':
     version => '5.2',

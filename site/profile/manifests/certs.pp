@@ -6,6 +6,7 @@
 # @param canonical_name
 # @param days
 # @param server_ip
+# set RANDFILE=.rnd
 class profile::certs (
   Integer $days,
   # String $country,
@@ -25,11 +26,11 @@ class profile::certs (
     package_ensure         => latest,
     ca_certificates_ensure => latest,
   }
-  openssl::certificate::x509 { 'test1':
+  openssl::certificate::x509 { 'graylog':
     ensure       => present,
     country      => 'us',
-    organization => 'test.com',
-    commonname   => 'gray.test.com',
+    organization => 'lsst.org',
+    commonname   => $fqdn,
     state        => 'az',
     # locality     => 'Myplace',
     # unit         => 'MyUnit',
