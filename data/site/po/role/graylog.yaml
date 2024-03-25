@@ -16,5 +16,5 @@ profile::certs::state: az
 profile::certs::locality: tuc
 profile::certs::organization: rubin
 profile::certs::canonical_name: canname
-profile::certs::days: '369'
+profile::certs::days: 369
 profile::certs::server_ip: '1.1.1.1'
