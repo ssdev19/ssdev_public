@@ -8,7 +8,7 @@
 # @param server_ip
 class profile::certs (
   Integer $days,
-  String $country,
+  # String $country,
   String $state,
   String $locality,
   String $organization,
