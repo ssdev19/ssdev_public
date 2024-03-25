@@ -64,7 +64,7 @@ class profile::graylog {
     ensure              => latest,
     certificate         => '/etc/ssl/graylog/graylog.crt',
     private_key         => '/etc/ssl/graylog/graylog.key',
-    password            => 'pwdtest',
+    password            => 'changeit',
     password_fail_reset => true,
   }
 
