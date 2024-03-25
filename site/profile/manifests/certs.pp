@@ -25,15 +25,15 @@ class profile::certs {
     base_dir     => '/etc/ssl/graylog/',
     owner        => 'graylog',
     group        => 'graylog',
-    password     => 'j(D$',
+    password     => 'pwdtest',
     force        => false,
-    cnf_tpl      => 'profile/cert.epp',
+    # cnf_tpl      => 'profile/cert.epp',
   }
   # openssl::export::pkcs12 { 'foo':
   #   ensure   => 'present',
-  #   basedir  => '/etc/pki/tls',
-  #   pkey     => '/etc/pki/tls/private.key',
-  #   cert     => '/etc/pki/tls/cert.crt',
+  #   basedir  => '/etc/ssl/graylog/',
+  #   pkey     => '/etc/ssl/graylog/private.key',
+  #   cert     => '/etc/ssl/graylog/cert.crt',
   #   in_pass  => 'my_pkey_password',
   #   out_pass => 'my_pkcs12_password',
   # }
