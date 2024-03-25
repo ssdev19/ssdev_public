@@ -37,7 +37,7 @@ class profile::certs (
     extkeyusage  => ['serverAuth', 'clientAuth', 'any_other_option_per_openssl'],
     email        => 'contact@foo.com',
     days         => 3456,
-    base_dir     => '/etc/ssl/graylog/',
+    base_dir     => '/etc/ssl/graylog',
     owner        => 'graylog',
     group        => 'graylog',
     password     => 'pwdtest',
