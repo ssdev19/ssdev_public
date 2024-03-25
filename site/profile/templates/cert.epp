@@ -6,7 +6,7 @@ days = <%= $days %>
 
 # Details about the issuer of the certificate
 [req_distinguished_name]
-C = <%= $country %>
+C = $country
 ST = <%= $state %>
 L = <%= $locality %>
 O = <%= $organization %>
