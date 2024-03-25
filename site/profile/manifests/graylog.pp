@@ -61,7 +61,7 @@ class profile::graylog {
   #   content => $tlscert,
   # }
   java_ks { 'graylog.lsst.org:/usr/java/jdk8u202-b08/jre/lib/security/cacerts':
-    ensure              => present,
+    ensure              => latest,
     certificate         => '/etc/ssl/graylog/graylog.crt',
     private_key         => '/etc/ssl/graylog/graylog.key',
     # chain               => '/etc/ssl/graylog/graylog.csr',
@@ -86,8 +86,8 @@ class profile::graylog {
       http_bind_address                   => '0.0.0.0:9000',
       http_external_uri                   => 'http://graylog-ssdev.us.lsst.org:9000/',
       http_enable_tls                     => true,
-      http_tls_cert_file                  => '/etc/ssl/graylog/graylog.crt',
-      http_tls_key_file                   => '/etc/ssl/graylog/graylog.key',
+      # http_tls_cert_file                  => '/etc/ssl/graylog/graylog.crt',
+      # http_tls_key_file                   => '/etc/ssl/graylog/graylog.key',
       http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
