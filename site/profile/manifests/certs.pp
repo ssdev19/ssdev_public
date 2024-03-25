@@ -27,7 +27,7 @@ class profile::certs (
   }
   openssl::certificate::x509 { 'test1':
     ensure       => present,
-    country      => 'uss',
+    country      => 'us',
     organization => 'test.com',
     commonname   => 'gray.test.com',
     state        => 'az',
