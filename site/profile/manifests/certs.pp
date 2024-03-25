@@ -8,7 +8,7 @@
 # @param server_ip
 class profile::certs (
   Integer $days,
-  # String $country,
+  String $country,
   String $state,
   String $locality,
   String $organization,
@@ -27,7 +27,7 @@ class profile::certs (
   }
   openssl::certificate::x509 { 'test1':
     ensure       => present,
-    # country      => $country,
+    country      => 'uss',
     organization => 'test.com',
     commonname   => $fqdn,
     state        => 'ax',
