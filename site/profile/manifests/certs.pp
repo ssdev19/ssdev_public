@@ -7,12 +7,12 @@
 # @param days
 # @param server_ip
 class profile::certs (
+  Integer $days,
   String $country,
   String $state,
   String $locality,
   String $organization,
   String $canonical_name,
-  String $days,
   String $server_ip,
 ) {
   $fqdn = $facts['networking']['fqdn']
