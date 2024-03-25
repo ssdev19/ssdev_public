@@ -29,7 +29,7 @@ class profile::certs (
     ensure       => present,
     country      => 'uss',
     organization => 'test.com',
-    commonname   => $fqdn,
+    commonname   => 'gray.test.com',
     state        => 'az',
     # locality     => 'Myplace',
     # unit         => 'MyUnit',
