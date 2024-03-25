@@ -15,7 +15,7 @@ class profile::certs {
     country      => 'us',
     organization => 'test.com',
     commonname   => $fqdn,
-    state        => 'Here',
+    state        => 'ax',
     locality     => 'Myplace',
     unit         => 'MyUnit',
     altnames     => ['a.com', 'b.com', 'c.com'],
@@ -27,7 +27,7 @@ class profile::certs {
     group        => 'graylog',
     password     => 'pwdtest',
     force        => false,
-    # cnf_tpl      => 'profile/cert.epp',
+    cnf_tpl      => 'profile/cert.epp',
   }
   # openssl::export::pkcs12 { 'foo':
   #   ensure   => 'present',
