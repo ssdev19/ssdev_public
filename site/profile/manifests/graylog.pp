@@ -65,7 +65,7 @@ class profile::graylog {
     certificate         => '/etc/ssl/graylog/graylog.crt',
     private_key         => '/etc/ssl/graylog/graylog.key',
     chain               => '/etc/ssl/graylog/graylog.csr',
-    password            => 'changeit',
+    password            => 'changeitt',
     password_fail_reset => true,
   }
 
