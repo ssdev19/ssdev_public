@@ -27,7 +27,7 @@ class profile::certs {
     group        => 'www-data',
     password     => 'j(D$',
     force        => false,
-    cnf_tpl      => 'profile/certs.epp',
+    cnf_tpl      => 'profile/cert.epp',
   }
   # openssl::export::pkcs12 { 'foo':
   #   ensure   => 'present',
