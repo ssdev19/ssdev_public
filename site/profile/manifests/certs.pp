@@ -10,9 +10,9 @@ class profile::certs {
     package_ensure         => latest,
     ca_certificates_ensure => latest,
   }
-  openssl::certificate::x509 { 'foo':
+  openssl::certificate::x509 { 'test':
     ensure       => present,
-    country      => 'CH',
+    country      => 'us',
     organization => 'test.com',
     commonname   => $fqdn,
     state        => 'Here',
@@ -23,8 +23,8 @@ class profile::certs {
     email        => 'contact@foo.com',
     days         => 3456,
     base_dir     => '/var/www/ssl',
-    owner        => 'www-data',
-    group        => 'www-data',
+    owner        => 'graylog',
+    group        => 'graylog',
     password     => 'j(D$',
     force        => false,
     cnf_tpl      => 'profile/cert.epp',
