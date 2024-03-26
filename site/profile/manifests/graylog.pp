@@ -100,6 +100,5 @@ class profile::graylog {
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
     java_opts       => '-Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
-    require         => Class['graylog::server'],
   }
 }
