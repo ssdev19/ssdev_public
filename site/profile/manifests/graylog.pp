@@ -60,7 +60,7 @@ class profile::graylog {
   #   ensure  => file,
   #   content => $tlscert,
   # }
-  java_ks { 'lsst.org:/etc/pki/java/cacerts':
+  java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
