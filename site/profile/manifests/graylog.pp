@@ -99,6 +99,6 @@ class profile::graylog {
       elasticsearch_hosts                 => 'http://127.0.0.1:9200',
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
-    java_opts       => '-Djavax.net.ssl.trustStore=/etc/ssl/graylog/cacerts',
+    java_opts       => '-Djavax.net.ssl.trustStore=/etc/pki/java/cacerts',
   }
 }
