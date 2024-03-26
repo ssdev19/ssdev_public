@@ -38,21 +38,14 @@ class profile::certs (
     # extkeyusage  => ['serverAuth', 'clientAuth', 'any_other_option_per_openssl'],
     # email        => 'contact@foo.com',
     days         => $days,
-    base_dir     => '/etc/ssl/graylog',
+    base_dir     => '/etc/ssl/certs/graylog',
     owner        => 'graylog',
     group        => 'graylog',
     password     => 'pwdtest',
     force        => false,
     # cnf_tpl      => 'profile/cert.epp',
   }
-  # openssl::export::pkcs12 { 'foo':
-  #   ensure   => 'present',
-  #   basedir  => '/etc/ssl/graylog/',
-  #   pkey     => '/etc/ssl/graylog/private.key',
-  #   cert     => '/etc/ssl/graylog/cert.crt',
-  #   in_pass  => 'my_pkey_password',
-  #   out_pass => 'my_pkcs12_password',
-  # }
+
   # class { 'openssl::certificates':
   #   x509_certs => { '/path/to/certificate.crt' => {
   #       ensure      => 'present',

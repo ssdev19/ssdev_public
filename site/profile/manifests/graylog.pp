@@ -62,8 +62,8 @@ class profile::graylog {
   # }
   java_ks { 'lsst.org:/etc/pki/java/cacerts':
     ensure              => latest,
-    certificate         => '/etc/ssl/graylog/graylog.crt',
-    private_key         => '/etc/ssl/graylog/graylog.key',
+    certificate         => '/etc/ssl/certs/graylog/graylog.crt',
+    private_key         => '/etc/ssl/certs/graylog/graylog.key',
     # chain               => '/etc/ssl/graylog/graylog.csr',
     password            => 'changeit',
     password_fail_reset => true,
@@ -86,8 +86,8 @@ class profile::graylog {
       http_bind_address                   => '0.0.0.0:9000',
       http_external_uri                   => 'graylog-ssdev.us.lsst.org:9000/',
       http_enable_tls                     => false,
-      http_tls_cert_file                  => '/etc/ssl/graylog/graylog.crt',
-      http_tls_key_file                   => '/etc/ssl/graylog/graylog.key',
+      http_tls_cert_file                  => '/etc/ssl/certs/graylog/graylog.crt',
+      http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
       http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
@@ -99,6 +99,6 @@ class profile::graylog {
       elasticsearch_hosts                 => 'http://127.0.0.1:9200',
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
-    java_opts       => '-Djavax.net.ssl.trustStore=/etc/pki/java/cacerts',
+    java_opts       => '-Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
   }
 }
