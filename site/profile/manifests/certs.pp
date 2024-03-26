@@ -43,7 +43,6 @@ class profile::certs (
     group        => 'graylog',
     password     => 'pwdtest',
     force        => false,
-    format       => pem,
     # cnf_tpl      => 'profile/cert.epp',
   }
   # openssl::export::pkcs12 { 'foo':
