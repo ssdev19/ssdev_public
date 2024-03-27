@@ -109,6 +109,6 @@ class profile::graylog {
     password => $glog_pwd,
     port     => 443,
     tls      => true,
-    server   => 'localhost',
+    server   => 'graylog-ssdev.us.lsst.org',
   }
 }
