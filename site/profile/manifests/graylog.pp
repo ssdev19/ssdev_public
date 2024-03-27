@@ -4,7 +4,7 @@ class profile::graylog {
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
   include java_ks::config  # include opensearch
-  include graylog_api
+  include graylog_api::input::cef_tcp
   # class { 'java' :
   #   package => 'java-17-openjdk-devel',
   # }
