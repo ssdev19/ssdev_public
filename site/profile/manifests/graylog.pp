@@ -104,6 +104,7 @@ class profile::graylog {
     },
     java_opts       => ' -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
   }
+# certificate needs to be valid or else the api fails.
   graylog_api { 'api':
     username => 'admin',
     password => $glog_pwd,
