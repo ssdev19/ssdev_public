@@ -60,14 +60,14 @@ class profile::graylog {
     ensure  => file,
     content => $tlscert,
   }
-  # java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
-  #   ensure              => latest,
-  #   certificate         => '/etc/ssl/certs/graylog/graylog.crt',
-  #   private_key         => '/etc/ssl/certs/graylog/graylog.key',
-  #   # chain               => '/etc/ssl/graylog/graylog.csr',
-  #   password            => 'changeit',
-  #   password_fail_reset => true,
-  # }
+  java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
+    ensure              => latest,
+    certificate         => '/etc/ssl/certs/graylog/graylog.crt',
+    private_key         => '/etc/ssl/certs/graylog/graylog.key',
+    # chain               => '/etc/ssl/graylog/graylog.csr',
+    password            => 'changeit',
+    password_fail_reset => true,
+  }
 
   class { 'graylog::repository':
     version => '5.2',
@@ -99,6 +99,6 @@ class profile::graylog {
       elasticsearch_hosts                 => 'http://127.0.0.1:9200',
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
-    # java_opts       => ' -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
+    java_opts       => ' -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
   }
 }
