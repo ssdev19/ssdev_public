@@ -46,20 +46,20 @@ class profile::graylog {
   # }
   $tlskey = lookup('tlskey')
   $tlscert = lookup('tlscert')
-  file { '/etc/ssl/graylog/' :
+  file { '/etc/ssl/certs/graylog/' :
     ensure => directory,
     mode   => '0700',
     owner  => 'graylog',
     group  => 'graylog',
   }
-  # file { '/etc/ssl/graylog/graylog_key_pkcs8.pem' :
-  #   ensure  => file,
-  #   content => $tlskey,
-  # }
-  # file { '/etc/ssl/graylog/graylog_cert_chain.crt' :
-  #   ensure  => file,
-  #   content => $tlscert,
-  # }
+  file { '/etc/ssl/certs/graylog/graylog.key' :
+    ensure  => file,
+    content => $tlskey,
+  }
+  file { '/etc/ssl/certs/graylog/graylog.crt' :
+    ensure  => file,
+    content => $tlscert,
+  }
   java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
