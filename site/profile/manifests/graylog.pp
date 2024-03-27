@@ -112,24 +112,4 @@ class profile::graylog {
     tls      => true,
     server   => 'graylog-ssdev.lsst.org',
   }
-  graylog_index_set { 'graylog':
-    description                => 'The Graylog default index set',
-    display_name               => 'Default index set',
-    shards                     => 1,
-    replicas                   => 0,
-    rotation_strategy          => 'size',
-    rotation_strategy_details  => {
-      max_size => '10 GB'.to_bytes,
-    },
-    retention_strategy         => 'delete',
-    retention_strategy_details => {
-      max_number_of_indices => 10,
-    },
-  }
-  # graylog_api::input::gelf_tcp { 'tucwindows':
-  #   port          => 6514,
-  #   # tls_cert_file => '/etc/ssl/certs/graylog/graylog.crt',
-  #   # tls_enable    => true,
-  #   # tls_key_file  => '/etc/ssl/certs/graylog/graylog.key',
-  # }
 }
