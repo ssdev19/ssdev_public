@@ -112,7 +112,7 @@ class profile::graylog {
     tls      => true,
     server   => 'graylog-ssdev.lsst.org',
   }
-  graylog_api::input::gelf_udp { 'TucWindowsLogs':
+  graylog_api::input::gelf_tcp { 'TucWindowsLogs':
     port          => 6514,
     tls_cert_file => '/etc/ssl/certs/graylog/graylog.crt',
     tls_enable    => true,
