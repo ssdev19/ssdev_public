@@ -104,4 +104,11 @@ class profile::graylog {
     },
     java_opts       => ' -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
   }
+  graylog_api { 'api':
+    username => 'admin',
+    password => $root_password_sha2,
+    port     => 9000,
+    tls      => false,
+    server   => 'localhost',
+  }
 }
