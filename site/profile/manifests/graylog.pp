@@ -7,7 +7,10 @@ class profile::graylog {
   # class { 'java' :
   #   package => 'java-17-openjdk-devel',
   # }
-
+  package { ['httparty','retries']:
+    ensure   => present,
+    provider => 'puppet_gem',
+  }
   class { 'elastic_stack::repo':
     version => 7,
     oss     => true,
