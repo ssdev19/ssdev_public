@@ -108,7 +108,7 @@ class profile::graylog {
     username => 'admin',
     password => $root_password_sha2,
     port     => 443,
-    tls      => false,
+    tls      => true,
     server   => 'localhost',
   }
 }
