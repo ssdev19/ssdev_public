@@ -110,7 +110,7 @@ class profile::graylog {
     port     => 9000,
     # verify_ssl  => false,
     # ssl_ca_file => '/etc/ssl/certs/graylog/graylog.crt',
-    tls      => false,
+    tls      => true,
     server   => 'graylog-ssdev.us.lsst.org',
   }
 }
