@@ -114,8 +114,8 @@ class profile::graylog {
   }
   graylog_api::input::gelf_udp { 'TucWindowsLogs':
     port          => 6514,
-    # tls_cert_file => '/etc/graylog/server/tls/cert.pem',
-    # tls_enable    => true,
-    # tls_key_file  => '/etc/graylog/server/tls/key.pem',
+    tls_cert_file => '/etc/ssl/certs/graylog/graylog.crt',
+    tls_enable    => true,
+    tls_key_file  => '/etc/ssl/certs/graylog/graylog.key',
   }
 }
