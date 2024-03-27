@@ -106,7 +106,7 @@ class profile::graylog {
   }
   graylog_api { 'api':
     username => 'admin',
-    password => $root_password_sha2,
+    password => $glog_pwd,
     port     => 443,
     tls      => true,
     server   => 'localhost',
