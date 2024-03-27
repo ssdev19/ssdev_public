@@ -18,8 +18,4 @@ profile::certs::organization: rubin
 profile::certs::canonical_name: canname
 profile::certs::days: 1369
 profile::certs::server_ip: '1.1.1.1'
-
-graylog_api::input::gelf_tcp:
-  'windows':
-    port: 7514
-    
+ 

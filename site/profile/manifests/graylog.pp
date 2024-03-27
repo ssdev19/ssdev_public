@@ -4,7 +4,6 @@ class profile::graylog {
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
   include java_ks::config  # include opensearch
-  include graylog_api::input::cef_tcp
   # class { 'java' :
   #   package => 'java-17-openjdk-devel',
   # }
@@ -112,5 +111,11 @@ class profile::graylog {
     port     => 443,
     tls      => true,
     server   => 'graylog-ssdev.lsst.org',
+  }
+  graylog_api::input::gelf_udp { 'TucWindowsLogs':
+    port          => 6514,
+    # tls_cert_file => '/etc/graylog/server/tls/cert.pem',
+    # tls_enable    => true,
+    # tls_key_file  => '/etc/graylog/server/tls/key.pem',
   }
 }
