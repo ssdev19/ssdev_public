@@ -108,7 +108,7 @@ class profile::graylog {
     username => 'admin',
     password => $glog_pwd,
     port     => 443,
-    tls_cert_file => '/etc/ssl/certs/graylog/graylog.crt',
+    ssl_ca_file => '/etc/ssl/certs/graylog/graylog.crt',
     tls      => true,
     server   => 'graylog-ssdev.us.lsst.org',
   }
