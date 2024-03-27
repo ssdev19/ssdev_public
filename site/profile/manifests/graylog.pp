@@ -107,8 +107,8 @@ class profile::graylog {
   graylog_api { 'api':
     username => 'admin',
     password => $glog_pwd,
-    port     => 9000,
+    port     => 443,
     tls      => false,
-    server   => 'graylog-ssdev.us.lsst.org',
+    server   => 'https://graylog-ssdev.us.lsst.org',
   }
 }
