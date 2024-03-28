@@ -1,9 +1,9 @@
 # Graylog
 class profile::graylog {
+  include java_ks::config  # include opensearch
   $pass_secret = lookup('pass_secret')
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
-  include java_ks::config  # include opensearch
   # class { 'java' :
   #   package => 'java-17-openjdk-devel',
   # }
@@ -57,11 +57,11 @@ class profile::graylog {
   }
   file { '/etc/ssl/certs/graylog/graylog.key' :
     ensure  => file,
-    content => $tlskey,
+    content => $tlskey.unwrap,
   }
   file { '/etc/ssl/certs/graylog/graylog.crt' :
     ensure  => file,
-    content => $tlscert,
+    content => $tlscert.unwrap,
   }
   java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
@@ -80,9 +80,9 @@ class profile::graylog {
     config          => {
       is_leader                           => true,
       node_id_file                        => '/etc/graylog/server/node-id',
-      password_secret                     => $pass_secret,
+      password_secret                     => $pass_secret.unwrap,
       root_username                       => 'admin',
-      root_password_sha2                  => $root_password_sha2,
+      root_password_sha2                  => $root_password_sha2.unwrap,
       root_timezone                       => 'Europe/Berlin',
       allow_leading_wildcard_searches     => false,
       allow_highlighting                  => false,
@@ -105,11 +105,11 @@ class profile::graylog {
     java_opts       => ' -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
   }
 # certificate needs to be valid or else the api fails.
-  graylog_api { 'api':
-    username => 'admin',
-    password => $glog_pwd,
-    port     => 443,
-    tls      => true,
-    server   => 'graylog-ssdev.lsst.org',
-  }
+  # graylog_api { 'api':
+  #   username => 'admin',
+  #   password => $glog_pwd,
+  #   port     => 443,
+  #   tls      => true,
+  #   server   => 'graylog-ssdev.lsst.org',
+  # }
 }
