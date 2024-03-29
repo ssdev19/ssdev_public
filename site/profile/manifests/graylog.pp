@@ -52,7 +52,7 @@ class profile::graylog {
   $certpwd = lookup('certpwd')
   file { '/etc/ssl/certs/graylog/' :
     ensure => directory,
-    mode   => '0700',
+    mode   => '0644',
     owner  => 'graylog',
     group  => 'graylog',
   }
@@ -103,7 +103,7 @@ class profile::graylog {
       elasticsearch_hosts                 => 'http://127.0.0.1:9200',
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
-    java_opts       => '-Xms1g -Xmx1g -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts -Djavax.net.ssl.trustStorePassword=changeit',
+    java_opts       => '-Xms1g -Xmx1g -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts ',
   }
 # certificate needs to be valid or else the api fails.
   # graylog_api { 'api':
