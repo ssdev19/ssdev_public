@@ -102,7 +102,7 @@ class profile::graylog {
       elasticsearch_hosts                 => 'http://127.0.0.1:9200',
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
-    java_opts       => ' -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
+    # java_opts       => ' -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts',
   }
 # certificate needs to be valid or else the api fails.
   # graylog_api { 'api':
