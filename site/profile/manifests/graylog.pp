@@ -68,7 +68,7 @@ class profile::graylog {
     owner  => 'graylog',
     group  => 'graylog',
   }
-  java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
+  java_ks { 'lsst.org:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.402.b06-2.el8.x86_64/jre/lib/security/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
