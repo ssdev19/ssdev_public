@@ -57,11 +57,11 @@ class profile::graylog {
   }
   file { '/etc/ssl/certs/graylog/graylog.key' :
     ensure  => file,
-    content => $tlskey.unwrap,
+    content => $tlskey,
   }
   file { '/etc/ssl/certs/graylog/graylog.crt' :
     ensure  => file,
-    content => $tlscert.unwrap,
+    content => $tlscert,
   }
   java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
