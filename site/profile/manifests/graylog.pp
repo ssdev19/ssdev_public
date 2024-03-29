@@ -49,6 +49,7 @@ class profile::graylog {
   # }
   $tlskey = lookup('tlskey')
   $tlscert = lookup('tlscert')
+  $certpwd = lookup('certpwd')
   file { '/etc/ssl/certs/graylog/' :
     ensure => directory,
     mode   => '0700',
@@ -91,7 +92,7 @@ class profile::graylog {
       http_enable_tls                     => true,
       http_tls_cert_file                  => '/etc/ssl/certs/graylog/graylog.crt',
       http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
-      # http_tls_key_password               => 'changeit',
+      http_tls_key_password               => $certpwd,
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
       elasticsearch_max_time_per_index    => '1d',
