@@ -68,6 +68,11 @@ class profile::graylog {
     owner  => 'graylog',
     group  => 'graylog',
   }
+  file { '/etc/ssl/certs/graylog/cacerts' :
+    ensure => file,
+    owner  => 'graylog',
+    group  => 'graylog',
+  }
   java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
