@@ -93,8 +93,6 @@ class profile::graylog {
       http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
       # http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
-      rotation_period                     => 'P1M',
-      rotation_test                       => 'P1M',
       retention_strategy                  => 'delete',
       elasticsearch_max_time_per_index    => '1d',
       elasticsearch_max_number_of_indices => '8',
