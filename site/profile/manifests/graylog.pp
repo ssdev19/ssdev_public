@@ -98,7 +98,7 @@ class profile::graylog {
       elasticsearch_max_number_of_indices => '30',
       elasticsearch_shards                => '4',
       elasticsearch_replicas              => '1',
-      elasticsearch_index_prefix          => 'graylogg',
+      elasticsearch_index_prefix          => 'graylog',
       elasticsearch_hosts                 => 'http://127.0.0.1:9200',
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
