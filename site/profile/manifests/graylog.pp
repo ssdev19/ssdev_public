@@ -83,7 +83,7 @@ class profile::graylog {
       password_secret                     => $pass_secret.unwrap,
       root_username                       => 'admin',
       root_password_sha2                  => $root_password_sha2.unwrap,
-      root_timezone                       => 'Europe/Berlin',
+      root_timezone                       => 'UTC',
       allow_leading_wildcard_searches     => false,
       allow_highlighting                  => false,
       http_bind_address                   => '0.0.0.0:443',
