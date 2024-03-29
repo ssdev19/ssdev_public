@@ -52,7 +52,7 @@ class profile::graylog {
   $certpwd = lookup('certpwd')
   file { '/etc/ssl/certs/graylog/' :
     ensure => directory,
-    # mode   => '0644',
+    mode   => '0777',
     # owner  => 'graylog',
     # group  => 'graylog',
   }
