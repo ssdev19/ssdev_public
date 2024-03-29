@@ -59,16 +59,16 @@ class profile::graylog {
   file { '/etc/ssl/certs/graylog/graylog.key' :
     ensure  => file,
     content => $tlskey.unwrap,
-    owner  => 'graylog',
-    group  => 'graylog',
+    owner   => 'graylog',
+    group   => 'graylog',
   }
   file { '/etc/ssl/certs/graylog/graylog.crt' :
     ensure  => file,
     content => $tlscert.unwrap,
-    owner  => 'graylog',
-    group  => 'graylog',
+    owner   => 'graylog',
+    group   => 'graylog',
   }
-  java_ks { 'lsst.org:/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.402.b06-2.el8.x86_64/jre/lib/security/cacerts':
+  java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
