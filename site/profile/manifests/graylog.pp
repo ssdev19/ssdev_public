@@ -68,7 +68,7 @@ class profile::graylog {
     # owner   => 'graylog',
     # group   => 'graylog',
   }
-  java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
+  java_ks { 'graylog-ssdev.lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
@@ -92,7 +92,7 @@ class profile::graylog {
       allow_leading_wildcard_searches     => false,
       allow_highlighting                  => false,
       http_bind_address                   => '0.0.0.0:443',
-      http_external_uri                   => 'https://lsst.org:9000/',
+      http_external_uri                   => 'https://graylog-ssdev.lsst.org:9000/',
       http_enable_tls                     => true,
       http_tls_cert_file                  => '/etc/ssl/certs/graylog/graylog.crt',
       http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
