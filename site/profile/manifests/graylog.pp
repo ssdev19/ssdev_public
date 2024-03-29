@@ -59,10 +59,14 @@ class profile::graylog {
   file { '/etc/ssl/certs/graylog/graylog.key' :
     ensure  => file,
     content => $tlskey.unwrap,
+    owner  => 'graylog',
+    group  => 'graylog',
   }
   file { '/etc/ssl/certs/graylog/graylog.crt' :
     ensure  => file,
     content => $tlscert.unwrap,
+    owner  => 'graylog',
+    group  => 'graylog',
   }
   java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
@@ -92,7 +96,7 @@ class profile::graylog {
       http_enable_tls                     => true,
       http_tls_cert_file                  => '/etc/ssl/certs/graylog/graylog.crt',
       http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
-      # http_tls_key_password               => '',
+      http_tls_key_password               => 'changeit',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
       elasticsearch_max_time_per_index    => '1d',
