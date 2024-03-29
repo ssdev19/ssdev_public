@@ -52,21 +52,21 @@ class profile::graylog {
   $certpwd = lookup('certpwd')
   file { '/etc/ssl/certs/graylog/' :
     ensure => directory,
-    mode   => '0644',
-    owner  => 'graylog',
-    group  => 'graylog',
+    # mode   => '0644',
+    # owner  => 'graylog',
+    # group  => 'graylog',
   }
   file { '/etc/ssl/certs/graylog/graylog.key' :
     ensure  => file,
     content => $tlskey.unwrap,
-    owner   => 'graylog',
-    group   => 'graylog',
+    # owner   => 'graylog',
+    # group   => 'graylog',
   }
   file { '/etc/ssl/certs/graylog/graylog.crt' :
     ensure  => file,
     content => $tlscert.unwrap,
-    owner   => 'graylog',
-    group   => 'graylog',
+    # owner   => 'graylog',
+    # group   => 'graylog',
   }
   java_ks { 'lsst.org:/etc/ssl/certs/graylog/cacerts':
     ensure              => latest,
