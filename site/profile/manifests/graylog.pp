@@ -74,8 +74,8 @@ class profile::graylog {
   # }
   # java_ks cannot find keytool, so it is necessary
   file { '/usr/local/bin/keytool':
-    ensure  => link,
-    target  => '/usr/share/graylog-server/jvm/bin/keytool',
+    ensure => link,
+    target => '/usr/share/graylog-server/jvm/bin/keytool',
     # require => Class['graylog-server'],
   }
   java_ks { 'lss.org:/usr/share/graylog-server/jvm/lib/security/cacerts':
