@@ -26,11 +26,11 @@ class profile::certs (
     package_ensure         => latest,
     ca_certificates_ensure => latest,
   }
-  openssl::certificate::x509 { 'graylog':
+  openssl::certificate::x509 { 'graylog_ssdev':
     ensure       => present,
     country      => 'us',
     organization => 'lsst.org',
-    commonname   => $fqdn,
+    commonname   => 'graylog-ssdev.lsst.org',
     state        => 'az',
     # locality     => 'Myplace',
     # unit         => 'MyUnit',
@@ -41,7 +41,7 @@ class profile::certs (
     base_dir     => '/etc/ssl/certs/graylog',
     owner        => 'graylog',
     group        => 'graylog',
-    password     => 'pwdtest',
+    # password     => 'pwdtest',
     force        => false,
     # cnf_tpl      => 'profile/cert.epp',
   }
