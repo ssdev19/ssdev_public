@@ -72,7 +72,7 @@ class profile::graylog {
   #   ensure => 'link',
   #   target => '/usr/java/jdk8u202-b08/jre/lib/security/cacerts',
   # }
-  java_ks { 'graylog-ssdev.lsst.org:/etc/ssl/certs/graylog/cacerts':
+  java_ks { 'graylog-ssdev.lsst.org:/usr/share/graylog-server/jvm/lib/security/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
