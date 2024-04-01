@@ -91,7 +91,7 @@ class profile::graylog {
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
-    chain               => '/etc/ssl/certs/graylog/graylog.pem',
+    # chain               => '/etc/ssl/certs/graylog/graylog.pem',
     password            => 'changeit',
     password_fail_reset => true,
   }
