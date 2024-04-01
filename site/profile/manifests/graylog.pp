@@ -49,6 +49,7 @@ class profile::graylog {
   # }
   $tlskey = lookup('tlskey')
   $tlscert = lookup('tlscert')
+  $tlschain = lookup('tlschain')
   $certpwd = lookup('certpwd')
   file { '/etc/ssl/certs/graylog/' :
     ensure => directory,
@@ -68,6 +69,12 @@ class profile::graylog {
     # owner   => 'graylog',
     # group   => 'graylog',
   }
+  file { '/etc/ssl/certs/graylog/graylog.pem' :
+    ensure  => file,
+    content => $tlschain.unwrap,
+    # owner   => 'graylog',
+    # group   => 'graylog',
+  }
   # file { '/etc/ssl/certs/graylog/cacerts':
   #   ensure => 'link',
   #   target => '/usr/java/jdk8u202-b08/jre/lib/security/cacerts',
@@ -82,7 +89,7 @@ class profile::graylog {
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
-    # chain               => '/etc/ssl/graylog/graylog.csr',
+    chain               => '/etc/ssl/certs/graylog/graylog.pem',
     password            => 'changeit',
     password_fail_reset => true,
   }
