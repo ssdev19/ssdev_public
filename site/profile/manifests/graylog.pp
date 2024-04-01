@@ -78,7 +78,7 @@ class profile::graylog {
     target  => '/usr/share/graylog-server/jvm/bin/keytool',
     # require => Class['graylog-server'],
   }
-  java_ks { 'graylog-ssdev.lsst.org:/usr/share/graylog-server/jvm/lib/security/cacerts':
+  java_ks { 'lss.org:/usr/share/graylog-server/jvm/lib/security/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog.key',
@@ -86,7 +86,7 @@ class profile::graylog {
     password            => 'changeit',
     password_fail_reset => true,
   }
-  java_ks { 'graylog-ssdev:/usr/share/graylog-server/jvm/lib/security/cacerts':
+  java_ks { 'graylog-ssdev.lsst.org:/usr/share/graylog-server/jvm/lib/security/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
     private_key         => '/etc/ssl/certs/graylog/graylog_ssdev.key',
