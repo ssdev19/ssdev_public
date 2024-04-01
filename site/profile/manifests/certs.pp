@@ -45,14 +45,14 @@ class profile::certs (
     force        => false,
     # cnf_tpl      => 'profile/cert.epp',
   }
-  openssl::export::pem_key { 'graylog_pem':
-    ensure   => 'present',
-    basedir  => '/etc/ssl/certs/graylog',
-    pkey     => '/etc/ssl/certs/graylog/graylog_ssdev.key',
-    cert     => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
-    in_pass  => 'my_pkey_password',
-    out_pass => 'my_pkcs12_password',
-  }
+  # openssl::export::pem_key { 'graylog_pem':
+  #   ensure   => 'present',
+  #   basedir  => '/etc/ssl/certs/graylog',
+  #   pkey     => '/etc/ssl/certs/graylog/graylog_ssdev.key',
+  #   cert     => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
+  #   in_pass  => 'my_pkey_password',
+  #   out_pass => 'my_pkcs12_password',
+  # }
   # class { 'openssl::certificates':
   #   x509_certs => { '/path/to/certificate.crt' => {
   #       ensure      => 'present',
