@@ -81,11 +81,7 @@ class profile::graylog {
     # owner   => 'graylog',
     # group   => 'graylog',
   }
-  # file { '/etc/ssl/certs/graylog/cacerts':
-  #   ensure => 'link',
-  #   target => '/usr/java/jdk8u202-b08/jre/lib/security/cacerts',
-  # }
-  # java_ks cannot find keytool, so it is necessary
+  # java_ks cannot find keytool, so this symlink is needed
   file { '/usr/local/bin/keytool':
     ensure => link,
     target => '/usr/share/graylog-server/jvm/bin/keytool',
