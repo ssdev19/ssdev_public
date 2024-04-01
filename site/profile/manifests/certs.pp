@@ -45,7 +45,7 @@ class profile::certs (
     force        => false,
     # cnf_tpl      => 'profile/cert.epp',
   }
-  openssl::export::pkcs12 { 'graylog_pkc12':
+  openssl::export::pem_key { 'graylog_pem':
     ensure   => 'present',
     basedir  => '/etc/ssl/certs/graylog',
     pkey     => '/etc/ssl/certs/graylog/graylog_ssdev.key',
