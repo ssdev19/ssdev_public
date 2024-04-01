@@ -86,6 +86,14 @@ class profile::graylog {
     password            => 'changeit',
     password_fail_reset => true,
   }
+  java_ks { 'graylog-ssdev:/usr/share/graylog-server/jvm/lib/security/cacerts':
+    ensure              => latest,
+    certificate         => '/etc/ssl/certs/graylog/graylog-ssdev.crt',
+    private_key         => '/etc/ssl/certs/graylog/graylog-ssdev.key',
+    # chain               => '/etc/ssl/graylog/graylog.csr',
+    password            => 'changeit',
+    password_fail_reset => true,
+  }
 
   class { 'graylog::repository':
     version => '5.2',
