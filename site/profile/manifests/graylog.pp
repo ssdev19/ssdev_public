@@ -72,6 +72,12 @@ class profile::graylog {
   #   ensure => 'link',
   #   target => '/usr/java/jdk8u202-b08/jre/lib/security/cacerts',
   # }
+  # java_ks cannot find keytool, so it is necessary
+  file { '/usr/local/bin/keytool':
+    ensure  => link,
+    target  => '/usr/share/graylog-server/jvm/bin/keytool',
+    require => Class['java'],
+  }
   java_ks { 'graylog-ssdev.lsst.org:/usr/share/graylog-server/jvm/lib/security/cacerts':
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog.crt',
