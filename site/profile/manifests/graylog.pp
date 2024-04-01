@@ -98,8 +98,8 @@ class profile::graylog {
   }
   java_ks { 'graylog-ssdev.lsst.org:/etc/ssl/certs/graylog/cacerts.jks':
     ensure              => latest,
-    certificate         => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
-    private_key         => '/etc/ssl/certs/graylog/graylog_ssdev.key',
+    certificate         => '/etc/ssl/certs/graylog/pkcs8-plain.pem',
+    private_key         => '/etc/ssl/certs/graylog/pkcs8-encrypted.pem',
     # chain               => '/etc/ssl/graylog/graylog.csr',
     password            => 'changeit',
     password_fail_reset => true,
