@@ -53,20 +53,15 @@ class profile::certs (
   #   in_pass  => 'my_pkey_password',
   #   out_pass => 'my_pkcs12_password',
   # }
-  # class { 'openssl::certificates':
-  #   x509_certs => { '/path/to/certificate.crt' => {
-  #       ensure      => 'present',
-  #       password    => 'j(D$',
-  #       template    => '/other/path/to/template.cnf',
-  #       private_key => '/there/is/my/private.key',
-  #       days        => 4536,
-  #       force       => false,
-  #     },
-  #     '/a/other/certificate.crt'               => {
-  #     ensure      => 'present', },
-  #   },
-  # }
 
+  openssl::export::pkcs8 { 'foo':
+    ensure   => 'present',
+    basedir  => '/etc/ssl/certs/graylog',
+    pkey     => '/etc/ssl/certs/graylog/graylog_ssdev.key',
+    cert     => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
+    in_pass  => 'my_pkey_password',
+    out_pass => 'my_pkcs12_password',
+  }
 #   $domaincert = lookup('domaincert')
 #   archive { '/tmp/lsstcertlatest.crt' :
 #     ensure  => present,
