@@ -88,22 +88,22 @@ class profile::graylog {
     target => '/usr/share/graylog-server/jvm/bin/keytool',
     # require => Class['graylog-server'],
   }
-  java_ks { 'lss.org:/etc/ssl/certs/graylog/cacerts.jks':
-    ensure              => latest,
-    certificate         => '/etc/ssl/certs/graylog/graylog.crt',
-    private_key         => '/etc/ssl/certs/graylog/graylog.key',
-    chain               => '/etc/ssl/certs/graylog/graylog.pem',
-    password            => 'changeit',
-    password_fail_reset => true,
-  }
-  java_ks { 'graylog-ssdev.lsst.org:/etc/ssl/certs/graylog/cacerts.jks':
-    ensure              => latest,
-    certificate         => '/etc/ssl/certs/graylog/cert.pem',
-    private_key         => '/etc/ssl/certs/graylog/pkcs8-plain.pem',
-    # chain               => '/etc/ssl/graylog/graylog.csr',
-    password            => 'changeit',
-    password_fail_reset => true,
-  }
+  # java_ks { 'lss.org:/etc/ssl/certs/graylog/cacerts.jks':
+  #   ensure              => latest,
+  #   certificate         => '/etc/ssl/certs/graylog/graylog.crt',
+  #   private_key         => '/etc/ssl/certs/graylog/graylog.key',
+  #   chain               => '/etc/ssl/certs/graylog/graylog.pem',
+  #   password            => 'changeit',
+  #   password_fail_reset => true,
+  # }
+  # java_ks { 'graylog-ssdev.lsst.org:/etc/ssl/certs/graylog/cacerts.jks':
+  #   ensure              => latest,
+  #   certificate         => '/etc/ssl/certs/graylog/cert.pem',
+  #   private_key         => '/etc/ssl/certs/graylog/pkcs8-plain.pem',
+  #   # chain               => '/etc/ssl/graylog/graylog.csr',
+  #   password            => 'changeit',
+  #   password_fail_reset => true,
+  # }
 
   class { 'graylog::repository':
     version => '5.2',
@@ -122,8 +122,8 @@ class profile::graylog {
       http_bind_address                   => '0.0.0.0:9000',
       http_external_uri                   => 'https://graylog-ssdev.lsst.org:9000/',
       http_enable_tls                     => true,
-      http_tls_cert_file                  => '/etc/ssl/certs/graylog/cert.pem',
-      http_tls_key_file                   => '/etc/ssl/certs/graylog/pkcs8-plain.pem',
+      http_tls_cert_file                  => '/etc/ssl/certs/graylog/graylog.crt',
+      http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
       # http_tls_key_password               => 'changeit',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
