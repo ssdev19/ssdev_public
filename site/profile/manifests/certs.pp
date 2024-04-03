@@ -54,14 +54,14 @@ class profile::certs (
   #   out_pass => 'my_pkcs12_password',
   # }
 
-  openssl::export::pkcs12 { 'foo':
-    ensure   => 'present',
-    basedir  => '/etc/ssl/certs/graylog',
-    pkey     => '/etc/ssl/certs/graylog/graylog_ssdev.key',
-    cert     => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
-    in_pass  => 'my_pkey_password',
-    out_pass => 'my_pkcs12_password',
-  }
+  # openssl::export::pkcs12 { 'foo':
+  #   ensure   => 'present',
+  #   basedir  => '/etc/ssl/certs/graylog',
+  #   pkey     => '/etc/ssl/certs/graylog/graylog_ssdev.key',
+  #   cert     => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
+  #   in_pass  => 'my_pkey_password',
+  #   out_pass => 'my_pkcs12_password',
+  # }
 #   $domaincert = lookup('domaincert')
 #   archive { '/tmp/lsstcertlatest.crt' :
 #     ensure  => present,
