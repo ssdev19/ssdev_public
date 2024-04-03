@@ -54,7 +54,7 @@ class profile::certs (
   #   out_pass => 'my_pkcs12_password',
   # }
 
-  openssl::export::pkcs8 { 'foo':
+  openssl::export::pkcs12 { 'foo':
     ensure   => 'present',
     basedir  => '/etc/ssl/certs/graylog',
     pkey     => '/etc/ssl/certs/graylog/graylog_ssdev.key',
