@@ -100,7 +100,7 @@ class profile::graylog {
     ensure              => latest,
     certificate         => '/etc/ssl/certs/graylog/graylog_ssdev.crt',
     private_key         => '/etc/ssl/certs/graylog/pkcs8-encrypted.pem',
-    chain               => '/etc/ssl/graylog/graylog_ssdev.csr',
+    # chain               => '/etc/ssl/graylog/graylog_ssdev.csr',
     password            => 'changeit',
     password_fail_reset => true,
   }
