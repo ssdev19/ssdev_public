@@ -41,7 +41,7 @@ class profile::certs (
     base_dir     => '/etc/ssl/certs/graylog',
     owner        => 'graylog',
     group        => 'graylog',
-    # password     => 'pwdtest',
+    password     => 'pwdtest',
     force        => false,
     # cnf_tpl      => 'profile/cert.epp',
   }
