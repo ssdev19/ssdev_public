@@ -121,7 +121,6 @@ class profile::graylog {
       allow_highlighting                  => false,
       http_bind_address                   => '0.0.0.0:9000',
       http_external_uri                   => 'https://graylog-ssdev.lsst.org:9000/',
-      http_publish_uri                    => 'https://graylog-ssdev.lsst.org:9000/',
       http_enable_tls                     => true,
       http_tls_cert_file                  => '/etc/ssl/certs/graylog/graylo.crt',
       http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
