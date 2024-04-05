@@ -77,12 +77,12 @@ class profile::graylog {
       ensure  => file,
       content => $tlschain.unwrap,
   }
-}  # java_ks cannot find keytool, so this symlink is needed
-file { '/usr/local/bin/keytool':
-  ensure => link,
-  target => '/usr/share/graylog-server/jvm/bin/keytool',
-  # require => Class['graylog-server'],
-}
+  # java_ks cannot find keytool, so this symlink is needed
+  file { '/usr/local/bin/keytool':
+    ensure => link,
+    target => '/usr/share/graylog-server/jvm/bin/keytool',
+    # require => Class['graylog-server'],
+  }
   # java_ks { 'lss.org:/etc/ssl/certs/graylog/cacerts.jks':
   #   ensure              => latest,
   #   certificate         => '/etc/ssl/certs/graylog/graylog.crt',
