@@ -60,36 +60,29 @@ class profile::graylog {
     # owner  => 'graylog',
     # group  => 'graylog',
   }
-  file { '/etc/ssl/certs/graylog/' :
-    ensure => directory,
-    mode   => '0777',
-    # owner  => 'graylog',
-    # group  => 'graylog',
+  file {
+    '/etc/ssl/certs/graylog/':
+      ensure => directory,
+      mode   => '0700',
+      ;
+    '/etc/ssl/certs/graylog/graylog.key':
+      ensure  => file,
+      content => $tlskey.unwrap,
+      ;
+    '/etc/ssl/certs/graylog/graylog.crt':
+      ensure  => file,
+      content => $tlscert.unwrap,
+      ;
+    '/etc/ssl/certs/graylog/graylog.pem':
+      ensure  => file,
+      content => $tlschain.unwrap,
   }
-  file { '/etc/ssl/certs/graylog/graylog.key' :
-    ensure  => file,
-    content => $tlskey.unwrap,
-    # owner   => 'graylog',
-    # group   => 'graylog',
-  }
-  file { '/etc/ssl/certs/graylog/graylog.crt' :
-    ensure  => file,
-    content => $tlscert.unwrap,
-    # owner   => 'graylog',
-    # group   => 'graylog',
-  }
-  file { '/etc/ssl/certs/graylog/graylog.pem' :
-    ensure  => file,
-    content => $tlschain.unwrap,
-    # owner   => 'graylog',
-    # group   => 'graylog',
-  }
-  # java_ks cannot find keytool, so this symlink is needed
-  file { '/usr/local/bin/keytool':
-    ensure => link,
-    target => '/usr/share/graylog-server/jvm/bin/keytool',
-    # require => Class['graylog-server'],
-  }
+}  # java_ks cannot find keytool, so this symlink is needed
+file { '/usr/local/bin/keytool':
+  ensure => link,
+  target => '/usr/share/graylog-server/jvm/bin/keytool',
+  # require => Class['graylog-server'],
+}
   # java_ks { 'lss.org:/etc/ssl/certs/graylog/cacerts.jks':
   #   ensure              => latest,
   #   certificate         => '/etc/ssl/certs/graylog/graylog.crt',
