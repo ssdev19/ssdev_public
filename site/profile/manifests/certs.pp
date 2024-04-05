@@ -34,7 +34,7 @@ class profile::certs (
     state        => 'az',
     # locality     => 'Myplace',
     # unit         => 'MyUnit',
-    # altnames     => ['a.com', 'b.com', 'c.com'],
+    altnames     => ['graylog-ssdev.lsst.org', '140.252.32.189'],
     # extkeyusage  => ['serverAuth', 'clientAuth', 'any_other_option_per_openssl'],
     # email        => 'contact@foo.com',
     days         => $days,
