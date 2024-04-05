@@ -43,7 +43,6 @@ class profile::graylog {
   }
   ->class { 'mongodb::server':
     bind_ip => ['127.0.0.1'],
-    diagnosticDataCollectionEnabled => false,
   }
 
 # Install OpenSearch repository and packages
