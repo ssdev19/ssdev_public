@@ -52,8 +52,8 @@ class profile::graylog {
   $tlschain = lookup('tlschain')
   $certpwd = lookup('certpwd')
   file { '/etc/ssl/certs/graylog/cacerts.jks' :
-    ensure => file,
-    source => '/usr/share/graylog-server/jvm/lib/security/cacerts',
+    ensure  => file,
+    source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
     replace => false,
     # owner  => 'graylog',
     # group  => 'graylog',
