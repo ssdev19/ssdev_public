@@ -65,6 +65,8 @@ class profile::graylog {
     '/etc/ssl/certs/graylog/':
       ensure => directory,
       mode   => '0700',
+      owner  => 'graylog'
+      group  => 'graylog'
       ;
     '/etc/ssl/certs/graylog/graylog.key':
       ensure  => file,
