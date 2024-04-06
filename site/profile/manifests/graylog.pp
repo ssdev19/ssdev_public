@@ -138,11 +138,11 @@ class profile::graylog {
     java_opts       => '-Xms4g -Xmx4g -XX:NewRatio=1 -server -XX:+ResizeTLAB -XX:-OmitStackTraceInFastThrow -Djavax.net.ssl.trustStore=/etc/ssl/certs/graylog/cacerts.jks',
   }
 # certificate needs to be valid or else the api fails.
-  graylog_api { 'api':
-    username => 'admin',
-    password => $glog_pwd,
-    port     => 443,
-    tls      => true,
-    server   => 'graylog-ssdev.lsst.org',
-  }
+  # graylog_api { 'api':
+  #   username => 'admin',
+  #   password => $glog_pwd,
+  #   port     => 443,
+  #   tls      => true,
+  #   server   => 'graylog-ssdev.lsst.org',
+  # }
 }
