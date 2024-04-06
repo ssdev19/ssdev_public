@@ -43,7 +43,8 @@ class profile::graylog {
   }
   ->class { 'mongodb::server':
     bind_ip       => ['127.0.0.1'],
-    set_parameter => ['diagnosticDataCollectionEnabled: false'], # prvents mongodb from scanning directories which was being blocked by SELinux
+    set_parameter => ['diagnosticDataCollectionEnabled: false'], 
+    # above prvents mongodb from scanning directories which was being blocked by SELinux
   }
 
 # Install OpenSearch repository and packages
