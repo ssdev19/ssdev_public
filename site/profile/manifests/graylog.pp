@@ -42,7 +42,7 @@ class profile::graylog {
     version             => '6.0.14',
   }
   ->class { 'mongodb::server':
-    bind_ip => ['127.0.0.1'],
+    bind_ip       => ['127.0.0.1'],
     set_parameter => ['diagnosticDataCollectionEnabled: false'],
   }
 
