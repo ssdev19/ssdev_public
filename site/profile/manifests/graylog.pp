@@ -9,10 +9,10 @@ class profile::graylog {
   # }
   $fqdn = $facts['networking']['fqdn']
 
-  # package { ['httparty','retries']:
-  #   ensure   => present,
-  #   provider => 'puppet_gem',
-  # }
+  package { ['httparty','retries']:
+    ensure   => present,
+    provider => 'puppet_gem',
+  }
   class { 'elastic_stack::repo':
     version => 7,
     oss     => true,
