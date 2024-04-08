@@ -152,4 +152,4 @@ class profile::graylog {
 #     tls_enable    => true,
 #     tls_key_file  => '/etc/ssl/certs/graylog/graylog.key',
 #   }
-# }
+}
