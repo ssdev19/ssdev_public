@@ -145,17 +145,17 @@ class profile::graylog {
     java_opts       => "-Xms4g -Xmx4g -XX:NewRatio=1 -server -XX:+ResizeTLAB -XX:-OmitStackTraceInFastThrow -Djavax.net.ssl.trustStore=${ssldir}/cacerts.jks",
   }
 # certificate needs to be valid or else the api fails.
-#   graylog_api { 'api':
-#     username => 'admin',
-#     password => $glog_pwd,
-#     port     => 443,
-#     tls      => true,
-#     server   => "${fqdn}",
-#   }
-#   graylog_api::input::gelf_tcp { 'A GELF TCP Input with TLS':
-#     port          => 12202,
-#     tls_cert_file => '/etc/ssl/certs/graylog/graylog.crt',
-#     tls_enable    => true,
-#     tls_key_file  => '/etc/ssl/certs/graylog/graylog.key',
-#   }
+  graylog_api { 'api':
+    username => 'admin',
+    password => $glog_pwd,
+    port     => 443,
+    tls      => true,
+    server   => "${fqdn}",
+  }
+  graylog_api::input::gelf_tcp { 'A GELF TCP Input with TLS':
+    port          => 12202,
+    tls_cert_file => '/etc/ssl/certs/graylog/graylog.crt',
+    tls_enable    => true,
+    tls_key_file  => '/etc/ssl/certs/graylog/graylog.key',
+  }
 }
