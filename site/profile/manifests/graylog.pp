@@ -4,6 +4,7 @@ class profile::graylog {
   $pass_secret = lookup('pass_secret')
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
+  $ssldir = lookup('ssldir')
   # class { 'java' :
   #   package => 'java-17-openjdk-devel',
   # }
@@ -63,21 +64,21 @@ class profile::graylog {
     # group  => 'graylog',
   }
   file {
-    '/etc/ssl/certs/graylog/':
+    $ssldir:
       ensure => directory,
       mode   => '0700',
       owner  => 'graylog',
       group  => 'graylog',
       ;
-    '/etc/ssl/certs/graylog/graylog.key':
+    "${ssldir}/graylog.key":
       ensure  => file,
       content => $tlskey.unwrap,
       ;
-    '/etc/ssl/certs/graylog/graylog.crt':
+    "${ssldir}/graylog.crt":
       ensure  => file,
       content => $tlscert.unwrap,
       ;
-    '/etc/ssl/certs/graylog/graylog.pem':
+    "${ssldir}/graylog.pem":
       ensure  => file,
       content => $tlschain.unwrap,
   }
@@ -122,8 +123,8 @@ class profile::graylog {
       http_external_uri                   => "https://${fqdn}/",
       http_publish_uri                    => "https://${fqdn}/",
       http_enable_tls                     => true,
-      http_tls_cert_file                  => '/etc/ssl/certs/graylog/graylog.crt',
-      http_tls_key_file                   => '/etc/ssl/certs/graylog/graylog.key',
+      http_tls_cert_file                  => "${ssldir}/graylog.crt",
+      http_tls_key_file                   => "${ssldir}/graylog.key",
       # http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
