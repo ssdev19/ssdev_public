@@ -56,13 +56,13 @@ class profile::graylog {
   $tlscert = lookup('tlscert')
   $tlschain = lookup('tlschain')
   # $certpwd = lookup('certpwd')
-  file { '/etc/ssl/certs/graylog/cacerts.jks' :
-    ensure  => file,
-    source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
-    replace => false,
-    # owner  => 'graylog',
-    # group  => 'graylog',
-  }
+  # file { '/etc/ssl/certs/graylog/cacerts.jks' :
+  #   ensure  => file,
+  #   source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
+  #   replace => false,
+  #   # owner  => 'graylog',
+  #   # group  => 'graylog',
+  # }
   file {
     $ssldir:
       ensure => directory,
@@ -81,6 +81,11 @@ class profile::graylog {
     "${ssldir}/graylog.pem":
       ensure  => file,
       content => $tlschain.unwrap,
+      ;
+    "${ssldir}/cacerts.jks":
+      ensure  => file,
+      source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
+      replace => false,
   }
   # java_ks cannot find keytool, so this symlink is needed
   file { '/usr/local/bin/keytool':
