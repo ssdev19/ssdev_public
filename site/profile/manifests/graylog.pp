@@ -152,7 +152,7 @@ class profile::graylog {
     # tls      => true,
     # server   => $fqdn,
   }
-  graylog_api::input::gelf_tcp { 'A GELF TCP Input with TLS':
+  graylog_api::input::gelf_tcp { 'A GELF TCP Input without TLS':
     port          => 6514,
     # tls_cert_file => "${ssldir}/graylog.crt",
     # tls_enable    => true,
