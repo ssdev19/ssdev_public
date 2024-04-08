@@ -158,5 +158,19 @@ class profile::graylog {
   #   tls_enable    => true,
   #   tls_key_file  => "${ssldir}/graylog.key",
   # }
-  graylog_api::input::gelf_tcp { 'A GELF TCP Input': }
+  # graylog_api::input::gelf_tcp { 'A GELF TCP Input': }
+  graylog_index_set { 'graylog':
+    description                => 'The Graylog default index set',
+    display_name               => 'Default index set',
+    shards                     => 1,
+    replicas                   => 0,
+    rotation_strategy          => 'size',
+    rotation_strategy_details  => {
+      max_size => '10 GB'.to_bytes,
+    },
+    retention_strategy         => 'delete',
+    retention_strategy_details => {
+      max_number_of_indices => 10,
+    },
+  }
 }
