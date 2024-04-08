@@ -150,7 +150,7 @@ class profile::graylog {
     password => $glog_pwd,
     port     => 443,
     # tls      => true,
-    server   => $fqdn,
+    # server   => $fqdn,
   }
   graylog_api::input::gelf_tcp { 'A GELF TCP Input with TLS':
     port          => 12202,
