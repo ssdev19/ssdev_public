@@ -148,14 +148,14 @@ class profile::graylog {
   graylog_api { 'api':
     username => 'admin',
     password => $glog_pwd,
-    port     => 443,
+    port     => 9000,
     # tls      => true,
     # server   => $fqdn,
   }
   graylog_api::input::gelf_tcp { 'A GELF TCP Input with TLS':
     port          => 12202,
-    tls_cert_file => '/etc/ssl/certs/graylog/graylog.crt',
+    tls_cert_file => "${ssldir}/graylog.crt",
     tls_enable    => true,
-    tls_key_file  => '/etc/ssl/certs/graylog/graylog.key',
+    tls_key_file  => "${ssldir}/graylog.key",
   }
 }
