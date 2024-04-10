@@ -125,7 +125,7 @@ class profile::graylog {
       root_timezone                       => 'UTC',
       allow_leading_wildcard_searches     => false,
       allow_highlighting                  => false,
-      http_bind_address                   => "https://${fqdn}/",
+      http_bind_address                   => '0.0.0.0:443',
       http_external_uri                   => "https://${fqdn}/",
       http_publish_uri                    => "https://${fqdn}/",
       http_enable_tls                     => true,
