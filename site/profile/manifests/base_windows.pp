@@ -30,7 +30,7 @@ class profile::base_windows (
   }
   file { 'C:/Program Files (x86)/nxlog/conf/nxlog.conf':
     ensure => file,
-    source => 'http://wsus.lsst.org/puppetfiles/nxlog/nxlog.conf',
+    source => 'http://wsus.lsst.org/puppetfiles/nxlog/nxlog.txt',
   }
   service { 'nxlog':
     ensure => 'running',
