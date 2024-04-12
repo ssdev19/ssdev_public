@@ -24,6 +24,18 @@ class profile::base_windows (
   class { 'timezone_win':
     timezone => $timezone,
   }
+  package { 'NXLog-CE':
+    ensure => '2.10.2150',
+    source => 'http://wsus.lsst.org/puppetfiles/nxlog/nxlog-ce-2.10.2150.msi',
+  }
+  file { 'C:/Program Files (x86)/nxlog/conf/nxlog.conf':
+    ensure => file,
+    source => 'http://wsus.lsst.org/puppetfiles/nxlog/nxlog.conf',
+  }
+  service { 'nxlog':
+    ensure => 'running',
+    enable => true,
+  }
 
 # Install ipmi
   # if $ipmi {
