@@ -1,12 +1,15 @@
 # Letsencrypt
-class profile::letsencrypt {
+# @param email 
+class profile::letsencrypt ( Sensitive[String]
+  $email,
+) {
   $host = $facts['networking']['hostname']
   $fqdn = $facts['networking']['fqdn']
-  $email = lookup('email')
+  # $email = lookup('email')
   include epel
   class { 'letsencrypt':
     config            => {
-      email  => $email,
+      email  => $email.unwrap,
       server => 'https://acme-v01.api.letsencrypt.org/directory',
     },
     renew_cron_ensure => 'present',
