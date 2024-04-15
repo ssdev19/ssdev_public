@@ -1,7 +1,7 @@
 # Letsencrypt
-# @param email 
+# @param email_hide 
 class profile::letsencrypt ( Sensitive[String]
-  $email,
+  $email_hide,
 ) {
   $host = $facts['networking']['hostname']
   $fqdn = $facts['networking']['fqdn']
@@ -9,7 +9,7 @@ class profile::letsencrypt ( Sensitive[String]
   include epel
   class { 'letsencrypt':
     config            => {
-      email  => "${email}",
+      email  => $email_hide.unwrap,
       server => 'https://acme-v01.api.letsencrypt.org/directory',
     },
     renew_cron_ensure => 'present',
