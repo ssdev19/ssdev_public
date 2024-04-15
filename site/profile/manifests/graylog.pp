@@ -128,7 +128,7 @@ class profile::graylog {
       http_bind_address                   => '0.0.0.0:443',
       http_external_uri                   => "https://${fqdn}/",
       http_publish_uri                    => "https://${fqdn}/",
-      http_enable_tls                     => true,
+      http_enable_tls                     => false,
       http_tls_cert_file                  => "${ssldir}/graylog.crt",
       http_tls_key_file                   => "${ssldir}/graylog.key",
       # http_tls_key_password               => 'pwdtest',
