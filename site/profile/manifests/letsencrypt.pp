@@ -10,7 +10,8 @@ class profile::letsencrypt ( Sensitive[String]
   class { 'letsencrypt':
     config            => {
       email  => $email_hide.unwrap,
-      server => 'https://acme-v02.api.letsencrypt.org/directory',
+      # server => 'https://acme-v02.api.letsencrypt.org/directory',
+      server => 'https://acme-staging-v02.api.letsencrypt.org/directory',
     },
     # renew_cron_ensure => 'present',
   }
