@@ -10,15 +10,15 @@ class profile::letsencrypt ( Sensitive[String]
   class { 'letsencrypt':
     config            => {
       email  => $email_hide.unwrap,
-      server => 'https://acme-v01.api.letsencrypt.org/directory',
+      server => 'https://acme-v02.api.letsencrypt.org/directory',
     },
     # renew_cron_ensure => 'present',
   }
   letsencrypt::certonly { $host:
-    ensure      => 'absent',
+    # ensure      => 'absent',
     domains     => [$fqdn],
     config_dir  => '/etc/ssl/certs/graylog/',
-    manage_cron          => true,
+    # manage_cron          => true,
     # cron_hour            => [0,12],
     # cron_minute          => '30',
     # cron_before_command  => 'service graylog-server stop',
