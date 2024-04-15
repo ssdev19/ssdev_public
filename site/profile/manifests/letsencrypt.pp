@@ -9,7 +9,7 @@ class profile::letsencrypt ( Sensitive[String]
   include epel
   class { 'letsencrypt':
     config            => {
-      email  => $email.unwrap,
+      email  => $email,
       server => 'https://acme-v01.api.letsencrypt.org/directory',
     },
     renew_cron_ensure => 'present',
