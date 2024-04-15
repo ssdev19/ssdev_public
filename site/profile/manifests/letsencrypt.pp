@@ -16,7 +16,7 @@ class profile::letsencrypt ( Sensitive[String]
   }
   letsencrypt::certonly { $host:
     # ensure      => 'absent',
-    domains     => [$fqdn],
+    domains     => [$fqdn, 'lsst.org'],
     config_dir  => '/etc/ssl/certs/graylog/',
     # manage_cron          => true,
     # cron_hour            => [0,12],
