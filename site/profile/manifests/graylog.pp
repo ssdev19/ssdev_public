@@ -72,7 +72,7 @@ class profile::graylog {
       group  => 'graylog',
       ;
     "${ssldir}/cert.pem":
-      ensure => file,
+      ensure => link,
       target => "${le_dir}/cert.pem",
       replace => yes
       ;
