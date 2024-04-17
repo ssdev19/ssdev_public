@@ -16,6 +16,7 @@ class profile::letsencrypt ( Sensitive[String]
     # renew_cron_ensure => 'present',
   }
   # Was getting problems, this solved it: pip3 install --extra-index-url https://pypi.python.org/simple boto3
+  # Ran into a diff problem and the solution was:  pip3 uninstall awscli && pip3 install --upgrade awscli
   class { 'letsencrypt::plugin::dns_route53':
     manage_package => true,
   }
