@@ -7,10 +7,6 @@ class profile::letsencrypt ( Sensitive[String]
   $fqdn = $facts['networking']['fqdn']
   # $email = lookup('email')
   include epel
-  class { 'letsencrypt::plugin::dns_route53':
-    manage_package => true,
-    email  => $email_hide.unwrap,
-  }
   class { 'letsencrypt':
     config            => {
       email  => $email_hide.unwrap,
@@ -18,6 +14,9 @@ class profile::letsencrypt ( Sensitive[String]
       server => 'https://acme-staging-v02.api.letsencrypt.org/directory',
     },
     # renew_cron_ensure => 'present',
+  }
+  class { 'letsencrypt::plugin::dns_route53':
+    manage_package => true,
   }
   letsencrypt::certonly { $host:
     # ensure      => 'absent',
