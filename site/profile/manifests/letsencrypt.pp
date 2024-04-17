@@ -18,6 +18,16 @@ class profile::letsencrypt ( Sensitive[String]
   class { 'letsencrypt::plugin::dns_route53':
     manage_package => true,
   }
+  yum::versionlock { 'python-s3transfer':
+    ensure  => present,
+    version => '0.1.13',
+    release => '1.el7.0.1',
+    arch    => 'noarch',
+    before  => [
+      Class['letsencrypt::plugin::dns_route53'],
+      Package['python-s3transfer'],
+    ],
+  }
   letsencrypt::certonly { $host:
     # ensure      => 'absent',
     domains     => [$fqdn],
