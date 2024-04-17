@@ -7,7 +7,9 @@ class profile::letsencrypt ( Sensitive[String]
   $fqdn = $facts['networking']['fqdn']
   # $email = lookup('email')
   include epel
-  include letsencrypt::plugin::dns_route53
+  class { 'letsencrypt::plugin::dns_route53':
+    manage_package => true,
+  }
   class { 'letsencrypt':
     config            => {
       email  => $email_hide.unwrap,
