@@ -1,11 +1,12 @@
 ---
 classes:
   - profile::base_linux
-  - profile::letsencrypt
+  # - profile::letsencrypt
   # - profile::java
   - profile::graylog
   # - profile::letsencrypt
 profile::base_linux::graylog: true
+profile::base_linux::awscli: true
 # profile::base_linux::postfix: true
 profile::letsencrypt::email_hide: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAfw7C2WSIIDkyMKbz8wS6Sv/PpivsdMAercRYzFyYxLMh99cZmKVvO2w9sTa9D1apeMNNb3dM3fr4kn0WNL6exBIaq24QvT74JSpoUYlbs845exVPqG+UAcO50N46tf+VwpeMQHkIgSnJrpxSOLfQaS/RgBwlXUOqTgbF3tCjJ5DxtY+Vk7ry0k80NVMegLUyl/7GEd5tjBfsVUwTE3m0nEnIELzUd5Wk52dLRxvtf7ffvtY5yLTEJEMOQs0gFOlVan4XG/udRDg5d2QLm3chENkyvnM8+SN8Z9dlPGaIgwOVUvQKkseMt5NyDRvNxadEkLxaReFPxgGYRf5as3v31jA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBC/J0GtJTkqvPlJdf/3+xJSgBClFHCkFa9nNpBwGwVFESud]
 network::interfaces_hash:
