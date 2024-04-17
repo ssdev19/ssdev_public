@@ -74,17 +74,21 @@ class profile::graylog {
     "${ssldir}/cert.pem":
       ensure => link,
       target => "${le_dir}/cert.pem",
-      replace => yes
+      replace => yes,
+      owner  => 'graylog',
+      group  => 'graylog',
       ;
     "${ssldir}/privkey.pem":
       ensure  => link,
       target => "${le_dir}/privkey.pem",
-      replace => yes
+      replace => yes,
+      owner  => 'graylog',
+      group  => 'graylog',
       ;
     "${ssldir}/fullchain.pem":
       ensure  => link,
       target => "${le_dir}/fullchain.pem",
-      replace => yes
+      replace => yes,
       ;
     "${ssldir}/cacerts.jks":
       ensure  => file,
