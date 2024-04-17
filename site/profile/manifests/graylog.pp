@@ -64,24 +64,24 @@ class profile::graylog {
   #   # group  => 'graylog',
   # }
   file {
-    $ssldir:
-      ensure => directory,
-      mode   => '0700',
-      owner  => 'graylog',
-      group  => 'graylog',
-      ;
-    "${ssldir}/graylog.key":
-      ensure  => file,
-      content => $tlskey.unwrap,
-      ;
-    "${ssldir}/graylog.crt":
-      ensure  => file,
-      content => $tlscert.unwrap,
-      ;
-    "${ssldir}/graylog.pem":
-      ensure  => file,
-      content => $tlschain.unwrap,
-      ;
+    # $ssldir:
+    #   ensure => directory,
+    #   mode   => '0700',
+    #   owner  => 'graylog',
+    #   group  => 'graylog',
+    #   ;
+    # "${ssldir}/graylog.key":
+    #   ensure  => file,
+    #   content => $tlskey.unwrap,
+    #   ;
+    # "${ssldir}/graylog.crt":
+    #   ensure  => file,
+    #   content => $tlscert.unwrap,
+    #   ;
+    # "${ssldir}/graylog.pem":
+    #   ensure  => file,
+    #   content => $tlschain.unwrap,
+    #   ;
     "${ssldir}/cacerts.jks":
       ensure  => file,
       source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
@@ -96,9 +96,12 @@ class profile::graylog {
   $keystorepwd = lookup('keystorepwd')
   java_ks { "lss.org:${ssldir}//cacerts.jks":
     ensure              => latest,
-    certificate         => '/etc/ssl/certs/graylog/graylog.crt',
-    private_key         => '/etc/ssl/certs/graylog/graylog.key',
-    chain               => '/etc/ssl/certs/graylog/graylog.pem',
+    # certificate         => '/etc/ssl/certs/graylog/graylog.crt',
+    # private_key         => '/etc/ssl/certs/graylog/graylog.key',
+    # chain               => '/etc/ssl/certs/graylog/graylog.pem',
+    certificate         => '/etc/letsencrypt/live/graylog-ssdev.lsst.org/cert.pem',
+    private_key         => '/etc/letsencrypt/live/graylog-ssdev.lsst.org/privkey.pem',
+    chain               => '/etc/letsencrypt/live/graylog-ssdev.lsst.org/fullchain.pem',
     password            => $keystorepwd,
     password_fail_reset => true,
   }
@@ -129,8 +132,8 @@ class profile::graylog {
       http_external_uri                   => "https://${fqdn}/",
       http_publish_uri                    => "https://${fqdn}/",
       http_enable_tls                     => true,
-      http_tls_cert_file                  => "${ssldir}/graylog.crt",
-      http_tls_key_file                   => "${ssldir}/graylog.key",
+      http_tls_cert_file                  => "${ssldir}/cert.pm",
+      http_tls_key_file                   => "${ssldir}/privkey.pem",
       # http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
