@@ -72,16 +72,16 @@ class profile::graylog {
       group  => 'graylog',
       ;
     "${ssldir}/cert.pem":
-      ensure => present,
+      ensure => file,
       source => "${le_dir}/cert.pem",
       ;
-    "${ssldir}/graylog.crt":
+    "${ssldir}/privkey.pem":
       ensure  => file,
-      content => $tlscert.unwrap,
+      source => "${le_dir}/privkey.pem",
       ;
-    "${ssldir}/graylog.pem":
+    "${ssldir}/fullchain.pem":
       ensure  => file,
-      content => $tlschain.unwrap,
+      source => "${le_dir}/fullchain.pem",
       ;
     "${ssldir}/cacerts.jks":
       ensure  => file,
