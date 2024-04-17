@@ -71,7 +71,7 @@ class profile::graylog {
       owner  => 'graylog',
       group  => 'graylog',
       ;
-    "${ssldir}/graylog.key":
+    "${ssldir}/cert.pem":
       ensure => file,
       source => "${le_dir}/cert.pem",
       ;
