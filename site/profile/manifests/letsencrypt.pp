@@ -15,10 +15,12 @@ class profile::letsencrypt ( Sensitive[String]
     },
     # renew_cron_ensure => 'present',
   }
+  # Was getting problems, this solved it: pip3 install --extra-index-url https://pypi.python.org/simple boto3
   class { 'letsencrypt::plugin::dns_route53':
     manage_package => true,
   }
   letsencrypt::certonly { $host:
+    plugin  => 'dns-route53',
     # ensure      => 'absent',
     domains     => [$fqdn],
     # config_dir  => '/etc/ssl/certs/graylog/',
