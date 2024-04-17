@@ -17,7 +17,7 @@ class profile::letsencrypt ( Sensitive[String]
     # renew_cron_ensure => 'present',
   }
   letsencrypt::certonly { $host:
-    plugin      => 'dns-route53',
+    # plugin      => 'dns-route53',
     # ensure      => 'absent',
     domains     => [$fqdn],
     # config_dir  => '/etc/ssl/certs/graylog/',
