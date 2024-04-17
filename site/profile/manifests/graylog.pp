@@ -102,7 +102,7 @@ class profile::graylog {
       group  => 'graylog',
   }
   $keystorepwd = lookup('keystorepwd')
-  java_ks { "lsst.org:${ssldir}/cacerts.jks":
+  java_ks { "lsst.org:${le_dir}/cacerts.jks":
     ensure              => latest,
     # certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     # private_key         => '/etc/ssl/certs/graylog/graylog.key',
@@ -153,7 +153,7 @@ class profile::graylog {
       elasticsearch_hosts                 => 'http://127.0.0.1:9200',
       mongodb_uri                         => 'mongodb://127.0.0.1:27017/graylog',
     },
-    java_opts       => "-Xms4g -Xmx4g -XX:NewRatio=1 -server -XX:+ResizeTLAB -XX:-OmitStackTraceInFastThrow -Djavax.net.ssl.trustStore=${ssldir}/cacerts.jks",
+    java_opts       => "-Xms4g -Xmx4g -XX:NewRatio=1 -server -XX:+ResizeTLAB -XX:-OmitStackTraceInFastThrow -Djavax.net.ssl.trustStore=${le_dir}/cacerts.jks",
   }
 # certificate needs to be valid or else the api fails.
   # graylog_api { 'api':
