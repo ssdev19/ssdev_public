@@ -5,6 +5,7 @@ class profile::graylog {
   $root_password_sha2 = lookup('root_password_sha2')
   $glog_pwd = lookup('glog_pwd')
   $ssldir = lookup('ssldir')
+  $le_dir = lookup('le_dir')
   # class { 'java' :
   #   package => 'java-17-openjdk-devel',
   # }
@@ -69,18 +70,18 @@ class profile::graylog {
       mode   => '0700',
       owner  => 'graylog',
       group  => 'graylog',
-    #   ;
-    # "${ssldir}/graylog.key":
-    #   ensure  => file,
-    #   content => $tlskey.unwrap,
-    #   ;
-    # "${ssldir}/graylog.crt":
-    #   ensure  => file,
-    #   content => $tlscert.unwrap,
-    #   ;
-    # "${ssldir}/graylog.pem":
-    #   ensure  => file,
-    #   content => $tlschain.unwrap,
+      ;
+    "${ssldir}/graylog.key":
+      ensure => file,
+      source => "${le_dir}/cert.pem",
+      ;
+    "${ssldir}/graylog.crt":
+      ensure  => file,
+      content => $tlscert.unwrap,
+      ;
+    "${ssldir}/graylog.pem":
+      ensure  => file,
+      content => $tlschain.unwrap,
       ;
     "${ssldir}/cacerts.jks":
       ensure  => file,
