@@ -94,6 +94,13 @@ class profile::graylog {
     target => '/usr/share/graylog-server/jvm/bin/keytool',
     # require => Class['graylog-server'],
   }
+  file {
+    $le_dir:
+      ensure => directory,
+      mode   => '0700',
+      owner  => 'graylog',
+      group  => 'graylog',
+  }
   $keystorepwd = lookup('keystorepwd')
   java_ks { "lsst.org:${ssldir}/cacerts.jks":
     ensure              => latest,
