@@ -64,12 +64,12 @@ class profile::graylog {
   #   # group  => 'graylog',
   # }
   file {
-    # $ssldir:
-    #   ensure => directory,
-    #   mode   => '0700',
-    #   owner  => 'graylog',
-    #   group  => 'graylog',
-    #   ;
+    $ssldir:
+      ensure => directory,
+      mode   => '0700',
+      owner  => 'graylog',
+      group  => 'graylog',
+      ;
     # "${ssldir}/graylog.key":
     #   ensure  => file,
     #   content => $tlskey.unwrap,
