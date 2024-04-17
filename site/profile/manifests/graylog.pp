@@ -104,9 +104,9 @@ class profile::graylog {
     # certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     # private_key         => '/etc/ssl/certs/graylog/graylog.key',
     # chain               => '/etc/ssl/certs/graylog/graylog.pem',
-    certificate         => '/etc/letsencrypt/live/graylog-ssdev.lsst.org/cert.pem',
-    private_key         => '/etc/letsencrypt/live/graylog-ssdev.lsst.org/privkey.pem',
-    chain               => '/etc/letsencrypt/live/graylog-ssdev.lsst.org/fullchain.pem',
+    certificate         => "${ssldir}/cert.pem",
+    private_key         => "${ssldir}/privkey.pem",
+    chain               => "${ssldir}/fullchain.pem",
     password            => $keystorepwd,
     password_fail_reset => true,
   }
