@@ -77,6 +77,7 @@ class profile::graylog {
       replace => yes,
       owner  => 'graylog',
       group  => 'graylog',
+      mode   => '0700',
       ;
     "${ssldir}/privkey.pem":
       ensure  => link,
@@ -84,6 +85,7 @@ class profile::graylog {
       replace => yes,
       owner  => 'graylog',
       group  => 'graylog',
+      mode   => '0700',
       ;
     "${ssldir}/fullchain.pem":
       ensure  => link,
