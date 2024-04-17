@@ -79,6 +79,7 @@ class profile::graylog {
     "${ssldir}/privkey.pem":
       ensure  => link,
       target => "${le_dir}/privkey.pem",
+      replace => yes
       ;
     "${ssldir}/fullchain.pem":
       ensure  => link,
