@@ -91,6 +91,9 @@ class profile::graylog {
       ensure  => link,
       target => "${le_dir}/fullchain.pem",
       replace => yes,
+      owner  => 'graylog',
+      group  => 'graylog',
+      mode   => '0700',
       ;
     "${ssldir}/cacerts.jks":
       ensure  => file,
