@@ -7,7 +7,6 @@ class profile::letsencrypt ( Sensitive[String]
   $fqdn = $facts['networking']['fqdn']
   # $email = lookup('email')
   include epel
-  include letsencrypt::plugin::dns_route53
   class { 'letsencrypt':
     config            => {
       email  => $email_hide.unwrap,
@@ -17,7 +16,6 @@ class profile::letsencrypt ( Sensitive[String]
     # renew_cron_ensure => 'present',
   }
   letsencrypt::certonly { $host:
-    # plugin      => 'dns-route53',
     # ensure      => 'absent',
     domains     => [$fqdn],
     # config_dir  => '/etc/ssl/certs/graylog/',
