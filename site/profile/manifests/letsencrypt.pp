@@ -9,6 +9,7 @@ class profile::letsencrypt ( Sensitive[String]
   include epel
   class { 'letsencrypt::plugin::dns_route53':
     manage_package => true,
+    email  => $email_hide.unwrap,
   }
   class { 'letsencrypt':
     config            => {
