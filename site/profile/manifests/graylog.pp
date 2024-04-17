@@ -94,7 +94,7 @@ class profile::graylog {
     # require => Class['graylog-server'],
   }
   $keystorepwd = lookup('keystorepwd')
-  java_ks { "lss.org:${ssldir}//cacerts.jks":
+  java_ks { "lss.org:${ssldir}/cacerts.jks":
     ensure              => latest,
     # certificate         => '/etc/ssl/certs/graylog/graylog.crt',
     # private_key         => '/etc/ssl/certs/graylog/graylog.key',
