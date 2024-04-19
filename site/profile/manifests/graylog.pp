@@ -135,7 +135,7 @@ class profile::graylog {
       http_external_uri                   => "https://${fqdn}/",
       http_publish_uri                    => "https://${fqdn}/",
       http_enable_tls                     => true,
-      http_tls_cert_file                  => "${le_dir}/cert.pem",
+      http_tls_cert_file                  => "${le_dir}/fullchain.pem",
       http_tls_key_file                   => "${le_dir}/privkey.pem",
       # http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
