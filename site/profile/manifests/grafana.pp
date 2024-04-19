@@ -58,6 +58,6 @@ class profile::grafana (
     ensure  => present,
     source  => $domaincert2,
     cleanup => false,
-    notify  => service['grafana-server'],
+    notiff  => service['grafana-server'],
   }
 }
