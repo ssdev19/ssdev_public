@@ -65,13 +65,13 @@ class profile::graylog {
   #   # group  => 'graylog',
   # }
 
-  # file {
-  #   $ssldir:
-  #     ensure => directory,
-  #     mode   => '0700',
-  #     owner  => 'graylog',
-  #     group  => 'graylog',
-  #     ;
+  file {
+    $le_dir:
+      ensure => directory,
+      mode   => '0700',
+      owner  => 'graylog',
+      group  => 'graylog',
+      ;
   #   "${ssldir}/cert.pem":
   #     ensure => file,
   #     target => "${le_dir}/cert.pem",
@@ -91,7 +91,7 @@ class profile::graylog {
   #     ensure  => file,
   #     source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
   #     replace => false,
-  # }
+  }
   # java_ks cannot find keytool, so this symlink is needed
   file { '/usr/local/bin/keytool':
     ensure => link,
