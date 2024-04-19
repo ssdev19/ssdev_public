@@ -66,7 +66,7 @@ class profile::graylog {
   # }
 
   file {
-    $le_dir:
+    '/etc/letsencrypt/archive/graylog-ssdev.lsst.org/':
       ensure => directory,
       mode   => '0700',
       owner  => 'graylog',
