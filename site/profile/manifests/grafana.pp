@@ -58,6 +58,6 @@ class profile::grafana (
     ensure  => present,
     source  => $domaincert2,
     cleanup => false,
-    notify  => 'service[1]',
+    notify  => 'systemctl restart grafana-server',
   }
 }
