@@ -1,8 +1,9 @@
 # Grafana node
 ---
-classes:
-  - profile::base_linux
-  - profile::grafana
+profile::grafana::pname1: 'prometheus-ssdev'
+profile::grafana::url1: 'http://prometheus.us.lsst.org:9090/'
+profile::grafana::pname2: 'prometheus2-ssdev'
+profile::grafana::url2: 'http://prometheus2.us.lsst.org:9090/'
 network::interfaces_hash:
   eth0:
     type: Ethernet

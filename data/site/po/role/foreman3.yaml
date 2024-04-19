@@ -1,0 +1,102 @@
+---
+profile::base_linux::graylog: true
+# classes:
+
+
+# cron::job:
+#   r10k:
+#     command: "systemd-cat -t 'r10k-cron' /opt/puppetlabs/puppet/bin/r10k deploy environment -t -p"
+#     minute: "*/30"
+#     hour: "*"
+#     date: "*"
+#     month: "*"
+#     weekday: "*"
+#     user: "root"
+#     description: "Run R10K"
+#   foreman_restart:  # avoid conflict with cron job named "foreman" from foreman rpm
+#     command: "systemctl restart foreman"
+#     minute: "42"
+#     hour: "5"
+#     date: "*"
+#     month: "*"
+#     weekday: "*"
+#     user: "root"
+#     description: "restart foreman to control memory bloat"
+r10k::version: '3.15.4'
+# r10k::postrun: ['/bin/hammer', 'proxy', 'import-classes', '--id=1']
+r10k::mcollective: false
+r10k::cachedir: "/var/cache/r10k"
+r10k::sources:
+  ssdev_private:
+    remote: "git@github.com:/ssdev19/ssdev_private.git"
+    basedir: "/etc/puppetlabs/code/data/private"
+    invalid_branches: "correct"
+  #   private_key: "/root/.ssh/id_dsa"
+  #   ignore_branch_prefixes: *ignore_branch
+  ssdev_public:
+    remote: "git@github.com:/ssdev19/ssdev_public.git"
+    basedir: "/etc/puppetlabs/code/environments"
+    invalid_branches: "correct"
+    # private_key: "/root/.ssh/id_rsa"
+    # ignore_branch_prefixes: &ignore_branch
+# r10k::webhook::config::use_mcollective: false
+# r10k::webhook::config::enable_ssl: false
+# r10k::webhook::config::protected: false
+# r10k::webhook::use_mcollective: false
+# r10k::webhook::user: "root"
+# r10k::webhook::group: "root"
+# r10k::deploy_settings:
+foreman_proxy::base_url: "https://%{facts.fqdn}"
+foreman_proxy::bind_host: '*'
+foreman_proxy::trusted_hosts: ["%{facts.fqdn}"]
+foreman_proxy::foreman_hosts: ["%{facts.fqdn}"]
+foreman_proxy::version: '3.2.0'
+foreman::cli::version: "%{lookup('foreman::version')}"
+foreman_proxy::ssl_port: 8443
+foreman_proxy::ssl: true
+foreman_proxy::plugin::remote_execution::script::mode: "ssh"
+foreman_proxy::plugin::remote_execution::script::enabled: true
+foreman_proxy::plugin::remote_execution::script::ssh_kerberos_auth: false
+foreman_proxy::plugin::remote_execution::script::listen_on: "https"
+foreman_proxy::plugin::remote_execution::script::ssh_log_level: "debug"
+# foreman::repo::configure_scl_repo: false
+# foreman::repo::repo: "3.6"
+foreman::unattended: true
+foreman::user: "foreman"
+foreman::user_groups: ["puppet"]
+foreman::version: "3.9"
+# foreman_proxy::plugin::remote_execution::script::mode: "ssh"
+# foreman_proxy::plugin::remote_execution::script::enabled: true
+# foreman-postgresql:
+#   ensure: "present"
+#   version: "3.6"
+# postgresql::server::config_entries:
+#   max_connections: 1000
+#   shared_buffers: "2GB"
+#   work_mem: "8MB"
+#   autovacuum_vacuum_cost_limit: 2000
+#   log_min_duration_statement: 10000  # log slow queries >= 10s
+# profile::core::puppet_master::enable_puppetdb: true
+# puppet::agent: true
+# puppet::environment: "test4"  # always overridden via enc
+puppet::master::config::soft_write_failure: true
+puppet::remove_lock: true
+puppet::report: true
+puppet::server_common_modules_path: ""
+puppet::server_foreman_facts: true
+puppet::server_foreman: true
+puppet::server_max_active_instances: 8  # see https://puppet.com/docs/puppet/6/server/tuning_guide.html
+puppet::server_jvm_max_heap_size: &jvm_heap "5G"  # (max-act-inst * 0.5G) + 1G
+puppet::server_jvm_min_heap_size: *jvm_heap
+puppet::server_jvm_extra_args: ["-XX:ReservedCodeCacheSize=1G", "-Djruby.logger.class=com.puppetlabs.jruby_utils.jruby.Slf4jLogger"]
+puppet::server::puppetdb::soft_write_failure: true
+puppet::server_puppetserver_version: &server_version "7.15.0"  # XXX does this do anything?
+puppet::server_reports: "foreman,puppetdb"
+puppet::server_storeconfigs: true
+puppet::server: true
+# puppet::server::puppetserver_metrics: false  # disabled for performance
+# puppet::server::puppetserver_profiler: false  # disabled for performance
+# puppet::server_version: *server_version  # XXX does this do anything?
+# puppet::version: "7.24.0"  # agent version
+# puppetdb::globals::version: "7.15.0"
+# puppet_agent::package_version: 7.24.0

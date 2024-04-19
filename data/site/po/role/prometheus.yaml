@@ -1,7 +1,9 @@
 ---
 prometheus::manage_prometheus_server: true
+profile::prometheus::slackuser_hide: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAJ25XiagUNuLXgB1p3g3bQfpZQcUC/TLxXbsyIs+NuH8loEHN6fSV6rX2mQy6i816A7hz3RKSecPMI5Du9E0WOFoFrfByMhf76032p/ZkjTgsWyFGKXyFLiu/RA2KxxL/XAtJ23TTz7xir+xCUsr+3auYRK3kDTxP23+e8yTzfpAzgkqNigdKgKl6Vz82xDGKthBOh3+ASN1mzk3jE/brdY26i5z0L1JMXljJ0u2zjPJaG769ibe5BlMk3nWB2+rEU9YrW4H5VzLoBbUvBI2AFoYxCakB7QMqcCTZuvrCPt7fkZmJNwFCUIqn71WBMjEOLZWeh71Eu9zXYAohe1WxiTA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBDTtinP+d1LZTdHKiLDg4ezgBAz6ez4mgQko/NyMTAFyVWu]
+profile::prometheus::slackapi_hide:  ENC[PKCS7,MIIBygYJKoZIhvcNAQcDoIIBuzCCAbcCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEABOkUzKgQpTXTw9KJptMhUUtG0A0bp3pICTyFR8Bym3bjjaHkFkDn2xKZK3milpBf8tcNNeHw/uVA/1SoeZG9wxDjUa0BeUmOKqp/1uibYP1tvKQminNS9vXsvteWsl4//SPAzA2uFucvZfL/kDOTM+JMeoZ6ecMe+IAvd8wgLMUY8GaTzRb47D8M6cBAJUMg5c79EAZP2BCfdlIv16qslVWEZhIKs+d8xcHvK4TliGKFQk9NpGotGHs7plQaqIgVvmNEFpOk3LQH22VFQ3XRdQN/E7iJ6anPs1Ygu2wN3i1O+NQPGrkn3L0y75V/EsV2KUr46E/G0mucBWhFcSneFzCBjAYJKoZIhvcNAQcBMB0GCWCGSAFlAwQBKgQQ7XFMF4FvP166Rfx0hWsszYBgpFb/2V/1o0TPokBZAhkJywTRFfy70NCzTh503esQ1qNelMk35oNcqYCmZ9wRQngU9dB5lTw82X0c9TJfyJEDtYzIvMpa/Bhy4Eu1R7Obyqq6ZgevI0rf36DaHSPMS8lF]
 
-prometheus::version: '2.27.0'
+prometheus::version: '2.48.1'
 prometheus::storage_retention: '30d'
 prometheus::alerts:
   groups:
@@ -9,26 +11,37 @@ prometheus::alerts:
       rules:
 # Applies to all devices
         - alert: 'InstanceDown'
-          expr: 'up == 0'
-          for: '4m'
+          expr: 'up{group!="isonline"} == 0'
+          for: '1m'
           labels:
             severity: 'page'
           annotations:
-            summary: 'Instance {{ .Labels.instance }} {{ .Value }} down'
-            description: '{{ $labels.instance }} of job {{ $labels.job }} has been
-              down for more than 1 minutes.'
+            summary: "Instance {{ .Labels.instance }} {{ .Value }} down"
+            description: "{{ $labels.instance }} of job {{ $labels.job }} has been
+              down for more than VALUE = {{ $value }}\n minutes."
 # Alerts for URL endpoints
         - alert: EndpointDown
-          expr: probe_success == 0
+          expr: probe_success{group!="isonline"} == 0
           for: 2m
           labels:
             severity: "critical"
           annotations:
             summary: "Endpoint  down"
+# Alerts for URL endpoints up
+        - alert: EndpointUp
+          expr: probe_success{group="isonline"} == 1
+          for: 1m
+          labels:
+            severity: warning
+          annotations:
+            summary: 'Why is {{ .Labels.instance }} up?'
+            # description: "Device is online\n  LABELS = {{ $labels.instance }}\n  GROUP = {{ $labels.group }}"
+            description: "{{ $labels.instance }} of job {{ $labels.job }} has been
+              up for more than VALUE = {{ $value }}\n minutes.  Investigate as to why it is online."
 # Specific to Prometheus jobs
         - alert: PrometheusJobMissing
           expr: absent(up{job="prometheus"})
-          for: 10m
+          for: 2h
           labels:
             severity: warning
           annotations:
@@ -36,13 +49,32 @@ prometheus::alerts:
             description: "A Prometheus job has disappeared\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows Disk space usage
         - alert: WindowsServerDiskSpaceUsage
-          expr: 100.0 - 100 * (((windows_logical_disk_free_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024 ) / ((windows_logical_disk_size_bytes{volume!="HarddiskVolume1"}) / 1024 / 1024)) > 80
-          for: 5m
+          expr: 100.0 - 100 * (((windows_logical_disk_free_bytes{volume=~"(^[A-Z]:$)"}) / 1024 / 1024 ) / ((windows_logical_disk_size_bytes{volume=~"(^[A-Z]:$)"}) / 1024 / 1024)) > 85
+          for: 25m
           labels:
             severity: critical
           annotations:
             summary: Windows Server disk Space Usage (instance {{ $labels.instance }})
-            description: "Disk usage is more than 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+            identifier: '{{ $labels.instance }}'
+            description: "Disk usage is more than 85%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Windows memory usage
+        - alert: WindowsHighMemoryUsage
+          expr: 100 * (1 - ((avg_over_time(windows_os_physical_memory_free_bytes[5m]) + avg_over_time(windows_os_paging_free_bytes[5m])) / (avg_over_time(windows_cs_physical_memory_bytes[5m]) + avg_over_time(windows_os_paging_limit_bytes[5m])))) > 80
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High memory usage on Windows server"
+            description: "Memory usage is above 80% \n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# windows high CPU usage
+        - alert: windowsHostHighCpuLoad
+          expr: 100 - (avg by(instance) (rate(windows_cpu_time_total{mode="idle"}[15m])) * 100) > 80
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: Host high CPU load (instance {{ $labels.instance }})
+            description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Windows Defender Firewall service
         - alert: WindowsFirewallServiceStatus
           expr: windows_service_state{name="mpssvc", state="running"} == 0
@@ -59,7 +91,7 @@ prometheus::alerts:
           labels:
             severity: critical
           annotations:
-            summary: Windows Hyperv service Status (instance {{ $labels.instance }})
+            summary: 'Windows Hyperv service Status (instance {{ $labels.instance }})'
             description: "Windows Hyperv state is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Symantec monitoring
         - alert: WindowsSymantecServiceStatus
@@ -303,15 +335,6 @@ prometheus::alerts:
           annotations:
             summary: alfrescoTomcat Service Status (instance {{ $labels.instance }})
             description: "alfrescoTomcat Service is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-# PingFederate Service down
-        - alert: PingFederate
-          expr: windows_service_state{name="pingfederate", state="running"} == 0
-          for: 5m
-          labels:
-            severity: critical
-          annotations:
-            summary: PingFederate Service Status (instance {{ $labels.instance }})
-            description: "PingFederate Service is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Puppet agent down
         - alert: puppet
           expr: windows_service_state{name="puppet", state="running"} == 0
@@ -321,6 +344,24 @@ prometheus::alerts:
           annotations:
             summary: Puppet agent service Status (instance {{ $labels.instance }})
             description: "Puppet agent state is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# NSClient++ down
+        - alert: NSClient++
+          expr: windows_service_state{name="nsclientpp", state="running"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: NSClient++ service Status (instance {{ $labels.instance }})
+            description: "NSClient++ state is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# NSCP (NSCLient) different version down
+        - alert: NSCP (NSCLient)
+          expr: windows_service_state{name="nscp", state="running"} == 0
+          for: 5m
+          labels:
+            severity: critical
+          annotations:
+            summary: NSCP (NSCLient) service Status (instance {{ $labels.instance }})
+            description: "NSCP (NSCLient) state is not OK\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # NXlog down
         - alert: nxlog
           expr: windows_service_state{name="nxlog", state="running"} == 0
@@ -372,7 +413,7 @@ prometheus::alerts:
 # Disk space free
         - alert: DiskSpace>10%Free
           expr: 100 - (100 * node_filesystem_avail_bytes / node_filesystem_size_bytes) > 90
-          for: 1m
+          for: 15m
           labels:
             severity: moderate
           annotations:
@@ -390,7 +431,7 @@ prometheus::alerts:
 # Kernel version deviation
         - alert: HostKernelVersionDeviations
           expr: count(sum(label_replace(node_uname_info, "kernel", "$1", "release", "([0-9]+.[0-9]+.[0-9]+).*")) by (kernel)) > 1
-          for: 6h
+          for: 2m
           labels:
             severity: warning
           annotations:
@@ -441,6 +482,24 @@ prometheus::alerts:
           annotations:
             summary: Crowd down (instance {{ $labels.instance }})
             description: "Crowd service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Graylog down 
+        - alert: SSH
+          expr: node_systemd_unit_state{name="graylog-server.service", state="active"} != 1
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: graylog-server down (instance {{ $labels.instance }})
+            description: "graylog-server service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Chrony down 
+        - alert: Chrony
+          expr: node_systemd_unit_state{name="chronyd.service", state="active"} != 1
+          for: 4m
+          labels:
+            severity: critical
+          annotations:
+            summary: chronyd down (instance {{ $labels.instance }})
+            description: "chronyd service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # SSH down 
         - alert: SSH
           expr: node_systemd_unit_state{name="sshd.service", state="active"} != 1
@@ -477,6 +536,15 @@ prometheus::alerts:
           annotations:
             summary: Apache down (instance {{ $labels.instance }})
             description: "Apache service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# HTTPD down 
+        - alert: HTTPD
+          expr: node_systemd_unit_state{name="httpd.service", state="active"} != 1
+          for: 3m
+          labels:
+            severity: critical
+          annotations:
+            summary: HTTPD down (instance {{ $labels.instance }})
+            description: "HTTPD service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 # Nginx down 
         - alert: Nginx
           expr: node_systemd_unit_state{name="nginx.service", state="active"} != 1
@@ -486,7 +554,70 @@ prometheus::alerts:
           annotations:
             summary: Nginx down (instance {{ $labels.instance }})
             description: "Nginx service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
-# prometheus::alertmanager::version: '0.22.2'          
+# Jira mail queue error
+        - alert: jira mail queue error
+          expr: jira_mail_queue_error_gauge != 0
+          for: 3m
+          labels:
+            severity: critical
+          annotations:
+            summary: confluence_mail_queue_errors_gauge (instance {{ $labels.instance }})
+            identifier: '{{ $labels.instance }}'
+            description: "confluence_mail_queue_errors_gauge is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Confluence mail queue error
+        - alert: Confluence mail queue error
+          expr: confluence_mail_queue_errors_gauge != 0
+          for: 3m
+          labels:
+            severity: critical
+          annotations:
+            summary: confluence_mail_queue_errors_gauge (instance {{ $labels.instance }})
+            identifier: '{{ $labels.instance }}'
+            description: "confluence_mail_queue_errors_gauge is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# PingFederate service down 
+        - alert: PingFederate
+          expr: node_systemd_unit_state{name="pingfederate.service", state="active"} != 1
+          for: 3m
+          labels:
+            severity: critical
+          annotations:
+            summary: pingfederate.service down (instance {{ $labels.instance }})
+            description: "pingfederate.service service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# node_exporter service
+        - alert: node_exporterServiceStatus
+          expr: node_systemd_unit_state{name="node_exporter.service", state="active"} != 1
+          for: 1m
+          labels:
+            severity: critical
+          annotations:
+            summary: node_exporter down (instance {{ $labels.instance }})
+            description: "node_exporter service is down on {{ $labels.instance }}\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Alert for any cluster that has average CPU idle < 50%
+        - alert: HighUsageCPU
+          expr: avg(irate(node_cpu_seconds_total{mode="idle"}[1m]) * 100) < 50
+          for: 1m
+          annotations:
+            summary: High usage on (instance {{ $labels.instance }})
+            description: "(instance {{ $labels.instance }}) has a average CPU idle (current value: {{ $value }}s)"       
+# Linux high cpu usage
+        - alert: HostHighCpuLoad
+          expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 90
+          for: 10m
+          labels:
+            severity: warning
+          annotations:
+            summary: Host high CPU load (instance {{ $labels.instance }})
+            description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+# Linux memory usage
+        - alert: HighMemoryUsage
+          expr: 100 * ((node_memory_MemTotal_bytes - node_memory_MemFree_bytes) / (node_memory_MemTotal_bytes + node_memory_SwapTotal_bytes))  > 80
+          # expr: 100 * (1 - ((avg_over_time(node_memory_MemFree_bytes[5m]) + avg_over_time(node_memory_SwapFree_bytes[5m])) / (avg_over_time(node_memory_MemTotal_bytes[5m]) + avg_over_time(node_memory_SwapTotal_bytes[5m])))) > 80
+          for: 5m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High memory usage Linux server"
+            description: "Memory usage is above 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 prometheus::alertmanager::route:
   group_by:
     - 'alertname'
@@ -496,3 +627,5 @@ prometheus::alertmanager::route:
   group_interval: '1m'
   repeat_interval: '3h'
   receiver: 'slack' # email it to me
+prometheus::alertmanager::template:
+  - '/alertmanager/notifications.tmpl'
