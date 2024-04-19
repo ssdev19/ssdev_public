@@ -65,33 +65,33 @@ class profile::graylog {
   #   # group  => 'graylog',
   # }
 
-  file {
-    $ssldir:
-      ensure => directory,
-      mode   => '0700',
-      owner  => 'graylog',
-      group  => 'graylog',
-      ;
-    "${ssldir}/cert.pem":
-      ensure => file,
-      target => "${le_dir}/cert.pem",
-      replace => yes
-      ;
-    "${ssldir}/privkey.pem":
-      ensure  => file,
-      target => "${le_dir}/privkey.pem",
-      replace => yes
-      ;
-    "${ssldir}/fullchain.pem":
-      ensure  => file,
-      target => "${le_dir}/fullchain.pem",
-      replace => yes
-      ;
-    "${ssldir}/cacerts.jks":
-      ensure  => file,
-      source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
-      replace => false,
-  }
+  # file {
+  #   $ssldir:
+  #     ensure => directory,
+  #     mode   => '0700',
+  #     owner  => 'graylog',
+  #     group  => 'graylog',
+  #     ;
+  #   "${ssldir}/cert.pem":
+  #     ensure => file,
+  #     target => "${le_dir}/cert.pem",
+  #     replace => yes
+  #     ;
+  #   "${ssldir}/privkey.pem":
+  #     ensure  => file,
+  #     target => "${le_dir}/privkey.pem",
+  #     replace => yes
+  #     ;
+  #   "${ssldir}/fullchain.pem":
+  #     ensure  => file,
+  #     target => "${le_dir}/fullchain.pem",
+  #     replace => yes
+  #     ;
+  #   "${ssldir}/cacerts.jks":
+  #     ensure  => file,
+  #     source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
+  #     replace => false,
+  # }
   # java_ks cannot find keytool, so this symlink is needed
   file { '/usr/local/bin/keytool':
     ensure => link,
