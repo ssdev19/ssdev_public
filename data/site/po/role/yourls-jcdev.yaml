@@ -1,0 +1,83 @@
+---
+classes:
+  - profile::base_linux
+  # - profile::php
+  # - profile::yourls2
+profile::base_linux::awscli: true
+profile::yourls2::yourls_version: '1.9.3' # If you change this version, ensure to update file rubinobs_facts.rb
+profile::yourls2::yourls_site: 'https://ls.st'
+mysql::server::root_password: "%{lookup('mariadb_root_pwd')}"
+  
+accounts::user_list:
+  nginx:
+    groups:
+      - 'nginx'
+    managehome: false
+    system: true
+
+# php::manage_repos: true
+# php::globals:
+#   php_version: '7.3.27'
+# php::ensure: 
+# php::fpm: true
+# php::fpm_user: 'nginx'
+# php::fpm_group: 'nginx'
+# php::fpm::pool:
+#   'nginx':
+#     user: 'nginx'
+#     group: 'nginx'
+#     listen: '/var/run/php-fpm/nginx-fpm.sock'
+# nginx::nginx_servers:
+#   'yourls':
+#     server_name: ['ls.st']
+#     www_root: '/etc/nginx/YOURLS'
+# #     listen_port: 443 # breaks it
+#     index_files: ['index', 'index.php', 'index.html', 'index.htm']
+#     try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
+#     ssl_port: 443
+#     ssl: true 
+#     ssl_cert: '/etc/pki/tls/certs/ls.st.current.crt'
+#     ssl_key: '/etc/pki/tls/certs/ls.st.current.key'
+#     use_default_location: false
+#     ssl_ciphers: 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH'
+#     ssl_protocols: 'TLSv1.2'
+#     # # ssl_session_cache: 'shared:SSL:1m'
+#     ssl_session_timeout: '10m'
+#     ssl_prefer_server_ciphers: 'on'
+#     fastcgi: '/etc/nginx/fastcgi.conf'
+#     locations: 
+#       'shorten':
+#         location: '/shorten'
+#         try_files: ['$uri $uri/ /yourls-loader.php$is_args$args']
+        # "auth_ldap": ''
+            # auth_ldap: 'LDAP authorization required.'
+      # 'shorten2':
+      #   location: '~* ^/LDM[\ -]([0-9]+)$'
+  # location_custom_cfg:
+  #   proxy_pass: 'test2'
+    
+# nginx::nginx_locations:
+#   'shorten3':
+#     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)$"'
+#     server: 'yourls'
+#   'shorten2':
+#     location: '~ "^/static/[0-9a-fA-F]{8}\/(.*)"'
+#     server: 'yourls'
+#     ssl: true 
+
+#     www_root: '/etc/nginx/YOURLS/shorten'
+    # location_cfg_append: 
+    #   'return': '301 https://docushare.lsst.org/docushare/dsweb/Services/LDM-$1'
+    # location_cfg_append: 
+    #   'location ~* ^/LDM[\ -]([0-9]+)$'
+    #     'return': '301 https://docushare.lsst.org/docushare/dsweb/Get/LDM-$1'
+  # 'ls.st':
+  #   proxy: 'https://ls.st'
+
+# nginx::resource::server:
+#   'yourlstest':
+#     ensure: 'present'
+#     www_root: '/etc/nginx/YOURLS'
+#     server_name: yourls
+#     listen_port: 80
+

@@ -1,0 +1,84 @@
+---
+accounts::user_list:
+  pfuser:
+    groups:
+      - 'pfuser'
+    managehome: false
+    system: true
+  spiceworks:
+    groups:
+      - 'wheel'
+    sshkeys:
+      - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCDkZVAss+6tdH/Mjb8lnTXy4arCjhP2hzvjbkmaRcdF5TMLsr57GcZcIXQyh44WToL5p7bbZWmkTaaaOPZ8/fNS2kkpj79/nzZL1tIKtAF6OkLPWPlyehyTPnzxN1cIA6vN1FAt8Alp3bs4qesYmYiYH+VS166VVSLY82f4TODnkOwT2DNl48Zdzfo6szSHmpDsLxUaLSx1S8zDrNR43UagmqSnNhoA+W/wAUjsbYRfeFv5j0DE5o3qOo0Dy0hinOSiZOhAAs2Q82Eq/ORrFLkgYvZmuVpLM3zx2PBm6HlOavPZpgBWqW/tpNxeR23mx+7QGv21wM07qubDx7fQJYt rsa@puppet'
+    password: "%{lookup('root_pwd')}"
+    # ignore_password_if_empty: true
+# files:
+#   /opt/pingfederate-11.0.7:
+#     ensure: "directory"
+#     owner: 'pfuser'
+#     group: 'pfuser'
+#     mode: "0775"
+#     recurse: true
+classes:
+  - profile::base_linux
+  - profile::java
+  - profile::sso
+profile::base_linux::awscli: true
+profile::base_linux::postfix: true
+profile::base_linux::graylog: true
+profile::java::version: 'latest'
+profile::java::distribution: 'jre'
+profile::java::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
+profile::java::j_version: '11'
+profile::java::jre_version: '11'
+profile::java::jdk_version: '8'
+profile::java::version_major: '11.0.2'
+profile::java::version_minor: '9'
+profile::java::java_path: '/usr/java/jdk-11.0.2+9-jre/bin:$PATH'
+profile::java::mem: '-Xmx1g'
+profile::sso::pf_user: pfuser
+# profile::sso::pf_pass: pfpass
+profile::sso::pf_version: '11.0.7'
+profile::sso::java_home: '/usr/java/jdk-11.0.2+9-jre' #'/usr/java/jdk-11.0.2+9'
+profile::sso::pf_home: '/opt/pingfederate-11.0.7/pingfederate' #'/usr/java/jdk-11.0.2+9'
+# cron::job:
+#   'ssobackup':
+#     command: "aws s3 cp --recursive /opt/pingfederate-11.0.7/pingfederate/log/ s3://pingfe/pf-logs"
+#     minute: 11
+#     hour: 21
+#     date: '*'
+#     month: '*'
+#     weekday: '*'
+#     user: root
+#     environment:
+#       - 'MAILTO=root'
+#       - 'PATH="/usr/local/bin/:/usr/bin:/bin"'
+#     description: 'sso backup'
+profile::sso::match: |
+        <!-- Syslog events - Custom pattern
+        <Socket name="SYSLOG" host="localhost" port="514" protocol="UDP">
+            <PingSyslogLayout facility="LOCAL7">
+                <PatternLayout>
+                    <pattern>[%d{ABSOLUTE},%c{1}] %m%n</pattern>
+                </PatternLayout>
+            </PingSyslogLayout>
+        </Socket>
+        -->
+profile::sso::line: |
+        <!-- Syslog events - Custom pattern
+        -->
+        <Socket name="SYSLOG" host="graylog-tuc.lsst.org" port="5514" protocol="UDP">
+            <PingSyslogLayout facility="LOCAL7">
+            <PatternLayout>
+                <pattern>%escape{CEF}{CEF:0|Ping Identity|PingFederate|%X{pfversion}|%X{event}|%X{event}|0|rt=%d{MMM dd yyyy HH:mm:ss.SSS} duid=%X{subject} src=%X{ip} msg=%X{status} cs1Label=Target Application URL cs1=%X{app} cs2Label=Connection ID cs2=%X{connectionid} cs3Label=Protocol cs3=%X{protocol} dvchost=%X{host} cs4Label=Role cs4=%X{role} externalId=%X{trackingid} cs5Label=SP Local User ID cs5=%X{localuserid} cs6Label=Attributes cs6=%X{attributes} %n}</pattern>
+              </PatternLayout>      </PingSyslogLayout>
+        </Socket>
+cron::job:
+  # Restart pingfederate
+  'pingfederate':
+    command: 'systemctl restart pingfederate'
+    minute: 45 # every hour on the half hour
+    user: root
+    environment:
+      - 'MAILTO=root'
+      - 'PATH="/usr/bin:/bin"'

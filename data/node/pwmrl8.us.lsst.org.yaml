@@ -1,0 +1,21 @@
+# pwmrl8 node
+---
+  # - profile::tomcat
+  # - profile::base_linux
+  # - profile::java
+  # - profile::pwm2
+# profile::base_linux::postfix: true
+# profile::base_linux::nsswitch: false
+# profile::base_linux::awscli: true
+# profile::base_linux::ntp: true
+network::interfaces_hash:
+  eth0:
+    type: Ethernet
+    ipaddress: 140.252.32.183
+    netmask: 255.255.254.0
+    gateway: 140.252.32.1
+    dns1: 140.252.32.125
+    dns2: 140.252.32.126
+    peerdns: yes
+    bootproto: none
+    onboot: yes

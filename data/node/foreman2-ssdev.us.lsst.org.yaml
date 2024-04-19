@@ -1,13 +1,12 @@
 ---
 classes:
   - profile::base_linux
-  - profile::puppet_master
-profile::base_linux::postfix: true
-profile::base_linux::nsswitch: false
+  - profile::puppet_master2
+# profile::base_linux::postfix: true
 network::interfaces_hash:
   eth0:
     type: Ethernet
-    ipaddress: 140.252.32.182
+    ipaddress: 140.252.32.188
     netmask: 255.255.254.0
     gateway: 140.252.32.1
     dns1: 140.252.32.125
