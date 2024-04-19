@@ -71,7 +71,7 @@ class profile::graylog {
       mode   => '0700',
       owner  => 'graylog',
       group  => 'graylog',
-      ;
+      # ;
   #   "${ssldir}/cert.pem":
   #     ensure => file,
   #     target => "${le_dir}/cert.pem",
