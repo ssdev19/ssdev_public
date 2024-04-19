@@ -58,5 +58,6 @@ class profile::grafana (
     ensure  => present,
     source  => $domaincert2,
     cleanup => false,
+    require => Class["grafana"]
   }
 }

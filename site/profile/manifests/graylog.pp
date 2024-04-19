@@ -71,50 +71,26 @@ class profile::graylog {
       owner  => 'graylog',
       group  => 'graylog',
       ;
-    "${ssldir}/graylog.key":
-      ensure  => file,
-      content => $tlskey.unwrap,
+    "${ssldir}/cert.pem":
+      ensure => link,
+      target => "${le_dir}/cert.pem",
+      replace => yes
       ;
-    "${ssldir}/graylog.crt":
-      ensure  => file,
-      content => $tlscert.unwrap,
+    "${ssldir}/privkey.pem":
+      ensure  => link,
+      target => "${le_dir}/privkey.pem",
+      replace => yes
       ;
-    "${ssldir}/graylog.pem":
-      ensure  => file,
-      content => $tlschain.unwrap,
+    "${ssldir}/fullchain.pem":
+      ensure  => link,
+      target => "${le_dir}/fullchain.pem",
+      replace => yes
       ;
     "${ssldir}/cacerts.jks":
       ensure  => file,
       source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
       replace => false,
   }
-  # file {
-  #   $ssldir:
-  #     ensure => directory,
-  #     mode   => '0700',
-  #     owner  => 'graylog',
-  #     group  => 'graylog',
-  #     ;
-  #   "${ssldir}/cert.pem":
-  #     ensure => link,
-  #     target => "${le_dir}/cert.pem",
-  #     replace => yes
-  #     ;
-  #   "${ssldir}/privkey.pem":
-  #     ensure  => link,
-  #     target => "${le_dir}/privkey.pem",
-  #     replace => yes
-  #     ;
-  #   "${ssldir}/fullchain.pem":
-  #     ensure  => link,
-  #     target => "${le_dir}/fullchain.pem",
-  #     replace => yes
-  #     ;
-  #   "${ssldir}/cacerts.jks":
-  #     ensure  => file,
-  #     source  => '/usr/share/graylog-server/jvm/lib/security/cacerts',
-  #     replace => false,
-  # }
   # java_ks cannot find keytool, so this symlink is needed
   file { '/usr/local/bin/keytool':
     ensure => link,
@@ -161,8 +137,8 @@ class profile::graylog {
       http_external_uri                   => "https://${fqdn}/",
       http_publish_uri                    => "https://${fqdn}/",
       http_enable_tls                     => true,
-      http_tls_cert_file                  => "${ssldir}/graylog.crt",
-      http_tls_key_file                   => "${ssldir}/graylog.key",
+      http_tls_cert_file                  => "${ssldir}/cert.pem",
+      http_tls_key_file                   => "${ssldir}/privkey.pem",
       # http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
