@@ -68,7 +68,7 @@ class profile::graylog {
   file {
     $ssldir:
       ensure => directory,
-      mode   => '0755',
+      mode   => '0700',
       owner  => 'graylog',
       group  => 'graylog',
       # ;
