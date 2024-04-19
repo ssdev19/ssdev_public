@@ -81,7 +81,7 @@ class profile::graylog {
     },
     jvm_options       => [
       '-Xms1g',
-      '-Xmx1g'
+      '-Xmx1g',
     ],
   }
   -> es_instance_conn_validator { 'graylog' :

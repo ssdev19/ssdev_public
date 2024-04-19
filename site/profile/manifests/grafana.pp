@@ -44,7 +44,7 @@ class profile::grafana (
         admin_user     => 'admin',
         admin_password => $grafana_pwd,
       },
-    }
+    },
   }
 
   $domaincert = lookup('domaincert')
