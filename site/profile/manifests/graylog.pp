@@ -102,9 +102,9 @@ class profile::graylog {
   $keystorepwd = lookup('keystorepwd')
   java_ks { "lsst.org:${ssldir}/cacerts.jks":
     ensure              => latest,
-    certificate         => "/etc/letsencrypt/archive/graylog-ssdev.lsst.org/cert.pem",
-    private_key         => "/etc/letsencrypt/archive/graylog-ssdev.lsst.org/privkey.pem",
-    chain               => "/etc/letsencrypt/archive/graylog-ssdev.lsst.org/fullchain.pem",
+    certificate         => "/etc/letsencrypt/archive/graylog-ssdev.lsst.org/cert1.pem",
+    private_key         => "/etc/letsencrypt/archive/graylog-ssdev.lsst.org/privkey1.pem",
+    chain               => "/etc/letsencrypt/archive/graylog-ssdev.lsst.org/fullchain1.pem",
     password            => $keystorepwd,
     password_fail_reset => true,
   }
