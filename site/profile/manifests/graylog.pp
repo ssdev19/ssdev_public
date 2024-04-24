@@ -68,7 +68,7 @@ class profile::graylog {
   file {
     $le_dir:
       ensure => directory,
-      mode   => '0700',
+      mode   => '0755',
       owner  => 'graylog',
       group  => 'root',
       # ;
