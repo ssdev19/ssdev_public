@@ -70,7 +70,7 @@ class profile::graylog {
       ensure => directory,
       mode   => '0700',
       owner  => 'graylog',
-      group  => 'graylog',
+      group  => 'root',
       # ;
   #   "${ssldir}/cert.pem":
   #     ensure => file,
