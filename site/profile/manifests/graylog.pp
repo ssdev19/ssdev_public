@@ -69,7 +69,7 @@ class profile::graylog {
     $le_dir:
       ensure => directory,
       mode   => '0755',
-      owner  => 'graylog',
+      owner  => 'root',
       group  => 'root',
       # ;
   #   "${ssldir}/cert.pem":
