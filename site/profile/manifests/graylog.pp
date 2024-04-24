@@ -66,26 +66,26 @@ class profile::graylog {
   # }
 
   file {
-    $le_dir:
+    $ssldir:
       ensure => directory,
       mode   => '0755',
-      owner  => 'root',
-      group  => 'root',
-      # ;
-  #   "${ssldir}/cert.pem":
-  #     ensure => file,
-  #     target => "${le_dir}/cert.pem",
-  #     replace => yes
-  #     ;
-  #   "${ssldir}/privkey.pem":
-  #     ensure  => file,
-  #     target => "${le_dir}/privkey.pem",
-  #     replace => yes
-  #     ;
-  #   "${ssldir}/fullchain.pem":
-  #     ensure  => file,
-  #     target => "${le_dir}/fullchain.pem",
-  #     replace => yes
+      owner  => 'graylog',
+      group  => 'graylog',
+      ;
+    "${ssldir}/cert.pem":
+      ensure => link,
+      target => "${le_dir}/cert.pem",
+      # replace => yes
+      ;
+    "${ssldir}/privkey.pem":
+      ensure => link,
+      target => "${le_dir}/privkey.pem",
+      # replace => yes
+      ;
+    "${ssldir}/fullchain.pem":
+      ensure => link,
+      target => "${le_dir}/fullchain.pem",
+      # replace => yes
   #     ;
   #   "${ssldir}/cacerts.jks":
   #     ensure  => file,
@@ -102,7 +102,7 @@ class profile::graylog {
   $keystorepwd = lookup('keystorepwd')
   java_ks { "lsst.org:${ssldir}/cacerts.jks":
     ensure              => latest,
-    certificate         => "${le_dir}/fullchain.pem",
+    certificate         => "${le_dir}/cert.pem",
     # private_key         => "${le_dir}/privkey.pem",
     # chain               => "${le_dir}/fullchain.pem",
     password            => $keystorepwd,
