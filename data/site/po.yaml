@@ -83,7 +83,7 @@ rsyslog::config::actions:
       Port: 5514
       Protocol: "udp"
 cron::job:
-  'shutdown':
+  'ls':
     command: 'ls'
     minute: 1 # every day at 1 AM UTC, 6 PM tucson time
     hour: 1
