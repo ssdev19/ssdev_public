@@ -109,15 +109,15 @@ rsyslog::config::actions:
     facility: "cron.*"
     config:
       file: "/var/log/cron"
-cron::job:
-  'ls':
-    command: 'ls'
-    minute: 1 # every day at 1 AM UTC, 6 PM tucson time
-    hour: 1
-    user: root
-    environment:
-      - 'MAILTO=root'
-      - 'PATH="/usr/bin:/sbin:/bin"'
+# cron::job:
+#   'ls':
+#     command: 'ls'
+#     minute: 1 # every day at 1 AM UTC, 6 PM tucson time
+#     hour: 1
+#     user: root
+#     environment:
+#       - 'MAILTO=root'
+#       - 'PATH="/usr/bin:/sbin:/bin"'
 postfix::mta: true
 postfix::inet_protocols: "ipv4"
 postfix::manage_root_alias: true
