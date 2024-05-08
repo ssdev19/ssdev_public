@@ -1,4 +1,17 @@
 # Base profile for Linux OS
+# Base profile for Linux OS
+# @param backups
+#  If true will deploy backup scripts
+# @param awscli
+#  If true will install and configure awscli
+# @param postfix
+#  If `true`, configure postfix
+# @param graylog
+#  If `true`, configure graylog
+# @param nsswitch
+#  If `true`, configure nsswitch
+# @param ntp
+#  If `true`, configure ntp
 class profile::base_linux (
   Boolean $awscli   = false,
   Boolean $postfix  = false,
