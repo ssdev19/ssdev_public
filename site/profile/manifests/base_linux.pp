@@ -52,32 +52,33 @@ class profile::base_linux (
   #   root_mail_recipient => 'shahram@lsst.org',
   # }
   # if $ntp {
-    class { 'chrony':
-      servers => [ '140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu' ],
-    }
+  class { 'chrony':
+    servers => ['140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu'],
+  }
   # }
   class { 'timezone':
-      timezone => 'UTC',
+    timezone => 'UTC',
   }
-  Package { [ 'git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'gcc', 'xinetd',
-  'bash-completion', 'sudo', 'vim', 'openssl', 'openssl-devel',
-  'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute',
-  'gzip', 'tar', 'unzip', 'net-tools', 'fping' ]:
-  ensure => installed,
+  Package {['git', 'tree', 'tcpdump', 'telnet', 'lvm2', 'gcc',
+      'bash-completion', 'sudo', 'vim', 'openssl', 'openssl-devel',
+      'acpid', 'wget', 'nmap', 'iputils', 'bind-utils', 'traceroute',
+      'gzip', 'tar', 'unzip', 'net-tools', 'fping',
+    ]:
+      ensure => installed,
   }
 # install awscli tool
 # class { 'awscli': }
-if $awscli {
-  # class { 'awscli': }
-  Package { [ 'python3-pip', 'python3-devel' ]:
-    ensure => installed,
-  }
-  exec { 'Install awscli':
-    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    command => 'sudo pip3 install awscli',
-    onlyif  => '/usr/bin/test ! -x /usr/local/bin/aws'
-  }
-  $awscreds = lookup('awscreds')
+  if $awscli {
+    # class { 'awscli': }
+    Package { ['python3-pip', 'python3-devel']:
+      ensure => installed,
+    }
+    exec { 'Install awscli':
+      path    => ['/usr/bin', '/bin', '/usr/sbin'],
+      command => 'sudo pip3 install awscli',
+      onlyif  => '/usr/bin/test ! -x /usr/local/bin/aws'
+    }
+    $awscreds = lookup('awscreds')
     file {
       '/root/.aws':
         ensure => directory,
@@ -102,7 +103,7 @@ if $awscli {
   }
   if $nsswitch {
     class { 'nsswitch':
-    hosts  => ['dns myhostname','files'],
+      hosts  => ['dns myhostname','files'],
     }
   }
   # $nsswitch = lookup('nsswitch')
