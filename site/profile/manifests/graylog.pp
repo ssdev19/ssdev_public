@@ -125,9 +125,9 @@ class profile::graylog {
   $keystorepwd = lookup('keystorepwd')
   java_ks { "lsst.org:${ssldir}/cacerts.jks":
     ensure              => latest,
-    certificate         => '/etc/ssl/certs/graylog/graylog.crt',
-    private_key         => '/etc/ssl/certs/graylog/graylog.key',
-    chain               => '/etc/ssl/certs/graylog/graylog.pem',
+    certificate         => "${ssldir}/graylog.crt",
+    private_key         => "${ssldir}/graylog.key",
+    chain               => "${ssldir}/graylog.pem",
     # certificate         => "${ssldir}/cert.pem",
     # private_key         => "${ssldir}/privkey.pem",
     # chain               => "${ssldir}/fullchain.pem",
