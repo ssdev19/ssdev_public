@@ -66,13 +66,6 @@ class profile::graylog {
   # }
 
   file {
-    $le_dir:
-      ensure => directory,
-      mode   => '0700',
-      owner  => 'graylog',
-      group  => 'graylog',
-  }
-  file {
     $ssldir:
       ensure => directory,
       mode   => '0700',
@@ -111,7 +104,7 @@ class profile::graylog {
     ensure              => latest,
     certificate         => "${le_dir}/cert.pem",
     private_key         => "${le_dir}/privkey.pem",
-    chain               => "${le_dir}/fullchain.pem",
+    chain               => "${le_dir}/chain.pem",
     password            => $keystorepwd,
     password_fail_reset => true,
   }
@@ -142,8 +135,8 @@ class profile::graylog {
       http_external_uri                   => "https://${fqdn}/",
       http_publish_uri                    => "https://${fqdn}/",
       http_enable_tls                     => true,
-      http_tls_cert_file                  => "${ssldir}/fullchain.pem",
-      http_tls_key_file                   => "${ssldir}/cert.pem",
+      http_tls_cert_file                  => "${ssldir}/cert.pem",
+      http_tls_key_file                   => "${ssldir}/chain.pem",
       # http_tls_key_password               => 'pwdtest',
       rotation_strategy                   => 'time',
       retention_strategy                  => 'delete',
