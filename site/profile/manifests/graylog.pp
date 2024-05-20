@@ -118,10 +118,10 @@ class profile::graylog {
   # }
 
   class { 'graylog::repository':
-    version => '5.2',
+    version => '6.0',
   }
   ->class { 'graylog::server':
-    package_version => '5.2.7',
+    package_version => '6.0.1',
     config          => {
       is_leader                           => true,
       node_id_file                        => '/etc/graylog/server/node-id',
