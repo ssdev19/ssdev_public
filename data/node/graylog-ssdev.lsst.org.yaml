@@ -1,7 +1,7 @@
 ---
 classes:
   - profile::base_linux
-  - profile::letsencrypt
+  # - profile::letsencrypt
   # - profile::java
   - profile::graylog
   # - profile::letsencrypt
