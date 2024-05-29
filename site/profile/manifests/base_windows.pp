@@ -34,8 +34,8 @@ class profile::base_windows (
     notify => Service['nxlog'],
   }
   file { 'C:/Program Files (x86)/nxlog':
-    force  => true,
     ensure => absent,
+    force  => true,
   }
 
   service { 'nxlog':
