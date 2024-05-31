@@ -91,20 +91,20 @@ rsyslog::config::actions:
       Target: "graylog-ssdev.lsst.org"
       Port: 5514
       Protocol: "udp"
-  graylogTuc:
-    type: "omfwd"
-    facility: "*.*"
-    config:
-      Target: "graylog-tuc-1.lsst.org"
-      Port: 5514
-      Protocol: "udp"
-  graylogTuc2:
-    type: "omfwd"
-    facility: "*.*"
-    config:
-      Target: "graylog-tuc-2.lsst.org"
-      Port: 5514
-      Protocol: "udp"
+  # graylogTuc:
+  #   type: "omfwd"
+  #   facility: "*.*"
+  #   config:
+  #     Target: "graylog-tuc-1.lsst.org"
+  #     Port: 5514
+  #     Protocol: "udp"
+  # graylogTuc2:
+  #   type: "omfwd"
+  #   facility: "*.*"
+  #   config:
+  #     Target: "graylog-tuc-2.lsst.org"
+  #     Port: 5514
+  #     Protocol: "udp"
   messages:
     type: "omfile"
     facility: "*.info;mail.none;authpriv.none;cron.none;local6.none"
