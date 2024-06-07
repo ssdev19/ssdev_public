@@ -91,13 +91,13 @@ rsyslog::config::actions:
       Target: "graylog-ssdev.lsst.org"
       Port: 5514
       Protocol: "udp"
-  # graylogTuc:
-  #   type: "omfwd"
-  #   facility: "*.*"
-  #   config:
-  #     Target: "graylog-tuc-1.lsst.org"
-  #     Port: 5514
-  #     Protocol: "udp"
+  graylogAWSDev:
+    type: "omfwd"
+    facility: "*.*"
+    config:
+      Target: "graylog-tuc-3.lsst.org"
+      Port: 5514
+      Protocol: "udp"
   # graylogTuc2:
   #   type: "omfwd"
   #   facility: "*.*"
