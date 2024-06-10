@@ -54,7 +54,7 @@ class profile::base_linux (
   }
 
   class { 'chrony':
-    servers => ['140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu'],
+    servers => ['140.252.1.140', '140.252.1.141', '0.pool.ntp.arizona.edu', '169.254.169.123'],
   }
   # }
   class { 'timezone':
