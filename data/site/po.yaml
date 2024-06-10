@@ -84,7 +84,7 @@ rsyslog::config::modules:
       Ratelimit.Burst: 20000
     # graylog
 rsyslog::config::actions:
-  graylogAWS:
+  graylogSSDEV:
     type: "omfwd"
     facility: "*.*"
     config:
