@@ -98,7 +98,7 @@ rsyslog::config::actions:
       Target: "graylog-dev.lsst.org"
       Port: 5514
       Protocol: "udp"
-  graylogAWSDev:
+  graylogAWS:
     type: "omfwd"
     facility: "*.*"
     config:
