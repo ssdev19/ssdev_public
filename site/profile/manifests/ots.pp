@@ -12,11 +12,11 @@ class profile::ots {
   $redis_pwd = lookup('redis_pwd')
 
   rvm_system_ruby {
-    'ruby-3.2':
+    'ruby-3.1':
       ensure      => 'present',
       default_use => true,
       build_opts  => ['--binary'];
-    'ruby-3.1':
+    'ruby-2.7.8':
       ensure      => 'present',
       default_use => false;
   }
