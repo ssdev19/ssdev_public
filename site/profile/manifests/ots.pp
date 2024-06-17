@@ -11,7 +11,7 @@ class profile::ots {
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
 
-  class { 'rvm': signing_keys => [] }
+  class { '::rvm': gnupg_key_id => false }
   rvm_system_ruby {
     'ruby-2.0':
       ensure      => 'present',
