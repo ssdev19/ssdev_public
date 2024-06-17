@@ -13,11 +13,11 @@ class profile::ots {
 
   class { '::rvm': gnupg_key_id => false }
   rvm_system_ruby {
-    'ruby-2.0':
+    'ruby-1.9':
       ensure      => 'present',
       default_use => true,
       build_opts  => ['--binary'];
-    'ruby-1.9':
+    'ruby-2.0':
       ensure      => 'present',
       default_use => false;
   }
