@@ -1,6 +1,6 @@
 # ots
 class profile::ots {
-  # include rvm
+  include '::gnupg'
   include ::scl
   include 'yum'
 
