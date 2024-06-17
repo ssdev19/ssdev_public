@@ -1,7 +1,7 @@
 ---
 classes:
   - profile::base_linux
-  - profile::ots
+  # - profile::ots
 network::interfaces_hash:
   eth0:
     type: Ethernet
