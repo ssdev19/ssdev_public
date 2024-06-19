@@ -69,14 +69,14 @@ mod 'puppetlabs-concat', '6.4.0'
 mod 'puppetlabs-inifile', '5.2.0'
 mod 'puppetlabs-java', '10.1.2'
 mod 'puppetlabs-java_ks', '4.2.0' # Kestore management
-mod 'puppetlabs-stdlib', '9.0.0'
+mod 'puppetlabs-stdlib', '8.6.0'
 mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
-# mod 'example42-network', '3.6.0'
-mod 'puppet-network', '2.2.0'
-mod 'puppet-filemapper', '4.0.0' #puppet network dependency
-mod 'puppet-kmod', '4.0.1' #puppet network dependency
+mod 'example42-network', '3.6.0'
+# mod 'puppet-network', '2.2.0'
+# mod 'puppet-filemapper', '4.0.0' #puppet network dependency
+# mod 'puppet-kmod', '4.0.1' #puppet network dependency
 mod 'puppetlabs-mysql', '14.0.0'
 mod 'edestecd-mariadb', '2.1.1'
 mod 'previousnext-drush', '0.1.2'
