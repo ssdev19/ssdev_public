@@ -10,7 +10,7 @@ class profile::ots {
 # }
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
-
+  class { 'rvm': }
   rvm_system_ruby {
     'ruby-3.2':
       ensure      => 'present',
