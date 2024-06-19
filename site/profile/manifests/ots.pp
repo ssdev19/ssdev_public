@@ -3,6 +3,7 @@ class profile::ots {
   include '::gnupg'
   include ::scl
   include 'yum'
+  include 'rvm'
 
 # yum::config { 'powertools':
 #   ensure  => present,
@@ -10,7 +11,7 @@ class profile::ots {
 # }
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
-  class { 'rvm': }
+  # class { 'rvm': }
   # rvm_system_ruby {
   #   'ruby-3.2':
   #     ensure      => 'present',
