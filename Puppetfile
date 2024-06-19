@@ -100,7 +100,7 @@ mod 'puppet-nsswitch', '3.1.0'
 mod 'puppet-chrony', '2.1.0'
 mod 'graylog-graylog', '2.0.0'
 mod 'philomory-graylog_api', '0.5.0'
-mod 'puppet-mongodb', '4.2.0'
+mod 'puppet-mongodb', '6.0.1'
 mod 'puppet-opensearch', '1.1.0'
 mod 'puppet-elasticsearch', '8.1.0'
 mod 'puppet-elastic_stack', '8.0.2' #dependency for elastic
