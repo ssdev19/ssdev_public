@@ -84,13 +84,13 @@ rsyslog::config::modules:
       Ratelimit.Burst: 20000
     # graylog
 rsyslog::config::actions:
-  graylogAWS:
-    type: "omfwd"
-    facility: "*.*"
-    config:
-      Target: "graylog-ruc-3.lsst.org"
-      Port: 5514
-      Protocol: "udp"
+  # graylogAWS:
+  #   type: "omfwd"
+  #   facility: "*.*"
+  #   config:
+  #     Target: "graylog-tuc-3.lsst.org"
+  #     Port: 5514
+  #     Protocol: "udp"
   graylogSSDEV:
     type: "omfwd"
     facility: "*.*"
