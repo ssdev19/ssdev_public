@@ -69,11 +69,11 @@ mod 'puppetlabs-concat', '6.4.0'
 mod 'puppetlabs-inifile', '5.2.0'
 mod 'puppetlabs-java', '10.1.2'
 mod 'puppetlabs-java_ks', '4.2.0' # Kestore management
-mod 'puppetlabs-stdlib', '9.6.0'
+mod 'puppetlabs-stdlib', '8.6.0'
 mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
-mod 'example42/network' #, #git: 'https://github.com/lsst-it/puppet-network', ref: 'c2b5c59'  # allow stdlib/concat 9.x
+mod 'example42/network', git: 'https://github.com/lsst-it/puppet-network', ref: 'c2b5c59'  # allow stdlib/concat 9.x
 # mod 'example42-network', '3.6.0'
 # mod 'puppet-network', '2.2.0'
 # mod 'puppet-filemapper', '4.0.0' #puppet network dependency
