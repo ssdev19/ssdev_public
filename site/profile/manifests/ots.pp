@@ -1,9 +1,9 @@
 # ots
 class profile::ots {
-  # include '::gnupg'
+  include '::gnupg'
   include ::scl
   include 'yum'
-  # include 'rvm'
+  include 'rvm'
 
 # yum::config { 'powertools':
 #   ensure  => present,
