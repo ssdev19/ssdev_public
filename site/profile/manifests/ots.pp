@@ -11,15 +11,14 @@ class profile::ots {
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
 
-  class { '::rvm': gnupg_key_id => false }
   rvm_system_ruby {
-    'ruby-1.9':
+    'ruby-3.2':
       ensure      => 'present',
       default_use => true,
       build_opts  => ['--binary'];
-    'ruby-2.0':
-      ensure      => 'present',
-      default_use => false;
+    # 'ruby-2.0':
+    #   ensure      => 'present',
+    #   default_use => false;
   }
 
   # class { 'onetimesecret':
