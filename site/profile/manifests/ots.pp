@@ -6,7 +6,7 @@ class profile::ots {
   # include rvm
   network_route { 'default':
     ensure    => 'present',
-    gateway   => '140.252.32.1',
+    gateway   => '140.252.32.2',
     interface => 'eth0',
     netmask   => '0.0.0.0',
     network   => '0.0.0.0',
