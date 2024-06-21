@@ -11,21 +11,7 @@ class profile::ots {
   #   netmask   => '0.0.0.0',
   #   network   => '0.0.0.0',
   # }
-  network_config { 'eth0':
-    ensure    => 'present',
-    family    => 'inet',
-    ipaddress => '140.252.32.192',
-    method    => 'static',
-    netmask   => '255.255.254.0',
-    onboot    => 'true',
-    options   => {
-      'GATEWAY'   => '140.252.32.1',
-      # 'BOOTPROTO' => 'none',
-      'DNS1'      => '140.252.32.125',
-      'DNS2'      => '140.252.32.126',
-      # 'PEERDNS'   => 'yes',
-    },
-  }
+
 # yum::config { 'powertools':
 #   ensure  => present,
 #   enabled => true,
