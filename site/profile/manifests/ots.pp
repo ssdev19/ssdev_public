@@ -4,13 +4,13 @@ class profile::ots {
   include ::scl
   include 'yum'
   # include rvm
-  network_route { 'default':
-    ensure    => 'present',
-    gateway   => '140.252.32.1',
-    interface => 'eth0',
-    netmask   => '0.0.0.0',
-    network   => '0.0.0.0',
-  }
+  # network_route { 'default':
+  #   ensure    => 'present',
+  #   gateway   => '140.252.32.1',
+  #   interface => 'eth0',
+  #   netmask   => '0.0.0.0',
+  #   network   => '0.0.0.0',
+  # }
   network_config { 'eth0':
     ensure    => 'present',
     family    => 'inet',
@@ -18,7 +18,13 @@ class profile::ots {
     method    => 'static',
     netmask   => '255.255.254.0',
     onboot    => 'true',
-    options   => { 'DNS3' => '4.2.2.2', 'gateway' => '140.252.32.1' },
+    options   => {
+      'DNS1'      => '140.252.32.125',
+      'DNS2'      => '140.252.32.126',
+      'GATEWAY'   => '140.252.32.1',
+      'PEERDNS'   => 'yes',
+      'BOOTPROTO' => 'none',
+    },
   }
 # yum::config { 'powertools':
 #   ensure  => present,
