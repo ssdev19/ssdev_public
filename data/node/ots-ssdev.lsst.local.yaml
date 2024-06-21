@@ -18,7 +18,7 @@ network::network_config:
     ensure: present
     # name: 'eth0'
     ipaddress: 140.252.32.192
-    netmask: 255.255.252.0
+    netmask: 255.255.0.0
     # gateway: 140.252.32.1
     # dns1: 140.252.32.125
     # dns2: 140.252.32.126
