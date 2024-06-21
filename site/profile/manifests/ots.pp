@@ -19,10 +19,10 @@ class profile::ots {
     netmask   => '255.255.254.0',
     onboot    => 'true',
     options   => {
+      'GATEWAY'   => '140.252.32.1',
       'BOOTPROTO' => 'none',
       'DNS1'      => '140.252.32.125',
       'DNS2'      => '140.252.32.126',
-      'GATEWAY'   => '140.252.32.1',
       # 'PEERDNS'   => 'yes',
     },
   }
