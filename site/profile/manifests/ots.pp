@@ -4,7 +4,14 @@ class profile::ots {
   include ::scl
   include 'yum'
   # include rvm
-
+  network_config { 'eth0':
+    ensure    => 'present',
+    family    => 'inet',
+    ipaddress => '140.252.32.192',
+    method    => 'static',
+    netmask   => '255.255.0.0',
+    onboot    => 'true',
+  }
 # yum::config { 'powertools':
 #   ensure  => present,
 #   enabled => true,
