@@ -16,12 +16,12 @@
 # @param ipaddress 
 class profile::base_linux (
   # $service1,
-  String  $ipaddress,
   Boolean $awscli   = false,
   Boolean $backups  = false,
   Boolean $postfix  = true,
   Boolean $graylog  = false,
   Boolean $network  = false,
+  String  $ipaddress,
   Boolean $nsswitch = false,
   Boolean $ntp      = false,
 ) {
