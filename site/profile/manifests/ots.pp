@@ -9,7 +9,7 @@ class profile::ots {
     gateway   => '140.252.32.1',
     interface => 'eth0',
     netmask   => '0.0.0.0',
-    network   => 'default',
+    network   => '0.0.0.0',
   }
   network_config { 'eth0':
     ensure    => 'present',
