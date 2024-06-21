@@ -1,9 +1,10 @@
 ---
 classes:
   - profile::base_linux
+  - profile::network
   - profile::ots
-profile::base_linux::network: true
-profile::base_linux::ipaddress: 140.252.32.199
+# profile::base_linux::network: true
+profile::network::ipaddress: 140.252.32.199
 # network::interfaces_hash:
 #   eth0:
 #     ensure: present
