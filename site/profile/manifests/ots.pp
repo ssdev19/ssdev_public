@@ -20,7 +20,7 @@ class profile::ots {
     onboot    => 'true',
     options   => {
       'GATEWAY'   => '140.252.32.1',
-      'BOOTPROTO' => 'none',
+      # 'BOOTPROTO' => 'none',
       'DNS1'      => '140.252.32.125',
       'DNS2'      => '140.252.32.126',
       # 'PEERDNS'   => 'yes',
