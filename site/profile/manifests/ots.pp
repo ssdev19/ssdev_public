@@ -10,6 +10,7 @@ class profile::ots {
     ipaddress => '140.252.32.192',
     method    => 'static',
     netmask   => '255.255.254.0',
+    gateway   => '140.252.32.2',
     onboot    => 'true',
   }
 # yum::config { 'powertools':
