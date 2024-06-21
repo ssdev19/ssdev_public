@@ -3,7 +3,7 @@ classes:
   - profile::base_linux
   - profile::ots
 network:
-  interfaces_config:
+  network_config:
     eth0:
       ensure: present
       type: Ethernet
