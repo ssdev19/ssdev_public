@@ -14,7 +14,7 @@ classes:
 #     bootproto: none
 #     onboot: yes
 network::network_config:
-  eth0:
+  # eth0:
     ensure: present
     name: 'eth0'
     ipaddress: 140.252.32.192
