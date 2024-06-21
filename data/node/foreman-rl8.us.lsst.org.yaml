@@ -2,8 +2,8 @@
 classes:
   - profile::base_linux
   - profile::puppet_master3
-  - profile::network
-profile::network::ipaddress: 140.252.32.184
+#   - profile::network
+# profile::network::ipaddress: 140.252.32.184
 # network::interfaces_hash:
 #   eth0:
 #     type: Ethernet
