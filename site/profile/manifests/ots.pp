@@ -9,7 +9,7 @@ class profile::ots {
     family    => 'inet',
     ipaddress => '140.252.32.192',
     method    => 'static',
-    netmask   => '255.255.0.0',
+    netmask   => '255.255.254.0',
     onboot    => 'true',
   }
 # yum::config { 'powertools':
