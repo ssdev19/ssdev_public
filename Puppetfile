@@ -76,8 +76,8 @@ mod 'puppetlabs-hocon', '1.1.0'  # dependency
 # mod 'example42/network', git: 'https://github.com/lsst-it/puppet-network', ref: 'c2b5c59'  # allow stdlib/concat 9.x
 # mod 'example42-network', '3.6.0'
 mod 'puppet-network', '2.2.0'
-# mod 'puppet-filemapper', '4.0.0' #puppet network dependency
-# mod 'puppet-kmod', '4.0.1' #puppet network dependency
+mod 'puppet-filemapper', '4.0.0' #puppet network dependency
+mod 'puppet-kmod', '4.0.1' #puppet network dependency
 mod 'puppetlabs-mysql', '14.0.0'
 mod 'edestecd-mariadb', '2.1.1'
 mod 'previousnext-drush', '0.1.2'
