@@ -21,7 +21,7 @@ class profile::base_linux (
   Boolean $postfix  = true,
   Boolean $graylog  = false,
   Boolean $network  = false,
-  String  $ipaddress,
+  # String  $ipaddress,
   Boolean $nsswitch = false,
   Boolean $ntp      = false,
 ) {
