@@ -4,13 +4,20 @@ class profile::ots {
   include ::scl
   include 'yum'
   # include rvm
+  network_route { 'default':
+    ensure    => 'present',
+    gateway   => '140.252.32.1',
+    interface => 'eth0',
+    netmask   => '0.0.0.0',
+    network   => 'default',
+  }
   network_config { 'eth0':
     ensure    => 'present',
     family    => 'inet',
     ipaddress => '140.252.32.192',
     method    => 'static',
     netmask   => '255.255.254.0',
-    gateway   => '140.252.32.2',
+    # gateway   => '140.252.32.2',
     onboot    => 'true',
   }
 # yum::config { 'powertools':
