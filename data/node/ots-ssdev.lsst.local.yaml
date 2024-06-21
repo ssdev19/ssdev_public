@@ -13,7 +13,7 @@ classes:
 #     peerdns: yes
 #     bootproto: none
 #     onboot: yes
-network::network_config:
+network_config:
   eth0:
     ensure: present
     # name: 'eth0'
