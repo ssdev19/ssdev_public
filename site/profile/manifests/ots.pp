@@ -18,7 +18,7 @@ class profile::ots {
     method    => 'static',
     netmask   => '255.255.254.0',
     onboot    => 'true',
-    'dns3'    => '140.252.32.124',
+    dns3      => '140.252.32.124',
   }
 # yum::config { 'powertools':
 #   ensure  => present,
