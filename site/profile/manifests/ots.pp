@@ -23,7 +23,7 @@ class profile::ots {
       'DNS1'      => '140.252.32.125',
       'DNS2'      => '140.252.32.126',
       'GATEWAY'   => '140.252.32.1',
-      'PEERDNS'   => 'yes',
+      # 'PEERDNS'   => 'yes',
     },
   }
 # yum::config { 'powertools':
