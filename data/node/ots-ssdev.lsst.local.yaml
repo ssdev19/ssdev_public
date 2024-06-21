@@ -17,7 +17,7 @@ classes:
 network::network_config:
   eth0:
     ensure: 'present'
-    name: 'eth0'
+    name: 'ethtest'
     family: 'inet'
     ipaddress: '140.252.32.192'
     netmask: '255.255.0.0'
