@@ -4,6 +4,7 @@ classes:
   - profile::java
   - profile::tomcat
   - profile::pwm2
+  - profile::network
   # - profile::backups
 profile::base_linux::awscli: true
 profile::base_linux::postfix: true
