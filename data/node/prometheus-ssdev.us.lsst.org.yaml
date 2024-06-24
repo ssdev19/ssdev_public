@@ -32,7 +32,7 @@ network::interfaces_hash:
 network_config:
   eth0:
     ensure: present
-    ipaddress: 140.252.32.180
+    ipaddress: 140.252.32.179
     netmask: 255.255.252.0
     # gateway: 140.252.32.1
     # dns1: 140.252.32.125
