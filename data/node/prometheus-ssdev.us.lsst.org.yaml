@@ -31,8 +31,8 @@ profile::base_linux::postfix: true
 
 # network:
 network_configsd:
-  eth03:
-    name: 'eth03'
+  eth0:
+    name: 'eth0'
     ensure: 'present'
     ipaddress: '140.252.32.180'
     netmask: '255.255.252.0'
