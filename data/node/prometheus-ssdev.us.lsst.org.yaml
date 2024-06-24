@@ -3,6 +3,7 @@
 classes:
   - profile::base_linux
   - profile::prometheus
+  - profile::network
 profile::prometheus::advertise_ip: 192.168.60.11:9093
 profile::prometheus::cluster_hide: ENC[PKCS7,MIIBiQYJKoZIhvcNAQcDoIIBejCCAXYCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAX39snFIsJK+Jy+sxgytz7uvnTN1D33Z/vwZTb3MteKlr72RcvrL6WXTKAGrd6GtvIr3IG0lUh2cfWusYK28LmZUbpfGK/mLJXxCdsWQc/yHUnAxWbyhFWp1piN9CAKbhddLEMhNWWBeHar2xAbM4ny9Sl8DB7KbD5OZ2RnS5qVy0/akkLAyKgsaFGyx/bh0O7nIQdsZyHjOnZMHsYS+6wfBRbEEi7dtbQ0tqpqcpQA4D4cGYfs2ysPKM2Zs7WBnLOOW1tjvxxTl99ZyGTHIY3IzjWCq0z44hGtS5i0GAU+KDzk6dEHw9vJZPPklQwXdPOI3PZLlYt5ReggZHZfQoozBMBgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBD2RYLzxxIwZJRx+FOqyv7/gCBps/DTjiUFs1ZRzKEkPpWpxYixKEqkPh5HYvq5NOY1VA==]
 profile::base_linux::graylog: true
@@ -20,7 +21,7 @@ network::interfaces_hash:
     onboot: yes
 # Cluster
   eth1:
-    ipaddress: '192.168.60.110'
+    ipaddress: '192.168.60.11'
     netmask: '255.255.255.0'
     dns1: "140.252.32.126"
     dns2: "140.252.32.125"
