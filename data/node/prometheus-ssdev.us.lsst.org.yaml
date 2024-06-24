@@ -29,8 +29,9 @@ profile::base_linux::postfix: true
   #   bootproto: 'none'
   #   onboot: 'yes'
 
-network::interfaces:
+# network::interfaces:d
   eth0:
+    name: eth0
     ensure: present
     ipaddress: 140.252.32.180
     netmask: 255.255.252.0
