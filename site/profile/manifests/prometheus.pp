@@ -17,6 +17,10 @@ class profile::prometheus (
   include network
   include prometheus
   include prometheus::snmp_exporter
+
+  $rules = ('network_defaults')
+  $defaults = {
+  }
   create_resources('network_config', hiera('network_config'))
   # include prometheus::rabbitmq_exporter
   class { 'prometheus::blackbox_exporter':
