@@ -14,7 +14,7 @@ class profile::prometheus (
   String $advertise_ip,
 ) {
 # Firewall rules are in private repo
-  include 'network'
+  include ::network
   include prometheus
   include prometheus::snmp_exporter
   # include prometheus::rabbitmq_exporter
