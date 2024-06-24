@@ -28,3 +28,15 @@ network::interfaces_hash:
     peerdns: 'yes'
     bootproto: 'none'
     onboot: 'yes'
+
+network_config:
+  eth0:
+    ensure: present
+    ipaddress: 140.252.32.180
+    netmask: 255.255.252.0
+    # gateway: 140.252.32.1
+    # dns1: 140.252.32.125
+    # dns2: 140.252.32.126
+    # peerdns: yes
+    # bootproto: none
+    onboot: true
