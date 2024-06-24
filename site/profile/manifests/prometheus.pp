@@ -18,7 +18,7 @@ class profile::prometheus (
   include prometheus
   include prometheus::snmp_exporter
 
-  $rules = ('network_defaults')
+  $rules = ('network_config')
   $defaults = {
   }
   create_resources('network_config', hiera('network_config'))
