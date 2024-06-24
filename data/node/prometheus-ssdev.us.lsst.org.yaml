@@ -30,7 +30,7 @@ profile::base_linux::postfix: true
   #   onboot: 'yes'
 
 # network:
-network::bond:
+network::network_config:
   eth0:
     # name: 'eth0'
     ensure: 'present'
