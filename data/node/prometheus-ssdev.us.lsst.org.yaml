@@ -43,7 +43,7 @@ profile::base_linux::postfix: true
 #     # peerdns: yes
 #     # bootproto: none
 #     onboot: 'true'
-network::interfaces:
+interfaces:
   eth0:
     ensure: 'present'
     provider: 'interfaces'
