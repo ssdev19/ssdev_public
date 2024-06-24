@@ -30,9 +30,9 @@ profile::base_linux::postfix: true
   #   onboot: 'yes'
 
 # network:
-interfaces:
+network::bond:
   eth0:
-    name: 'eth0'
+    # name: 'eth0'
     ensure: 'present'
     provider: 'interfaces'
     ipaddress: '140.252.32.180'
