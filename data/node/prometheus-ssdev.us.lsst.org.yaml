@@ -43,3 +43,9 @@ network_config:
     # peerdns: yes
     # bootproto: none
     onboot: 'true'
+interfaces:
+  eth0:
+    ensure: 'present'
+    provider: 'interfaces'
+    ipaddress: '140.252.32.180'
+    netmask: '255.255.0.0'
