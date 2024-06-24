@@ -29,7 +29,7 @@ network::interfaces_hash:
     bootproto: 'none'
     onboot: 'yes'
 
-network_config:
+interfaces:
   eth0:
     ensure: present
     ipaddress: 140.252.32.180
