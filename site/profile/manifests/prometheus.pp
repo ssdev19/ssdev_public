@@ -18,10 +18,6 @@ class profile::prometheus (
   include prometheus
   include prometheus::snmp_exporter
 
-  $rules = ('network_config')
-  $defaults = {
-  }
-  create_resources('network_config', hiera($rules))
   # include prometheus::rabbitmq_exporter
   class { 'prometheus::blackbox_exporter':
     version => '0.24.0',
@@ -112,4 +108,5 @@ class profile::prometheus (
   #   # onlyif  => 'grep -q 4294967295 /etc/.....',
   #   command => "sysctl net.ipv4.ping_group_range='0 2147483647'",
   # }
+  create_resources('network_config', hiera('network_config'))
 }
