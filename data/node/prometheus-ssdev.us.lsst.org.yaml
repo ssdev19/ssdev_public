@@ -30,22 +30,17 @@ profile::base_linux::postfix: true
   #   onboot: 'yes'
 
 # network:
-# network::network_config:
-#   eth0:
-#     # name: 'eth0'
-#     ensure: 'present'
-#     provider: 'interfaces'
-#     ipaddress: '140.252.32.180'
-#     netmask: '255.255.0.0'
-#     # gateway: 140.252.32.1
-#     # dns1: 140.252.32.125
-#     # dns2: 140.252.32.126
-#     # peerdns: yes
-#     # bootproto: none
-#     onboot: 'true'
-interfaces:
+network_config:
   eth0:
-    ensure: 'present'
-    provider: 'interfaces'
-    ipaddress: '140.252.32.180'
-    netmask: '255.255.0.0'
+    # name: 'eth0'
+    ensure: present
+    ipaddress: 140.252.32.180
+    netmask: 255.255.254.0
+    method: 'static'
+    onboot: true
+    options:
+      GATEWAY: 140.252.32.1
+      DNS1: 140.252.32.125
+      DNS2: 140.252.32.126
+      DNS3: 140.252.32.127
+  
