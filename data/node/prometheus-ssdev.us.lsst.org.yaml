@@ -37,7 +37,7 @@ network_config:
     ipaddress: 140.252.32.180
     netmask: 255.255.254.0
     method: 'static'
-    onboot: true
+    onboot: yes
     options:
       GATEWAY: 140.252.32.1
       DNS1: 140.252.32.125
@@ -46,9 +46,10 @@ network_config:
 # Cluster
   eth1:
     ipaddress: '192.168.60.11'
-    netmask: '255.255.255.0'
+    netmask: '255.255.254.0'
     # dns1: "140.252.32.126"
     # dns2: "140.252.32.125"
     # peerdns: 'yes'
     # bootproto: 'none'
-    onboot: 'yes'
+    method: static
+    onboot: yes
