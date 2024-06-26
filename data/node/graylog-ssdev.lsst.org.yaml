@@ -39,4 +39,5 @@ network_config:
       DNS1: '140.252.32.126'
       DNS1: '140.252.32.127'
       BOOTPROTO: 'static'
+      GATEWAY: '140.252.32.1'
 
