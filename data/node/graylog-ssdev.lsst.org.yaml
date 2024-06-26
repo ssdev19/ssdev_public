@@ -31,7 +31,7 @@ network_config:
     method: 'static'
     onboot: true
     options:
-      BOOTPROTO: 'none'
+      # BOOTPROTO: 'none'
       # GATEWAY: 140.252.32.1
       DNS1: 140.252.32.125
       DNS2: 140.252.32.126
