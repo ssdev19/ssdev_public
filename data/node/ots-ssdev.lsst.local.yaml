@@ -3,7 +3,21 @@ classes:
   - profile::base_linux
   - profile::ots
   # - profile::network2
-profile::network::ipaddress: 140.252.32.192
+profile::base_linux::network: true
+network_config:
+  eth0:
+    # name: 'eth0'
+    ensure: present
+    ipaddress: 140.252.32.192
+    netmask: 255.255.254.0
+    method: 'static'
+    onboot: true
+    options:
+      GATEWAY: 140.252.32.1
+      DNS1: 140.252.32.125
+      DNS2: 140.252.32.126
+      DNS3: 140.252.32.127
+# profile::network::ipaddress: 140.252.32.192
 # network::interfaces_hash:
 #   eth0:
 #     ensure: present
