@@ -32,8 +32,8 @@ network_config:
     onboot: true
     options:
       BOOTPROTO: 'none'
-      GATEWAY: '140.252.32.1'
-      DNS1: '140.252.32.125'
-      DNS2: '140.252.32.126'
-      DNS3: '140.252.32.127'
+      GATEWAY: 140.252.32.1
+      DNS1: 140.252.32.125
+      DNS2: 140.252.32.126
+      DNS3: 140.252.32.127
 
