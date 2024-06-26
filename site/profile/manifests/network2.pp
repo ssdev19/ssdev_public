@@ -9,7 +9,7 @@ class profile::network2 { #($interfaces = hiera('interfaces',false)) {
 
   $rules = hiera('interfaces')
   $defaults = {
-    netmask => '255.255.254.0',
+    netmask => '255.255.252.0',
   }
   create_resources('network_config', $rules, $defaults)
 }
