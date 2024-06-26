@@ -22,7 +22,7 @@ class profile::base_linux (
   Boolean $ntp      = false,
 ) {
   # include archive
-  include network
+  include ::network
   create_resources('network_config', hiera('network_config'))
   include firewalld
   include ssh
