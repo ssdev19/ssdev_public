@@ -23,7 +23,7 @@ profile::letsencrypt::email_hide: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAx
 #     bootproto: none
 #     onboot: yes
 interfaces:
-  eth0:
+  eth3:
     ensure: present
     ipaddress: 140.252.32.189
     netmask: 255.255.252.0
