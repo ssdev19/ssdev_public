@@ -1,6 +1,6 @@
 # Grafana node
 ---
-profile::network::ipaddress: 140.252.32.181
+# profile::network::ipaddress: 140.252.32.181
 profile::grafana::pname1: 'prometheus-ssdev'
 profile::grafana::url1: 'http://prometheus.us.lsst.org:9090/'
 profile::grafana::pname2: 'prometheus2-ssdev'
@@ -16,3 +16,17 @@ profile::grafana::url2: 'http://prometheus2.us.lsst.org:9090/'
 #     peerdns: yes
 #     bootproto: none
 #     onboot: yes
+network_config:
+  eth0:
+    # name: 'eth0'
+    ensure: present
+    ipaddress: 140.252.32.181
+    netmask: 255.255.254.0
+    gateway: 140.252.32.1
+    method: 'static'
+    onboot: true
+    options:
+      # GATEWAY: 140.252.32.1
+      dns1: 140.252.32.125
+      DNS2: 140.252.32.126
+      DNS3: 140.252.32.127
