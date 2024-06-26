@@ -34,3 +34,5 @@ network_config:
     # peerdns: yes
     # bootproto: none
     onboot: true
+    options:
+      DNS3: '8.8.8.8'
