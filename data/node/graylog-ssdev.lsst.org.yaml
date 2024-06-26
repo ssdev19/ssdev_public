@@ -22,7 +22,7 @@ profile::letsencrypt::email_hide: ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAx
 #     peerdns: yes
 #     bootproto: none
 #     onboot: yes
-interfaces:
+network_config:
   eth3:
     ensure: present
     ipaddress: 140.252.32.189
