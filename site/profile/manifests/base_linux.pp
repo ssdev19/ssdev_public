@@ -29,8 +29,8 @@ class profile::base_linux (
   # include facter
   # include ::collectd
   include puppet_agent
-  # include snmp::client
-
+  include network
+  create_resources('network_config', hiera('network_config'))
   # include nsswitch
   if $postfix {
     include postfix
