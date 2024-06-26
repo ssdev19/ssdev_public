@@ -2,8 +2,14 @@
 class profile::network2 { #($interfaces = hiera('interfaces',false)) {
   # if ($interfaces != false) {
   include 'network'
-  $interfaces = hiera('interfaces',false)
-  if $interfaces {
-    create_resources ( network_config, $interfaces )
+  # $interfaces = hiera('interfaces',false)
+  # if $interfaces {
+  #   create_resources ( network_config, $interfaces )
+  # }
+
+  $rules = hiera('network_config_rules')
+  $defaults = {
+    netmask => '255.255.254.0',
   }
+  create_resources('network_config', $rules, $defaults)
 }
