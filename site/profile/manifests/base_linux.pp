@@ -18,12 +18,15 @@ class profile::base_linux (
   Boolean $backups  = false,
   Boolean $postfix  = true,
   Boolean $graylog  = false,
+  Boolean $network  = false,
   Boolean $nsswitch = false,
   Boolean $ntp      = false,
 ) {
   # include archive
-  include ::network
-  create_resources('network_config', hiera('network_config'))
+  if $network {
+    include ::network
+    create_resources('network_config', hiera('network_config'))
+  }
   include firewalld
   include ssh
   include accounts
