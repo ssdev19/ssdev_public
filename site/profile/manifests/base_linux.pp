@@ -24,7 +24,7 @@ class profile::base_linux (
 ) {
   # include archive
   if $network {
-    include ::network
+    include network
     create_resources('network_config', hiera('network_config'))
   }
   include firewalld
