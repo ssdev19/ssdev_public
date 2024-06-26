@@ -2,7 +2,7 @@
 classes:
   - profile::base_linux
   - profile::ots
-  - profile::network
+  - profile::network2
 profile::network::ipaddress: 140.252.32.192
 # network::interfaces_hash:
 #   eth0:

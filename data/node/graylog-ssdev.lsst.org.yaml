@@ -27,7 +27,7 @@ network_config:
     name: 'eth0'
     ensure: present
     ipaddress: 140.252.32.189
-    netmask: 255.255.252.0
+    netmask: 255.255.254.0
     # gateway: 140.252.32.1
     # dns1: 140.252.32.125
     # dns2: 140.252.32.126
@@ -35,4 +35,8 @@ network_config:
     # bootproto: none
     onboot: true
     options:
-      DNS3: '8.8.8.8'
+      DNS1: '140.252.32.125'
+      DNS1: '140.252.32.126'
+      DNS1: '140.252.32.127'
+      BOOTPROTO: 'static'
+
