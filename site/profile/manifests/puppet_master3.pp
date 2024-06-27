@@ -18,7 +18,7 @@ class profile::puppet_master3 {
     provider => 'puppetserver_gem',
   }
   package { 'hiera-eyaml':
-    ensure   => absent
+    ensure   => latest,
     provider => 'puppetserver_gem',
   }
   # package { 'eyaml':
