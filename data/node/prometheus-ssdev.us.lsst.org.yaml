@@ -46,7 +46,7 @@ network_config:
       DNS3: 140.252.32.127
 # Cluster
   eth1:
-    ipaddress: '192.168.60.11'
+    ipaddress: '192.168.60.19'
     netmask: '255.255.255.0'
     # dns1: "140.252.32.126"
     # dns2: "140.252.32.125"
