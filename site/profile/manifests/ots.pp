@@ -19,7 +19,7 @@ class profile::ots {
       default_use => true,
       ;
       # build_opts  => ['--binary'];
-    'ruby-2.0':
+    'ruby-3.3.3':
       ensure      => 'present',
       default_use => false;
   }
