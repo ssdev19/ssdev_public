@@ -14,12 +14,12 @@ class profile::ots {
   class { 'rvm': }
 
   rvm_system_ruby {
-    'ruby-3.1.1':
+    'ruby-3.3.3':
       ensure      => 'present',
       default_use => true,
+      # build_opts  => ['--binary'],
       ;
-      # build_opts  => ['--binary'];
-    'ruby-3.3.3':
+    'ruby-3.1.1':
       ensure      => 'present',
       default_use => false;
   }
