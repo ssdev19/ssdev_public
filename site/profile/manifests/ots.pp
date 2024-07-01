@@ -3,6 +3,7 @@ class profile::ots {
   include '::gnupg'
   include ::scl
   include 'yum'
+  include redis
   # include rvm
 
 # yum::config { 'powertools':
@@ -13,15 +14,16 @@ class profile::ots {
   $redis_pwd = lookup('redis_pwd')
   class { 'rvm': }
 
+# Reboot needed after installation
   rvm_system_ruby {
     'ruby-3.1.1':
       ensure      => 'present',
       default_use => true,
       # build_opts  => ['--binary'],
       ;
-    'ruby-3.3.3':
-      ensure      => 'present',
-      default_use => false;
+    # 'ruby-3.3.3':
+    #   ensure      => 'present',
+    #   default_use => false;
   }
 
   # class { 'onetimesecret':
