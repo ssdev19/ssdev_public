@@ -12,10 +12,7 @@ class profile::ots {
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
   class { 'rvm': }
-  class{ 'rvm::rvmrc':
-    max_time_flag => 60,
-    before        => Class['rvm'],
-  }
+
   rvm_system_ruby {
     'ruby-3.1.1':
       ensure      => 'present',
