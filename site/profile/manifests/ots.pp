@@ -4,13 +4,6 @@ class profile::ots {
   include ::scl
   include 'yum'
   # include rvm
-  # network_route { 'default':
-  #   ensure    => 'present',
-  #   gateway   => '140.252.32.1',
-  #   interface => 'eth0',
-  #   netmask   => '0.0.0.0',
-  #   network   => '0.0.0.0',
-  # }
 
 # yum::config { 'powertools':
 #   ensure  => present,
@@ -18,15 +11,15 @@ class profile::ots {
 # }
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
-  # class { 'rvm': }
+  class { 'rvm': }
   # rvm_system_ruby {
   #   'ruby-3.0':
   #     ensure      => 'present',
   #     default_use => true,
-      # build_opts  => ['--binary'];
-    # 'ruby-2.0':
-    #   ensure      => 'present',
-    #   default_use => false;
+  #     build_opts  => ['--binary'];
+  #   'ruby-2.0':
+  #     ensure      => 'present',
+  #     default_use => false;
   # }
 
   # class { 'onetimesecret':
