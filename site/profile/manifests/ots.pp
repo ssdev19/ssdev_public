@@ -3,7 +3,7 @@ class profile::ots {
   include '::gnupg'
   include ::scl
   include 'yum'
-  include redis
+  # include redis
   # include rvm
 
 # yum::config { 'powertools':
