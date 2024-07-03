@@ -14,7 +14,7 @@ class profile::ots {
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
   # class { 'rvm': }
-  file { '/opt/onetimesecret-0.14.0' :
+  file { '/opt/onetimesecret-v0.14.0' :
     ensure  => directory,
   }
 
@@ -31,7 +31,7 @@ class profile::ots {
   # }
 
   class { 'onetimesecret':
-    version        => '0.14.0',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
+    version        => 'v0.14.0',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
     install_dir    => '/opt',
     symlink_name   => '/opt/onetimesecret',
     secret         => $secret,
