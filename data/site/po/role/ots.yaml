@@ -1,4 +1,5 @@
 ---
+onetimesecret::version: e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5
 onetimesecret::use_default_options: false
 onetimesecret::options:
   site:
