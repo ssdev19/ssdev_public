@@ -21,16 +21,16 @@ class profile::ots {
   # }
 
 # Reboot needed after installation
-  # rvm_system_ruby {
-  #   'ruby-3.1.1':
-  #     ensure      => 'present',
-  #     default_use => true,
-  #     # build_opts  => ['--binary'],
-  #     ;
-  #   # 'ruby-3.3.3':
-  #   #   ensure      => 'present',
-  #   #   default_use => false;
-  # }
+  rvm_system_ruby {
+    'ruby-Ruby 2.7.7':
+      ensure      => 'present',
+      default_use => true,
+      # build_opts  => ['--binary'],
+      ;
+    # 'ruby-3.3.3':
+    #   ensure      => 'present',
+    #   default_use => false;
+  }
   # rvm_gem {
   #   'bundler':
   #     ensure       => latest,
