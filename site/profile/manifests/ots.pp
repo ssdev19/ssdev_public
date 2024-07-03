@@ -8,7 +8,7 @@ class profile::ots {
 
   yum::config { 'powertools':
     ensure  => present,
-    enabled => true,
+    # enabled => true,
   }
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
