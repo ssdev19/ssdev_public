@@ -24,7 +24,7 @@ class profile::ots {
 # gem update --system 3.2.3
 # Reboot needed after installation
   rvm_system_ruby {
-    'ruby-2.6.0':
+    'ruby-2.7.8':
       ensure      => 'present',
       default_use => true,
       # build_opts  => ['--binary'],
