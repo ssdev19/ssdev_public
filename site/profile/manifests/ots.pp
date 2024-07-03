@@ -26,7 +26,7 @@ class profile::ots {
 # bundle update --bundler
 # Reboot needed after installation
   rvm_system_ruby {
-    'ruby-3.2.0':
+    'ruby-3.2.2':
       ensure      => 'present',
       default_use => true,
       # build_opts  => ['--binary'],
