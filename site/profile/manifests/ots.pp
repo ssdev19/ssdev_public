@@ -14,11 +14,11 @@ class profile::ots {
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
   # class { 'rvm': }
-  file { '/opt/onetimesecret-v0.14.0' :
-    ensure  => directory,
-    # owner   => 'ots',
-    # group   => 'ots',
-  }
+  # file { '/opt/onetimesecret-v0.14.0' :
+  #   ensure  => directory,
+  #   # owner   => 'ots',
+  #   # group   => 'ots',
+  # }
 
 # Reboot needed after installation
   # rvm_system_ruby {
