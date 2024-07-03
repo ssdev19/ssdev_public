@@ -35,8 +35,8 @@ class profile::ots {
     'bundler':
       ensure       => latest,
       name         => 'bundler',
-      ruby_version => 'ruby-3.1.1p18',
-      require      => Rvm_system_ruby['ruby-3.1.1p18'];
+      ruby_version => '3.1.1p18',
+      require      => Rvm_system_ruby['3.1.1p18'];
   }
   class { 'onetimesecret':
     version        => 'v0.14.0',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
