@@ -1,5 +1,8 @@
 ---
 onetimesecret::version: e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5
+onetimesecret::secret: "%{lookup('secret')}"
+onetimesecret::redis_password: "%{lookup('redis_password')}"
+# onetimesecret::
 onetimesecret::use_default_options: false
 onetimesecret::options:
   site:
