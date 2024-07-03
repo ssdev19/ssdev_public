@@ -21,23 +21,23 @@ class profile::ots {
   # }
 
 # Reboot needed after installation
-  rvm_system_ruby {
-    'ruby-3.1.1':
-      ensure      => 'present',
-      default_use => true,
-      # build_opts  => ['--binary'],
-      ;
-    # 'ruby-3.3.3':
-    #   ensure      => 'present',
-    #   default_use => false;
-  }
-  rvm_gem {
-    'bundler':
-      ensure       => latest,
-      name         => 'bundler',
-      ruby_version => 'ruby-3.1.1',
-      require      => Rvm_system_ruby['ruby-3.1.1'];
-  }
+  # rvm_system_ruby {
+  #   'ruby-3.1.1':
+  #     ensure      => 'present',
+  #     default_use => true,
+  #     # build_opts  => ['--binary'],
+  #     ;
+  #   # 'ruby-3.3.3':
+  #   #   ensure      => 'present',
+  #   #   default_use => false;
+  # }
+  # rvm_gem {
+  #   'bundler':
+  #     ensure       => latest,
+  #     name         => 'bundler',
+  #     ruby_version => 'ruby-3.1.1',
+  #     require      => Rvm_system_ruby['ruby-3.1.1'];
+  # }
   class { 'onetimesecret':
     version        => 'v0.14.0',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
     install_dir    => '/opt',
