@@ -1,59 +1,59 @@
 ---
-onetimesecret::version: e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5
-onetimesecret::secret: "%{lookup('secret')}"
-onetimesecret::redis_password: "%{lookup('redis_password')}"
-# onetimesecret::
-onetimesecret::use_default_options: false
-onetimesecret::options:
-  site:
-    host: 'localhost:7143'
-    domain: 'ots.us.lsst.org' # %{facts.networking.domain}
-    ssl: false
-    secret: 'CHANGEME'
-  redis:
-    uri: '''redis://user:redis@127.0.0.1:7179/0?timeout=10&thread_safe=false&logging=false'''
-    config: $redis_config_file
-  emailer:
-    mode: ':smtp'
-    from: "ots@%{facts.networking.domain}"
-    host: 'localhost'
-    port: 25
-  incoming:
-    enabled: false
-    email: 'example@onetimesecret.com'
-    passphrase: 'CHANGEME'
-    regex: '\A[a-zA-Z0-9]{6}\z'
-  locales:
-    - 'en'
-    - 'es'
-    - 'de'
-    - 'nl'
-    - 'ru'
-  unsupported_locales:
-    - 'fr'
-    - 'pt'
-    - 'jp'
-    - 'pt'
-  stathat:
-    enabled: false
-    apikey: 'CHANGEME'
-    default_chart: 'CHANGEME'
-  text:
-    nonpaid_recipient_text: '''You need to create an account!'''
-    paid_recipient_text: '''Send the secret link via email'''
-  limits:
-    create_secret: 250
-    create_account: 10
-    update_account: 10
-    email_recipient: 50
-    send_feedback: 10
-    authenticate_session: 5
-    homepage: 500
-    dashboard: 1000
-    failed_passphrase: 5
-    show_metadata: 1000
-    show_secret: 1000
-    burn_secret: 1000 
+# onetimesecret::version: e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5
+# onetimesecret::secret: "%{lookup('secret')}"
+# onetimesecret::redis_password: "%{lookup('redis_password')}"
+# # onetimesecret::
+# onetimesecret::use_default_options: false
+# onetimesecret::options:
+#   site:
+#     host: 'localhost:7143'
+#     domain: 'ots.us.lsst.org' # %{facts.networking.domain}
+#     ssl: false
+#     secret: 'CHANGEME'
+#   redis:
+#     uri: '''redis://user:redis@127.0.0.1:7179/0?timeout=10&thread_safe=false&logging=false'''
+#     config: $redis_config_file
+#   emailer:
+#     mode: ':smtp'
+#     from: "ots@%{facts.networking.domain}"
+#     host: 'localhost'
+#     port: 25
+#   incoming:
+#     enabled: false
+#     email: 'example@onetimesecret.com'
+#     passphrase: 'CHANGEME'
+#     regex: '\A[a-zA-Z0-9]{6}\z'
+#   locales:
+#     - 'en'
+#     - 'es'
+#     - 'de'
+#     - 'nl'
+#     - 'ru'
+#   unsupported_locales:
+#     - 'fr'
+#     - 'pt'
+#     - 'jp'
+#     - 'pt'
+#   stathat:
+#     enabled: false
+#     apikey: 'CHANGEME'
+#     default_chart: 'CHANGEME'
+#   text:
+#     nonpaid_recipient_text: '''You need to create an account!'''
+#     paid_recipient_text: '''Send the secret link via email'''
+#   limits:
+#     create_secret: 250
+#     create_account: 10
+#     update_account: 10
+#     email_recipient: 50
+#     send_feedback: 10
+#     authenticate_session: 5
+#     homepage: 500
+#     dashboard: 1000
+#     failed_passphrase: 5
+#     show_metadata: 1000
+#     show_secret: 1000
+#     burn_secret: 1000 
 # rvm::system_rubies:
 #   'ruby-2.6':
 #     default_use: true
