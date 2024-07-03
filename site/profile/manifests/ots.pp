@@ -5,7 +5,7 @@ class profile::ots {
   # include ::scl
   include 'yum'
   # include redis
-  include rvm
+  # include rvm
 
   # yum::config { 'powertools':
   #   ensure  => present,
