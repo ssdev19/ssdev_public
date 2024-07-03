@@ -19,7 +19,9 @@ class profile::ots {
   #   # owner   => 'ots',
   #   # group   => 'ots',
   # }
-
+# Manually install ruby:  rvm install "ruby-2.6.0"
+# Set it to default:  rvm 2.6.0 --default
+# gem update --system 3.2.3
 # Reboot needed after installation
   # rvm_system_ruby {
   #   'ruby-Ruby 2.6.0':
@@ -31,13 +33,13 @@ class profile::ots {
   #   #   ensure      => 'present',
   #   #   default_use => false;
   # }
-  # rvm_gem {
-  #   'bundler':
-  #     ensure       => latest,
-  #     name         => 'bundler',
-  #     ruby_version => 'ruby-Ruby 2.6.0',
-  #     require      => Rvm_system_ruby['ruby-Ruby 2.6.0'];
-  # }
+  rvm_gem {
+    'bundler':
+      ensure       => latest,
+      name         => 'bundler',
+      ruby_version => 'ruby-2.6.0',
+      require      => Rvm_system_ruby['ruby-2.6.0'];
+  }
   class { 'onetimesecret':
     version        => 'v0.14.0',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
     install_dir    => '/opt',
