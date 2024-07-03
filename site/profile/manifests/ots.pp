@@ -1,6 +1,6 @@
 # ots
 class profile::ots {
-  include onetimesecret
+  # include onetimesecret
   # include '::gnupg'
   # include ::scl
   include 'yum'
