@@ -42,9 +42,9 @@ class profile::ots {
       maxmemory => '2gb',
     },
   }
-  file { '/opt/onetimesecret-0.14.0':
+  file { '/opt/onetimesecret-v0.14.0':
     ensure => link,
-    target => '/opt/onetimesecret-v0.14.0',
+    target => '/opt/onetimesecret-0.14.0',
     # require => Class['graylog-server'],
   }
 # ::scl::collection { 'Powertools':
