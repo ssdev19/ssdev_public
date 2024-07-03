@@ -23,16 +23,16 @@ class profile::ots {
 # Set it to default:  rvm 2.6.0 --default
 # gem update --system 3.2.3
 # Reboot needed after installation
-  # rvm_system_ruby {
-  #   'ruby-Ruby 2.6.0':
-  #     ensure      => 'present',
-  #     default_use => true,
-  #     # build_opts  => ['--binary'],
-  #     ;
-  #   # 'ruby-3.3.3':
-  #   #   ensure      => 'present',
-  #   #   default_use => false;
-  # }
+  rvm_system_ruby {
+    'ruby-2.6.0':
+      ensure      => 'present',
+      default_use => true,
+      # build_opts  => ['--binary'],
+      ;
+    # 'ruby-3.3.3':
+    #   ensure      => 'present',
+    #   default_use => false;
+  }
   rvm_gem {
     'bundler':
       ensure       => latest,
