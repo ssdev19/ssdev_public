@@ -5,7 +5,7 @@ class profile::ots {
   # include ::scl
   include 'yum'
   # include redis
-  # include rvm
+  include rvm
 
   # yum::config { 'powertools':
   #   ensure  => present,
@@ -21,16 +21,16 @@ class profile::ots {
   # }
 
 # Reboot needed after installation
-  # rvm_system_ruby {
-  #   'ruby-3.1.1':
-  #     ensure      => 'present',
-  #     default_use => true,
-  #     # build_opts  => ['--binary'],
-  #     ;
-  #   # 'ruby-3.3.3':
-  #   #   ensure      => 'present',
-  #   #   default_use => false;
-  # }
+  rvm_system_ruby {
+    'ruby-3.1.1':
+      ensure      => 'present',
+      default_use => true,
+      # build_opts  => ['--binary'],
+      ;
+    # 'ruby-3.3.3':
+    #   ensure      => 'present',
+    #   default_use => false;
+  }
 
   class { 'onetimesecret':
     version        => 'v0.14.0',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
