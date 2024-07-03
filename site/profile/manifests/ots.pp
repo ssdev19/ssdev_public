@@ -17,7 +17,7 @@ class profile::ots {
   # file { '/opt/onetimesecret-v0.14.0' :
   #   ensure  => directory,
   #   # owner   => 'ots',
-  #   # group   => 'ots',
+  #   # grubyroup   => 'ots',
   # }
 # Manually install ruby:  rvm install "ruby-2.6.0"
 # Set it to default:  rvm 2.6.0 --default
