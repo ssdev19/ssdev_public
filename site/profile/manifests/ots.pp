@@ -2,14 +2,14 @@
 class profile::ots {
   # include '::gnupg'
   # include ::scl
-  # include 'yum'
+  include 'yum'
   # include redis
   # include rvm
 
-# yum::config { 'powertools':
-#   ensure  => present,
-#   enabled => true,
-# }
+  yum::config { 'powertools':
+    ensure  => present,
+    enabled => true,
+  }
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
   # class { 'rvm': }
