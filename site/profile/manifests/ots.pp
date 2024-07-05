@@ -20,7 +20,7 @@ class profile::ots {
   #   # grubyroup   => 'ots',
   # }
 # Manually install ruby:  rvm install "ruby-2.6.0"
-# Set it to default:  rvm 2.6.0 --default
+# Set it to default:  rvm 2.7.8 --default
 # gem update --system 3.2.3
 # gem install bundler:2.4.12
 # bundle update --bundler
