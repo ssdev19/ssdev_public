@@ -54,7 +54,7 @@ class profile::ots {
   #   user     => 'root',
   # }
   class { 'onetimesecret':
-    version        => 'v0.14.0',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
+    version        => '945bb2a3cb43213f71e67abd0fa561267699d0eb',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
     install_dir    => '/opt',
     symlink_name   => '/opt/onetimesecret',
     secret         => $secret,
@@ -63,11 +63,11 @@ class profile::ots {
       maxmemory => '2gb',
     },
   }
-  file { '/opt/onetimesecret-v0.14.0':
-    ensure => link,
-    target => '/opt/onetimesecret-0.14.0',
-    # require => Class['graylog-server'],
-  }
+  # file { '/opt/onetimesecret-v0.14.0':
+  #   ensure => link,
+  #   target => '/opt/onetimesecret-0.14.0',
+  #   # require => Class['graylog-server'],
+  # }
 # ::scl::collection { 'Powertools':
 #   enable => true,
 # }
