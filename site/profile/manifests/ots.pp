@@ -36,9 +36,9 @@ class profile::ots {
       default_use => false;
   }
   rvm_gemset {
-    'ruby-3.2.2':
+    'ruby-3.2.2@testing':
       ensure  => present,
-      require => Rvm_system_ruby['ruby-3.2.2'];
+      require => Rvm_system_ruby['ruby-3.2.2@testing'];
   }
   # rvm_gem {
   #   'bundler':
