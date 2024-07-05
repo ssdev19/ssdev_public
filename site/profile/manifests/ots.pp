@@ -20,7 +20,7 @@ class profile::ots {
     # grubyroup   => 'ots',
   }
 # Manually install ruby:  rvm install "ruby-2.6.0"
-# Set it to default:  rvm 2.6.0 --default
+# Set it to default:  rvm 3.2.2 --default
 # gem update --system 3.2.3
 # gem install bundler:2.4.12
 # bundle update --bundler
@@ -35,13 +35,13 @@ class profile::ots {
       ensure      => 'present',
       default_use => false;
   }
-  # rvm_gem {
-  #   'bundler':
-  #     ensure       => latest,
-  #     name         => 'bundler',
-  #     ruby_version => 'ruby-2.6.0',
-  #     require      => Rvm_system_ruby['ruby-2.6.0'];
-  # }
+  rvm_gem {
+    'bundler':
+      ensure       => latest,
+      name         => 'bundler',
+      ruby_version => 'ruby-3.2.2',
+      require      => Rvm_system_ruby['ruby-3.2.2'];
+  }
   vcsrepo { "/opt/onetimesecret":
     ensure   => present,
     provider => git,
