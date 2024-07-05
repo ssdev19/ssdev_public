@@ -35,13 +35,18 @@ class profile::ots {
       ensure      => 'present',
       default_use => false;
   }
-  rvm_gem {
-    'bundler':
-      ensure       => latest,
-      name         => 'bundler',
-      ruby_version => 'ruby-3.2.2',
-      require      => Rvm_system_ruby['ruby-3.2.2'];
+  rvm_gemset {
+    'ruby-3.2.2':
+      ensure  => present,
+      require => Rvm_system_ruby['ruby-3.2.2'];
   }
+  # rvm_gem {
+  #   'bundler':
+  #     ensure       => latest,
+  #     name         => 'bundler',
+  #     ruby_version => 'ruby-3.2.2',
+  #     require      => Rvm_system_ruby['ruby-3.2.2'];
+  # }
   vcsrepo { "/opt/onetimesecret":
     ensure   => present,
     provider => git,
