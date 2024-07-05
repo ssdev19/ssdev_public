@@ -14,11 +14,11 @@ class profile::ots {
   $secret = lookup('secret')
   $redis_pwd = lookup('redis_pwd')
   # class { 'rvm': }
-  file { '/opt/onetimesecret' :
-    ensure  => directory,
-    # owner   => 'ots',
-    # grubyroup   => 'ots',
-  }
+  # file { '/opt/onetimesecret' :
+  #   ensure  => directory,
+  #   # owner   => 'ots',
+  #   # grubyroup   => 'ots',
+  # }
 # Manually install ruby:  rvm install "ruby-2.6.0"
 # Set it to default:  rvm 3.2.2 --default
 # gem update --system 3.2.3
