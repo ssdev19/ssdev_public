@@ -24,16 +24,16 @@ class profile::ots {
 # gem update --system 3.2.3
 # gem install bundler:2.4.12
 # bundle update --bundler
-# Reboot needed after installation
+# Reboot needed after installation perhaps a few times
   rvm_system_ruby {
     'ruby-3.2.2':
       ensure      => 'present',
       default_use => true,
       # build_opts  => ['--binary'],
       ;
-    # 'ruby-2.6.0':
-    #   ensure      => 'present',
-    #   default_use => false;
+    'ruby-2.5.9':
+      ensure      => 'present',
+      default_use => false;
   }
   # rvm_gem {
   #   'bundler':
