@@ -1,5 +1,9 @@
 #  PingFed config
-# to upgrade to new version: delete ping service, contents of tmp
+# to upgrade to new version: Create a checkpoint
+# Export configuration under Server -> Archive
+# modify version number in role
+# delete ping service (/etc/systemd/system/pingfederate.service), 
+# and contents of /tmp/*
 class profile::sso ( String
 $pf_user,
 # $pf_pass,
