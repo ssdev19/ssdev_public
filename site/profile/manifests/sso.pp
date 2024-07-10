@@ -124,11 +124,11 @@ $line,
     content => "${pingfederate_service}",
     mode => '0664',
   }
-  -> service { 'pingfederate':
-  # subscribe => Pingfederate::Instance['default'],
-  ensure    => 'running',
-  enable    => true,
-  }
+  # -> service { 'pingfederate':
+  # # subscribe => Pingfederate::Instance['default'],
+  # ensure    => 'running',
+  # enable    => true,
+  # }
 
 
   
