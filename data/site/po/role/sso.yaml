@@ -57,7 +57,7 @@ profile::sso::pf_home: '/opt/pingfederate-11.0.10/pingfederate' #'/usr/java/jdk-
 #     description: 'sso backup'
 profile::sso::match: |
         <!-- Syslog events - Custom pattern
-        <Socket name="SYSLOG" host="localhost" port="5514" protocol="UDP">
+        <Socket name="SYSLOG" host="localhost" port="514" protocol="UDP">
             <PingSyslogLayout facility="LOCAL7">
                 <PatternLayout>
                     <pattern>[%d{ABSOLUTE},%c{1}] %m%n</pattern>
