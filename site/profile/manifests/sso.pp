@@ -72,14 +72,9 @@ $line,
       path  => "/opt/pingfederate-${pf_version}/pingfederate/bin/run.properties",
     }
   # Send audit logs to graylog
-  file { '/opt/pingfederate-11.0.10/pingfederate/server/default/conf/log4j2.xml':
-    ensure => file,
-  }
-  -> file_line{ 'Syslog config':
-      match => $match,
-      line  => $line,
-      path  => '/opt/pingfederate-11.0.10/pingfederate/server/default/conf/log4j2.xml',
-    }
+  # file { '/opt/pingfederate-11.0.10/pingfederate/server/default/conf/log4j2.xml':
+  #   ensure => file,
+  # }
   archive { '/tmp/log4j2.xml' :
     ensure  => present,
     source  => 's3://pingfe/log4j2.xml',
@@ -91,6 +86,11 @@ $line,
   source  => '/tmp/log4j2.xml',
   replace => 'yes',
   }
+  -> file_line{ 'Syslog config':
+      match => $match,
+      line  => $line,
+      path  => '/opt/pingfederate-11.0.10/pingfederate/server/default/conf/log4j2.xml',
+    }
   $pf_lic = lookup('pf_lic')
   #   file { '/opt/pingfederate-11.0.7/pingfederate/server/default/conf/pf/pingfederate.lic':
   #   ensure  => present,
