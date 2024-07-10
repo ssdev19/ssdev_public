@@ -34,8 +34,8 @@ $line,
       extract_path => '/tmp/',
       # creates      => '/tmp/atlassianconnector' 
     }
-    # zoom provisioner /opt/pingfederate-11.0.7/pingfederate/server/default/deploy/
-    archive { '/opt/pingfederate-11.0.7/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar':
+    # zoom provisioner /opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/
+    archive { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar":
       source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
       cleanup  => false,
     }
