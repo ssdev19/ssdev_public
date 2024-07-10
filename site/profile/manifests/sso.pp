@@ -1,4 +1,5 @@
 #  PingFed config
+# to upgrade to new version: delete ping service, contents of tmp
 class profile::sso ( String
 $pf_user,
 # $pf_pass,
