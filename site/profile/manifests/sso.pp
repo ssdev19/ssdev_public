@@ -75,15 +75,15 @@ $line,
   # file { '/opt/pingfederate-11.0.10/pingfederate/server/default/conf/log4j2.xml':
   #   ensure => file,
   # }
-  archive { '/tmp/log4j2.xml' :
+  archive { '/tmp/log4j2-test.xml' :
     ensure  => present,
-    source  => 's3://pingfe/log4j2.xml',
+    source  => 's3://pingfe/log4j2-test.xml',
     cleanup => false,
   }
 
   file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/conf/log4j2.xml":
   ensure  => present,
-  source  => '/tmp/log4j2.xml',
+  source  => '/tmp/log4j2-test.xml',
   replace => 'yes',
   }
   # -> file_line{ 'Syslog config':
