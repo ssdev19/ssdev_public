@@ -53,16 +53,16 @@ class profile::ots {
   #   source   => 'https://github.com/onetimesecret/onetimesecret.git',
   #   user     => 'root',
   # }
-  class { 'onetimesecret':
-    version        => '945bb2a3cb43213f71e67abd0fa561267699d0eb',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
-    install_dir    => '/opt',
-    symlink_name   => '/opt/onetimesecret',
-    secret         => $secret,
-    redis_password => $redis_pwd,
-    redis_options  => {
-      maxmemory => '2gb',
-    },
-  }
+  # class { 'onetimesecret':
+  #   version        => '945bb2a3cb43213f71e67abd0fa561267699d0eb',  #'e858f1edde6cc6af7ef75aa45f2bb9f9b0f0ecf5', #  e1156b1f8ab98322a898ee4defd1c3f0adb9b5d3
+  #   install_dir    => '/opt',
+  #   symlink_name   => '/opt/onetimesecret',
+  #   secret         => $secret,
+  #   redis_password => $redis_pwd,
+  #   redis_options  => {
+  #     maxmemory => '2gb',
+  #   },
+  # }
   # file { '/opt/onetimesecret-v0.14.0':
   #   ensure => link,
   #   target => '/opt/onetimesecret-0.14.0',
