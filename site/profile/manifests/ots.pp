@@ -31,9 +31,9 @@ class profile::ots {
       default_use => true,
       # build_opts  => ['--binary'],
       ;
-    'ruby-2.5.9':
-      ensure      => 'present',
-      default_use => false;
+    # 'ruby-2.5.9':
+    #   ensure      => 'present',
+    #   default_use => false;
   }
   rvm_gemset {
     'ruby-3.2.0@testing':
