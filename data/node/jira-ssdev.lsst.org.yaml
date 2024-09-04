@@ -2,6 +2,8 @@
 ---
 classes:
   - profile::base_linux
+  - profile::java
+  - profile::jira
 profile::base_linux::network: true
 network_config:
   eth0:
