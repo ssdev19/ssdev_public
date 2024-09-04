@@ -1,6 +1,6 @@
 # jira
 class profile::jira {
-  include puppet-jira
+  include jira
   file {
     '/opt/atlassian':
       ensure => directory,
