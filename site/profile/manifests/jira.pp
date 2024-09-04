@@ -7,7 +7,7 @@ class profile::jira {
       # mode   => '0700',
       ;
     '/opt/atlassian/application-data':
-      ensure => file,
+      ensure => directory,
       # mode   => '0600',
       ;
   }
