@@ -10,7 +10,7 @@ profile::java::version_minor: '9'
 profile::java::java_path: '/usr/java/jdk-11.0.2+9-jre/bin:$PATH'
 profile::java::mem: '-Xmx1g'
 # Jira
-jira::version:       '8.13.5'
+jira::version:       '9.12.13'
 # parent directories must exist
 jira::installdir:    '/opt/atlassian/atlassian-jira'
 jira::homedir:       '/opt/atlassian/application-data/jira-home'
