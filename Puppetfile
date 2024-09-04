@@ -77,7 +77,7 @@ mod 'puppetlabs-hocon', '1.1.0'  # dependency
 mod 'puppet-network', '2.2.0'
 mod 'puppet-filemapper', '4.0.0' #puppet-network dependency
 mod 'puppet-kmod', '4.0.1' #puppet-network dependency
-mod 'puppetlabs-mysql', '14.0.0'
+mod 'puppetlabs-mysql', '16.0.0'
 mod 'edestecd-mariadb', '2.1.1'
 mod 'previousnext-drush', '0.1.2'
 mod 'willdurand-composer', '1.2.10'
