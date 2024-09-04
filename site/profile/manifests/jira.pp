@@ -1,4 +1,4 @@
 # jira
-class profile::ots {
-  
+class profile::jira {
+
 }
