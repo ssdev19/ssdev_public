@@ -1,7 +1,7 @@
 # jira
 class profile::jira {
   include jira
-  include mysql::server
+  # include mysql::server
   file {
     '/opt/atlassian':
       ensure => directory,
