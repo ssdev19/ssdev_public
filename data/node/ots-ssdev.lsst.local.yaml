@@ -1,6 +1,6 @@
 ---
-# classes:
-#   - profile::base_linux
+classes:
+  - profile::base_linux
 #   - profile::ots
 #   # - profile::network2
 # profile::base_linux::network: true
