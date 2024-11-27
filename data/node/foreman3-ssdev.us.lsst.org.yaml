@@ -1,7 +1,7 @@
 ---
 classes:
   - profile::base_linux
-  # - profile::puppet_master2
+  - profile::puppet_master3
     # - profile::default
 # profile::base_linux::network: true
 # network_config:
