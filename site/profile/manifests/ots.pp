@@ -54,7 +54,7 @@ class profile::ots {
   #   user     => 'root',
   # }
   class { 'onetimesecret':
-    version        => 'v0.16.1',
+    version        => 'v0.16.0',
     secret         => 'SomeHardToGuessRandomCharacters',
     redis_password => 'AnotherGoodPassword',
   }
