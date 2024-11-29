@@ -25,28 +25,28 @@ class profile::ots {
 # gem install bundler:2.4.12
 # bundle update --bundler
 # Reboot needed after installation perhaps a few times
-  rvm_system_ruby {
-    'ruby-3.1.4':
-      ensure      => 'present',
-      default_use => true,
-      # build_opts  => ['--binary'],
-      ;
-    # 'ruby-2.5.9':
-    #   ensure      => 'present',
-    #   default_use => false;
-  }
-  rvm_gemset {
-    'ruby-3.1.4@testing':
-      ensure  => present,
-      require => Rvm_system_ruby['ruby-3.1.4'];
-  }
-  rvm_gem {
-    'bundler':
-      ensure       => latest,
-      name         => 'bundler',
-      ruby_version => 'ruby-3.1.4',
-      require      => Rvm_system_ruby['ruby-3.1.4'];
-  }
+  # rvm_system_ruby {
+  #   'ruby-3.1.4':
+  #     ensure      => 'present',
+  #     default_use => true,
+  #     # build_opts  => ['--binary'],
+  #     ;
+  #   # 'ruby-2.5.9':
+  #   #   ensure      => 'present',
+  #   #   default_use => false;
+  # }
+  # rvm_gemset {
+  #   'ruby-3.1.4@testing':
+  #     ensure  => present,
+  #     require => Rvm_system_ruby['ruby-3.1.4'];
+  # }
+  # rvm_gem {
+  #   'bundler':
+  #     ensure       => latest,
+  #     name         => 'bundler',
+  #     ruby_version => 'ruby-3.1.4',
+  #     require      => Rvm_system_ruby['ruby-3.1.4'];
+  # }
   # vcsrepo { "/opt/onetimesecret":
   #   ensure   => present,
   #   provider => git,
@@ -54,7 +54,7 @@ class profile::ots {
   #   user     => 'root',
   # }
   class { 'onetimesecret':
-    version        => 'v0.16.1',
+    version        => 'v0.9.2',
     secret         => 'SomeHardToGuessRandomCharacters',
     redis_password => 'AnotherGoodPassword',
   }
