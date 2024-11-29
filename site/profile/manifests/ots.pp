@@ -35,11 +35,11 @@ class profile::ots {
     #   ensure      => 'present',
     #   default_use => false;
   }
-  # rvm_gemset {
-  #   'ruby-3.2.5@testing':
-  #     ensure  => present,
-  #     require => Rvm_system_ruby['ruby-3.2.5'];
-  # }
+  rvm_gemset {
+    'ruby-3.1.4@testing':
+      ensure  => present,
+      require => Rvm_system_ruby['ruby-3.1.4'];
+  }
   # rvm_gem {
   #   'bundler':
   #     ensure       => latest,
