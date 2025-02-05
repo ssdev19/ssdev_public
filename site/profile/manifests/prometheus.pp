@@ -91,7 +91,7 @@ class profile::prometheus (
         'slack_configs' => [
           {
             'api_url'       => unwrap($slackapi_hide),
-            'channel'       => '#ssdev_monitoring',
+            'channel'       => '#monitoring',
             'icon_url'      => 'http://i.imgur.com/VcwymZj.jpg',
             'username'      => unwrap($slackuser_hide),
             'title'         => '{{ template "custom_title" . }}',
