@@ -39,8 +39,8 @@ $line,
       extract_path => '/tmp/',
       # creates      => '/tmp/atlassianconnector' 
     }
-    archive { '/tmp/pf-duo-security-integration-kit-3.1.2.zip':
-      source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-duo-security-integration-kit-3.1.2.zip',
+    archive { '/tmp/duopingfederate.zip':
+      source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/duopingfederate.zip',
       cleanup      => true,
       extract      => true,
       extract_path => "/opt/pingfederate-${pf_version}/",
