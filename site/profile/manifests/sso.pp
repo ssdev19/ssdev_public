@@ -145,7 +145,7 @@ $line,
       source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/duopingfederate.zip',
       cleanup      => true,
       extract      => true,
-      extract_path => '/tmp/',
+      extract_path => "/opt/pingfederate-${pf_version}/",
     }
 
 }
