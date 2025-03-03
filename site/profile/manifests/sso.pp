@@ -155,4 +155,12 @@ $line,
     owner     => $pf_user,
     group     => $pf_user,
   }
+ file { "/opt/pingfederate-${pf_version}/pingfederate/server/default/lib/pf-authn-api-sdk-1.0.0.81.jar":
+    ensure => present,
+    source => '/tmp/pingfederate/server/default/lib/pf-authn-api-sdk-1.0.0.81.jar',
+    mode => '0775',
+    # dir_mode  => '0775',
+    owner     => $pf_user,
+    group     => $pf_user,
+  }
 }
