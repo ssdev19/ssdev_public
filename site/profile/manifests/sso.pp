@@ -39,12 +39,7 @@ $line,
       extract_path => '/tmp/',
       # creates      => '/tmp/atlassianconnector' 
     }
-    archive { '/tmp/duopingfederate.zip':
-      source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/duopingfederate.zip',
-      cleanup      => true,
-      extract      => true,
-      extract_path => '/tmp/',
-    }
+
     # zoom provisioner /opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/
     archive { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar":
       source   => 'http://wsus.lsst.org/puppetfiles/pingfederate/pf-zoom-quickconnection-1.0.jar',
@@ -146,6 +141,11 @@ $line,
   #   extract_path => '/opt/pingfederate-11.0.7/pingfederate/bin',
   # }
 
-
+    archive { '/tmp/duopingfederate.zip':
+      source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/duopingfederate.zip',
+      cleanup      => true,
+      extract      => true,
+      extract_path => '/tmp/',
+    }
 
 }
