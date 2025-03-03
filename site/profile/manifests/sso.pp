@@ -43,7 +43,7 @@ $line,
       source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/duopingfederate.zip',
       cleanup      => true,
       extract      => true,
-      extract_path => "/tmp/",
+      extract_path => '/tmp/',
     }
     # zoom provisioner /opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/
     archive { "/opt/pingfederate-${pf_version}/pingfederate/server/default/deploy/pf-zoom-quickconnection-1.0.jar":
