@@ -143,7 +143,7 @@ $line,
 
     archive { '/tmp/duopingfederate.zip':
       source       => 'http://wsus.lsst.org/puppetfiles/pingfederate/duopingfederate.zip',
-      cleanup      => true,
+      cleanup      => false,
       extract      => true,
       extract_path => "/opt/pingfederate-${pf_version}/",
     }
