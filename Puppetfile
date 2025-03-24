@@ -47,7 +47,7 @@ mod 'puppet-cron', '4.1.0'
 mod 'puppet-r10k', '11.0.0'
 # mod 'camptocamp-systemd', '3.0.0'
 mod 'puppet-collectd', '13.0.0'
-mod 'puppet-epel', '3.1.0' # collectd dependency
+mod 'puppet-epel', '5.0.0' # collectd dependency
 mod 'puppetlabs-python_task_helper', '0.5.0' # collectd dependency
 mod 'puppet-postfix', '2.0.0'
 mod 'camptocamp-augeas', '1.9.0'
@@ -107,7 +107,7 @@ mod 'puppet-yum', '6.0.0'
 mod 'puppetlabs-yumrepo_core', '1.1.0'
 mod 'richardc-datacat', '0.6.2'
 mod 'npwalker-recursive_file_permissions', '0.6.2'
-mod 'puppet-letsencrypt', '11.0.0'
+mod 'puppet-letsencrypt', '11.1.0'
 mod 'puppet-snmp', '6.0.0'
 mod 'puppetlabs-facts', '1.4.0'
 mod 'ghoneycutt-facter', '4.0.0'
