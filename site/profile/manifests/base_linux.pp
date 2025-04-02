@@ -16,7 +16,7 @@ class profile::base_linux (
   # $service1,
   Boolean $awscli   = false,
   Boolean $backups  = false,
-  Boolean $postfix  = true,
+  Boolean $postfix  = false,
   Boolean $graylog  = false,
   Boolean $network  = false,
   Boolean $nsswitch = false,
