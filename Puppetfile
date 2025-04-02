@@ -74,7 +74,7 @@ mod 'puppetlabs-vcsrepo', '5.0.0'
 mod 'puppet/ssh_keygen', '4.0.0'
 mod 'puppetlabs-hocon', '1.1.0'  # dependency
 # mod 'example42-network', '3.6.1'
-mod 'puppet-network', '2.2.0'
+mod 'puppet-network', '2.2.1'
 mod 'puppet-filemapper', '4.0.0' #puppet-network dependency
 mod 'puppet-kmod', '4.0.1' #puppet-network dependency
 mod 'puppetlabs-mysql', '16.0.0'
