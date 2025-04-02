@@ -2,7 +2,7 @@
 classes:
   - profile::base_linux
   # - profile::puppet_master3
-#   - profile::network
+  - profile::network
 profile::network::ipaddress: 140.252.32.186
 network_config:
   eth0:
