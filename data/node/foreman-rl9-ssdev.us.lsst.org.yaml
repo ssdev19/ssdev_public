@@ -1,7 +1,7 @@
 ---
 classes:
-  - profile::base_linux
-  - profile::puppet_master4
+  - profile::default
+  # - profile::puppet_master4
 # network_config:
 #   eth0:
 #     # name: 'eth0'
