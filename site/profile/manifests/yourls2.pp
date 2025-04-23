@@ -14,7 +14,7 @@ class profile::yourls2 (
   String $nginx_version,
 ) {
   include mysql::server
-
+  include nginx
   Package {['openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release']:
     ensure => installed,
   }
