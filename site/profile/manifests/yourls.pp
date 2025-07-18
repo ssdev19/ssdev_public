@@ -121,12 +121,12 @@ file { '/etc/nginx/YOURLS':
     source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
     cleanup => false,
   }
-  archive { "/etc/nginx/YOURLS-${yourls_version}/images/yourls-logo.svg2":
-    ensure  => present,
-    source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
-    cleanup => false,
-    replace => 'yes',
-  }
+  # archive { "/etc/nginx/YOURLS-${yourls_version}/images/yourls-logo.svg2":
+  #   ensure  => present,
+  #   source  => 'https://www.lsst.org/sites/default/files/Wht-Logo-web_0.png',
+  #   cleanup => false,
+  #   replace => 'yes',
+  # }
   $phpinfo = lookup ('phpinfo')
   file { "/etc/nginx/YOURLS-${yourls_version}/phpinfo.php" :
     ensure  => file,
