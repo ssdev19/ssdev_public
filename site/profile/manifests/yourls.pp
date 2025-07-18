@@ -10,7 +10,7 @@ class profile::yourls (
   String $yourls_site,
   String $nginx_version
 
-){
+) {
   # include nginx
   include mysql::server
 
