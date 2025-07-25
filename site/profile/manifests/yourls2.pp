@@ -18,7 +18,7 @@ class profile::yourls2 (
   Package {['openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release']:
     ensure => installed,
   }
-  archivee { "/usr/src/YOURLS-${yourls_version}.tar.gz":
+  archive { "/usr/src/YOURLS-${yourls_version}.tar.gz":
     ensure       => present,
     source       => "https://github.com/YOURLS/YOURLS/archive/refs/tags/${yourls_version}.tar.gz",
     extract_path => '/etc/nginx',
