@@ -1,7 +1,7 @@
 # yourls node
 ---
-classes:
-  - profile::base_linux
+# classes:
+#   - profile::base_linux
 profile::base_linux::network: true
 network_config:
   eth0:
