@@ -15,7 +15,7 @@ class profile::yourls2 (
 ) {
   include mysql::server
 
-  Packaged {['openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release']:
+  Package {['openldap-devel', 'make', 'yum-utils', 'pcre-devel', 'epel-release']:
     ensure => installed,
   }
   archive { "/usr/src/YOURLS-${yourls_version}.tar.gz":
