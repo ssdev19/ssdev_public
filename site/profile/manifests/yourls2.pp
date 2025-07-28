@@ -43,7 +43,7 @@ class profile::yourls2 (
     }
     archive { '/tmp/mysql-db-yourls.gz' :
       ensure  => present,
-      source  => 's3://urlshortener-data/mysql-db-yourls-latest.gz',
+      source  => 's3://urlshortener-data/yourls/mysql-db-yourls-latest.gz',
       cleanup => true,
     }
     $yourls_db_name = lookup('yourls_db_name')
